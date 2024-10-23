@@ -1,16 +1,16 @@
 export const metaData = {
-  baseUrl: "https://nextfolio-template.vercel.app/",
-  title: "Nextfolio",
-  name: "Sirius",
+  baseUrl: "https://yoelmanoppo.netlify.app/",
+  title: "Yoel",
+  name: "Yoel",
   ogImage: "/opengraph-image.png",
-  description:
-    "A clean, fast, and lightweight portfolio template built with Next.js, Vercel, and Tailwind CSS for optimal performance.",
+  description: 
+    "An innovative AI Specialist and music producer, blending cutting-edge AI technology with creative artistry. Skilled in Next.js development, AI integrations, and building music brands with a global reach."
 };
 
 export const socialLinks = {
-  twitter: "https://x.com/1tssirius",
-  github: "https://github.com/1msirius/Nextfolio",
-  instagram: "https://www.instagram.com/",
-  linkedin: "https://www.linkedin.com/",
-  email: "mailto:example@gmail.com",
+  twitter: "https://x.com/yoelmanoppo",
+  github: "https://github.com/y0el",
+  instagram: "https://www.instagram.com/yoelmanoppo",
+  linkedin: "https://www.linkedin.com/yoelmanoppo",
+  email: "mailto:yoelandreasmanoppo@gmail.com",
 };
