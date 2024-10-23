@@ -1,16 +1,16 @@
 export const metaData = {
-  baseUrl: "https://yoelmanoppo.netlify.app/",
+  baseUrl: "https://yoel.pw/",
   title: "Yoel",
   name: "Yoel",
-  ogImage: "/opengraph-image.png",
+  ogImage: "/profile.png",
   description: 
-    "An innovative AI Specialist and music producer, blending cutting-edge AI technology with creative artistry. Skilled in Next.js development, AI integrations, and building music brands with a global reach."
+    "Seorang Spesialis AI dan produser musik yang inovatif, Yoel menggabungkan teknologi AI dengan seni kreatif."
 };
 
 export const socialLinks = {
-  twitter: "https://x.com/yoelmanoppo",
+  twitter: "https://x.com/",
   github: "https://github.com/y0el",
   instagram: "https://www.instagram.com/yoelmanoppo",
-  linkedin: "https://www.linkedin.com/yoelmanoppo",
+  linkedin: "https://www.linkedin.com/in/yoelmanoppo",
   email: "mailto:yoelandreasmanoppo@gmail.com",
 };
