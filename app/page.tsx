@@ -1,10 +1,20 @@
-
 import Image from "next/image";
+import Head from "next/head"; // Import Head
 import { socialLinks } from "./config";
 
 export default function Page() {
   return (
     <section className="max-w-3xl mx-auto">
+      <Head>
+        <title>Yoel Andreas Manoppo - Music Live!</title>
+        <meta name="description" content="Seorang Spesialis AI dan produser musik yang inovatif, Yoel menggabungkan teknologi AI dengan seni kreatif." />
+        <meta property="og:title" content="Yoel Andreas Manoppo - Empowering Innovation!" />
+        <meta property="og:description" content="Ai Specialist, Yoel menggabungkan teknologi AI dengan seni kreatif." />
+        <meta property="og:image" content="/path/to/profile.png" /> {/* Ganti dengan path yang sesuai */}
+        <meta property="og:url" content="https://yoel.pw" /> {/* Ganti dengan URL yang sesuai */}
+        <meta property="og:type" content="website" />
+      </Head>
+
       <a href={socialLinks.instagram} target="_blank">
         <Image
           src="profile.png"
@@ -18,7 +28,7 @@ export default function Page() {
       </a>
 
       <h1 className="section-header mb-8 text-2xl font-medium tracking-tight">
-        Music Live!
+        Musician and AI Specialist at the Same Time!
       </h1>
 
       <div className="prose prose-neutral dark:prose-invert">
