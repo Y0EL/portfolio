@@ -25,6 +25,6 @@ export const projects: Project[] = [
     year: 2024,
     description:
       "Website yang sekarang ini kalian lihat dan nikmati, ini adalah proyek ketiga, berbasis forums ini akan menjadi platform publik dimana publik bebas mengemukakan pendapatnya.",
-    url: "https://forum.people.xyz/",
+    url: "https://yoel.pw/",
   },
 ];
