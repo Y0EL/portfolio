@@ -5,7 +5,7 @@ import { socialLinks } from "./config";
 export default function Page() {
   return (
     <section className="max-w-3xl mx-auto">
-      <a href={socialLinks.twitter} target="_blank">
+      <a href={socialLinks.instagram} target="_blank">
         <Image
           src="profile.png"
           alt="Profile photo"
