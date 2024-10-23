@@ -1,0 +1,45 @@
+# Allow all bots to access the website
+User-agent: *
+Allow: /
+
+# Block specific folders that might contain development or build-related files
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /build/
+Disallow: /.git/
+Disallow: /pnpm-lock.yaml
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /webpack.config.js
+
+# Block crawling of query parameters (optional if you want to avoid duplicate content issues)
+Disallow: /*?*
+
+# Allow search engines to index images, but disallow certain sensitive assets (if any)
+Disallow: /static/media/sensitive-image.jpg
+
+# Block bots from accessing the Netlify admin panel (if used)
+Disallow: /admin/
+
+# Sitemap (important for SEO)
+Sitemap: https://yoel.pw/sitemap.xml
+
+# Rate limit crawling for polite bots
+Crawl-delay: 10
+
+# Block specific bots (if needed)
+User-agent: BadBot
+Disallow: /
+
+# Allow Googlebot specific access (if there are exceptions)
+User-agent: Googlebot
+Allow: /special-content/
+
+# Block sensitive files
+Disallow: /private/
+Disallow: /config/
+Disallow: /secrets/
+
+# Block temporary URLs or staging environments
+Disallow: /staging/
+Disallow: /temp/
