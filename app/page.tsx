@@ -18,12 +18,12 @@ export default function Page() {
       </a>
 
       <h1 className="section-header mb-8 text-2xl font-medium tracking-tight">
-        Empowering Innovation through AI, Music, and E-Commerce!
+        Music Live!
       </h1>
 
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          Seorang Spesialis AI dan produser musik yang inovatif, Yoel menggabungkan teknologi AI mutakhir dengan seni kreatif. Berpengalaman dalam pengembangan Next.js dan integrasi AI, Yoel juga membangun merek musik bernama Cubicube dengan jangkauan global. Dengan keahlian di bidang e-commerce, Yoel berkomitmen untuk memberikan solusi yang efektif dan inovatif dalam setiap proyek yang dikerjakan.
+          Yoel Andreas Manoppo atau yang lebih akrab dikenal dengan Yoel adalah Seorang Spesialis AI dan produser musik yang inovatif, Yoel menggabungkan teknologi AI mutakhir dengan seni kreatif. Berpengalaman dalam pengembangan Next.js dan integrasi AI, Yoel juga membangun merek musik bernama Cubicube dengan jangkauan global. Dengan keahlian di bidang e-commerce, Yoel berkomitmen untuk memberikan solusi yang efektif dan inovatif dalam setiap proyek yang dikerjakan.
         </p>
 
         <h2 className="section-header text-xl font-medium mt-8 mb-6">Pengalaman Kerja</h2>
