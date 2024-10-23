@@ -10,8 +10,8 @@ export default function Page() {
         <meta name="description" content="Seorang Spesialis AI dan produser musik yang inovatif, Yoel menggabungkan teknologi AI dengan seni kreatif." />
         <meta property="og:title" content="Yoel Andreas Manoppo - Empowering Innovation!" />
         <meta property="og:description" content="Ai Specialist, Yoel menggabungkan teknologi AI dengan seni kreatif." />
-        <meta property="og:image" content="/path/to/profile.png" /> {/* Ganti dengan path yang sesuai */}
-        <meta property="og:url" content="https://yoel.pw" /> {/* Ganti dengan URL yang sesuai */}
+        <meta property="og:image" content="/profile.png" />
+        <meta property="og:url" content="https://yoel.pw" />
         <meta property="og:type" content="website" />
       </Head>
 
