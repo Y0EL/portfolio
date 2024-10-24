@@ -14,6 +14,9 @@ export default function NotFound() {
   const [countdown, setCountdown] = useState(8); // Mulai dari 8 detik
 
   useEffect(() => {
+    // Mencegah scroll saat halaman ini ditampilkan
+    document.body.style.overflow = "hidden"; // Mengatur overflow pada body
+
     // Update countdown setiap detik
     const interval = setInterval(() => {
       setCountdown((prevCountdown) => prevCountdown - 1);
@@ -25,7 +28,10 @@ export default function NotFound() {
     }
 
     // Bersihkan interval ketika countdown selesai atau komponen dilepas
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      document.body.style.overflow = "auto"; // Kembalikan overflow pada body
+    };
   }, [countdown, router]);
 
   return (
@@ -47,10 +53,4 @@ export default function NotFound() {
       </p>
     </section>
   );
-}
-
-// Menambahkan CSS untuk mengatur overflow pada html dan body
-if (typeof window !== "undefined") {
-  document.documentElement.style.overflow = "hidden"; // Mengatur overflow pada html
-  document.body.style.overflow = "hidden"; // Mengatur overflow pada body
 }
