@@ -29,7 +29,7 @@ export default function NotFound() {
   }, [countdown, router]);
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen w-full overflow-hidden text-center">
+    <section className="flex flex-col items-center justify-center min-h-screen w-full text-center">
       <h1 className="text-6xl font-bold mb-4 text-gray-900 dark:text-gray-100">
         404
       </h1>
@@ -47,4 +47,10 @@ export default function NotFound() {
       </p>
     </section>
   );
+}
+
+// Menambahkan CSS untuk mengatur overflow pada html dan body
+if (typeof window !== "undefined") {
+  document.documentElement.style.overflow = "hidden"; // Mengatur overflow pada html
+  document.body.style.overflow = "hidden"; // Mengatur overflow pada body
 }
