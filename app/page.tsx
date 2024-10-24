@@ -24,12 +24,14 @@ export default function Page() {
           width={160}
           height={160}
           priority
-        />
+          />
+
       </a>
 
       <h1 className="section-header mb-8 text-2xl font-medium tracking-tight">
-        Musician and AI Specialist at the Same Time!
+      Empowering Innovation through AI, Music, and E-Commerce!
       </h1>
+
 
       <div className="prose prose-neutral dark:prose-invert">
         <p>
@@ -80,52 +82,37 @@ export default function Page() {
         </div>
 
         <h2 className="section-header text-xl font-medium mt-8 mb-4">Sertifikasi</h2>
-<div className="grid sm:grid-cols-2 gap-4">
-  <div className="certification-card border border-gray-200 rounded-lg p-4">
-    <h3 className="font-medium">CS50X</h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">
-      Introduction to Computer Science • 2023
-    </p>
-    <p className="text-sm text-gray-600 dark:text-gray-400">
-      Sertifikasi ini meliputi dasar-dasar ilmu komputer, pemrograman, dan algoritma. Fokus pada pemecahan masalah dan membangun aplikasi web berbasis proyek nyata. yang dipersembahkan oleh Harvard University
-    </p>
-    <a href="https://cs50.harvard.edu/certificates/3eaa4f95-45ef-4118-b630-e7dc7e27730f" target="_blank">
-      <button className="mt-2 border border-gray-300 text-gray-700 font-bold py-1 px-3 rounded">
-        Lihat Sertifikat
-      </button>
-    </a>
-  </div>
+        <div className="certification-carousel flex gap-4 overflow-x-auto scroll-smooth snap-x">
+          <div className="certification-card border border-gray-200 rounded-lg p-4 min-w-[300px] snap-center">
+            <h3 className="font-medium">CS50X</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Introduction to Computer Science • 2023
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Sertifikasi ini meliputi dasar-dasar ilmu komputer, pemrograman, dan algoritma. Fokus pada pemecahan masalah dan membangun aplikasi web berbasis proyek nyata yang dipersembahkan oleh Harvard University.
+            </p>
+          </div>
+          
+          <div className="certification-card border border-gray-200 rounded-lg p-4 min-w-[300px] snap-center">
+            <h3 className="font-medium">CS50CY</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Cybersecurity • 2023
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Sertifikasi yang memperdalam pemahaman arsitektur cloud dan pengembangan aplikasi menggunakan AWS. Berfokus pada scalable cloud solutions dengan hands-on experience.
+            </p>
+          </div>
 
-  <div className="certification-card border border-gray-200 rounded-lg p-4">
-    <h3 className="font-medium">CS50AI</h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">
-      Artificial Intelligence • 2023
-    </p>
-    <p className="text-sm text-gray-600 dark:text-gray-400">
-      Sertifikasi CS50AI dari Harvard University memberikan pemahaman mendalam tentang konsep dan teknik AI. Dalam kursus ini, peserta belajar tentang algoritma pembelajaran mesin, pemrosesan bahasa alami, dan penerapan AI dalam berbagai proyek. Dengan pendekatan praktis, sertifikasi ini membekali peserta dengan keterampilan untuk mengembangkan solusi berbasis AI yang inovatif.
-    </p>
-    <a href="https://cs50.harvard.edu/certificates/1effa036-081a-4d40-bc36-0dcd61b93a96" target="_blank">
-      <button className="mt-2 border border-gray-300 text-gray-700 font-bold py-1 px-3 rounded">
-        Lihat Sertifikat
-      </button>
-    </a>
-  </div>
-
-  <div className="certification-card border border-gray-200 rounded-lg p-4">
-    <h3 className="font-medium">EFSET (English First Standard English Test)</h3>
-    <p className="text-sm text-gray-600 dark:text-gray-400">
-      Level: Intermediate • 2023
-    </p>
-    <p className="text-sm text-gray-600 dark:text-gray-400">
-      Sertifikasi ini menunjukkan kemampuan bahasa Inggris tingkat menengah, dengan fokus pada komunikasi lisan dan tulisan dalam konteks profesional.
-    </p>
-    <a href="https://cert.efset.org/m9B1rv" target="_blank">
-      <button className="mt-2 border border-gray-300 text-gray-700 font-bold py-1 px-3 rounded">
-        Lihat Sertifikat
-      </button>
-    </a>
-  </div>
-</div>
+          <div className="certification-card border border-gray-200 rounded-lg p-4 min-w-[300px] snap-center">
+            <h3 className="font-medium">EFSET (English First Standard English Test)</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Level: Intermediate • 2023
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Sertifikasi ini menunjukkan kemampuan bahasa Inggris tingkat Profesional, dengan fokus pada komunikasi lisan dan tulisan dalam konteks profesional.
+            </p>
+          </div>
+        </div>
 
 
         <p className="mt-8">
