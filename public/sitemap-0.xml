@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://yoel.pw/robots.txt</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/sitemap.xml</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/feed/atom.xml</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/feed/feed.json</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/feed/rss.xml</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/blog/ai-vs-loker-siapa-yang-bakal-menang-di-dunia-kerja</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/blog/cara-penggunaan-ai-secara-kompleks-dengan-gemini</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/blog/generalist-vs-specialist</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/blog/kenapa-gue-memutuskan-untuk-resign</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/blog/lingkungan-kerja-toxic-kenapa-kita-harus-hati-hati</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/blog/menelusuri-dunia-e-commerce-perjalanan-gue-sebagai-e-commerce-specialist</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/blog/perjalanan-menjadi-musisi-dari-penasaran-sampai-nge-spotify</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/blog/rekan-bukan-berarti-teman</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/blog</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/photos</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://yoel.pw/projects</loc><lastmod>2024-10-24T16:14:10.937Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/robots.txt</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/sitemap.xml</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/feed/atom.xml</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/feed/feed.json</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/feed/rss.xml</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/blog/ai-vs-loker-siapa-yang-bakal-menang-di-dunia-kerja</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/blog/cara-penggunaan-ai-secara-kompleks-dengan-gemini</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/blog/generalist-vs-specialist</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/blog/kenapa-gue-memutuskan-untuk-resign</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/blog/lingkungan-kerja-toxic-kenapa-kita-harus-hati-hati</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/blog/menelusuri-dunia-e-commerce-perjalanan-gue-sebagai-e-commerce-specialist</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/blog/perjalanan-menjadi-musisi-dari-penasaran-sampai-nge-spotify</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/blog/rekan-bukan-berarti-teman</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/blog</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/photos</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://yoel.pw/projects</loc><lastmod>2024-10-24T16:47:29.083Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
