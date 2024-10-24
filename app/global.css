@@ -248,3 +248,8 @@ button[class*="border"]:hover {
 .hire-button {
   will-change: transform;
 }
+
+html, body {
+  overflow: hidden; /* Mencegah scroll */
+  height: 100%; /* Memastikan tinggi penuh */
+}
