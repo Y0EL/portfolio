@@ -4,7 +4,7 @@ module.exports = {
     generateRobotsTxt: true,
     robotsTxtOptions: {
         policies: [
-            { userAgent: '*', allow: '/' },
+            { userAgent: '*', allow: '/' }, 
             { userAgent: '*', disallow: '/node_modules/' },
             { userAgent: '*', disallow: '/src/' },
             { userAgent: '*', disallow: '/build/' },
@@ -13,7 +13,7 @@ module.exports = {
             { userAgent: '*', disallow: '/package.json' },
             { userAgent: '*', disallow: '/package-lock.json' },
             { userAgent: '*', disallow: '/webpack.config.js' },
-            { userAgent: '*', disallow: '/*?*' },
+            { userAgent: '*', disallow: '/*?*' }, 
             { userAgent: '*', disallow: '/static/media/sensitive-image.jpg' },
             { userAgent: '*', disallow: '/admin/' },
             { userAgent: '*', disallow: '/private/' },
@@ -26,4 +26,7 @@ module.exports = {
             'https://yoel.pw/sitemap.xml'
         ],
     },
-}
+
+    changefreq: 'monthly',
+    priority: 0.7,
+};
