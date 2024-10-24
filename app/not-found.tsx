@@ -29,7 +29,7 @@ export default function NotFound() {
   }, [countdown, router]);
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen text-center">
+    <section className="flex flex-col items-center justify-center min-h-screen w-full overflow-hidden text-center">
       <h1 className="text-6xl font-bold mb-4 text-gray-900 dark:text-gray-100">
         404
       </h1>
