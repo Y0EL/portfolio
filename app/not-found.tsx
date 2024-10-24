@@ -2,7 +2,7 @@
 
 import type { Metadata } from "next";
 import { useRouter } from "next/navigation"; // Menggunakan useRouter dari next/navigation
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const metadata: Metadata = {
   title: "404 - Halaman tidak ditemukan",
@@ -11,32 +11,39 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   const router = useRouter();
+  const [countdown, setCountdown] = useState(8); // Mulai dari 8 detik
 
-  // Auto-redirect setelah beberapa detik
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      router.push("/"); // Arahkan ke homepage setelah 5 detik
-    }, 5000);
+    // Update countdown setiap detik
+    const interval = setInterval(() => {
+      setCountdown((prevCountdown) => prevCountdown - 1);
+    }, 1000);
 
-    return () => clearTimeout(timeout); // Hapus timeout ketika komponen dilepas
-  }, [router]);
+    // Redirect ke halaman beranda setelah countdown habis
+    if (countdown === 0) {
+      router.push("/");
+    }
+
+    // Bersihkan interval ketika countdown selesai atau komponen dilepas
+    return () => clearInterval(interval);
+  }, [countdown, router]);
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen text-center bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
-      <h1 className="font-bold text-6xl mb-4 text-gray-800 dark:text-gray-100 transition-opacity duration-1000 ease-out opacity-100">
+    <section className="flex flex-col items-center justify-center min-h-screen text-center">
+      <h1 className="text-6xl font-bold mb-4 text-gray-900 dark:text-gray-100">
         404
       </h1>
-      <p className="font-medium text-xl mb-8 text-gray-600 dark:text-gray-400">
+      <p className="text-xl mb-8 text-gray-700 dark:text-gray-400">
         Halaman yang kamu cari tidak ditemukan.
       </p>
       <button
-        className="px-6 py-3 bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 rounded-lg hover:scale-105 transition-transform duration-300"
+        className="underline text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300"
         onClick={() => router.push("/")}
       >
         Kembali ke Beranda
       </button>
       <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
-        Kamu akan diarahkan dalam 5 detik...
+        Akan kembali ke beranda dalam {countdown} detik...
       </p>
     </section>
   );
