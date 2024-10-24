@@ -90,7 +90,7 @@ export default function Page() {
       Sertifikasi ini meliputi dasar-dasar ilmu komputer, pemrograman, dan algoritma. Fokus pada pemecahan masalah dan membangun aplikasi web berbasis proyek nyata. yang dipersembahkan oleh Harvard University
     </p>
     <a href="https://cs50.harvard.edu/certificates/3eaa4f95-45ef-4118-b630-e7dc7e27730f" target="_blank">
-      <button className="mt-2 border border-gray-300 text-gray-700 font-bold py-1 px-3 rounded">
+      <button className="hire-button border border-gray-300 text-gray-700 font-bold py-2 px-4 rounded">
         Lihat Sertifikat
       </button>
     </a>
@@ -105,7 +105,7 @@ export default function Page() {
       Sertifikasi CS50AI dari Harvard University memberikan pemahaman mendalam tentang konsep dan teknik AI. Dalam kursus ini, peserta belajar tentang algoritma pembelajaran mesin, pemrosesan bahasa alami, dan penerapan AI dalam berbagai proyek. Dengan pendekatan praktis, sertifikasi ini membekali peserta dengan keterampilan untuk mengembangkan solusi berbasis AI yang inovatif.
     </p>
     <a href="https://cs50.harvard.edu/certificates/1effa036-081a-4d40-bc36-0dcd61b93a96" target="_blank">
-      <button className="mt-2 border border-gray-300 text-gray-700 font-bold py-1 px-3 rounded">
+      <button className="hire-button border border-gray-300 text-gray-700 font-bold py-2 px-4 rounded">
         Lihat Sertifikat
       </button>
     </a>
@@ -120,7 +120,7 @@ export default function Page() {
       Sertifikasi ini menunjukkan kemampuan bahasa Inggris tingkat Profesional, dengan fokus pada komunikasi lisan dan tulisan dalam konteks profesional.
     </p>
     <a href="https://cert.efset.org/m9B1rv" target="_blank">
-      <button className="mt-2 border border-gray-300 text-gray-700 font-bold py-1 px-3 rounded">
+      <button className="hire-button border border-gray-300 text-gray-700 font-bold py-2 px-4 rounded">
         Lihat Sertifikat
       </button>
     </a>
