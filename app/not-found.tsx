@@ -1,5 +1,7 @@
+"use client"; // Menjadikan komponen ini client-side
+
 import type { Metadata } from "next";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"; // Menggunakan useRouter dari next/navigation
 import { useEffect } from "react";
 
 export const metadata: Metadata = {
