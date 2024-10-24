@@ -248,3 +248,34 @@ button[class*="border"]:hover {
 .hire-button {
   will-change: transform;
 }
+
+.certification-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem; /* Adjust spacing between cards */
+}
+
+.certification-card {
+  scroll-snap-align: center;
+  min-width: 300px; /* Control the width of each card */
+  flex: none;
+}
+
+.certification-carousel {
+  scroll-behavior: smooth;
+}
+
+.certification-carousel::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar for a cleaner look */
+}
+
+@media (max-width: 640px) {
+  .certification-carousel {
+    gap: 0.5rem; /* Adjust the gap for smaller screens */
+  }
+
+  .certification-card {
+    min-width: 250px; /* Smaller card size for mobile */
+  }
+}
