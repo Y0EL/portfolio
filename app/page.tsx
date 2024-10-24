@@ -117,7 +117,7 @@ export default function Page() {
       Level: Intermediate • 2023
     </p>
     <p className="text-sm text-gray-600 dark:text-gray-400">
-      Sertifikasi ini menunjukkan kemampuan bahasa Inggris tingkat menengah, dengan fokus pada komunikasi lisan dan tulisan dalam konteks profesional.
+      Sertifikasi ini menunjukkan kemampuan bahasa Inggris tingkat Profesional, dengan fokus pada komunikasi lisan dan tulisan dalam konteks profesional.
     </p>
     <a href="https://cert.efset.org/m9B1rv" target="_blank">
       <button className="mt-2 border border-gray-300 text-gray-700 font-bold py-1 px-3 rounded">
