@@ -22,25 +22,21 @@ export default function NotFound() {
   }, [router]);
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen text-center">
-      <div className="animate-bounce">
-        <h1 className="font-bold text-5xl mb-4 text-red-500">404</h1>
-        <p className="font-medium text-2xl mb-8 tracking-tight">
-          Oops! Halaman tidak ditemukan
-        </p>
-      </div>
-      <p className="mb-4 text-lg">
-        Maaf, halaman yang kamu cari tidak ada. <br />
-        Jangan khawatir, kami akan membawamu kembali.
+    <section className="flex flex-col items-center justify-center min-h-screen text-center bg-gray-50">
+      <h1 className="font-bold text-6xl mb-4 text-gray-800 transition-opacity duration-1000 ease-out opacity-100">
+        404
+      </h1>
+      <p className="font-medium text-xl mb-8 text-gray-600">
+        Halaman yang kamu cari tidak ditemukan.
       </p>
       <button
-        className="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all duration-300"
+        className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-transform duration-300 transform hover:scale-105"
         onClick={() => router.push("/")}
       >
         Kembali ke Beranda
       </button>
       <p className="mt-6 text-sm text-gray-500">
-        Mengarahkan dalam 5 detik...
+        Kamu akan diarahkan dalam 5 detik...
       </p>
     </section>
   );
