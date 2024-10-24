@@ -36,21 +36,23 @@ export default function NotFound() {
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen w-full text-center">
-      <h1 className="text-6xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-        404
-      </h1>
-      <p className="text-xl mb-8 text-gray-700 dark:text-gray-400">
-        Halaman yang kamu cari tidak ditemukan.
-      </p>
-      <button
-        className="underline text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300"
-        onClick={() => router.push("/")}
-      >
-        Kembali ke Beranda
-      </button>
-      <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
-        Akan kembali ke beranda dalam {countdown} detik...
-      </p>
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-6xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+          404
+        </h1>
+        <p className="text-xl mb-8 text-gray-700 dark:text-gray-400">
+          Halaman yang kamu cari tidak ditemukan.
+        </p>
+        <button
+          className="underline text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300"
+          onClick={() => router.push("/")}
+        >
+          Kembali ke Beranda
+        </button>
+        <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+          Akan kembali ke beranda dalam {countdown} detik...
+        </p>
+      </div>
     </section>
   );
 }
