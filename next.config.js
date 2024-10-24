@@ -34,6 +34,9 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: ['dl.dropboxusercontent.com'], // domain ini untuk memuat gambar dari Dropbox
+  },
 };
 
 module.exports = nextConfig;
