@@ -7,6 +7,13 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "SCOPE OF WORK",
+    year: 2024,
+    description:
+      "SCOPE OF WORK Adalah Proyek kerjasama Affiliasi yang diadakan oleh PT. HERUN INTERNATIONAL BRAND, Saya berperan sebagai Documentation Specialist dan IT Developer, Yoel berperan untuk mengembangkan UI dan Isi konten dari Dokumentasi",
+    url: "https://scoopwork.netlify.app/",
+  },
+  {
     title: "Sekripter",
     year: 2021,
     description:
