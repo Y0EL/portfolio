@@ -4,7 +4,7 @@ import { projects } from "./project-data";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "My Projects",
+  description: "Project Yoel",
 };
 
 export default function Projects() {
