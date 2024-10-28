@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
-<<<<<<< HEAD
 const withMDX = require('@next/mdx')({
-  // Opsi tambahan untuk MDX bisa ditambahkan di sini jika diperlukan
+ 
 })
 
 const nextConfig = {
@@ -11,11 +10,6 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
-=======
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
   async rewrites() {
     return [
       {
@@ -49,13 +43,8 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['dl.dropboxusercontent.com'], // domain ini untuk memuat gambar dari Dropbox
+    domains: ['dl.dropboxusercontent.com'], 
   },
 };
 
-<<<<<<< HEAD
-// Ekspor konfigurasi dengan dukungan MDX
-module.exports = withMDX(nextConfig);
-=======
 module.exports = nextConfig;
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
