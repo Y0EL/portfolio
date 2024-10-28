@@ -8,10 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData } from "./config";
-<<<<<<< HEAD
 import Logic from './components/logic'
-=======
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaData.baseUrl),
@@ -49,12 +46,8 @@ export const metadata: Metadata = {
   },
 };
 
-<<<<<<< HEAD
 // Helper function for joining class names
 const cx = (...classes: (string | undefined)[]) => classes.filter(Boolean).join(" ");
-=======
-const cx = (...classes) => classes.filter(Boolean).join(" ");
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
 
 export default function RootLayout({
   children,
@@ -64,30 +57,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
       <head>
-<<<<<<< HEAD
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed" />
         <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom Feed" />
         <link rel="alternate" type="application/feed+json" href="/feed.json" title="JSON Feed" />
-=======
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          href="/rss.xml"
-          title="RSS Feed"
-        />
-        <link
-          rel="alternate"
-          type="application/atom+xml"
-          href="/atom.xml"
-          title="Atom Feed"
-        />
-        <link
-          rel="alternate"
-          type="application/feed+json"
-          href="/feed.json"
-          title="JSON Feed"
-        />
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
       </head>
       <body className="antialiased flex flex-col items-center justify-center mx-auto mt-2 lg:mt-8 mb-20 lg:mb-40">
         <ThemeProvider
@@ -99,10 +71,7 @@ export default function RootLayout({
           <main className="flex-auto min-w-0 mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[640px] w-full">
             <Navbar />
             {children}
-<<<<<<< HEAD
             <Logic /> 
-=======
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
             <Footer />
             <Analytics />
             <SpeedInsights />
