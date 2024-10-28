@@ -1,0 +1,73 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /node_modules/
+
+# *
+User-agent: *
+Disallow: /src/
+
+# *
+User-agent: *
+Disallow: /build/
+
+# *
+User-agent: *
+Disallow: /.git/
+
+# *
+User-agent: *
+Disallow: /pnpm-lock.yaml
+
+# *
+User-agent: *
+Disallow: /package.json
+
+# *
+User-agent: *
+Disallow: /package-lock.json
+
+# *
+User-agent: *
+Disallow: /webpack.config.js
+
+# *
+User-agent: *
+Disallow: /*?*
+
+# *
+User-agent: *
+Disallow: /static/media/sensitive-image.jpg
+
+# *
+User-agent: *
+Disallow: /admin/
+
+# *
+User-agent: *
+Disallow: /private/
+
+# *
+User-agent: *
+Disallow: /config/
+
+# *
+User-agent: *
+Disallow: /secrets/
+
+# *
+User-agent: *
+Disallow: /staging/
+
+# *
+User-agent: *
+Disallow: /temp/
+
+# Host
+Host: https://yoel.pw
+
+# Sitemaps
+Sitemap: https://yoel.pw/sitemap.xml
