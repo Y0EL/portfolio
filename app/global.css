@@ -8,11 +8,14 @@
 
 /* Syntax highlighting colors */
 :root {
+<<<<<<< HEAD
   --theme-primary: #4a90e2;
   --theme-primary-dark: #3a7bc8;
   --theme-secondary: #f0f4f8;
   --theme-text: #2c3e50;
   --theme-text-light: #7f8c8d;
+=======
+>>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
   --sh-class: #e06c75;
   --sh-identifier: #61afef;
   --sh-sign: #abb2bf;
