@@ -8,7 +8,6 @@
     "postbuild": "next-sitemap",
     "lint": "eslint .",
     "format": "prettier --write .",
-<<<<<<< HEAD
     "test": "jest"
   },
   "dependencies": {
@@ -16,28 +15,17 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.0.1",
-=======
-    "test": "jest" 
-  },
-  "dependencies": {
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
     "@types/node": "22.5.0",
     "@types/react": "18.3.4",
     "@types/react-dom": "18.3.0",
     "@vercel/analytics": "^1.3.1",
     "@vercel/speed-insights": "^1.0.12",
-<<<<<<< HEAD
     "ai": "^3.4.23",
     "feed": "^4.2.2",
     "framer-motion": "^11.11.10",
     "geist": "1.3.1",
     "katex": "^0.16.11",
     "lucide-react": "^0.454.0",
-=======
-    "feed": "^4.2.2",
-    "geist": "1.3.1",
-    "katex": "^0.16.11",
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
     "next": "^14.2.6",
     "next-mdx-remote": "^5.0.0",
     "next-sitemap": "^4.2.3",
@@ -56,16 +44,9 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.14",
     "autoprefixer": "^10.4.20",
-<<<<<<< HEAD
     "eslint": "^8.25.0",
     "postcss": "^8.4.41",
     "prettier": "^2.7.1",
     "tailwindcss": "3.4.10"
-=======
-    "postcss": "^8.4.41",
-    "tailwindcss": "3.4.10",
-    "eslint": "^8.25.0",
-    "prettier": "^2.7.1"
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
   }
 }
