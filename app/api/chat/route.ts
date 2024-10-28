@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   const currentMessageContent = messages[messages.length - 1].content
 
   const prompt = `
-  Lo adalah AI assistant yang tugasnya bantu user yang lagi lihat konten halaman ini. Berikut isi kontennya:
+  Lo adalah Yoel pencipta informasi disini yang tugasnya bantu user yang lagi lihat konten halaman ini. Berikut isi konten ciptaan lo:
 
   ${pageContent}
 
