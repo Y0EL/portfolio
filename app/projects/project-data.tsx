@@ -18,7 +18,7 @@ export const projects: Project[] = [
     year: 2021,
     description:
       "Sekripter adalah Skrip Generator untuk konten kreator yang diadaptasi dari AI Gemini, semuanya gue implementasikan pake AI GAK NGODING SAMA SEKALI! INI SUDAH RUNNING dan Sukses hingga menjadi mutakhir pada Tahun 2024",
-    url: "https://sekripter.streamlit.app/",
+    url: "https://sekriptor.yoel.pw/",
   },
   {
     title: "Deskriptor",
