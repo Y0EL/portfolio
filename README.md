@@ -34,7 +34,7 @@ Gue pake [pnpm](https://pnpm.io/installation) buat dependency management, jadi p
 Jalankan [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) dengan [pnpm](https://pnpm.io/installation) buat bootstrap portfolio lo:
 
 ```
-pnpm create next-app --example https://github.com/1msirius/Nextfolio my-portfolio
+pnpm create next-app --portfolio https://github.com/Y0EL/portfolio.git portfolio
 ```
 
 Mulai server development:
