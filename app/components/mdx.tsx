@@ -121,7 +121,6 @@ let components = {
 
 export function CustomMDX(props) {
   return (
-<<<<<<< HEAD
     <div data-mdx-content>
       <MDXRemote
         {...props}
@@ -136,17 +135,3 @@ export function CustomMDX(props) {
     </div>
   );
 }
-=======
-    <MDXRemote
-      {...props}
-      components={{ ...components, ...(props.components || {}) }}
-      options={{
-        mdxOptions: {
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [rehypeKatex],
-        },
-      }}
-    />
-  );
-}
->>>>>>> 044d8e5fb93ca968ecf90d3aa902006ed59db000
