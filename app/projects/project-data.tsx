@@ -14,7 +14,7 @@ export const projects: Project[] = [
     url: "https://scoopwork.netlify.app/",
   },
   {
-    title: "Sekripter",
+    title: "Sekriptor",
     year: 2021,
     description:
       "Sekripter adalah Skrip Generator untuk konten kreator yang diadaptasi dari AI Gemini, semuanya gue implementasikan pake AI GAK NGODING SAMA SEKALI! INI SUDAH RUNNING dan Sukses hingga menjadi mutakhir pada Tahun 2024",
@@ -25,7 +25,7 @@ export const projects: Project[] = [
     year: 2024,
     description:
       "Serupa namun Tak Sama, deskriptor adalah AI generative Chat yang bertugas untuk memberikan Judul dan Deskripsi, gue buat AI ini sewaktu kerja di Herun, dan gue pake buat bikin judul dan deskripsi yang udah pasti sesuai dengan fiks dengan algoritma dan tren pasar kali ini, gue pakai logika dan pemahaman AI Termutakhir dan Terbaru",
-    url: "https://deskriptor.streamlit.app/",
+    url: "https://deskriptor.yoel.pw/",
   },
   {
     title: "Portfolio",
