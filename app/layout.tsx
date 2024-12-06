@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData } from "./config";
+import { useEffect } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaData.baseUrl),
@@ -53,6 +54,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://elevenlabs.io/convai-widget/index.js';
+    script.async = true;
+    script.type = 'text/javascript';
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
       <head>
@@ -70,7 +79,7 @@ export default function RootLayout({
           <main className="flex-auto min-w-0 mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[640px] w-full">
             <Navbar />
             {children}
-            <elevenlabs-convai agent-id="vrJjSM3iFQW3bmsIV2gJ"></elevenlabs-convai><script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+            <elevenlabs-convai agent-id="vrJjSM3iFQW3bmsIV2gJ"></elevenlabs-convai>
             <Footer />
             <Analytics />
             <SpeedInsights />
