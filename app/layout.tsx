@@ -74,10 +74,7 @@ export default function RootLayout({
           <main className="flex-auto min-w-0 mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[640px] w-full">
             <Navbar />
             {children}
-            <div 
-              id="elevenlabs-convai" 
-              data-agent-id="vrJjSM3iFQW3bmsIV2gJ"
-            />
+            <elevenlabs-convai agent-id="vrJjSM3iFQW3bmsIV2gJ"></elevenlabs-convai>
             <Footer />
             <Analytics />
             <SpeedInsights />
