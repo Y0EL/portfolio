@@ -54,7 +54,11 @@ export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), "content"));
 }
 
-export function formatDate(date: string, includeRelative = false) {
+export function formatDate(date: string | undefined, includeRelative = false) {
+  if (!date) {
+    return "No date";
+  }
+  
   let currentDate = new Date();
   if (!date.includes("T")) {
     date = `${date}T00:00:00`;

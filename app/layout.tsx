@@ -8,7 +8,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData } from "./config";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaData.baseUrl),
@@ -59,10 +58,6 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed" />
         <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom Feed" />
         <link rel="alternate" type="application/feed+json" href="/feed.json" title="JSON Feed" />
-        <Script 
-          src="https://elevenlabs.io/convai-widget/index.js" 
-          strategy="afterInteractive" 
-        />
       </head>
       <body className="antialiased flex flex-col items-center justify-center mx-auto mt-2 lg:mt-8 mb-20 lg:mb-40">
         <ThemeProvider
@@ -74,7 +69,6 @@ export default function RootLayout({
           <main className="flex-auto min-w-0 mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[640px] w-full">
             <Navbar />
             {children}
-            <elevenlabs-convai agent-id="vrJjSM3iFQW3bmsIV2gJ"></elevenlabs-convai>
             <Footer />
             <Analytics />
             <SpeedInsights />

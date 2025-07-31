@@ -7,6 +7,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "ReUse - VeBetterDAO Sustainability Platform",
+    year: 2025,
+    description:
+      "Web3 blockchain application from VeBetterDAO designed to support sustainability activities. Developed smart contract VeScape.sol with focus on tokenomics and innovative reward systems. Integrated QRIS and virtual account payment gateways for seamless transactions. Built using React, Next.js, Supabase, Heroku, and Vercel for scalable Web3 platform development.",
+    url: "https://reuse.vet/",
+  },
+  {
+    title: "Akupunyabuku.com - AI Children's Story Platform",
+    year: 2025,
+    description:
+      "Co-founder & CTO of Akupunyabuku.com, an innovative AI-based children's story website. Leading technology strategy and product vision for digital education platform. Managing fullstack development with React, Next.js, Supabase, and OpenAI API integration. Implementing AI technology for personalized learning experiences and story generation.",
+    url: "https://akupunyabuku.com/",
+  },
+  {
     title: "SCOPE OF WORK",
     year: 2024,
     description:
