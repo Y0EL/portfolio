@@ -28,53 +28,43 @@ export default function Page() {
       </a>
 
       <h1 className="section-header mb-8 text-2xl font-medium tracking-tight">
-        Musician, AI Specialist & Tech Entrepreneur
+        AI & Web3 Developer | Builder @ VeBetterDAO
       </h1>
 
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          Yoel Andreas Manoppo adalah seorang musisi, AI specialist, dan tech entrepreneur yang menggabungkan kreativitas musik dengan inovasi teknologi. Sebagai Co-founder dan CTO di Akupunyabuku.com, serta Web3 fullstack developer untuk ReUse dan VeScape, Yoel memimpin pengembangan solusi teknologi yang mengintegrasikan blockchain, AI, dan fintech. Dengan latar belakang musik yang kuat dan keahlian AI yang mendalam, Yoel menciptakan sinergi unik antara seni kreatif dan teknologi mutakhir.
+          AI & Web3 Developer focused on building sustainability dApps that reward real-world eco actions. Creator of ReUse and SoapyWorld, both part of the VeBetterDAO ecosystem, merging gamification, blockchain, and environmental impact. Passionate about decentralization, automation, and building communities that reward sustainable behaviour.
         </p>
 
-        <h2 className="section-header text-xl font-medium mt-8 mb-6">Featured Experience</h2>
+        <h2 className="section-header text-xl font-medium mt-8 mb-6">Active Projects</h2>
         <div className="experience-grid">
-          <div className="experience-item border-l-2 border-blue-500 pl-4 bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent rounded-r-lg p-4">
-            <h3 className="font-medium text-blue-700 dark:text-blue-300">Co-founder & CTO</h3>
+          <div className="experience-item border-l-2 border-green-500 pl-4 bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent rounded-r-lg p-4">
+            <h3 className="font-medium text-green-700 dark:text-green-300">Founder & Developer</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Akupunyabuku.com
+              SoapyWorld (VeBetterDAO)
             </p>
             <p className="mt-2 text-sm">
-              Memimpin tim teknologi dan mengembangkan visi produk untuk platform edukasi digital. Bertanggung jawab atas arsitektur sistem, pengembangan fitur-fitur inovatif, dan integrasi teknologi AI untuk personalisasi pengalaman belajar. Mengelola pengembangan fullstack menggunakan React, Next.js, Supabase, dan OpenAI API. Memimpin strategi teknologi yang mendukung pertumbuhan bisnis dan skalabilitas platform.
+              Developed a gamified dApp encouraging manual dishwashing as an energy-saving alternative to machines. Built fullstack using Next.js, NestJS, Supabase, and VeChain's smart contract framework (EcoEarn.sol). Currently with 800+ confirmed activities, 200+ verified, and 100+ minted actions across testnet.
+            </p>
+          </div>
+
+          <div className="experience-item border-l-2 border-blue-500 pl-4 bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent rounded-r-lg p-4">
+            <h3 className="font-medium text-blue-700 dark:text-blue-300">Co-Founder & Developer</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              ReUse (VeBetterDAO)
+            </p>
+            <p className="mt-2 text-sm">
+              Created decentralized app rewarding users for reusing items through photo-verified submissions. Designed and deployed on VeBetterDAO, integrating AI detection, on-chain reward distribution, and community governance voting. Gained funding and endorsement under VeBetterDAO's sustainability initiative.
             </p>
           </div>
 
           <div className="experience-item border-l-2 border-purple-500 pl-4 bg-gradient-to-r from-purple-50 to-transparent dark:from-purple-900/20 dark:to-transparent rounded-r-lg p-4">
-            <h3 className="font-medium text-purple-700 dark:text-purple-300">Web3 Fullstack Developer</h3>
+            <h3 className="font-medium text-purple-700 dark:text-purple-300">AI Automation Specialist</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              ReUse & VeScape
+              ZANDO Agency
             </p>
             <p className="mt-2 text-sm">
-              Mengembangkan smart contract VeScape.sol dengan fokus pada tokenomics dan sistem reward yang inovatif. Mengintegrasikan payment gateway QRIS dan virtual account untuk transaksi yang seamless. Menggunakan teknologi React, Next.js, Supabase, Heroku, dan Vercel untuk membangun platform Web3 yang scalable. Bertanggung jawab atas pengembangan frontend, backend, dan integrasi blockchain untuk ekosistem sustainability dan virtual reality.
-            </p>
-          </div>
-
-          <div className="experience-item border-l-2 border-green-500 pl-4 bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent rounded-r-lg p-4">
-            <h3 className="font-medium text-green-700 dark:text-green-300">AI Engineer & Tech Lead</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              PT. ZANDO AGENCY
-            </p>
-            <p className="mt-2 text-sm">
-              Memimpin tim dalam pengembangan dan implementasi solusi AI yang bertujuan untuk meningkatkan efisiensi operasional dan pengalaman pengguna. Mendesain algoritma pembelajaran mesin untuk analisis data besar dan pengolahan bahasa alami. Berkolaborasi dengan tim lintas fungsi untuk menerapkan teknologi AI dalam berbagai proyek, termasuk sistem rekomendasi dan personalisasi konten. Mengawasi pelatihan model AI dan evaluasi kinerjanya untuk memastikan hasil yang akurat dan relevan.
-            </p>
-          </div>
-
-          <div className="experience-item border-l-2 border-orange-500 pl-4 bg-gradient-to-r from-orange-50 to-transparent dark:from-orange-900/20 dark:to-transparent rounded-r-lg p-4">
-            <h3 className="font-medium text-orange-700 dark:text-orange-300">Music Producer & Artist</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Independent • Cubicube Brand
-            </p>
-            <p className="mt-2 text-sm">
-              Menghasilkan dan merilis musik original di berbagai genre, menjangkau audiens global melalui platform digital. Membangun merek musik 'Cubicube', yang menonjolkan karakter unik dan gaya kreatif. Mengelola proses produksi dari penulisan lagu, rekaman, hingga mixing dan mastering, serta memanfaatkan teknologi AI untuk menciptakan konten musik yang inovatif. Menjalin kemitraan dengan brand dan kreator lain untuk kolaborasi musik dan promosi.
+              Built internal AI automation tools for content creation and client operations. Created AI Deskriptor, a text generation tool for e-commerce product titles and descriptions. Developed automated systems for content generation and client workflow optimization.
             </p>
           </div>
         </div>
@@ -148,51 +138,56 @@ export default function Page() {
         <h2 className="section-header text-xl font-medium mt-8 mb-4">Technology Stack</h2>
         <div className="grid sm:grid-cols-2 gap-6 mb-6">
           <div className="tech-stack-card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 border border-blue-200 dark:border-blue-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="font-semibold text-blue-800 dark:text-blue-200 mb-3">Frontend & Fullstack</h3>
+            <h3 className="font-semibold text-blue-800 dark:text-blue-200 mb-3">Languages & Frameworks</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              React, Next.js, TypeScript, Tailwind CSS, Vercel
+              TypeScript, Python, Solidity, React, Next.js, NestJS, TailwindCSS
             </p>
           </div>
           <div className="tech-stack-card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 border border-purple-200 dark:border-purple-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="font-semibold text-purple-800 dark:text-purple-200 mb-3">Backend & Database</h3>
+            <h3 className="font-semibold text-purple-800 dark:text-purple-200 mb-3">Web3 / Blockchain</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Supabase, Heroku, PostgreSQL, REST APIs
+              VeChain Toolkits, WalletConnect, Hardhat, Smart Contract Deployment
             </p>
           </div>
           <div className="tech-stack-card bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 border border-green-200 dark:border-green-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="font-semibold text-green-800 dark:text-green-200 mb-3">AI & Machine Learning</h3>
+            <h3 className="font-semibold text-green-800 dark:text-green-200 mb-3">AI / Automation</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              OpenAI GPT-4, Claude API, AI Integration
+              OpenAI API, LangChain, Prompt Engineering, Python Scripts
             </p>
           </div>
           <div className="tech-stack-card bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 border border-orange-200 dark:border-orange-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="font-semibold text-orange-800 dark:text-orange-200 mb-3">Web3 & Blockchain</h3>
+            <h3 className="font-semibold text-orange-800 dark:text-orange-200 mb-3">Backend / Infra</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Smart Contracts, Solidity, Tokenomics, VeScape.sol
+              Supabase, PostgreSQL, Heroku, PM2, DigitalOcean, Vercel
             </p>
           </div>
         </div>
 
-        <h2 className="section-header text-xl font-medium mt-8 mb-4">Keahlian Tambahan</h2>
+        <h2 className="section-header text-xl font-medium mt-8 mb-4">Achievements</h2>
         <ul>
-          <li><span className="skill-tag"><strong>Payment Integration:</strong></span> QRIS, Virtual Account, Payment Gateway Development</li>
-          <li><span className="skill-tag"><strong>Team Leadership:</strong></span> Memimpin tim teknologi dan mengembangkan visi produk</li>
-          <li><span className="skill-tag"><strong>Product Strategy:</strong></span> Mengembangkan roadmap produk dan strategi teknologi</li>
-          <li><span className="skill-tag"><strong>SEO dan Pemasaran Digital:</strong></span> Mengoptimalkan visibilitas online untuk proyek-proyek kreatif dan komersial</li>
-          <li><span className="skill-tag"><strong>Analitik dan Data Insight:</strong></span> Memanfaatkan data untuk meningkatkan performa dan strategi</li>
+          <li><span className="skill-tag"><strong>🌿 Funded and verified builder on VeBetterDAO</strong></span> for sustainable dApps</li>
+          <li><span className="skill-tag"><strong>⚙️ Developed automated reward systems</strong></span> for eco-actions verified through blockchain</li>
+          <li><span className="skill-tag"><strong>📈 Built multiple real-user communities</strong></span> with verifiable engagement and transparency</li>
+          <li><span className="skill-tag"><strong>🎓 Harvard CS50 Series:</strong></span> Computer Science, Web Programming, AI, Python</li>
+          <li><span className="skill-tag"><strong>🌐 B.Sc. Business Administration:</strong></span> University of the People (Ongoing)</li>
         </ul>
         
         <p>
-          Saya berkomitmen untuk memimpin inovasi teknologi yang menggabungkan AI, Web3, dan kreativitas musik. Sebagai tech entrepreneur, saya fokus pada pengembangan solusi yang scalable dan berdampak, sambil terus mengeksplorasi cara baru untuk berkreasi dan berkolaborasi dalam ekosistem teknologi yang berkembang pesat.
+          Building the future of sustainability through Web3 and real-world impact. Passionate about decentralization, automation, and building communities that reward sustainable behaviour. Let's build something real — AI, blockchain, or green tech.
         </p>
 
-        <p className="mt-8">
-          <a href="mailto:yoelandreasmanoppo@gmail.com" target="_blank">
+        <div className="mt-8 text-center">
+          <a href="mailto:yoelandreasmanoppo@gmail.com" target="_blank" className="inline-block mr-4">
             <button className="hire-button border border-gray-300 text-gray-700 font-bold py-2 px-4 rounded">
-              Hire Saya!
+              Let's Build Something Real
             </button>
           </a>
-        </p>
+          <a href="/projects" className="inline-block">
+            <button className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-medium py-2 px-4 rounded-lg transition-all duration-300 text-sm border border-gray-300 dark:border-gray-600 shadow-lg hover:shadow-xl">
+              View My Projects
+            </button>
+          </a>
+        </div>
       </div>
     </section>
   );

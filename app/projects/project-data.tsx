@@ -10,42 +10,42 @@ export const projects: Project[] = [
     title: "ReUse - VeBetterDAO Sustainability Platform",
     year: 2025,
     description:
-      "Web3 blockchain application from VeBetterDAO designed to support sustainability activities. Developed smart contract VeScape.sol with focus on tokenomics and innovative reward systems. Integrated QRIS and virtual account payment gateways for seamless transactions. Built using React, Next.js, Supabase, Heroku, and Vercel for scalable Web3 platform development.",
+      "Created decentralized app rewarding users for reusing items through photo-verified submissions. Designed and deployed on VeBetterDAO, integrating AI detection, on-chain reward distribution, and community governance voting. Gained funding and endorsement under VeBetterDAO's sustainability initiative. Built using Next.js, NestJS, Supabase, and VeChain blockchain.",
     url: "https://reuse.vet/",
   },
   {
-    title: "Akupunyabuku.com - AI Children's Story Platform",
+    title: "SoapyWorld - Gamified Sustainability dApp",
     year: 2025,
     description:
-      "Co-founder & CTO of Akupunyabuku.com, an innovative AI-based children's story website. Leading technology strategy and product vision for digital education platform. Managing fullstack development with React, Next.js, Supabase, and OpenAI API integration. Implementing AI technology for personalized learning experiences and story generation.",
-    url: "https://akupunyabuku.com/",
+      "Developed a gamified dApp encouraging manual dishwashing as an energy-saving alternative to machines. Built fullstack using Next.js, NestJS, Supabase, and VeChain's smart contract framework (EcoEarn.sol). Currently with 800+ confirmed activities, 200+ verified, and 100+ minted actions across testnet. Part of VeBetterDAO ecosystem.",
+    url: "https://soapy.world/",
   },
   {
-    title: "SCOPE OF WORK",
+    title: "AI Deskriptor - E-commerce Content Generator",
     year: 2024,
     description:
-      "SCOPE OF WORK Adalah Proyek kerjasama Affiliasi yang diadakan oleh PT. HERUN INTERNATIONAL BRAND, Saya berperan sebagai Documentation Specialist dan IT Developer, Yoel berperan untuk mengembangkan UI dan Isi konten dari Dokumentasi",
-    url: "https://scoopwork.netlify.app/",
-  },
-  {
-    title: "Sekriptor",
-    year: 2021,
-    description:
-      "Sekripter adalah Skrip Generator untuk konten kreator yang diadaptasi dari AI Gemini, semuanya gue implementasikan pake AI GAK NGODING SAMA SEKALI! INI SUDAH RUNNING dan Sukses hingga menjadi mutakhir pada Tahun 2024",
-    url: "https://sekriptor.yoel.pw/",
-  },
-  {
-    title: "Deskriptor",
-    year: 2024,
-    description:
-      "Serupa namun Tak Sama, deskriptor adalah AI generative Chat yang bertugas untuk memberikan Judul dan Deskripsi, gue buat AI ini sewaktu kerja di Herun, dan gue pake buat bikin judul dan deskripsi yang udah pasti sesuai dengan fiks dengan algoritma dan tren pasar kali ini, gue pakai logika dan pemahaman AI Termutakhir dan Terbaru",
+      "AI-powered text generation tool for e-commerce product titles and descriptions. Built during tenure at ZANDO Agency, utilizing OpenAI API and advanced prompt engineering. Automates content creation for product listings with market-optimized algorithms and trending keyword integration.",
     url: "https://deskriptor.yoel.pw/",
   },
   {
-    title: "Portfolio",
+    title: "Sekriptor - AI Content Creator",
+    year: 2021,
+    description:
+      "AI-powered script generator for content creators, adapted from AI Gemini. Implemented with zero coding using AI automation. Successfully running and updated through 2024, providing automated content generation for creators across various platforms.",
+    url: "https://sekriptor.yoel.pw/",
+  },
+  {
+    title: "SCOPE OF WORK - Documentation Platform",
     year: 2024,
     description:
-      "Website yang sekarang ini kalian lihat dan nikmati, ini adalah proyek ketiga, berbasis forums ini akan menjadi platform publik dimana publik bebas mengemukakan pendapatnya.",
+      "Collaborative documentation platform developed for PT. HERUN INTERNATIONAL BRAND. Served as Documentation Specialist and IT Developer, responsible for UI development and content management. Built using modern web technologies for seamless documentation workflow.",
+    url: "https://scoopwork.netlify.app/",
+  },
+  {
+    title: "Portfolio Website",
+    year: 2024,
+    description:
+      "Modern portfolio website showcasing AI & Web3 development expertise. Built with Next.js, TypeScript, and Tailwind CSS. Features dark/light mode, MDX blog support, and responsive design. Deployed on Vercel with optimized performance and SEO.",
     url: "https://yoel.pw/",
   },
 ];

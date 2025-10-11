@@ -1,14 +1,14 @@
 export const metaData = {
   baseUrl: "https://yoel.pw/",
-  title: "Yoel",
-  name: "Yoel",
+  title: "Yoel Andreas Manoppo",
+  name: "Yoel Andreas Manoppo",
   ogImage: "/profile.png",
   description: 
-    "Seorang Spesialis AI dan produser musik yang inovatif, Yoel menggabungkan teknologi AI dengan seni kreatif."
+    "AI & Web3 Developer focused on building sustainability dApps that reward real-world eco actions. Builder @ VeBetterDAO, Creator of ReUse and SoapyWorld."
 };
 
 export const socialLinks = {
-  twitter: "https://x.com/",
+  twitter: "https://x.com/vehunt",
   github: "https://github.com/y0el",
   instagram: "https://www.instagram.com/yoelmanoppo",
   linkedin: "https://www.linkedin.com/in/yoelmanoppo",

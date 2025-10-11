@@ -11,7 +11,7 @@ export default function CareerTimeline() {
           Complete Career Timeline
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          A comprehensive overview of my professional journey from music to technology leadership.
+          A comprehensive overview of my journey as an AI & Web3 Developer building sustainability dApps.
         </p>
       </div>
 
@@ -21,25 +21,25 @@ export default function CareerTimeline() {
           <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Current Leadership Roles</h2>
           
           <div className="space-y-6">
-            <div className="timeline-item bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent border-l-4 border-blue-500 pl-6 py-4 rounded-r-lg">
+            <div className="timeline-item bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent border-l-4 border-green-500 pl-6 py-4 rounded-r-lg">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-blue-700 dark:text-blue-300">Co-founder & CTO</h3>
+                <h3 className="font-semibold text-green-700 dark:text-green-300">Founder & Developer</h3>
                 <span className="text-sm text-gray-500 dark:text-gray-400">2024 - Present</span>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">Akupunyabuku.com</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-2">SoapyWorld (VeBetterDAO)</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Leading technology strategy and product vision for digital education platform. Managing fullstack development with React, Next.js, Supabase, and OpenAI API integration.
+                Developed a gamified dApp encouraging manual dishwashing as an energy-saving alternative to machines. Built fullstack using Next.js, NestJS, Supabase, and VeChain's smart contract framework (EcoEarn.sol). Currently with 800+ confirmed activities, 200+ verified, and 100+ minted actions across testnet.
               </p>
             </div>
 
-            <div className="timeline-item bg-gradient-to-r from-purple-50 to-transparent dark:from-purple-900/20 dark:to-transparent border-l-4 border-purple-500 pl-6 py-4 rounded-r-lg">
+            <div className="timeline-item bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent border-l-4 border-blue-500 pl-6 py-4 rounded-r-lg">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-purple-700 dark:text-purple-300">Web3 Fullstack Developer</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2024 - Present</span>
+                <h3 className="font-semibold text-blue-700 dark:text-blue-300">Co-Founder & Developer</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2023 - Present</span>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">ReUse & VeScape</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-2">ReUse (VeBetterDAO)</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Developing VeScape.sol smart contracts with focus on tokenomics and innovative reward systems. Integrating QRIS and virtual account payment gateways for seamless transactions.
+                Created decentralized app rewarding users for reusing items through photo-verified submissions. Designed and deployed on VeBetterDAO, integrating AI detection, on-chain reward distribution, and community governance voting. Gained funding and endorsement under VeBetterDAO's sustainability initiative.
               </p>
             </div>
           </div>
@@ -50,61 +50,94 @@ export default function CareerTimeline() {
           <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Recent Experience</h2>
           
           <div className="space-y-6">
-            <div className="timeline-item bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent border-l-4 border-green-500 pl-6 py-4 rounded-r-lg">
+            <div className="timeline-item bg-gradient-to-r from-purple-50 to-transparent dark:from-purple-900/20 dark:to-transparent border-l-4 border-purple-500 pl-6 py-4 rounded-r-lg">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-green-700 dark:text-green-300">AI Engineer & Tech Lead</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2024</span>
+                <h3 className="font-semibold text-purple-700 dark:text-purple-300">AI Automation Specialist</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2022 - 2023</span>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">PT. ZANDO AGENCY</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-2">ZANDO Agency</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Led AI solution development and implementation for operational efficiency. Designed machine learning algorithms for big data analysis and natural language processing.
+                Built internal AI automation tools for content creation and client operations. Created AI Deskriptor, a text generation tool for e-commerce product titles and descriptions. Developed automated systems for content generation and client workflow optimization.
               </p>
             </div>
 
             <div className="timeline-item bg-gradient-to-r from-orange-50 to-transparent dark:from-orange-900/20 dark:to-transparent border-l-4 border-orange-500 pl-6 py-4 rounded-r-lg">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-orange-700 dark:text-orange-300">E-Commerce Specialist</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2024 - Present</span>
+                <h3 className="font-semibold text-orange-700 dark:text-orange-300">Documentation Specialist & IT Developer</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2024</span>
               </div>
               <p className="text-gray-600 dark:text-gray-400 mb-2">PT. HERUN INTERNATIONAL BRAND</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Developed innovative e-commerce strategies to enhance product visibility and sales. Integrated advertising services, vouchers, and events across TikTok and Shopee platforms.
+                Developed SCOPE OF WORK documentation platform. Responsible for UI development and content management. Built collaborative documentation system using modern web technologies for seamless workflow.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Creative & Music */}
+        {/* Education & Achievements */}
         <div className="timeline-section">
-          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Creative & Music Career</h2>
+          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Education & Achievements</h2>
           
           <div className="space-y-6">
-            <div className="timeline-item bg-gradient-to-r from-pink-50 to-transparent dark:from-pink-900/20 dark:to-transparent border-l-4 border-pink-500 pl-6 py-4 rounded-r-lg">
+            <div className="timeline-item bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent border-l-4 border-blue-500 pl-6 py-4 rounded-r-lg">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-pink-700 dark:text-pink-300">Music Producer & Artist</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2020 - Present</span>
+                <h3 className="font-semibold text-blue-700 dark:text-blue-300">B.Sc. Business Administration</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">Ongoing</span>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">Independent • Cubicube Brand</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-2">University of the People</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Produced and released original music across various genres, reaching global audiences through digital platforms. Built the 'Cubicube' music brand with unique character and creative style.
+                Pursuing business administration degree to complement technical expertise with business acumen.
+              </p>
+            </div>
+
+            <div className="timeline-item bg-gradient-to-r from-purple-50 to-transparent dark:from-purple-900/20 dark:to-transparent border-l-4 border-purple-500 pl-6 py-4 rounded-r-lg">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="font-semibold text-purple-700 dark:text-purple-300">Harvard CS50 Series</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2023</span>
+              </div>
+              <p className="text-gray-600 dark:text-gray-400 mb-2">Computer Science, Web Programming, AI, Python</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Completed comprehensive computer science education including AI, web development, and Python programming.
+              </p>
+            </div>
+
+            <div className="timeline-item bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent border-l-4 border-green-500 pl-6 py-4 rounded-r-lg">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="font-semibold text-green-700 dark:text-green-300">EFSET C2 English Certificate</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2023</span>
+              </div>
+              <p className="text-gray-600 dark:text-gray-400 mb-2">Proficient Level</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Achieved proficient level in English language skills for international communication and collaboration.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Early Career */}
+        {/* VeBetterDAO Achievements */}
         <div className="timeline-section">
-          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Early Career</h2>
+          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">VeBetterDAO Achievements</h2>
           
           <div className="space-y-6">
-            <div className="timeline-item bg-gradient-to-r from-gray-50 to-transparent dark:from-gray-800/20 dark:to-transparent border-l-4 border-gray-500 pl-6 py-4 rounded-r-lg">
+            <div className="timeline-item bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent border-l-4 border-green-500 pl-6 py-4 rounded-r-lg">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-gray-700 dark:text-gray-300">Frontend Developer</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2020 - 2022</span>
+                <h3 className="font-semibold text-green-700 dark:text-green-300">🌿 Funded and Verified Builder</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2024</span>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">GhibranTravel</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-2">VeBetterDAO Ecosystem</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Developed and optimized responsive user interfaces using Next.js and React. Collaborated with design teams to translate wireframes into engaging and functional user experiences.
+                Funded and verified builder on VeBetterDAO for sustainable dApps. Developed automated reward systems for eco-actions verified through blockchain. Built multiple real-user communities with verifiable engagement and transparency.
+              </p>
+            </div>
+
+            <div className="timeline-item bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent border-l-4 border-blue-500 pl-6 py-4 rounded-r-lg">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="font-semibold text-blue-700 dark:text-blue-300">🪙 Active Governance Participant</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2024 - Present</span>
+              </div>
+              <p className="text-gray-600 dark:text-gray-400 mb-2">B3TR, VOT3 Tokens</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Active participant in VeBetterDAO governance with B3TR and VOT3 tokens. Contributor to Dynamic Base Allocation proposal discussions and community decision-making processes.
               </p>
             </div>
           </div>
