@@ -1,56 +1,60 @@
-"use client"; // Menjadikan komponen ini client-side
+"use client";
 
-import type { Metadata } from "next";
-import { useRouter } from "next/navigation"; // Menggunakan useRouter dari next/navigation
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
-export const metadata: Metadata = {
-  title: "404 - Halaman tidak ditemukan",
-  description: "Halaman yang kamu cari tidak ada.",
-};
 
 export default function NotFound() {
   const router = useRouter();
-  const [countdown, setCountdown] = useState(5); // Mulai dari 8 detik
+  const [countdown, setCountdown] = useState(8);
 
   useEffect(() => {
-    // Mencegah scroll saat halaman ini ditampilkan
-    document.body.style.overflow = "hidden"; // Mengatur overflow pada body
-
-    // Update countdown setiap detik
     const interval = setInterval(() => {
-      setCountdown((prevCountdown) => prevCountdown - 1);
+      setCountdown((c) => Math.max(0, c - 1));
     }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
-    // Redirect ke halaman beranda setelah countdown habis
-    if (countdown === 0) {
-      router.push("/");
-    }
-
-    // Bersihkan interval ketika countdown selesai atau komponen dilepas
-    return () => {
-      clearInterval(interval);
-      document.body.style.overflow = "auto"; // Kembalikan overflow pada body
-    };
+  useEffect(() => {
+    if (countdown === 0) router.push("/");
   }, [countdown, router]);
 
   return (
-    <section className="flex flex-col justify-start min-h-screen w-full text-center pt-16">
-      <div className="max-w-md mx-auto px-4">
-        <h1 className="text-6xl font-bold mb-2 text-gray-900 dark:text-gray-100">
-          404
+    <section className="max-w-[1180px] mx-auto px-6 lg:px-10 py-24 min-h-[60vh] flex items-center">
+      <div className="max-w-2xl">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="signal-dot" aria-hidden="true" />
+          <span className="kicker">Signal lost · Dispatch 404</span>
+        </div>
+        <h1 className="display-roman text-7xl md:text-[160px] leading-[0.85]">
+          404<span className="text-ember">.</span>
         </h1>
-        <p className="text-lg mb-6 text-gray-700 dark:text-gray-400">
-          Halaman yang kamu cari tidak ditemukan.
+        <p className="font-display italic text-3xl md:text-4xl text-bone mt-6 leading-tight">
+          The page you were looking for is{" "}
+          <span className="text-paper">no longer on the wire</span>.
         </p>
-        <button
-          className="underline text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300"
-          onClick={() => router.push("/")}
-        >
-          Kembali ke Beranda
-        </button>
-        <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-          Akan kembali ke beranda dalam {countdown} detik...
+        <p className="font-sans text-bone text-lg mt-6">
+          Mungkin sudah dipindahkan, dihapus, atau memang tidak pernah ada.
+        </p>
+
+        <div className="mt-10 flex flex-wrap items-center gap-3">
+          <Link
+            href="/"
+            className="kicker inline-flex items-center gap-2 bg-paper text-ink px-5 py-3 rounded-md hover:bg-ember transition-colors duration-300"
+          >
+            ← Back to today
+          </Link>
+          <Link
+            href="/blog"
+            className="kicker inline-flex items-center gap-2 text-bone hover:text-paper px-5 py-3 rounded-md border border-[color:var(--rule)] hover:border-[color:var(--rule-strong)] transition-colors duration-300"
+          >
+            Read the archive instead →
+          </Link>
+        </div>
+
+        <p className="kicker text-ash mt-10">
+          Auto-rerouting ke beranda dalam{" "}
+          <span className="text-paper tabular-nums">{countdown}</span>s…
         </p>
       </div>
     </section>

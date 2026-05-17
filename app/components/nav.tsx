@@ -1,35 +1,94 @@
-import Link from "next/link";
-import { ThemeSwitch } from "./theme-switch";
-import { metaData } from "../config";
+"use client";
 
-const navItems = {
-  "/blog": { name: "Blog" },
-  "/projects": { name: "Projects" },
-  "/photos": { name: "Photos" },
-};
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const navItems = [
+  { href: "/", label: "Today" },
+  { href: "/projects", label: "Specimens" },
+  { href: "/blog", label: "Wire" },
+  { href: "/photos", label: "Plates" },
+  { href: "/career-timeline", label: "Ledger" },
+];
 
 export function Navbar() {
+  const pathname = usePathname() || "/";
+
   return (
-    <nav className="lg:mb-16 mb-12 py-5">
-      <div className="flex flex-col md:flex-row md:items-center justify-between">
-        <div className="flex items-center">
-          <Link href="/" className="text-3xl font-semibold tracking-tight">
-            {metaData.title}
-          </Link>
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-ink/75 border-b border-[color:var(--rule)]">
+      <div className="max-w-[1180px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between gap-6">
+        {/* Brand mark */}
+        <Link href="/" className="group flex items-center gap-3">
+          <span className="signal-dot" aria-hidden="true" />
+          <span className="kicker">
+            <span className="text-paper">Field Dispatch</span>
+            <span className="mx-2 text-ash">/</span>
+            <span className="text-ash">№017</span>
+          </span>
+        </Link>
+
+        {/* Chip-style nav */}
+        <nav className="hidden md:flex items-center gap-1">
+          {navItems.map((item) => {
+            const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={[
+                  "kicker px-3 py-1.5 rounded-full transition-all duration-300",
+                  active
+                    ? "bg-paper/95 text-ink"
+                    : "text-ash hover:text-paper hover:bg-white/[0.04]",
+                ].join(" ")}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Right: live timestamp */}
+        <div className="hidden lg:flex items-center gap-3 kicker text-ash">
+          <DateTicker />
         </div>
-        <div className="flex flex-row gap-4 mt-6 md:mt-0 md:ml-auto items-center">
-          {Object.entries(navItems).map(([path, { name }]) => (
-            <Link
-              key={path}
-              href={path}
-              className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative"
-            >
-              {name}
-            </Link>
-          ))}
-          <ThemeSwitch />
-        </div>
+
+        {/* Mobile menu */}
+        <details className="md:hidden">
+          <summary className="kicker px-3 py-1.5 rounded-full border border-[color:var(--rule)] text-bone cursor-pointer list-none select-none">
+            Menu
+          </summary>
+          <div className="absolute right-6 mt-3 bg-ink-2 border border-[color:var(--rule)] rounded-card p-2 min-w-[180px] shadow-2xl">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block kicker px-3 py-2 rounded-md text-bone hover:text-paper hover:bg-white/[0.04]"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </details>
       </div>
-    </nav>
+    </header>
+  );
+}
+
+function DateTicker() {
+  const d = new Date();
+  const formatted = d
+    .toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    })
+    .toUpperCase();
+  return (
+    <>
+      <span className="text-paper">Jakarta</span>
+      <span className="text-ash">·</span>
+      <span>{formatted}</span>
+    </>
   );
 }

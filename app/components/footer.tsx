@@ -9,54 +9,62 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 import { TbMailFilled } from "react-icons/tb";
-import { metaData, socialLinks } from "app/config";
+import { socialLinks } from "app/config";
 
 const YEAR = new Date().getFullYear();
 
-function SocialLink({ href, icon: Icon }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      <Icon />
-    </a>
-  );
-}
-
-function SocialLinks() {
-  return (
-    <div className="flex text-lg gap-3.5 float-right transition-opacity duration-300 hover:opacity-90">
-      <SocialLink href={socialLinks.twitter} icon={FaXTwitter} />
-      <SocialLink href={socialLinks.github} icon={FaGithub} />
-      <SocialLink href={socialLinks.instagram} icon={FaInstagram} />
-      <SocialLink href={socialLinks.linkedin} icon={FaLinkedinIn} />
-      <SocialLink href={socialLinks.email} icon={TbMailFilled} />
-      <a href="/rss.xml" target="_self">
-        <FaRss />
-      </a>
-    </div>
-  );
-}
+const links = [
+  { href: socialLinks.twitter, icon: FaXTwitter, label: "X" },
+  { href: socialLinks.github, icon: FaGithub, label: "GitHub" },
+  { href: socialLinks.instagram, icon: FaInstagram, label: "Instagram" },
+  { href: socialLinks.linkedin, icon: FaLinkedinIn, label: "LinkedIn" },
+  { href: socialLinks.email, icon: TbMailFilled, label: "Email" },
+  { href: "/rss.xml", icon: FaRss, label: "RSS" },
+];
 
 export default function Footer() {
   return (
-    <small className="block lg:mt-24 mt-16 text-[#1C1C1C] dark:text-[#D4D4D4]">
-      <time>© {YEAR}</time>{" "}
-      <a
-        className="no-underline"
-        href={socialLinks.twitter}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {metaData.title}
-      </a>
-      <style jsx>{`
-        @media screen and (max-width: 480px) {
-          article {
-            padding-top: 2rem;
-            padding-bottom: 4rem;
-          }
-        }
-      `}</style>
-      <SocialLinks />
-    </small>
+    <footer className="border-t border-[color:var(--rule)] mt-32">
+      <div className="max-w-[1180px] mx-auto px-6 lg:px-10 py-12">
+        <div className="grid md:grid-cols-12 gap-8 items-end">
+          {/* Colophon */}
+          <div className="md:col-span-7">
+            <p className="kicker mb-3">Colophon</p>
+            <p className="font-display text-2xl md:text-3xl text-paper leading-snug">
+              Set in <em className="text-ember-soft">Newsreader</em>, Onest &amp; JetBrains Mono.{" "}
+              Built quietly in Jakarta.
+            </p>
+          </div>
+
+          {/* Socials */}
+          <div className="md:col-span-5 md:text-right">
+            <p className="kicker mb-3 md:text-right">Frequencies</p>
+            <div className="flex md:justify-end gap-4 text-lg text-bone">
+              {links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target={l.href.startsWith("http") ? "_blank" : undefined}
+                  rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={l.label}
+                  className="hover:text-ember transition-colors duration-300"
+                >
+                  <l.icon />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="rule-line mt-10 mb-6" />
+
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+          <p className="kicker text-ash">
+            © {YEAR} · Yoel Andreas Manoppo · All transmissions reserved.
+          </p>
+          <p className="kicker text-ash">· end of dispatch ·</p>
+        </div>
+      </div>
+    </footer>
   );
 }

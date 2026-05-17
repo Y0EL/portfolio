@@ -1,0 +1,206 @@
+{
+  "nama": "Yoel Andreas Manoppo",
+  "panggilan": "Yoel",
+  "email": "yoelandreasmanoppo@gmail.com",
+  "telepon": "+62 899 224 6000",
+  "lokasi": "Jakarta, Indonesia",
+  "github": "github.com/Y0EL",
+  "website": "https://yoel.pw",
+  "judul_profil": "AI Forward Deployed Engineer · Agentic Architecture · UI Specialist",
+  "tagline_pendek": "Building agents for the state.",
+  "ringkasan": "AI Forward Deployed Engineer pada tim inti 4 orang yang membangun multi-agent AI skala nasional untuk operasi intelijen pemerintah Indonesia. Spesialis dalam agentic architecture, LangGraph state machines, multi-tier search pipelines, full observability stacks, dan Vue 3 tactical frontends. Rekam jejak mencakup bidang pertahanan, blockchain, eCommerce, dan digital agency.",
+  "pengalaman_tahun": 3,
+  "pengalaman_label": "3 tahun",
+  "pengalaman_kerja": [
+    {
+      "id": 4,
+      "posisi": "AI Forward Deployed Engineer / UI Specialist",
+      "perusahaan": "PT. GSP",
+      "periode": "Mei 2025 · Sekarang",
+      "lokasi": "Jakarta",
+      "bidang": "Government AI Infrastructure · Agentic Systems · Frontend Engineering",
+      "ringkas": "Bagian dari 4-orang core team bangun infrastruktur AI level nasional untuk operasi intelijen."
+    },
+    {
+      "id": 3,
+      "posisi": "Software Engineer",
+      "perusahaan": "PT. Decision Tree Indonesia",
+      "periode": "Desember 2025 · Sekarang",
+      "lokasi": "Remote",
+      "bidang": "Healthcare · eCommerce · Sales · Product",
+      "ringkas": "Pekerjaan cross-domain dengan fokus product engineering."
+    },
+    {
+      "id": 2,
+      "posisi": "Lead dApp Developer (CTO)",
+      "perusahaan": "VeChain Ecosystem",
+      "periode": "Januari 2024 · Februari 2026",
+      "lokasi": "Remote",
+      "bidang": "Blockchain · AI · Environmental · ESG",
+      "ringkas": "Membangun ReUse & SoapyWorld di bawah VeBetterDAO."
+    },
+    {
+      "id": 1,
+      "posisi": "AI Specialist",
+      "perusahaan": "Zando Agency",
+      "periode": "Mei 2022 · Desember 2024",
+      "lokasi": "Jakarta",
+      "bidang": "Digital Marketing · Supply Chain · Social Media",
+      "ringkas": "Bangun internal AI automation tools, ciptain AI Deskriptor."
+    }
+  ],
+  "proyek": [
+    {
+      "id": "autocrawl",
+      "no": "01",
+      "judul": "Autocrawl",
+      "subtitle": "Autonomous intelligence crawler buat defense & security",
+      "periode": "2025 · 2026",
+      "peran": "Lead Architect",
+      "deskripsi": "Agentic 24jam crawler. LangGraph state machine fan out ke 50 paralel workers, ngecrawl security & defense expo vendors lewat open web. Multi-tier search (Wikipedia, DuckDuckGo, OpenSERP). Hasil: 929 vendors per overnight run, 12x throughput estimate. Vue 3 tactical dashboard dengan 2.5D world map.",
+      "stack": ["LangGraph", "LangChain", "Playwright", "Crawl4AI", "Ollama", "FastAPI", "PostgreSQL", "Vue 3"],
+      "url": "https://github.com/Y0EL/autocrawl"
+    },
+    {
+      "id": "atlas",
+      "no": "02",
+      "judul": "Atlas",
+      "subtitle": "Local AI voice intelligence",
+      "periode": "2025 · 2026",
+      "peran": "Architect & Builder",
+      "deskripsi": "End-to-end local voice AI. Whisper ASR dengan CUDA 12.x. Bisa route ke Ollama (local), Groq, atau OpenRouter. edge-TTS buat natural speech. WebSocket live mode. Persistent memory cross-session. Zero network dependency.",
+      "stack": ["Whisper", "Ollama", "Groq", "edge-TTS", "FastAPI", "CUDA"],
+      "url": "https://github.com/Y0EL"
+    },
+    {
+      "id": "geocek",
+      "no": "03",
+      "judul": "Geocek",
+      "subtitle": "OSINT geolocation engine tanpa GPS",
+      "periode": "2025",
+      "peran": "Builder",
+      "deskripsi": "Geolocate gambar cuma dari visual cues. Plate number prefix mapping, road classification, constraint intersection logic. Output text report, GeoJSON, Folium map. 100% free APIs.",
+      "stack": ["Python", "OSM Nominatim", "Overpass", "GPT-4o", "Mapbox"],
+      "url": "https://github.com/Y0EL/geocek"
+    },
+    {
+      "id": "yota",
+      "no": "04",
+      "judul": "YOTA (MoM)",
+      "subtitle": "AI minutes-of-meeting generator",
+      "periode": "2025",
+      "peran": "Builder",
+      "deskripsi": "Convert meeting recording ke structured docs: summary, discussion points, action items. Whisper buat transcription long-form (3+ jam), speaker diarization, CrewAI multi-agent. Export PDF/DOCX/Markdown.",
+      "stack": ["Next.js 15", "FastAPI", "Whisper", "GPT-4o", "CrewAI"],
+      "url": "https://github.com/Y0EL/MoM"
+    },
+    {
+      "id": "sentinel",
+      "no": "05",
+      "judul": "Sentinel",
+      "subtitle": "AntiFraud heuristics",
+      "periode": "2024 · 2025",
+      "peran": "Builder",
+      "deskripsi": "Behavioral pattern analysis buat detect inauthentic activity. Scoring engine examine variance signatures bedain organic vs bot behavior. From scratch first principles.",
+      "stack": ["Python", "Heuristic scoring"],
+      "url": "https://github.com/Y0EL/Sentinel"
+    },
+    {
+      "id": "juscat",
+      "no": "06",
+      "judul": "Juscat",
+      "subtitle": "Blockchain AI validation",
+      "periode": "2024",
+      "peran": "Builder",
+      "deskripsi": "VeChain dApp. Reward user dengan token kalau upload foto healthy juice drinks. GPT-4o validate keaslian image sebelum trigger smart contract reward. Solidity di Thor blockchain.",
+      "stack": ["React", "VeChain SDK", "Solidity", "Hardhat", "GPT-4o"],
+      "url": "https://github.com/Y0EL/Juscat"
+    },
+    {
+      "id": "reuse",
+      "no": "07",
+      "judul": "ReUse",
+      "subtitle": "Decentralized photo-verified reuse rewards",
+      "periode": "2023 · Sekarang",
+      "peran": "Co-Founder & Developer",
+      "deskripsi": "dApp yang ngasih reward ke user yang reusing barang, dengan verifikasi foto, AI detection, on-chain reward distribution, dan community governance voting. Didanai dan di-endorse VeBetterDAO.",
+      "stack": ["Next.js", "NestJS", "Supabase", "VeChain", "Solidity"],
+      "url": "https://reuse.vet"
+    },
+    {
+      "id": "soapy",
+      "no": "08",
+      "judul": "SoapyWorld",
+      "subtitle": "Gamified sustainability dApp",
+      "periode": "2024 · Sekarang",
+      "peran": "Founder & Developer",
+      "deskripsi": "Gamified dApp yang ngajak orang nyuci piring manual sebagai alternatif hemat energi. 800+ confirmed activities, 200+ verified, 100+ minted actions di testnet via EcoEarn.sol.",
+      "stack": ["Next.js", "NestJS", "Supabase", "VeChain", "EcoEarn.sol"],
+      "url": "https://soapy.world"
+    },
+    {
+      "id": "deskriptor",
+      "no": "09",
+      "judul": "AI Deskriptor",
+      "subtitle": "E-commerce content generator",
+      "periode": "2024",
+      "peran": "Creator @ ZANDO Agency",
+      "deskripsi": "AI-powered text generation untuk product titles & descriptions e-commerce. Optimized untuk market trends + keywords.",
+      "stack": ["OpenAI", "Prompt Engineering", "Next.js"],
+      "url": "https://deskriptor.yoel.pw"
+    },
+    {
+      "id": "sekriptor",
+      "no": "10",
+      "judul": "Sekriptor",
+      "subtitle": "AI script generator untuk content creator",
+      "periode": "2021 · 2024",
+      "peran": "Creator",
+      "deskripsi": "Adapted dari Gemini. Zero-code AI automation untuk content creators, updated through 2024.",
+      "stack": ["Gemini", "Next.js"],
+      "url": "https://sekriptor.yoel.pw"
+    }
+  ],
+  "keahlian": {
+    "AI & Orchestration": ["LangGraph", "LangChain", "Ollama", "OpenAI", "Groq", "Whisper", "IBM Granite", "NLLB", "GPT-4o", "Gemini"],
+    "Backend": ["Python", "FastAPI", "PostgreSQL", "Redis", "Docker", "Playwright", "Crawl4AI", "Node.js", "Django", "SQLAlchemy"],
+    "Frontend": ["Vue 3", "TypeScript", "React", "Next.js", "TailwindCSS", "MapLibre GL", "Apache ECharts", "Vue Flow"],
+    "Observability": ["Prometheus", "Grafana", "Langfuse", "ChromaDB", "FlareSolverr", "OpenSERP", "Structlog"],
+    "Blockchain": ["VeChain", "Solidity", "Hardhat", "Web3"],
+    "Infrastructure": ["CUDA 12.x", "AWS", "Docker", "Ubuntu", "OSINT", "OSM"]
+  },
+  "pendidikan": [
+    { "institusi": "University of the People", "gelar": "B.Sc. Business Administration", "status": "Ongoing" },
+    { "institusi": "Harvard CS50 Series", "gelar": "CS50X · CS50AI · Web Programming · Python", "status": "2023" },
+    { "institusi": "EFSET", "gelar": "C2 English Certificate (Proficient)", "status": "2023" }
+  ],
+  "sertifikasi": [
+    { "kode": "CS50X", "judul": "Introduction to Computer Science", "issuer": "Harvard University", "tahun": "2023", "url": "https://cs50.harvard.edu/certificates/3eaa4f95-45ef-4118-b630-e7dc7e27730f" },
+    { "kode": "CS50AI", "judul": "Artificial Intelligence", "issuer": "Harvard University", "tahun": "2023", "url": "https://cs50.harvard.edu/certificates/1effa036-081a-4d40-bc36-0dcd61b93a96" },
+    { "kode": "EFSET", "judul": "C2 English Proficiency", "issuer": "EF Standard English Test", "tahun": "2023", "url": "https://cert.efset.org/m9B1rv" }
+  ],
+  "bahasa": [
+    { "nama": "Bahasa Indonesia", "level": "Native" },
+    { "nama": "English", "level": "C2 (EFSET)" },
+    { "nama": "Mandarin", "level": "Spoken" }
+  ],
+  "musik": {
+    "brand": "Cubicube",
+    "sejak": 2020,
+    "spotify_artist_id": "2ztUmew6tgNQ8JtRRep4Td",
+    "deskripsi": "Music producer & artist sejak 2020. Memadukan kreatifitas manusia dengan inovasi AI."
+  },
+  "sosial": {
+    "github": "https://github.com/Y0EL",
+    "twitter": "https://x.com/vehunt",
+    "instagram": "https://www.instagram.com/yoelmanoppo",
+    "linkedin": "https://www.linkedin.com/in/yoelmanoppo",
+    "email": "mailto:yoelandreasmanoppo@gmail.com"
+  },
+  "ekspektasi_gaji": {
+    "minimum": 8000000,
+    "ideal": 12000000,
+    "maksimum": 20000000,
+    "label": "8 juta · 20 juta IDR / bulan"
+  }
+}

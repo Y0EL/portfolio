@@ -1,194 +1,582 @@
 import Image from "next/image";
-import Head from "next/head"; // Import Head
+import Link from "next/link";
+import profile from "data/yoel/profile.json";
+import { featuredProjects } from "./projects/project-data";
+import { ProjectSigil } from "./components/project-sigil";
 import { socialLinks } from "./config";
+
+const TICKER_ITEMS = [
+  "AI Forward Deployed Engineer",
+  "Multi-agent systems",
+  "LangGraph · LangChain",
+  "Vue 3 tactical frontends",
+  "VeChain · Solidity",
+  "Government AI infrastructure",
+  "Jakarta, ID",
+  "Open to opportunities",
+];
+
+const STATS = [
+  { value: "03", label: "Years shipping" },
+  { value: "12", label: "Specimens shipped" },
+  { value: "40+", label: "Public repos" },
+  { value: "929", label: "Vendors / 1 night" },
+];
+
+const FREQUENCIES = [
+  {
+    label: "Music",
+    title: "Cubicube",
+    detail: "Producing on Spotify since 2020 · human craft fused with AI-assisted production.",
+    href: `https://open.spotify.com/artist/${profile.musik.spotify_artist_id}`,
+  },
+  {
+    label: "Writing",
+    title: "Field notes & essays",
+    detail: "Career, AI, workplace, music · written in Bahasa Indonesia from the ground.",
+    href: "/blog",
+  },
+  {
+    label: "Photos",
+    title: "Plates from Jakarta",
+    detail: "A slow-burn record of light, streets and quiet moments.",
+    href: "/photos",
+  },
+];
 
 export default function Page() {
   return (
-    <section className="max-w-3xl mx-auto">
-      <Head>
-        <title>Yoel Andreas Manoppo - Music Live!</title>
-        <meta name="description" content="Seorang Spesialis AI dan produser musik yang inovatif, Yoel menggabungkan teknologi AI dengan seni kreatif." />
-        <meta property="og:title" content="Yoel Andreas Manoppo - Empowering Innovation!" />
-        <meta property="og:description" content="AI Specialist, Yoel menggabungkan teknologi AI dengan seni kreatif." />
-        <meta property="og:image" content="/profile.png" />
-        <meta property="og:url" content="https://yoel.pw" />
-        <meta property="og:type" content="website" />
-      </Head>
-
-      <a href={socialLinks.instagram} target="_blank">
-        <Image
-          src="profile.png"
-          alt="Profile photo"
-          className="profile-image rounded-full bg-gray-100 block lg:mt-5 mt-0 lg:mb-5 mb-10 mx-auto sm:float-right sm:ml-5 sm:mb-5 grayscale"
-          unoptimized
-          width={160}
-          height={160}
-          priority
-        />
-      </a>
-
-      <h1 className="section-header mb-8 text-2xl font-medium tracking-tight">
-        AI & Web3 Developer | Builder @ VeBetterDAO
-      </h1>
-
-      <div className="prose prose-neutral dark:prose-invert">
-        <p>
-          AI & Web3 Developer focused on building sustainability dApps that reward real-world eco actions. Creator of ReUse and SoapyWorld, both part of the VeBetterDAO ecosystem, merging gamification, blockchain, and environmental impact. Passionate about decentralization, automation, and building communities that reward sustainable behaviour.
-        </p>
-
-        <h2 className="section-header text-xl font-medium mt-8 mb-6">Active Projects</h2>
-        <div className="experience-grid">
-          <div className="experience-item border-l-2 border-green-500 pl-4 bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent rounded-r-lg p-4">
-            <h3 className="font-medium text-green-700 dark:text-green-300">Founder & Developer</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              SoapyWorld (VeBetterDAO)
-            </p>
-            <p className="mt-2 text-sm">
-              Developed a gamified dApp encouraging manual dishwashing as an energy-saving alternative to machines. Built fullstack using Next.js, NestJS, Supabase, and VeChain's smart contract framework (EcoEarn.sol). Currently with 800+ confirmed activities, 200+ verified, and 100+ minted actions across testnet.
-            </p>
-          </div>
-
-          <div className="experience-item border-l-2 border-blue-500 pl-4 bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent rounded-r-lg p-4">
-            <h3 className="font-medium text-blue-700 dark:text-blue-300">Co-Founder & Developer</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              ReUse (VeBetterDAO)
-            </p>
-            <p className="mt-2 text-sm">
-              Created decentralized app rewarding users for reusing items through photo-verified submissions. Designed and deployed on VeBetterDAO, integrating AI detection, on-chain reward distribution, and community governance voting. Gained funding and endorsement under VeBetterDAO's sustainability initiative.
-            </p>
-          </div>
-
-          <div className="experience-item border-l-2 border-purple-500 pl-4 bg-gradient-to-r from-purple-50 to-transparent dark:from-purple-900/20 dark:to-transparent rounded-r-lg p-4">
-            <h3 className="font-medium text-purple-700 dark:text-purple-300">AI Automation Specialist</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              ZANDO Agency
-            </p>
-            <p className="mt-2 text-sm">
-              Built internal AI automation tools for content creation and client operations. Created AI Deskriptor, a text generation tool for e-commerce product titles and descriptions. Developed automated systems for content generation and client workflow optimization.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-6 text-center">
-          <a href="/career-timeline" className="inline-block">
-            <button className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-medium py-3 px-6 rounded-lg transition-all duration-300 text-sm border border-gray-300 dark:border-gray-600 shadow-lg hover:shadow-xl">
-              View Full Career Timeline →
-            </button>
-          </a>
-        </div>
-
-        <h2 className="section-header text-xl font-medium mt-8 mb-4">Sertifikasi</h2>
-        <div className="grid sm:grid-cols-2 gap-6">
-          <div className="certification-card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 border border-blue-200 dark:border-blue-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-blue-800 dark:text-blue-200">CS50X</h3>
-              <span className="text-xs bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">2023</span>
+    <div className="relative vignette">
+      {/* ─── HERO ─────────────────────────────────────────────── */}
+      <section className="relative max-w-[1180px] mx-auto px-6 lg:px-10 pt-12 lg:pt-20 pb-16">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-end stagger">
+          {/* Left: type-driven hero */}
+          <div className="lg:col-span-7 order-2 lg:order-1">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="signal-dot" aria-hidden="true" />
+              <span className="kicker">
+                Live · Jakarta · No. {profile.pengalaman_kerja[0].periode}
+              </span>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-              Introduction to Computer Science • Harvard University
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              Sertifikasi ini meliputi dasar-dasar ilmu komputer, pemrograman, dan algoritma. Fokus pada pemecahan masalah dan membangun aplikasi web berbasis proyek nyata.
-            </p>
-            <a href="https://cs50.harvard.edu/certificates/3eaa4f95-45ef-4118-b630-e7dc7e27730f" target="_blank" className="inline-block">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">
-                Lihat Sertifikat
-              </button>
-            </a>
-          </div>
 
-          <div className="certification-card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 border border-purple-200 dark:border-purple-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-purple-800 dark:text-purple-200">CS50AI</h3>
-              <span className="text-xs bg-purple-200 dark:bg-purple-700 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full">2023</span>
+            <h1 className="display-roman text-[clamp(56px,9.5vw,148px)]">
+              Building agents
+              <br />
+              <span className="display-italic text-paper">for the </span>
+              <span className="display-italic text-ember">state</span>
+              <span className="display-italic text-ember">.</span>
+            </h1>
+
+            <p className="font-sans text-bone text-lg md:text-xl leading-relaxed mt-8 max-w-[58ch]">
+              Saya <span className="text-paper">Yoel Andreas Manoppo</span> ·{" "}
+              <span className="text-paper">AI Forward Deployed Engineer</span> di tim inti 4 orang
+              yang membangun infrastruktur multi-agent skala nasional untuk operasi intelijen di
+              Indonesia. Sebelumnya: blockchain, eCommerce, agency. Selalu: musisi di samping.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <Link
+                href="#wire"
+                className="kicker inline-flex items-center gap-2 bg-paper text-ink px-5 py-3 rounded-md hover:bg-ember transition-colors duration-300"
+              >
+                Tune in · Talk to me
+                <ArrowRight />
+              </Link>
+              <Link
+                href={socialLinks.email}
+                className="kicker inline-flex items-center gap-2 text-bone hover:text-paper px-5 py-3 rounded-md border border-[color:var(--rule)] hover:border-[color:var(--rule-strong)] transition-colors duration-300"
+              >
+                Engage · Email
+              </Link>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-              Artificial Intelligence • Harvard University
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              Sertifikasi CS50AI memberikan pemahaman mendalam tentang konsep dan teknik AI. Belajar algoritma pembelajaran mesin, pemrosesan bahasa alami, dan penerapan AI dalam berbagai proyek.
-            </p>
-            <a href="https://cs50.harvard.edu/certificates/1effa036-081a-4d40-bc36-0dcd61b93a96" target="_blank" className="inline-block">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">
-                Lihat Sertifikat
-              </button>
-            </a>
           </div>
 
-          <div className="certification-card bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 border border-green-200 dark:border-green-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-green-800 dark:text-green-200">EFSET</h3>
-              <span className="text-xs bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">2023</span>
+          {/* Right: portrait + nameplate */}
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <div className="relative">
+              {/* Portrait */}
+              <div className="relative overflow-hidden rounded-portrait aspect-[4/5] bg-ink-2 border border-[color:var(--rule)]">
+                <Image
+                  src="/yoel.jpg"
+                  alt="Yoel Andreas Manoppo"
+                  fill
+                  priority
+                  className="object-cover grayscale-[0.15] contrast-[1.04]"
+                  sizes="(max-width: 1024px) 80vw, 420px"
+                />
+                {/* Top inset corner mark */}
+                <div className="absolute top-4 left-4 flex items-center gap-2 z-10">
+                  <span className="signal-dot" aria-hidden="true" />
+                  <span className="kicker text-paper drop-shadow-lg">On the record</span>
+                </div>
+                {/* Bottom plate */}
+                <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-ink via-ink/85 to-transparent">
+                  <p className="kicker text-ash mb-1">№ 017 · {dateStamp()}</p>
+                  <p className="font-display italic text-3xl leading-none">
+                    Yoel Andreas Manoppo<span className="text-ember">.</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Floating chips */}
+              <div className="absolute -bottom-5 -left-3 lg:-left-6 hidden md:flex gap-2 z-20">
+                <Chip>AI Engineer</Chip>
+                <Chip>UI Specialist</Chip>
+              </div>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-              English First Standard English Test • Intermediate Level
+          </div>
+        </div>
+
+        {/* Stat ledger */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-[color:var(--rule)] border border-[color:var(--rule)] rounded-card overflow-hidden">
+          {STATS.map((s) => (
+            <div key={s.label} className="bg-ink-2 px-6 py-7">
+              <div className="mono-stat text-paper text-3xl md:text-4xl tabular-nums">
+                {s.value}
+              </div>
+              <p className="kicker mt-2">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── TICKER ──────────────────────────────────────────── */}
+      <section
+        aria-hidden="true"
+        className="overflow-hidden border-y border-[color:var(--rule)] py-5 bg-ink"
+      >
+        <div className="marquee-track">
+          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((t, i) => (
+            <span key={i} className="kicker text-bone flex items-center gap-12 whitespace-nowrap">
+              {t}
+              <span className="text-ember">✦</span>
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── №01 · NOW ───────────────────────────────────────── */}
+      <section className="relative max-w-[1180px] mx-auto px-6 lg:px-10 py-24">
+        <SectionHeader no="01" kicker="Now · The Pursuit" title="What I'm building." />
+        <div className="grid lg:grid-cols-12 gap-10 mt-12">
+          <div className="lg:col-span-5">
+            <p className="kicker text-bone mb-3">{profile.pengalaman_kerja[0].periode}</p>
+            <h3 className="font-display italic text-4xl md:text-5xl leading-[1.05]">
+              {profile.pengalaman_kerja[0].posisi}
+            </h3>
+            <p className="kicker mt-3 text-ember">@ {profile.pengalaman_kerja[0].perusahaan}</p>
+          </div>
+          <div className="lg:col-span-7">
+            <p className="font-sans text-bone text-lg leading-relaxed">
+              {profile.ringkasan}
             </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              Sertifikasi ini menunjukkan kemampuan bahasa Inggris tingkat Profesional, dengan fokus pada komunikasi lisan dan tulisan dalam konteks profesional.
-            </p>
-            <a href="https://cert.efset.org/m9B1rv" target="_blank" className="inline-block">
-              <button className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">
-                Lihat Sertifikat
-              </button>
+            <div className="rule-line my-7" />
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm text-bone font-sans">
+              <li className="flex gap-3">
+                <span className="text-ember">→</span> LangGraph state machines + multi-tier search pipelines
+              </li>
+              <li className="flex gap-3">
+                <span className="text-ember">→</span> Vue 3 tactical frontends · MapLibre · ECharts
+              </li>
+              <li className="flex gap-3">
+                <span className="text-ember">→</span> Full observability stack · Langfuse · Prometheus · Grafana
+              </li>
+              <li className="flex gap-3">
+                <span className="text-ember">→</span> Self-hosted Ollama · CUDA 12.x · Whisper · Granite · NLLB
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <DispatchRule />
+
+      {/* ─── №02 · SERVICE RECORD ────────────────────────────── */}
+      <section className="relative max-w-[1180px] mx-auto px-6 lg:px-10 py-24">
+        <SectionHeader no="02" kicker="Service Record" title="The ledger so far." />
+        <div className="mt-12 space-y-px bg-[color:var(--rule)] border border-[color:var(--rule)] rounded-card overflow-hidden">
+          {profile.pengalaman_kerja.map((job, i) => (
+            <article
+              key={`${job.perusahaan}-${i}`}
+              className="group bg-ink p-6 md:p-8 grid md:grid-cols-12 gap-4 items-baseline hover:bg-ink-2 transition-colors duration-300"
+            >
+              <div className="md:col-span-1">
+                <span className="font-display italic text-3xl text-ash group-hover:text-ember transition-colors">
+                  №{String(job.id).padStart(2, "0")}
+                </span>
+              </div>
+              <div className="md:col-span-4">
+                <p className="kicker text-ash mb-1">{job.periode}</p>
+                <h4 className="font-display text-2xl md:text-3xl text-paper leading-tight">
+                  {job.perusahaan}
+                </h4>
+              </div>
+              <div className="md:col-span-7">
+                <p className="font-sans text-bone leading-relaxed">
+                  <span className="text-paper">{job.posisi}.</span> {job.ringkas}
+                </p>
+                <p className="kicker mt-3 text-ash">{job.bidang}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <DispatchRule />
+
+      {/* ─── №03 · SPECIMENS ─────────────────────────────────── */}
+      <section className="relative max-w-[1180px] mx-auto px-6 lg:px-10 py-24">
+        <SectionHeader no="03" kicker="Specimens · Featured work" title="Things I shipped." />
+
+        <div className="mt-12 grid md:grid-cols-2 gap-px bg-[color:var(--rule)] border border-[color:var(--rule)] rounded-card overflow-hidden">
+          {featuredProjects.map((p) => (
+            <a
+              key={p.no}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-ink-2 p-8 md:p-10 hover:bg-ink-3 transition-colors duration-500 flex flex-col"
+            >
+              <div className="flex items-start justify-between mb-6">
+                <div className="text-ash group-hover:text-ember transition-colors duration-500">
+                  <ProjectSigil name={p.sigil} size={72} />
+                </div>
+                <div className="text-right">
+                  <p className="font-display italic text-4xl text-ash leading-none">
+                    №{p.no}
+                  </p>
+                  <p className="kicker text-ash mt-2">{p.year}</p>
+                </div>
+              </div>
+              <h4 className="font-display text-4xl md:text-5xl text-paper leading-[0.95]">
+                {p.title}
+                <span className="text-ember">.</span>
+              </h4>
+              <p className="kicker mt-3 text-bone">{p.subtitle}</p>
+              <p
+                className="font-sans text-bone leading-relaxed mt-5 flex-1 text-[15px]"
+                style={{
+                  display: "-webkit-box",
+                  WebkitLineClamp: 4,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                }}
+              >
+                {p.description}
+              </p>
+              {p.highlights && p.highlights.length > 0 && (
+                <ul className="mt-5 grid gap-1.5">
+                  {p.highlights.slice(0, 3).map((h) => (
+                    <li
+                      key={h}
+                      className="text-sm text-paper font-sans flex gap-2"
+                    >
+                      <span className="text-ember shrink-0">→</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <div className="flex flex-wrap gap-1.5 mt-6">
+                {p.stack.slice(0, 5).map((s) => (
+                  <Chip key={s}>{s}</Chip>
+                ))}
+              </div>
+              <div className="mt-7 flex items-center justify-between border-t border-[color:var(--rule)] pt-5">
+                <span className="kicker text-ash truncate">{p.source}</span>
+                <span className="kicker text-paper group-hover:text-ember transition-colors inline-flex items-center gap-2">
+                  Visit ↗
+                </span>
+              </div>
             </a>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
+          <p className="font-sans text-bone max-w-[58ch] leading-relaxed">
+            Itu yang highlight. Ada{" "}
+            <span className="text-paper font-medium">8 specimen lagi</span> di halaman
+            full · OSINT geolocator, AntiFraud heuristics, blockchain validation, sustainability
+            dApps, dan AI tooling.
+          </p>
+          <Link
+            href="/projects"
+            className="kicker inline-flex items-center gap-2 bg-paper text-ink px-5 py-3 rounded-md hover:bg-ember transition-colors duration-300"
+          >
+            See full specimens ↗
+          </Link>
+        </div>
+      </section>
+
+      <DispatchRule />
+
+      {/* ─── №04 · STACK ─────────────────────────────────────── */}
+      <section className="relative max-w-[1180px] mx-auto px-6 lg:px-10 py-24">
+        <SectionHeader no="04" kicker="The Stack" title="Tools I reach for." />
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Object.entries(profile.keahlian).map(([group, items]) => (
+            <div
+              key={group}
+              className="border border-[color:var(--rule)] rounded-card p-7 hover:border-[color:var(--rule-strong)] transition-colors duration-500"
+            >
+              <p className="kicker text-ember">{group}</p>
+              <div className="flex flex-wrap gap-x-3 gap-y-2 mt-5">
+                {(items as string[]).map((it, i) => (
+                  <span
+                    key={it}
+                    className="font-display text-xl md:text-2xl text-paper hover:italic transition-all"
+                  >
+                    {it}
+                    {i < (items as string[]).length - 1 && (
+                      <span className="text-ash mx-1">·</span>
+                    )}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <DispatchRule />
+
+      {/* ─── №05 · FREQUENCIES ───────────────────────────────── */}
+      <section className="relative max-w-[1180px] mx-auto px-6 lg:px-10 py-24">
+        <SectionHeader no="05" kicker="Other Frequencies" title="Off the dispatch beat." />
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
+          {FREQUENCIES.map((f) => (
+            <a
+              key={f.title}
+              href={f.href}
+              target={f.href.startsWith("http") ? "_blank" : undefined}
+              rel={f.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="group border border-[color:var(--rule)] rounded-card p-7 hover:border-[color:var(--rule-strong)] flex flex-col bg-ink-2 hover:bg-ink-3 transition-all duration-500"
+            >
+              <p className="kicker text-ember">{f.label}</p>
+              <h5 className="font-display italic text-3xl text-paper mt-3 leading-tight">
+                {f.title}
+              </h5>
+              <p className="font-sans text-bone mt-3 flex-1 text-[15px] leading-relaxed">
+                {f.detail}
+              </p>
+              <span className="kicker mt-6 text-paper group-hover:text-ember transition-colors inline-flex items-center gap-2">
+                Open <ArrowRight />
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <DispatchRule />
+
+      {/* ─── №06 · THE WIRE (CHAT CTA) ───────────────────────── */}
+      <section
+        id="wire"
+        className="relative max-w-[1180px] mx-auto px-6 lg:px-10 py-24"
+      >
+        <SectionHeader no="06" kicker="The Wire · Live" title="Talk to Yoel directly." />
+        <div className="mt-12 relative rounded-card overflow-hidden border border-[color:var(--rule)] bg-ink-2">
+          <div className="grid lg:grid-cols-12 gap-8 p-8 md:p-12">
+            <div className="lg:col-span-7">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="signal-dot" aria-hidden="true" />
+                <span className="kicker">Channel open</span>
+              </div>
+              <h3 className="font-display text-4xl md:text-6xl leading-[0.96]">
+                Bukan FAQ.
+                <br />
+                <span className="display-italic text-ember">A frequency.</span>
+              </h3>
+              <p className="font-sans text-bone mt-6 max-w-[52ch] leading-relaxed">
+                AI persona yang grounded di pengalamannya · bukan bot resmi. Tanya soal kerjaan,
+                project, salary, opinion teknis, sampai musik. Gue jawab as honest as i can.
+              </p>
+              <p className="kicker mt-7 text-ash">
+                <span className="signal-dot inline-block mr-2 align-middle" aria-hidden="true" />
+                Live channel · Memory aktif per browser · Data lo tetep di device lo
+              </p>
+            </div>
+            <div className="lg:col-span-5 flex flex-col justify-end gap-3">
+              <ExampleQ q="Lo lagi ngerjain apa di PT. GSP?" />
+              <ExampleQ q="Stack apa yang lo pakai sehari-hari?" />
+              <ExampleQ q="Berapa expected salary lo?" />
+              <p className="kicker text-ash mt-2">
+                Klik tombol <span className="text-paper">"Tune in"</span> di kanan-bawah untuk buka
+                channel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <DispatchRule />
+
+      {/* ─── №07 · ENDNOTES ──────────────────────────────────── */}
+      <section className="relative max-w-[1180px] mx-auto px-6 lg:px-10 py-24">
+        <SectionHeader no="07" kicker="Engage" title="Get in touch." />
+        <div className="mt-12 grid md:grid-cols-2 gap-10">
+          <div>
+            <p className="kicker text-ember mb-3">Direct lines</p>
+            <ul className="space-y-3 font-sans text-lg">
+              <li>
+                <a
+                  href={socialLinks.email}
+                  className="link-underline text-paper hover:text-ember"
+                >
+                  yoelandreasmanoppo@gmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`https://wa.me/${profile.telepon.replace(/\D/g, "")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline text-paper hover:text-ember"
+                >
+                  {profile.telepon}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline text-paper hover:text-ember"
+                >
+                  linkedin.com/in/yoelmanoppo
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p className="kicker text-ember mb-3">Off the record</p>
+            <ul className="space-y-3 font-sans text-lg">
+              <li>
+                <a
+                  href={socialLinks.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline text-paper hover:text-ember"
+                >
+                  github.com/Y0EL
+                </a>
+              </li>
+              <li>
+                <a
+                  href={socialLinks.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline text-paper hover:text-ember"
+                >
+                  @vehunt on X
+                </a>
+              </li>
+              <li>
+                <a
+                  href={socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline text-paper hover:text-ember"
+                >
+                  @yoelmanoppo on IG
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-
-        <h2 className="section-header text-xl font-medium mt-8 mb-4">Technology Stack</h2>
-        <div className="grid sm:grid-cols-2 gap-6 mb-6">
-          <div className="tech-stack-card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 border border-blue-200 dark:border-blue-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="font-semibold text-blue-800 dark:text-blue-200 mb-3">Languages & Frameworks</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              TypeScript, Python, Solidity, React, Next.js, NestJS, TailwindCSS
-            </p>
-          </div>
-          <div className="tech-stack-card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 border border-purple-200 dark:border-purple-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="font-semibold text-purple-800 dark:text-purple-200 mb-3">Web3 / Blockchain</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              VeChain Toolkits, WalletConnect, Hardhat, Smart Contract Deployment
-            </p>
-          </div>
-          <div className="tech-stack-card bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 border border-green-200 dark:border-green-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="font-semibold text-green-800 dark:text-green-200 mb-3">AI / Automation</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              OpenAI API, LangChain, Prompt Engineering, Python Scripts
-            </p>
-          </div>
-          <div className="tech-stack-card bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 border border-orange-200 dark:border-orange-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="font-semibold text-orange-800 dark:text-orange-200 mb-3">Backend / Infra</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Supabase, PostgreSQL, Heroku, PM2, DigitalOcean, Vercel
-            </p>
-          </div>
+        <div className="mt-16 max-w-3xl">
+          <p className="font-display italic text-3xl md:text-4xl leading-[1.15] text-paper">
+            "If you're building something at the intersection of{" "}
+            <span className="text-ember">agents</span>, ground-truth data, and{" "}
+            <span className="text-ember">tactical UI</span> · let's talk."
+          </p>
+          <p className="kicker mt-5">· Y. A. Manoppo, Jakarta</p>
         </div>
-
-        <h2 className="section-header text-xl font-medium mt-8 mb-4">Achievements</h2>
-        <ul>
-          <li><span className="skill-tag"><strong>🌿 Funded and verified builder on VeBetterDAO</strong></span> for sustainable dApps</li>
-          <li><span className="skill-tag"><strong>⚙️ Developed automated reward systems</strong></span> for eco-actions verified through blockchain</li>
-          <li><span className="skill-tag"><strong>📈 Built multiple real-user communities</strong></span> with verifiable engagement and transparency</li>
-          <li><span className="skill-tag"><strong>🎓 Harvard CS50 Series:</strong></span> Computer Science, Web Programming, AI, Python</li>
-          <li><span className="skill-tag"><strong>🌐 B.Sc. Business Administration:</strong></span> University of the People (Ongoing)</li>
-        </ul>
-        
-        <p>
-          Building the future of sustainability through Web3 and real-world impact. Passionate about decentralization, automation, and building communities that reward sustainable behaviour. Let's build something real — AI, blockchain, or green tech.
-        </p>
-
-        <div className="mt-8 text-center">
-          <a href="mailto:yoelandreasmanoppo@gmail.com" target="_blank" className="inline-block mr-4">
-            <button className="hire-button border border-gray-300 text-gray-700 font-bold py-2 px-4 rounded">
-              Let's Build Something Real
-            </button>
-          </a>
-          <a href="/projects" className="inline-block">
-            <button className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-medium py-2 px-4 rounded-lg transition-all duration-300 text-sm border border-gray-300 dark:border-gray-600 shadow-lg hover:shadow-xl">
-              View My Projects
-            </button>
-          </a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
+}
+
+/* ─── Components ─────────────────────────────────────────── */
+
+function SectionHeader({
+  no,
+  kicker,
+  title,
+}: {
+  no: string;
+  kicker: string;
+  title: string;
+}) {
+  return (
+    <header>
+      <div className="flex items-baseline gap-5">
+        <span className="font-display italic text-5xl md:text-6xl text-ember leading-none">
+          №{no}
+        </span>
+        <span className="kicker text-ash">{kicker}</span>
+      </div>
+      <h2 className="font-display text-5xl md:text-7xl leading-[0.98] mt-4 text-paper">
+        {title.split(".")[0]}
+        <span className="text-ember">.</span>
+      </h2>
+    </header>
+  );
+}
+
+function DispatchRule() {
+  return (
+    <div className="max-w-[1180px] mx-auto px-6 lg:px-10">
+      <div className="flex items-center gap-4">
+        <div className="rule-line flex-1" />
+        <span className="kicker text-ash">· · ·</span>
+        <div className="rule-line flex-1" />
+      </div>
+    </div>
+  );
+}
+
+function Chip({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="kicker px-3 py-1.5 rounded-full border border-[color:var(--rule)] text-bone bg-ink/40 backdrop-blur-sm">
+      {children}
+    </span>
+  );
+}
+
+function ExampleQ({ q }: { q: string }) {
+  return (
+    <div className="font-sans text-paper bg-ink rounded-card px-5 py-4 border border-[color:var(--rule)]">
+      <span className="kicker text-ash mr-2">Q.</span>
+      {q}
+    </div>
+  );
+}
+
+function ArrowRight() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+      className="transition-transform group-hover:translate-x-0.5"
+    >
+      <path
+        d="M1 7h12M8 2l5 5-5 5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function dateStamp() {
+  return new Date()
+    .toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })
+    .toUpperCase();
 }

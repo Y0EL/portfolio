@@ -1,3 +1,12 @@
 [build]
   command = "next build"
-  publish = ".next"
+
+# Required for Next.js 14 app router + edge routes on Netlify.
+# Netlify usually auto-detects this for Next sites, but pinning the plugin
+# explicitly avoids surprises when the build runner version changes.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Force Node 20 to match Next.js 14.2 expectations.
+[build.environment]
+  NODE_VERSION = "20"

@@ -1,13 +1,37 @@
 import "./global.css";
 import type { Metadata } from "next";
+import { Newsreader, Onest, JetBrains_Mono } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Navbar } from "./components/nav";
 import Footer from "./components/footer";
+import TalkativeYoel from "./components/talkative-yoel";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData } from "./config";
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
+
+const onest = Onest({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-onest",
+  display: "swap",
+});
+
+const jbm = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-jbm",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaData.baseUrl),
@@ -22,7 +46,7 @@ export const metadata: Metadata = {
     description: metaData.description,
     url: metaData.baseUrl,
     siteName: metaData.name,
-    locale: "en_US",
+    locale: "id_ID",
     type: "website",
   },
   robots: {
@@ -53,26 +77,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
+    <html
+      lang="id"
+      className={cx(
+        newsreader.variable,
+        onest.variable,
+        jbm.variable,
+        GeistSans.variable,
+        GeistMono.variable
+      )}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed" />
         <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom Feed" />
         <link rel="alternate" type="application/feed+json" href="/feed.json" title="JSON Feed" />
       </head>
-      <body className="antialiased flex flex-col items-center justify-center mx-auto mt-2 lg:mt-8 mb-20 lg:mb-40">
+      <body className="bg-ink text-paper antialiased min-h-screen">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
+          forcedTheme="dark"
           disableTransitionOnChange
         >
-          <main className="flex-auto min-w-0 mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[640px] w-full">
-            <Navbar />
-            {children}
-            <Footer />
-            <Analytics />
-            <SpeedInsights />
-          </main>
+          <div className="grain" aria-hidden="true" />
+          <Navbar />
+          <main className="min-h-[60vh]">{children}</main>
+          <Footer />
+          <TalkativeYoel />
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

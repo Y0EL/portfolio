@@ -1,154 +1,210 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import profile from "data/yoel/profile.json";
+
+export const metadata: Metadata = {
+  title: "Ledger · Career Timeline",
+  description: "Catatan lengkap perjalanan kerja, pendidikan, dan pencapaian Yoel Andreas Manoppo.",
+};
+
+type Entry = {
+  no: string;
+  period: string;
+  title: string;
+  org: string;
+  tag?: string;
+  body: string;
+};
+
+const ACHIEVEMENTS: Entry[] = [
+  {
+    no: "VBR-01",
+    period: "2024",
+    title: "Funded & Verified Builder",
+    org: "VeBetterDAO Ecosystem",
+    tag: "Sustainability",
+    body: "Funded and verified builder on VeBetterDAO untuk sustainable dApps. Bangun automated reward systems untuk eco-actions verified via blockchain. Multiple real-user communities dengan verifiable engagement dan transparency.",
+  },
+  {
+    no: "VBR-02",
+    period: "2024 · Present",
+    title: "Active Governance Participant",
+    org: "B3TR · VOT3 Tokens",
+    tag: "Governance",
+    body: "Active di VeBetterDAO governance pakai B3TR & VOT3 tokens. Kontributor diskusi Dynamic Base Allocation proposal dan community decision-making.",
+  },
+];
 
 export default function CareerTimeline() {
   return (
-    <section className="max-w-4xl mx-auto">
-      <div className="mb-8">
-        <Link href="/" className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 mb-4 inline-block">
-          ← Back to Home
+    <section className="max-w-[1180px] mx-auto px-6 lg:px-10 py-16 lg:py-24">
+      {/* Header */}
+      <header className="max-w-3xl">
+        <Link
+          href="/"
+          className="kicker text-ash hover:text-ember inline-flex items-center gap-2 transition-colors mb-8"
+        >
+          <span aria-hidden="true">←</span> Back to today
         </Link>
-        <h1 className="section-header text-3xl font-medium tracking-tight mb-4">
-          Complete Career Timeline
+        <div className="flex items-center gap-3 mb-5">
+          <span className="signal-dot" aria-hidden="true" />
+          <span className="kicker">Ledger · Complete record</span>
+        </div>
+        <h1 className="display-roman text-6xl md:text-8xl leading-[0.95]">
+          The <span className="display-italic text-ember">ledger</span>
+          <span className="text-ember">.</span>
         </h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          A comprehensive overview of my journey as an AI & Web3 Developer building sustainability dApps.
+        <p className="font-sans text-bone text-lg leading-relaxed mt-6 max-w-[58ch]">
+          Catatan lengkap kerja, pendidikan, dan capaian. Disusun seperti buku
+          besar · terbaru di atas, sumber di bawah.
         </p>
+      </header>
+
+      {/* №01 Work */}
+      <SectionBlock
+        no="01"
+        kicker="Work · Service record"
+        title="Where I've shown up."
+      >
+        <Ledger
+          entries={profile.pengalaman_kerja.map((j) => ({
+            no: `№${String(j.id).padStart(2, "0")}`,
+            period: j.periode,
+            title: j.posisi,
+            org: j.perusahaan,
+            tag: j.bidang,
+            body: j.ringkas,
+          }))}
+        />
+      </SectionBlock>
+
+      {/* №02 Education */}
+      <SectionBlock no="02" kicker="Education · Certifications" title="What I studied.">
+        <Ledger
+          entries={profile.pendidikan.map((e, i) => ({
+            no: `EDU-${String(i + 1).padStart(2, "0")}`,
+            period: e.status || "·",
+            title: e.gelar,
+            org: e.institusi,
+            body: "",
+          }))}
+        />
+        <div className="mt-8 grid sm:grid-cols-3 gap-4">
+          {profile.sertifikasi.map((c) => (
+            <a
+              key={c.kode}
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border border-[color:var(--rule)] rounded-card p-6 hover:border-[color:var(--rule-strong)] transition-colors block"
+            >
+              <p className="kicker text-ember">{c.kode}</p>
+              <h4 className="font-display italic text-2xl mt-2 text-paper">{c.judul}</h4>
+              <p className="font-sans text-bone text-sm mt-3">{c.issuer}</p>
+              <p className="kicker mt-3 text-ash group-hover:text-paper transition-colors">
+                {c.tahun} · View certificate ↗
+              </p>
+            </a>
+          ))}
+        </div>
+      </SectionBlock>
+
+      {/* №03 Achievements */}
+      <SectionBlock no="03" kicker="Ecosystem · Achievements" title="On-chain & off.">
+        <Ledger entries={ACHIEVEMENTS} />
+      </SectionBlock>
+
+      {/* №04 Languages */}
+      <SectionBlock no="04" kicker="Languages · Spoken" title="How I communicate.">
+        <div className="grid sm:grid-cols-3 gap-px bg-[color:var(--rule)] border border-[color:var(--rule)] rounded-card overflow-hidden">
+          {profile.bahasa.map((b) => (
+            <div key={b.nama} className="bg-ink-2 p-7">
+              <p className="kicker text-ember">{b.level}</p>
+              <h4 className="font-display text-3xl text-paper mt-3">{b.nama}</h4>
+            </div>
+          ))}
+        </div>
+      </SectionBlock>
+
+      <div className="rule-line my-16" />
+
+      <div className="max-w-2xl">
+        <p className="font-display italic text-3xl md:text-4xl text-paper leading-tight">
+          "A career isn't a straight line · it's a record of <span className="text-ember">attempts</span>."
+        </p>
+        <p className="kicker mt-5 text-ash">· Y. A. Manoppo, Jakarta</p>
       </div>
 
-      <div className="space-y-8">
-        {/* Current Roles */}
-        <div className="timeline-section">
-          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Current Leadership Roles</h2>
-          
-          <div className="space-y-6">
-            <div className="timeline-item bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent border-l-4 border-green-500 pl-6 py-4 rounded-r-lg">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-green-700 dark:text-green-300">Founder & Developer</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2024 - Present</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">SoapyWorld (VeBetterDAO)</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Developed a gamified dApp encouraging manual dishwashing as an energy-saving alternative to machines. Built fullstack using Next.js, NestJS, Supabase, and VeChain's smart contract framework (EcoEarn.sol). Currently with 800+ confirmed activities, 200+ verified, and 100+ minted actions across testnet.
-              </p>
-            </div>
-
-            <div className="timeline-item bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent border-l-4 border-blue-500 pl-6 py-4 rounded-r-lg">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-blue-700 dark:text-blue-300">Co-Founder & Developer</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2023 - Present</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">ReUse (VeBetterDAO)</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Created decentralized app rewarding users for reusing items through photo-verified submissions. Designed and deployed on VeBetterDAO, integrating AI detection, on-chain reward distribution, and community governance voting. Gained funding and endorsement under VeBetterDAO's sustainability initiative.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Recent Experience */}
-        <div className="timeline-section">
-          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Recent Experience</h2>
-          
-          <div className="space-y-6">
-            <div className="timeline-item bg-gradient-to-r from-purple-50 to-transparent dark:from-purple-900/20 dark:to-transparent border-l-4 border-purple-500 pl-6 py-4 rounded-r-lg">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-purple-700 dark:text-purple-300">AI Automation Specialist</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2022 - 2023</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">ZANDO Agency</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Built internal AI automation tools for content creation and client operations. Created AI Deskriptor, a text generation tool for e-commerce product titles and descriptions. Developed automated systems for content generation and client workflow optimization.
-              </p>
-            </div>
-
-            <div className="timeline-item bg-gradient-to-r from-orange-50 to-transparent dark:from-orange-900/20 dark:to-transparent border-l-4 border-orange-500 pl-6 py-4 rounded-r-lg">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-orange-700 dark:text-orange-300">Documentation Specialist & IT Developer</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2024</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">PT. HERUN INTERNATIONAL BRAND</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Developed SCOPE OF WORK documentation platform. Responsible for UI development and content management. Built collaborative documentation system using modern web technologies for seamless workflow.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Education & Achievements */}
-        <div className="timeline-section">
-          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Education & Achievements</h2>
-          
-          <div className="space-y-6">
-            <div className="timeline-item bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent border-l-4 border-blue-500 pl-6 py-4 rounded-r-lg">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-blue-700 dark:text-blue-300">B.Sc. Business Administration</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">Ongoing</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">University of the People</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Pursuing business administration degree to complement technical expertise with business acumen.
-              </p>
-            </div>
-
-            <div className="timeline-item bg-gradient-to-r from-purple-50 to-transparent dark:from-purple-900/20 dark:to-transparent border-l-4 border-purple-500 pl-6 py-4 rounded-r-lg">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-purple-700 dark:text-purple-300">Harvard CS50 Series</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2023</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">Computer Science, Web Programming, AI, Python</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Completed comprehensive computer science education including AI, web development, and Python programming.
-              </p>
-            </div>
-
-            <div className="timeline-item bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent border-l-4 border-green-500 pl-6 py-4 rounded-r-lg">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-green-700 dark:text-green-300">EFSET C2 English Certificate</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2023</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">Proficient Level</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Achieved proficient level in English language skills for international communication and collaboration.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* VeBetterDAO Achievements */}
-        <div className="timeline-section">
-          <h2 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">VeBetterDAO Achievements</h2>
-          
-          <div className="space-y-6">
-            <div className="timeline-item bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent border-l-4 border-green-500 pl-6 py-4 rounded-r-lg">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-green-700 dark:text-green-300">🌿 Funded and Verified Builder</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2024</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">VeBetterDAO Ecosystem</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Funded and verified builder on VeBetterDAO for sustainable dApps. Developed automated reward systems for eco-actions verified through blockchain. Built multiple real-user communities with verifiable engagement and transparency.
-              </p>
-            </div>
-
-            <div className="timeline-item bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent border-l-4 border-blue-500 pl-6 py-4 rounded-r-lg">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-blue-700 dark:text-blue-300">🪙 Active Governance Participant</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2024 - Present</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">B3TR, VOT3 Tokens</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Active participant in VeBetterDAO governance with B3TR and VOT3 tokens. Contributor to Dynamic Base Allocation proposal discussions and community decision-making processes.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-12 text-center">
-        <Link href="/" className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-medium py-3 px-6 rounded-lg transition-all duration-300 text-sm border border-gray-300 dark:border-gray-600 shadow-lg hover:shadow-xl">
-          ← Back to Portfolio
+      <div className="mt-12">
+        <Link
+          href="/"
+          className="kicker inline-flex items-center gap-2 bg-paper text-ink px-5 py-3 rounded-md hover:bg-ember transition-colors duration-300"
+        >
+          ← Back to today
         </Link>
       </div>
     </section>
   );
-} 
+}
+
+function SectionBlock({
+  no,
+  kicker,
+  title,
+  children,
+}: {
+  no: string;
+  kicker: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="mt-24">
+      <header>
+        <div className="flex items-baseline gap-5">
+          <span className="font-display italic text-5xl text-ember leading-none">
+            №{no}
+          </span>
+          <span className="kicker text-ash">{kicker}</span>
+        </div>
+        <h2 className="font-display text-4xl md:text-6xl leading-[0.98] mt-4 text-paper">
+          {title.split(".")[0]}
+          <span className="text-ember">.</span>
+        </h2>
+      </header>
+      <div className="mt-10">{children}</div>
+    </div>
+  );
+}
+
+function Ledger({ entries }: { entries: Entry[] }) {
+  return (
+    <div className="space-y-px bg-[color:var(--rule)] border border-[color:var(--rule)] rounded-card overflow-hidden">
+      {entries.map((e) => (
+        <article
+          key={`${e.no}-${e.title}`}
+          className="group bg-ink p-6 md:p-8 grid md:grid-cols-12 gap-4 items-baseline hover:bg-ink-2 transition-colors duration-300"
+        >
+          <div className="md:col-span-2">
+            <span className="font-display italic text-2xl text-ash group-hover:text-ember transition-colors">
+              {e.no}
+            </span>
+          </div>
+          <div className="md:col-span-4">
+            <p className="kicker text-ash mb-1">{e.period}</p>
+            <h4 className="font-display text-2xl md:text-3xl text-paper leading-tight">
+              {e.org}
+            </h4>
+          </div>
+          <div className="md:col-span-6">
+            <p className="font-sans text-bone leading-relaxed">
+              <span className="text-paper">{e.title}.</span>{" "}
+              {e.body}
+            </p>
+            {e.tag && <p className="kicker mt-3 text-ash">{e.tag}</p>}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
