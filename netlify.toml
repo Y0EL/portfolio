@@ -2,11 +2,13 @@
   command = "next build"
 
 # Required for Next.js 14 app router + edge routes on Netlify.
-# Netlify usually auto-detects this for Next sites, but pinning the plugin
-# explicitly avoids surprises when the build runner version changes.
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Force Node 20 to match Next.js 14.2 expectations.
 [build.environment]
   NODE_VERSION = "20"
+  # These env vars hold public, non-secret values (a public domain and a model alias).
+  # Netlify's secrets scanner false-positives them because their values appear in the
+  # generated sitemap, RSS, robots.txt, etc. Whitelist them so scanning still catches
+  # the actual secret (OPENROUTER_API_KEY).
+  SECRETS_SCAN_OMIT_KEYS = "OPENROUTER_MODEL,OPENROUTER_SITE_NAME,OPENROUTER_SITE_URL"
