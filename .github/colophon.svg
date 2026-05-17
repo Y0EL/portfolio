@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 200" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Colophon">
+  <rect width="1280" height="200" fill="#0c0c0b"/>
+  <rect x="24" y="24" width="1232" height="152" fill="none" stroke="rgba(236,230,218,0.10)" stroke-width="1"/>
+
+  <!-- Left: Colophon label + body -->
+  <g transform="translate(64, 70)">
+    <text font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#6f6c64">COLOPHON</text>
+    <text x="0" y="42" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#ece6da">
+      Set in <tspan font-style="italic" fill="#e8512a">Newsreader</tspan>, Onest &amp; JetBrains Mono.
+    </text>
+    <text x="0" y="78" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="22" fill="#b8b3a8">
+      Built quietly in Jakarta.
+    </text>
+  </g>
+
+  <!-- Right: sign-off -->
+  <g transform="translate(1216, 100)" text-anchor="end">
+    <circle cx="-180" cy="-6" r="5" fill="#e8512a"/>
+    <text font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#6f6c64">— END OF DISPATCH —</text>
+    <text y="22" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.4" fill="#6f6c64">© 2026 · YOEL ANDREAS MANOPPO</text>
+  </g>
+</svg>
