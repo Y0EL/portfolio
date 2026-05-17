@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Catatan Lima Tahun di Lapangan">
+  <defs>
+    <radialGradient id="wash" cx="50%" cy="0%" r="80%">
+      <stop offset="0" stop-color="#e8512a" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#0c0c0b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1410" stop-opacity="0.35"/>
+      <stop offset="0.55" stop-color="#0c0c0b" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="grain"><feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" seed="11"/><feColorMatrix values="0 0 0 0 0.92  0 0 0 0 0.88  0 0 0 0 0.78  0 0 0 0.04 0"/></filter>
+  </defs>
+
+  <rect width="1280" height="420" fill="#0c0c0b"/>
+  <rect width="1280" height="420" fill="url(#wash)"/>
+  <rect width="1280" height="420" fill="url(#warm)"/>
+  <rect width="1280" height="420" filter="url(#grain)" opacity="0.7"/>
+  <rect x="24" y="24" width="1232" height="372" fill="none" stroke="rgba(236,230,218,0.10)"/>
+
+  <g transform="translate(64, 64)">
+    <circle cx="6" cy="6" r="14" fill="#e8512a" opacity="0.35">
+      <animate attributeName="r" values="6;18;6" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0;0.5" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="6" cy="6" r="6" fill="#e8512a"/>
+    <text x="30" y="11" font-family="ui-monospace, monospace" font-size="11" letter-spacing="2.2" fill="#ece6da" font-weight="600">DISPATCH №017</text>
+    <text x="180" y="11" font-family="ui-monospace, monospace" font-size="11" letter-spacing="2.2" fill="#6f6c64" font-weight="500">18 MAY 2026 · JAKARTA · 4500 KATA</text>
+  </g>
+
+  <g transform="translate(1216, 75)" text-anchor="end">
+    <text font-family="ui-monospace, monospace" font-size="11" letter-spacing="2.2" fill="#6f6c64">FROM THE NOTEBOOK</text>
+  </g>
+
+  <g transform="translate(64, 196)">
+    <text font-family="Georgia, serif" font-size="88" font-weight="400" letter-spacing="-2" fill="#ece6da">Catatan Lima Tahun</text>
+    <text y="92" font-family="Georgia, serif" font-style="italic" font-size="60" font-weight="400" letter-spacing="-1.2" fill="#b8b3a8">di lapangan<tspan fill="#e8512a">.</tspan></text>
+  </g>
+
+  <line x1="64" y1="346" x2="1216" y2="346" stroke="rgba(236,230,218,0.18)"/>
+
+  <g transform="translate(64, 380)" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.8" font-weight="500">
+    <text fill="#6f6c64">2020<tspan fill="#28201b" dx="6">→</tspan><tspan fill="#ece6da" dx="6">2026</tspan></text>
+    <text x="220" fill="#6f6c64">DARI CUBICUBE KE</text>
+    <text x="420" fill="#ece6da">MULTI AGENT AI</text>
+    <text x="660" fill="#6f6c64">12 SPECIMENS · 4 ORG TIM INTI · 929 VENDORS</text>
+  </g>
+</svg>

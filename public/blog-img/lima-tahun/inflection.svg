@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 540" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="The Inflection Point · May 2025">
+  <defs>
+    <filter id="g3"><feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" seed="9"/><feColorMatrix values="0 0 0 0 0.92  0 0 0 0 0.88  0 0 0 0 0.78  0 0 0 0.03 0"/></filter>
+    <linearGradient id="curve-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8512a" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#e8512a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="540" fill="#0c0c0b"/>
+  <rect width="1280" height="540" filter="url(#g3)" opacity="0.7"/>
+  <rect x="24" y="24" width="1232" height="492" fill="none" stroke="rgba(236,230,218,0.10)"/>
+
+  <!-- header -->
+  <g transform="translate(72, 72)">
+    <text font-family="ui-monospace, monospace" font-size="11" letter-spacing="2" fill="#6f6c64">§INFLECTION · MAY 2025</text>
+    <text y="46" font-family="Georgia, serif" font-style="italic" font-size="44" fill="#ece6da">The line bent up<tspan fill="#e8512a">.</tspan></text>
+  </g>
+
+  <line x1="72" y1="170" x2="1208" y2="170" stroke="rgba(236,230,218,0.18)"/>
+
+  <!-- y axis label -->
+  <text x="76" y="200" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.5" fill="#6f6c64">SCALE OF WORK</text>
+
+  <!-- axes -->
+  <line x1="80" y1="220" x2="80" y2="460" stroke="rgba(236,230,218,0.22)"/>
+  <line x1="80" y1="460" x2="1208" y2="460" stroke="rgba(236,230,218,0.22)"/>
+
+  <!-- year ticks -->
+  <g font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.4" fill="#6f6c64">
+    <text x="170" y="484">2020</text>
+    <text x="330" y="484">2021</text>
+    <text x="490" y="484">2022</text>
+    <text x="650" y="484">2023</text>
+    <text x="810" y="484">2024</text>
+    <text x="965" y="484">MAY 2025</text>
+    <text x="1130" y="484">2026</text>
+  </g>
+
+  <!-- pre inflection curve (gentle slope) -->
+  <path d="M 170 440 Q 250 435 330 432 T 490 425 T 650 418 T 810 405" fill="none" stroke="#6f6c64" stroke-width="1.8"/>
+  <!-- after inflection sharp rise -->
+  <path d="M 810 405 Q 880 350 965 250 T 1130 235" fill="none" stroke="#e8512a" stroke-width="2.4"/>
+  <!-- area fill under crimson curve -->
+  <path d="M 810 405 Q 880 350 965 250 T 1130 235 L 1130 460 L 810 460 Z" fill="url(#curve-fill)"/>
+
+  <!-- nodes pre -->
+  <circle cx="170" cy="440" r="3" fill="#6f6c64"/>
+  <circle cx="330" cy="432" r="3" fill="#6f6c64"/>
+  <circle cx="490" cy="425" r="3" fill="#6f6c64"/>
+  <circle cx="650" cy="418" r="3" fill="#6f6c64"/>
+  <circle cx="810" cy="405" r="3" fill="#6f6c64"/>
+
+  <!-- inflection point marker -->
+  <circle cx="965" cy="250" r="8" fill="#e8512a"/>
+  <circle cx="965" cy="250" r="18" fill="none" stroke="#e8512a" stroke-opacity="0.4">
+    <animate attributeName="r" values="8;28;8" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.6;0;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- final node -->
+  <circle cx="1130" cy="235" r="4" fill="#e8512a"/>
+
+  <!-- annotations -->
+  <g font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.4" fill="#b8b3a8">
+    <text x="500" y="395">FREELANCE · AGENCY · SIDE PROJECTS</text>
+  </g>
+
+  <g transform="translate(965, 220)" text-anchor="start">
+    <line x1="0" y1="0" x2="36" y2="-30" stroke="#e8512a"/>
+    <text x="44" y="-30" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.6" font-weight="600" fill="#ece6da">PT. GSP · BNPT</text>
+    <text x="44" y="-14" font-family="ui-monospace, monospace" font-size="10" letter-spacing="1.4" fill="#e8512a">NATIONAL SCALE · 4 ORANG TIM INTI</text>
+  </g>
+</svg>
