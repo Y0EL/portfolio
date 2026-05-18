@@ -6,7 +6,7 @@
   package = "@netlify/plugin-nextjs"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
   # GROQ_MODEL holds a public, non-secret value (a model alias like "llama-3.3-70b-versatile").
   # Netlify's secrets scanner false-positives it because the alias may appear in
   # generated artifacts. Whitelist it so scanning still catches the actual secret (GROQ_API_KEY).
