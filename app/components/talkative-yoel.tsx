@@ -56,6 +56,7 @@ export default function TalkativeYoel() {
   const [essentials, setEssentials] = useState<string>("");
   const [hydrated, setHydrated] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   /* Load from localStorage on mount */
   useEffect(() => {
@@ -88,6 +89,34 @@ export default function TalkativeYoel() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  /* Lock page Y scroll when drawer is open. Restores the previous overflow
+   * value on close so we don't fight other components. */
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
+    if (open) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = "hidden";
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+    }
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
+    };
+  }, [open]);
+
+  /* Auto-grow textarea up to ~6 lines, then internal scroll takes over */
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    const maxPx = 160;
+    el.style.height = `${Math.min(el.scrollHeight, maxPx)}px`;
+  }, [input, open]);
 
   async function send(text?: string) {
     const payload = (text ?? input).trim();
@@ -276,6 +305,7 @@ export default function TalkativeYoel() {
           >
             <div className="flex items-end gap-2 bg-ink rounded-card border border-[color:var(--rule)] focus-within:border-ember/60 transition-colors">
               <textarea
+                ref={textareaRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => {
@@ -284,9 +314,9 @@ export default function TalkativeYoel() {
                     send();
                   }
                 }}
-                placeholder="Tulis pertanyaan lo…"
+                placeholder="Tulis pertanyaan lo… (shift+enter buat baris baru)"
                 rows={1}
-                className="flex-1 bg-transparent text-paper placeholder:text-ash text-sm px-4 py-3 resize-none outline-none max-h-32"
+                className="flex-1 bg-transparent text-paper placeholder:text-ash text-sm px-4 py-3 resize-none outline-none leading-relaxed min-h-[44px] max-h-[160px] overflow-y-auto"
               />
               <button
                 type="submit"
