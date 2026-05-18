@@ -62,23 +62,31 @@ function isValidReply(text: string, lastUser: string): boolean {
  * just regurgitating earlier answers and should be regenerated. */
 function overlapScore(newText: string, priorTexts: string[]): number {
   if (!priorTexts.length || newText.length < 30) return 0;
-  const norm = (s: string) =>
-    new Set(
-      s
-        .toLowerCase()
-        .replace(/[^\p{L}\p{N}\s]/gu, " ")
-        .split(/\s+/)
-        .filter((w) => w.length > 3)
-    );
-  const a = norm(newText);
+  const tokens = (s: string): string[] => {
+    const seen: { [k: string]: true } = {};
+    const out: string[] = [];
+    const words = s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/);
+    for (let i = 0; i < words.length; i++) {
+      const w = words[i];
+      if (w.length > 3 && !seen[w]) {
+        seen[w] = true;
+        out.push(w);
+      }
+    }
+    return out;
+  };
+  const a = tokens(newText);
+  if (a.length === 0) return 0;
   let maxJacc = 0;
-  for (const prior of priorTexts) {
-    const b = norm(prior);
-    if (a.size === 0 || b.size === 0) continue;
+  for (let i = 0; i < priorTexts.length; i++) {
+    const b = tokens(priorTexts[i]);
+    if (b.length === 0) continue;
+    const bSet: { [k: string]: true } = {};
+    for (let j = 0; j < b.length; j++) bSet[b[j]] = true;
     let inter = 0;
-    for (const w of a) if (b.has(w)) inter++;
-    const union = a.size + b.size - inter;
-    const jacc = inter / union;
+    for (let j = 0; j < a.length; j++) if (bSet[a[j]]) inter++;
+    const union = a.length + b.length - inter;
+    const jacc = union > 0 ? inter / union : 0;
     if (jacc > maxJacc) maxJacc = jacc;
   }
   return maxJacc;
