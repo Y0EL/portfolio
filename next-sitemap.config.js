@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://yoel.pw',
+    siteUrl: 'https://yoel.online',
     generateRobotsTxt: true,
     robotsTxtOptions: {
         policies: [
@@ -23,7 +23,7 @@ module.exports = {
             { userAgent: '*', disallow: '/temp/' }
         ],
         additionalSitemaps: [
-            'https://yoel.pw/sitemap.xml'
+            'https://yoel.online/sitemap.xml'
         ],
     },
 

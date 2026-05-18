@@ -219,8 +219,8 @@ export const projects: Project[] = [
       "AI-powered text generation buat product titles & descriptions e-commerce. Optimized buat market trends + trending keyword integration. Otomatisasi content creation buat product listings.",
     highlights: ["Built during ZANDO Agency tenure", "Market-optimized output"],
     stack: ["OpenAI", "Prompt Engineering", "Next.js"],
-    url: "https://deskriptor.yoel.pw/",
-    source: "deskriptor.yoel.pw",
+    url: "https://deskriptor.yoel.online/",
+    source: "deskriptor.yoel.online",
   },
   {
     no: "10",
@@ -234,8 +234,8 @@ export const projects: Project[] = [
     description:
       "AI-powered script generator buat content creators, adapted dari Gemini. Implemented dengan zero-code AI automation. Running & updated through 2024.",
     stack: ["Gemini", "Next.js"],
-    url: "https://sekriptor.yoel.pw/",
-    source: "sekriptor.yoel.pw",
+    url: "https://sekriptor.yoel.online/",
+    source: "sekriptor.yoel.online",
   },
   {
     no: "11",
@@ -264,8 +264,8 @@ export const projects: Project[] = [
     description:
       "Modern portfolio dengan Newsreader serif plus Onest sans plus JetBrains Mono. Dark editorial monochrome dengan crimson signal accent. MDX blog, AI persona chat (Talkative Yoel via Groq Llama 3.3 70B), responsive design, deployed on Vercel.",
     stack: ["Next.js 14", "TypeScript", "Tailwind", "Groq", "MDX"],
-    url: "https://yoel.pw/",
-    source: "yoel.pw",
+    url: "https://yoel.online/",
+    source: "yoel.online",
   },
 ];
 

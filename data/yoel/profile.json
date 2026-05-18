@@ -5,7 +5,7 @@
   "telepon": "+62 899 224 6000",
   "lokasi": "Jakarta, Indonesia",
   "github": "github.com/Y0EL",
-  "website": "https://yoel.pw",
+  "website": "https://yoel.online",
   "judul_profil": "AI Forward Deployed Engineer · Agentic Architecture · UI Specialist",
   "tagline_pendek": "Building agents for the state.",
   "ringkasan": "AI Forward Deployed Engineer pada tim inti 4 orang yang membangun multi-agent AI skala nasional untuk operasi intelijen pemerintah Indonesia. Spesialis dalam agentic architecture, LangGraph state machines, multi-tier search pipelines, full observability stacks, dan Vue 3 tactical frontends. Rekam jejak mencakup bidang pertahanan, blockchain, eCommerce, dan digital agency.",
@@ -147,7 +147,7 @@
       "peran": "Creator @ ZANDO Agency",
       "deskripsi": "AI-powered text generation untuk product titles & descriptions e-commerce. Optimized untuk market trends + keywords.",
       "stack": ["OpenAI", "Prompt Engineering", "Next.js"],
-      "url": "https://deskriptor.yoel.pw"
+      "url": "https://deskriptor.yoel.online"
     },
     {
       "id": "sekriptor",
@@ -158,7 +158,7 @@
       "peran": "Creator",
       "deskripsi": "Adapted dari Gemini. Zero-code AI automation untuk content creators, updated through 2024.",
       "stack": ["Gemini", "Next.js"],
-      "url": "https://sekriptor.yoel.pw"
+      "url": "https://sekriptor.yoel.online"
     }
   ],
   "keahlian": {

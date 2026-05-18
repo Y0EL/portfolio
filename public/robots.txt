@@ -67,7 +67,7 @@ User-agent: *
 Disallow: /temp/
 
 # Host
-Host: https://yoel.pw
+Host: https://yoel.online
 
 # Sitemaps
-Sitemap: https://yoel.pw/sitemap.xml
+Sitemap: https://yoel.online/sitemap.xml

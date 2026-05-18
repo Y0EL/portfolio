@@ -22,7 +22,7 @@ Disallow: /static/media/sensitive-image.jpg
 Disallow: /admin/
 
 # Sitemap (important for SEO)
-Sitemap: https://yoel.pw/sitemap.xml
+Sitemap: https://yoel.online/sitemap.xml
 
 # Rate limit crawling for polite bots
 Crawl-delay: 10

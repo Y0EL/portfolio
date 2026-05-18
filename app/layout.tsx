@@ -1,5 +1,5 @@
 import "./global.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Newsreader, Onest, JetBrains_Mono } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -9,7 +9,7 @@ import { Navbar } from "./components/nav";
 import Footer from "./components/footer";
 import TalkativeYoel from "./components/talkative-yoel";
 import { ThemeProvider } from "./components/theme-switch";
-import { metaData } from "./config";
+import { metaData, personJsonLd, websiteJsonLd } from "./config";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -66,7 +66,33 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
+  manifest: "/manifest.webmanifest",
+  alternates: {
+    canonical: metaData.baseUrl,
+  },
+  keywords: [
+    "Yoel Andreas Manoppo",
+    "Yoel Manoppo",
+    "AI Forward Deployed Engineer",
+    "Multi Agent AI Indonesia",
+    "LangGraph Indonesia",
+    "Agentic Architecture",
+    "AI Engineer Jakarta",
+    "Cubicube",
+    "ReUse VeBetterDAO",
+  ],
+  authors: [{ name: "Yoel Andreas Manoppo", url: metaData.baseUrl }],
+  creator: "Yoel Andreas Manoppo",
+  publisher: "Yoel Andreas Manoppo",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0c0c0b",
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "dark",
 };
 
 const cx = (...classes: (string | undefined)[]) => classes.filter(Boolean).join(" ");
@@ -92,6 +118,16 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed" />
         <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom Feed" />
         <link rel="alternate" type="application/feed+json" href="/feed.json" title="JSON Feed" />
+        <meta name="theme-color" content="#0c0c0b" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
       </head>
       <body className="bg-ink text-paper antialiased min-h-screen">
         <ThemeProvider

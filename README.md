@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://yoel.pw"><img src="https://img.shields.io/badge/yoel.pw-ece6da?style=flat-square&labelColor=0c0c0b&color=e8512a&logoColor=ece6da" alt="yoel.pw"/></a>
+  <a href="https://yoel.online"><img src="https://img.shields.io/badge/yoel.online-ece6da?style=flat-square&labelColor=0c0c0b&color=e8512a&logoColor=ece6da" alt="yoel.online"/></a>
   <a href="https://www.linkedin.com/in/yoelmanoppo"><img src="https://img.shields.io/badge/linkedin-ece6da?style=flat-square&labelColor=0c0c0b&color=0c0c0b&logoColor=ece6da" alt="LinkedIn"/></a>
   <a href="https://x.com/vehunt"><img src="https://img.shields.io/badge/x.com%2Fvehunt-ece6da?style=flat-square&labelColor=0c0c0b&color=0c0c0b&logoColor=ece6da" alt="X"/></a>
   <a href="https://open.spotify.com/artist/2ztUmew6tgNQ8JtRRep4Td"><img src="https://img.shields.io/badge/cubicube-spotify-e8512a?style=flat-square&labelColor=0c0c0b" alt="Cubicube on Spotify"/></a>
@@ -76,13 +76,13 @@ Asisten Rapat AI Cerdas. Convert meeting recording jadi structured documents: ex
 
 **Sentinel** (AntiFraud heuristics) · **Juscat** (VeChain dApp + AI image validation) · **ReUse** (photo-verified reuse rewards on VeBetterDAO) · **SoapyWorld** (gamified sustainability dApp · 800+ confirmed activities) · **AI Deskriptor** (e-commerce content generator) · **Sekriptor** (AI script generator) · **Scope of Work** (documentation platform) · **Field Dispatch** (this portfolio).
 
-[**Open full specimens → yoel.pw/projects**](https://yoel.pw/projects)
+[**Open full specimens → yoel.online/projects**](https://yoel.online/projects)
 
 ---
 
 ## №03 · The Wire
 
-[**`yoel.pw`**](https://yoel.pw) punya **Talkative Yoel**, AI persona yang grounded di pengalaman ini. Bukan FAQ, ngomong as me. Pake compacted memory per browser via localStorage, jadi continuity nyambung sampai lo refresh.
+[**`yoel.online`**](https://yoel.online) punya **Talkative Yoel**, AI persona yang grounded di pengalaman ini. Bukan FAQ, ngomong as me. Pake compacted memory per browser via localStorage, jadi continuity nyambung sampai lo refresh.
 
 Engine: **Groq · Llama 3.3 70B Versatile** lewat edge runtime. Few-shot persona + strict language rules + gibberish detector + retry-up-to-2 supaya gak ngarang. Compaction otomatis pas history > 8 messages.
 
