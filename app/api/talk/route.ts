@@ -50,16 +50,118 @@ function cleanReply(raw: string): string {
     .trim();
 }
 
+function isValidReply(text: string, lastUser: string): boolean {
+  if (!text || text.length < 10) return false;
+  if (looksGibberish(text)) return false;
+  if (looksTooThin(text, lastUser)) return false;
+  return true;
+}
+
 const COMPACT_THRESHOLD = 8;
 const KEEP_RECENT = 4;
 
+/* ─── Groq backend ───────────────────────────────────────────── */
+async function callGroq(
+  messages: Msg[],
+  temp: number,
+  maxTokens: number,
+  key: string,
+  model: string
+) {
+  return fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model,
+      messages,
+      temperature: temp,
+      max_tokens: maxTokens,
+      top_p: 0.9,
+    }),
+  });
+}
+
+async function groqReply(
+  messages: Msg[],
+  temp: number,
+  maxTokens: number,
+  key: string,
+  model: string
+): Promise<string> {
+  const res = await callGroq(messages, temp, maxTokens, key, model);
+  if (!res.ok) return "";
+  const data = await res.json();
+  return cleanReply(data?.choices?.[0]?.message?.content || "");
+}
+
+/* ─── Gemini backend (fallback) ──────────────────────────────── */
+async function callGemini(
+  systemContent: string,
+  messages: Msg[],
+  temp: number,
+  maxTokens: number,
+  key: string,
+  model: string
+) {
+  /* Gemini uses role "model" for assistant, system goes in systemInstruction */
+  const contents = messages
+    .filter((m) => m.role === "user" || m.role === "assistant")
+    .map((m) => ({
+      role: m.role === "assistant" ? "model" : "user",
+      parts: [{ text: m.content }],
+    }));
+
+  return fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-goog-api-key": key,
+      },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: systemContent }] },
+        contents,
+        generationConfig: {
+          temperature: temp,
+          maxOutputTokens: maxTokens,
+          topP: 0.9,
+        },
+      }),
+    }
+  );
+}
+
+async function geminiReply(
+  systemContent: string,
+  messages: Msg[],
+  temp: number,
+  maxTokens: number,
+  key: string,
+  model: string
+): Promise<string> {
+  const res = await callGemini(systemContent, messages, temp, maxTokens, key, model);
+  if (!res.ok) return "";
+  const data = await res.json();
+  const text =
+    data?.candidates?.[0]?.content?.parts
+      ?.map((p: { text?: string }) => p?.text || "")
+      .join("") || "";
+  return cleanReply(text);
+}
+
 export async function POST(req: NextRequest) {
-  const key = process.env.GROQ_API_KEY;
-  if (!key) {
+  const groqKey = process.env.GROQ_API_KEY;
+  const geminiKey = process.env.GOOGLE_API_KEY;
+
+  if (!groqKey && !geminiKey) {
     return NextResponse.json(
       {
         error:
-          "GROQ_API_KEY belum diisi. Tambahin di .env.local. Lihat .env.local.example buat referensi.",
+          "Belum ada API key. Isi GROQ_API_KEY (primary) atau GOOGLE_API_KEY (fallback) di .env.local.",
       },
       { status: 500 }
     );
@@ -81,25 +183,10 @@ export async function POST(req: NextRequest) {
   }
 
   const existingEssentials = (body.essentials || "").slice(0, 1200);
-  const model = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
+  const groqModel = process.env.GROQ_MODEL || "llama-3.1-8b-instant";
+  const geminiModel = process.env.GEMINI_MODEL || "gemini-flash-latest";
 
-  async function callGroq(messages: Msg[], temp: number, maxTokens: number) {
-    return fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${key}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model,
-        messages,
-        temperature: temp,
-        max_tokens: maxTokens,
-        top_p: 0.9,
-      }),
-    });
-  }
-
+  /* ─── Compaction ─────────────────────────────────────────── */
   let essentials = existingEssentials;
   let trimTo: number | undefined;
   let essentialsUpdate: string | undefined;
@@ -110,10 +197,7 @@ export async function POST(req: NextRequest) {
       .map((m) => `${m.role === "user" ? "User" : "Yoel"}: ${m.content}`)
       .join("\n");
 
-    const compactionPrompt = [
-      {
-        role: "system" as const,
-        content: `Lo adalah summarizer. Tugas lo: rangkum potongan obrolan antara visitor dan Yoel (AI persona) dalam Bahasa Indonesia casual, MAX 3 kalimat pendek. Fokus ke:
+    const sumSystem = `Lo adalah summarizer. Tugas lo: rangkum potongan obrolan antara visitor dan Yoel (AI persona) dalam Bahasa Indonesia casual, MAX 3 kalimat pendek. Fokus ke:
 1. Topik utama yang udah dibahas
 2. Apa yang user keliatannya cari/peduliin
 3. Info penting yang udah dijelasin Yoel (angka, nama project, keputusan)
@@ -126,20 +210,34 @@ RINGKASAN SEBELUMNYA (kalau ada, gabungkan):
 ${existingEssentials || "(belum ada)"}
 
 POTONGAN OBROLAN:
-${conversationText}`,
-      },
-      { role: "user" as const, content: "Rangkum jadi 1-3 kalimat narasi singkat." },
-    ];
+${conversationText}`;
 
     let llmSummary = "";
     try {
-      const sumRes = await callGroq(compactionPrompt, 0.3, 180);
-      if (sumRes.ok) {
-        const sumData = await sumRes.json();
-        const raw = cleanReply(sumData?.choices?.[0]?.message?.content || "");
-        if (raw && raw.length > 20 && raw.length < 1200 && !looksGibberish(raw)) {
-          llmSummary = raw;
-        }
+      if (groqKey) {
+        llmSummary = await groqReply(
+          [
+            { role: "system", content: sumSystem },
+            { role: "user", content: "Rangkum jadi 1-3 kalimat narasi singkat." },
+          ],
+          0.3,
+          180,
+          groqKey,
+          groqModel
+        );
+      }
+      if (!llmSummary && geminiKey) {
+        llmSummary = await geminiReply(
+          sumSystem,
+          [{ role: "user", content: "Rangkum jadi 1-3 kalimat narasi singkat." }],
+          0.3,
+          180,
+          geminiKey,
+          geminiModel
+        );
+      }
+      if (llmSummary && (llmSummary.length < 20 || llmSummary.length > 1200 || looksGibberish(llmSummary))) {
+        llmSummary = "";
       }
     } catch {
       /* swallow */
@@ -152,64 +250,60 @@ ${conversationText}`,
     }
   }
 
+  /* ─── Main inference with fallback chain ─────────────────── */
   let systemPrompt = buildSystemPrompt();
   if (essentials) {
     systemPrompt += `\n\nCATATAN OBROLAN SEBELUMNYA dengan user yang sama (gunakan untuk continuity, jangan diulang verbatim):\n${essentials}`;
   }
 
   const recent = trimTo ? incoming.slice(-KEEP_RECENT) : incoming.slice(-10);
+  const lastUserMsg =
+    [...recent].reverse().find((m) => m.role === "user")?.content || "";
+
+  let reply = "";
+  let usedFallback = false;
 
   try {
-    let upstream = await callGroq(
-      [{ role: "system", content: systemPrompt }, ...recent],
-      0.55,
-      500
-    );
-
-    if (!upstream.ok) {
-      const text = await upstream.text();
-      return NextResponse.json(
-        { error: `Upstream ${upstream.status}: ${text.slice(0, 240)}` },
-        { status: 502 }
-      );
-    }
-
-    let data = await upstream.json();
-    let rawContent: string = data?.choices?.[0]?.message?.content || "";
-    let reply = cleanReply(rawContent);
-
-    const lastUserMsg =
-      [...recent].reverse().find((m) => m.role === "user")?.content || "";
-
-    let attempts = 0;
-    while (
-      attempts < 2 &&
-      (!reply ||
-        reply.length < 10 ||
-        looksGibberish(reply) ||
-        looksTooThin(reply, lastUserMsg))
-    ) {
-      attempts++;
-      const retry = await callGroq(
+    /* Attempt 1: Groq primary */
+    if (groqKey) {
+      reply = await groqReply(
         [{ role: "system", content: systemPrompt }, ...recent],
-        attempts === 1 ? 0.4 : 0.7,
-        600
+        0.55,
+        500,
+        groqKey,
+        groqModel
       );
-      if (!retry.ok) break;
-      const retryData = await retry.json();
-      const second = cleanReply(retryData?.choices?.[0]?.message?.content || "");
-      if (
-        second &&
-        second.length >= 10 &&
-        !looksGibberish(second) &&
-        !looksTooThin(second, lastUserMsg)
-      ) {
-        reply = second;
-        break;
+
+      /* Retry Groq once with different temp if bad */
+      if (!isValidReply(reply, lastUserMsg)) {
+        const second = await groqReply(
+          [{ role: "system", content: systemPrompt }, ...recent],
+          0.4,
+          600,
+          groqKey,
+          groqModel
+        );
+        if (isValidReply(second, lastUserMsg)) reply = second;
       }
     }
 
-    if (!reply || reply.length < 5) {
+    /* Attempt 2: Gemini fallback */
+    if (!isValidReply(reply, lastUserMsg) && geminiKey) {
+      const gem = await geminiReply(
+        systemPrompt,
+        recent,
+        0.6,
+        600,
+        geminiKey,
+        geminiModel
+      );
+      if (isValidReply(gem, lastUserMsg)) {
+        reply = gem;
+        usedFallback = true;
+      }
+    }
+
+    if (!isValidReply(reply, lastUserMsg)) {
       reply =
         "Wah lagi rada kebanyakan request bro, coba lagi sebentar atau ganti pertanyaan ya.";
     }
@@ -218,6 +312,7 @@ ${conversationText}`,
       reply,
       ...(essentialsUpdate ? { essentialsUpdate } : {}),
       ...(trimTo ? { trimTo } : {}),
+      ...(usedFallback ? { backend: "fallback" } : {}),
     });
   } catch (err: any) {
     return NextResponse.json(

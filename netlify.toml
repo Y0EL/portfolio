@@ -11,7 +11,7 @@
   # values are public (model aliases, site URL, site name). The OPENROUTER_* entries
   # are transitional — they exist in case the old env vars are still set in the
   # Netlify dashboard; delete them from the UI and these can be removed too.
-  SECRETS_SCAN_OMIT_KEYS = "GROQ_MODEL,OPENROUTER_MODEL,OPENROUTER_SITE_NAME,OPENROUTER_SITE_URL"
+  SECRETS_SCAN_OMIT_KEYS = "GROQ_MODEL,GEMINI_MODEL,OPENROUTER_MODEL,OPENROUTER_SITE_NAME,OPENROUTER_SITE_URL"
 
   # Skip scanning the webpack cache — it stores intermediate artifacts that
   # contain stale references from prior builds (pre-Groq migration) and trigger
