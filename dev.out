@@ -1,0 +1,9 @@
+  ▲ Next.js 14.2.6
+  - Local:        http://localhost:3015
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 7.6s
+ ○ Compiling /api/talk ...
+ ✓ Compiled /api/talk in 612ms (187 modules)
+ POST /api/talk 200 in 1782ms

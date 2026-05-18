@@ -57,8 +57,8 @@ function isValidReply(text: string, lastUser: string): boolean {
   return true;
 }
 
-const COMPACT_THRESHOLD = 8;
-const KEEP_RECENT = 4;
+const COMPACT_THRESHOLD = 6;
+const KEEP_RECENT = 3;
 
 /* ─── Groq backend ───────────────────────────────────────────── */
 async function callGroq(
@@ -129,6 +129,9 @@ async function callGemini(
           temperature: temp,
           maxOutputTokens: maxTokens,
           topP: 0.9,
+          /* Disable thinking tokens — they silently consume the maxOutputTokens
+           * budget on gemini-2.5-flash and leave the visible reply truncated. */
+          thinkingConfig: { thinkingBudget: 0 },
         },
       }),
     }
@@ -262,6 +265,7 @@ ${conversationText}`;
 
   let reply = "";
   let usedFallback = false;
+  const debug: string[] = [];
 
   try {
     /* Attempt 1: Groq primary */
@@ -269,20 +273,22 @@ ${conversationText}`;
       reply = await groqReply(
         [{ role: "system", content: systemPrompt }, ...recent],
         0.55,
-        500,
+        400,
         groqKey,
         groqModel
       );
+      debug.push(`groq#1 len=${reply.length}`);
 
       /* Retry Groq once with different temp if bad */
       if (!isValidReply(reply, lastUserMsg)) {
         const second = await groqReply(
           [{ role: "system", content: systemPrompt }, ...recent],
-          0.4,
-          600,
+          0.7,
+          500,
           groqKey,
           groqModel
         );
+        debug.push(`groq#2 len=${second.length}`);
         if (isValidReply(second, lastUserMsg)) reply = second;
       }
     }
@@ -292,12 +298,18 @@ ${conversationText}`;
       const gem = await geminiReply(
         systemPrompt,
         recent,
-        0.6,
-        600,
+        0.7,
+        500,
         geminiKey,
         geminiModel
       );
+      debug.push(`gemini len=${gem.length}`);
       if (isValidReply(gem, lastUserMsg)) {
+        reply = gem;
+        usedFallback = true;
+      } else if (gem && gem.length > 0) {
+        /* Last-resort: even if Gemini reply is "thin", use it. Better than
+         * the generic error message. */
         reply = gem;
         usedFallback = true;
       }
@@ -305,7 +317,7 @@ ${conversationText}`;
 
     if (!isValidReply(reply, lastUserMsg)) {
       reply =
-        "Wah lagi rada kebanyakan request bro, coba lagi sebentar atau ganti pertanyaan ya.";
+        "Wah, koneksi gue lagi flaky bro. Coba refresh atau tanya lagi 5 detik lagi ya.";
     }
 
     return NextResponse.json({
@@ -313,10 +325,11 @@ ${conversationText}`;
       ...(essentialsUpdate ? { essentialsUpdate } : {}),
       ...(trimTo ? { trimTo } : {}),
       ...(usedFallback ? { backend: "fallback" } : {}),
+      ...(process.env.NODE_ENV !== "production" ? { debug } : {}),
     });
   } catch (err: any) {
     return NextResponse.json(
-      { error: `Network: ${err?.message || "unknown"}` },
+      { error: `Network: ${err?.message || "unknown"}`, debug },
       { status: 502 }
     );
   }
