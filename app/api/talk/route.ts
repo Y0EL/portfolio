@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { buildSystemPrompt } from "data/yoel/persona";
+import { buildSystemPrompt, shouldRecallMemory } from "data/yoel/persona";
 
 export const runtime = "edge";
 
@@ -55,6 +55,33 @@ function isValidReply(text: string, lastUser: string): boolean {
   if (looksGibberish(text)) return false;
   if (looksTooThin(text, lastUser)) return false;
   return true;
+}
+
+/* Returns a 0-1 score of how much new text overlaps prior assistant text.
+ * Uses normalized word-bag jaccard. High overlap (>0.5) means model is
+ * just regurgitating earlier answers and should be regenerated. */
+function overlapScore(newText: string, priorTexts: string[]): number {
+  if (!priorTexts.length || newText.length < 30) return 0;
+  const norm = (s: string) =>
+    new Set(
+      s
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}\s]/gu, " ")
+        .split(/\s+/)
+        .filter((w) => w.length > 3)
+    );
+  const a = norm(newText);
+  let maxJacc = 0;
+  for (const prior of priorTexts) {
+    const b = norm(prior);
+    if (a.size === 0 || b.size === 0) continue;
+    let inter = 0;
+    for (const w of a) if (b.has(w)) inter++;
+    const union = a.size + b.size - inter;
+    const jacc = inter / union;
+    if (jacc > maxJacc) maxJacc = jacc;
+  }
+  return maxJacc;
 }
 
 const COMPACT_THRESHOLD = 6;
@@ -255,17 +282,31 @@ ${conversationText}`;
 
   /* ─── Main inference with fallback chain ─────────────────── */
   let systemPrompt = buildSystemPrompt();
-  if (essentials) {
-    systemPrompt += `\n\nCATATAN OBROLAN SEBELUMNYA dengan user yang sama (gunakan untuk continuity, jangan diulang verbatim):\n${essentials}`;
-  }
 
-  const recent = trimTo ? incoming.slice(-KEEP_RECENT) : incoming.slice(-10);
+  const recent = trimTo ? incoming.slice(-KEEP_RECENT) : incoming.slice(-6);
   const lastUserMsg =
     [...recent].reverse().find((m) => m.role === "user")?.content || "";
+
+  /* Only inject essentials into the system prompt when the user message
+   * actually references past conversation (recall triggers). This stops
+   * old topics from bleeding into off-topic answers and keeps responses
+   * grounded in the current question. */
+  if (essentials && shouldRecallMemory(lastUserMsg)) {
+    systemPrompt += `\n\nRINGKASAN OBROLAN SEBELUMNYA (user lagi nanya tentang ini):\n${essentials}\n\nJawab pertanyaan user sekarang dengan referensi ringkasan di atas. JANGAN copy paste jawaban lama.`;
+  }
+
+  /* Anti-repetition: collect last 2 assistant responses for overlap check */
+  const lastAssistant = incoming
+    .filter((m) => m.role === "assistant")
+    .slice(-2)
+    .map((m) => m.content);
 
   let reply = "";
   let usedFallback = false;
   const debug: string[] = [];
+
+  const isBad = (r: string) =>
+    !isValidReply(r, lastUserMsg) || overlapScore(r, lastAssistant) > 0.5;
 
   try {
     /* Attempt 1: Groq primary */
@@ -273,45 +314,53 @@ ${conversationText}`;
       reply = await groqReply(
         [{ role: "system", content: systemPrompt }, ...recent],
         0.55,
-        400,
+        300,
         groqKey,
         groqModel
       );
-      debug.push(`groq#1 len=${reply.length}`);
+      debug.push(
+        `groq#1 len=${reply.length} overlap=${overlapScore(reply, lastAssistant).toFixed(2)}`
+      );
 
-      /* Retry Groq once with different temp if bad */
-      if (!isValidReply(reply, lastUserMsg)) {
+      /* Retry Groq once with different temp if bad or too repetitive */
+      if (isBad(reply)) {
         const second = await groqReply(
           [{ role: "system", content: systemPrompt }, ...recent],
-          0.7,
-          500,
+          0.8,
+          350,
           groqKey,
           groqModel
         );
-        debug.push(`groq#2 len=${second.length}`);
-        if (isValidReply(second, lastUserMsg)) reply = second;
+        debug.push(
+          `groq#2 len=${second.length} overlap=${overlapScore(second, lastAssistant).toFixed(2)}`
+        );
+        if (!isBad(second)) reply = second;
       }
     }
 
     /* Attempt 2: Gemini fallback */
-    if (!isValidReply(reply, lastUserMsg) && geminiKey) {
+    if (isBad(reply) && geminiKey) {
       const gem = await geminiReply(
         systemPrompt,
         recent,
         0.7,
-        500,
+        400,
         geminiKey,
         geminiModel
       );
-      debug.push(`gemini len=${gem.length}`);
-      if (isValidReply(gem, lastUserMsg)) {
+      debug.push(
+        `gemini len=${gem.length} overlap=${overlapScore(gem, lastAssistant).toFixed(2)}`
+      );
+      if (!isBad(gem)) {
         reply = gem;
         usedFallback = true;
-      } else if (gem && gem.length > 0) {
-        /* Last-resort: even if Gemini reply is "thin", use it. Better than
-         * the generic error message. */
-        reply = gem;
-        usedFallback = true;
+      } else if (gem && gem.length > 0 && !looksGibberish(gem)) {
+        /* Last-resort: even if Gemini reply is "thin", use it as long as it's
+         * not gibberish and doesn't dupe earlier answer. */
+        if (overlapScore(gem, lastAssistant) < 0.6) {
+          reply = gem;
+          usedFallback = true;
+        }
       }
     }
 
