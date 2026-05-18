@@ -7,7 +7,13 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  # GROQ_MODEL holds a public, non-secret value (a model alias like "llama-3.3-70b-versatile").
-  # Netlify's secrets scanner false-positives it because the alias may appear in
-  # generated artifacts. Whitelist it so scanning still catches the actual secret (GROQ_API_KEY).
-  SECRETS_SCAN_OMIT_KEYS = "GROQ_MODEL"
+  # Whitelist non-secret env vars that the scanner false-positives because their
+  # values are public (model aliases, site URL, site name). The OPENROUTER_* entries
+  # are transitional — they exist in case the old env vars are still set in the
+  # Netlify dashboard; delete them from the UI and these can be removed too.
+  SECRETS_SCAN_OMIT_KEYS = "GROQ_MODEL,OPENROUTER_MODEL,OPENROUTER_SITE_NAME,OPENROUTER_SITE_URL"
+
+  # Skip scanning the webpack cache — it stores intermediate artifacts that
+  # contain stale references from prior builds (pre-Groq migration) and trigger
+  # false positives. Source files are still scanned.
+  SECRETS_SCAN_OMIT_PATHS = ".netlify/.next/cache/**,.next/cache/**"
