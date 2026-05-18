@@ -82,9 +82,11 @@ Asisten Rapat AI Cerdas. Convert meeting recording jadi structured documents: ex
 
 ## №03 · The Wire
 
-[**`yoel.pw`**](https://yoel.pw) punya **Talkative Yoel** — AI persona yang grounded di pengalaman ini. Bukan FAQ, ngomong as me. Pake compacted memory per browser via localStorage, jadi continuity nyambung sampai lo refresh.
+[**`yoel.pw`**](https://yoel.pw) punya **Talkative Yoel**, AI persona yang grounded di pengalaman ini. Bukan FAQ, ngomong as me. Pake compacted memory per browser via localStorage, jadi continuity nyambung sampai lo refresh.
 
-Tanya soal kerjaan, project, salary, opinion teknis, atau musik. Live channel, fade-in reveal, no model leaks.
+Engine: **Groq · Llama 3.3 70B Versatile** lewat edge runtime. Few-shot persona + strict language rules + gibberish detector + retry-up-to-2 supaya gak ngarang. Compaction otomatis pas history > 8 messages.
+
+Tanya soal kerjaan, project, salary, opinion teknis, atau musik. Live channel, fade-in reveal.
 
 ---
 

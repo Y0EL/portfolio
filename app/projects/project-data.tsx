@@ -262,8 +262,8 @@ export const projects: Project[] = [
     role: "Design & Build",
     type: "Editorial monochrome portfolio",
     description:
-      "Modern portfolio dengan Newsreader serif plus Onest sans plus JetBrains Mono. Dark editorial monochrome dengan crimson signal accent. MDX blog, AI persona chat (Talkative Yoel via OpenRouter), responsive design, deployed on Vercel.",
-    stack: ["Next.js 14", "TypeScript", "Tailwind", "OpenRouter", "MDX"],
+      "Modern portfolio dengan Newsreader serif plus Onest sans plus JetBrains Mono. Dark editorial monochrome dengan crimson signal accent. MDX blog, AI persona chat (Talkative Yoel via Groq Llama 3.3 70B), responsive design, deployed on Vercel.",
+    stack: ["Next.js 14", "TypeScript", "Tailwind", "Groq", "MDX"],
     url: "https://yoel.pw/",
     source: "yoel.pw",
   },

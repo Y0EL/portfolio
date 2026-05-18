@@ -14,11 +14,9 @@ function looksGibberish(text: string): boolean {
   return GIBBERISH_HINTS.some((r) => r.test(text));
 }
 
-/* Too short + non-answer (e.g. "Aha, biar cerita ini biasa!") */
 function looksTooThin(text: string, lastUser: string): boolean {
   const t = text.trim();
   if (t.length < 25) return true;
-  /* If user mentioned a project/tech and reply doesn't echo any of it, it's likely a dud */
   const techMentions = (lastUser.match(
     /\b(autocrawl|atlas|geocek|sentinel|juscat|yota|reuse|soapy|deskriptor|sekriptor|langgraph|vue|next\.?js|fastapi|stack|gaji|salary|project|kerjaan|pengalaman)\b/gi
   ) || []).map((s) => s.toLowerCase());
@@ -52,16 +50,16 @@ function cleanReply(raw: string): string {
     .trim();
 }
 
-const COMPACT_THRESHOLD = 8; /* compact when total messages exceed this */
-const KEEP_RECENT = 4; /* keep last N messages verbatim */
+const COMPACT_THRESHOLD = 8;
+const KEEP_RECENT = 4;
 
 export async function POST(req: NextRequest) {
-  const key = process.env.OPENROUTER_API_KEY;
+  const key = process.env.GROQ_API_KEY;
   if (!key) {
     return NextResponse.json(
       {
         error:
-          "OPENROUTER_API_KEY belum diisi. Tambahin di .env.local. Lihat .env.local.example buat referensi.",
+          "GROQ_API_KEY belum diisi. Tambahin di .env.local. Lihat .env.local.example buat referensi.",
       },
       { status: 500 }
     );
@@ -83,16 +81,14 @@ export async function POST(req: NextRequest) {
   }
 
   const existingEssentials = (body.essentials || "").slice(0, 1200);
-  const model = process.env.OPENROUTER_MODEL || "openrouter/free";
+  const model = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
 
-  async function callOR(messages: Msg[], temp: number, maxTokens: number) {
-    return fetch("https://openrouter.ai/api/v1/chat/completions", {
+  async function callGroq(messages: Msg[], temp: number, maxTokens: number) {
+    return fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${key}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": process.env.OPENROUTER_SITE_URL || "https://yoel.pw",
-        "X-Title": process.env.OPENROUTER_SITE_NAME || "yoel.pw",
       },
       body: JSON.stringify({
         model,
@@ -104,7 +100,6 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  /* ─── Compaction step: if history is long, summarize the older slice ── */
   let essentials = existingEssentials;
   let trimTo: number | undefined;
   let essentialsUpdate: string | undefined;
@@ -138,7 +133,7 @@ ${conversationText}`,
 
     let llmSummary = "";
     try {
-      const sumRes = await callOR(compactionPrompt, 0.3, 180);
+      const sumRes = await callGroq(compactionPrompt, 0.3, 180);
       if (sumRes.ok) {
         const sumData = await sumRes.json();
         const raw = cleanReply(sumData?.choices?.[0]?.message?.content || "");
@@ -147,7 +142,7 @@ ${conversationText}`,
         }
       }
     } catch {
-      /* swallow, fall through to heuristic */
+      /* swallow */
     }
     const finalSummary = llmSummary || heuristicCompact(olderSlice, existingEssentials);
     if (finalSummary) {
@@ -157,17 +152,15 @@ ${conversationText}`,
     }
   }
 
-  /* ─── Build the main prompt with essentials injected ───────────────── */
   let systemPrompt = buildSystemPrompt();
   if (essentials) {
     systemPrompt += `\n\nCATATAN OBROLAN SEBELUMNYA dengan user yang sama (gunakan untuk continuity, jangan diulang verbatim):\n${essentials}`;
   }
 
-  /* If we compacted, only send recent messages. Else send full history (capped). */
   const recent = trimTo ? incoming.slice(-KEEP_RECENT) : incoming.slice(-10);
 
   try {
-    let upstream = await callOR(
+    let upstream = await callGroq(
       [{ role: "system", content: systemPrompt }, ...recent],
       0.55,
       500
@@ -188,7 +181,6 @@ ${conversationText}`,
     const lastUserMsg =
       [...recent].reverse().find((m) => m.role === "user")?.content || "";
 
-    /* Retry up to twice if empty / garbled / too thin */
     let attempts = 0;
     while (
       attempts < 2 &&
@@ -198,7 +190,7 @@ ${conversationText}`,
         looksTooThin(reply, lastUserMsg))
     ) {
       attempts++;
-      const retry = await callOR(
+      const retry = await callGroq(
         [{ role: "system", content: systemPrompt }, ...recent],
         attempts === 1 ? 0.4 : 0.7,
         600
