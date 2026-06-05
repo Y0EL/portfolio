@@ -7,6 +7,7 @@ export interface Project {
     | "sentinel"
     | "juscat"
     | "yota"
+    | "alto"
     | "reuse"
     | "soapy"
     | "deskriptor"
@@ -168,6 +169,29 @@ export const projects: Project[] = [
   },
   {
     no: "07",
+    sigil: "alto",
+    category: "AI · Tooling",
+    title: "ALTO",
+    subtitle: "Meeting audio transcription platform",
+    year: "2025",
+    role: "Architect & Builder",
+    type: "Full-stack transcription SaaS · Team-gated",
+    description:
+      "Platform transkripsi audio rapat buat tim. Drop recording sampai 9.5 jam, dapet transcript berlabel speaker plus ringkasan otomatis. Smart chunking audio >15 menit jadi ~10 menit chunks buat bypass Gemini token limits. Streaming upload langsung ke Gemini File API — zero disk persistence di server. Speaker diarization cross-chunk dengan label consistency. Support Bahasa Indonesia dan English auto-detect. Export ke TXT atau SRT subtitle. Team auth dengan session management dan admin user control.",
+    highlights: [
+      "9.5-hour single-file transcription",
+      "Streaming upload — zero server disk storage",
+      "Speaker diarization cross-chunk label consistency",
+      "Bilingual: Bahasa Indonesia & English auto-detect",
+    ],
+    stack: ["React", "TypeScript", "Vite", "Hono", "Drizzle ORM", "Neon Postgres", "Upstash Redis", "Gemini 2.5 Flash", "FFmpeg", "Fly.io"],
+    infra: "Fly.io backend · Netlify frontend · Neon + Upstash",
+    url: "https://github.com/Y0EL/ALTO",
+    source: "github.com/Y0EL/ALTO",
+    featured: true,
+  },
+  {
+    no: "08",
     sigil: "reuse",
     category: "Web3 · Sustainability",
     title: "ReUse",
@@ -187,7 +211,7 @@ export const projects: Project[] = [
     source: "reuse.vet",
   },
   {
-    no: "08",
+    no: "09",
     sigil: "soapy",
     category: "Web3 · Sustainability",
     title: "SoapyWorld",
@@ -207,7 +231,7 @@ export const projects: Project[] = [
     source: "soapy.world",
   },
   {
-    no: "09",
+    no: "10",
     sigil: "deskriptor",
     category: "AI · Tooling",
     title: "AI Deskriptor",
@@ -223,7 +247,7 @@ export const projects: Project[] = [
     source: "deskriptor.yoel.online",
   },
   {
-    no: "10",
+    no: "11",
     sigil: "sekriptor",
     category: "AI · Tooling",
     title: "Sekriptor",
@@ -238,7 +262,7 @@ export const projects: Project[] = [
     source: "sekriptor.yoel.online",
   },
   {
-    no: "11",
+    no: "12",
     sigil: "scope",
     category: "Apps · Side",
     title: "Scope of Work",
@@ -253,7 +277,7 @@ export const projects: Project[] = [
     source: "scoopwork.netlify.app",
   },
   {
-    no: "12",
+    no: "13",
     sigil: "portfolio",
     category: "Apps · Side",
     title: "Field Dispatch",

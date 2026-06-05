@@ -31,6 +31,9 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `https://yoel.online/blog/${post.slug}`,
+    },
     openGraph: {
       title,
       description,

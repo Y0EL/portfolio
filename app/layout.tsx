@@ -70,9 +70,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.webmanifest",
-  alternates: {
-    canonical: metaData.baseUrl,
-  },
   keywords: [
     "Yoel Andreas Manoppo",
     "Yoel Manoppo",

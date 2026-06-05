@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import profile from "data/yoel/profile.json";
 import { featuredProjects } from "./projects/project-data";
 import { ProjectSigil } from "./components/project-sigil";
 import { socialLinks } from "./config";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://yoel.online",
+  },
+};
 
 const TICKER_ITEMS = [
   "AI Forward Deployed Engineer",

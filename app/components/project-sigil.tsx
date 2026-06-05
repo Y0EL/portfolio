@@ -7,6 +7,7 @@ type SigilName =
   | "sentinel"
   | "juscat"
   | "yota"
+  | "alto"
   | "reuse"
   | "soapy"
   | "deskriptor"
@@ -120,6 +121,20 @@ export function ProjectSigil({
           <line x1="44" y1="34" x2="48" y2="34" />
           <line x1="28" y1="50" x2="54" y2="50" opacity="0.6" />
           <line x1="28" y1="56" x2="48" y2="56" opacity="0.4" />
+        </svg>
+      );
+
+    /* ALTO · audio equalizer bars rising from baseline */
+    case "alto":
+      return (
+        <svg {...common}>
+          <rect x="14" y="14" width="52" height="52" rx="4" />
+          <line x1="24" y1="54" x2="24" y2="40" />
+          <line x1="33" y1="54" x2="33" y2="30" />
+          <line x1="40" y1="54" x2="40" y2="24" />
+          <line x1="47" y1="54" x2="47" y2="32" />
+          <line x1="56" y1="54" x2="56" y2="42" />
+          <line x1="18" y1="56" x2="62" y2="56" opacity="0.35" strokeWidth={1} />
         </svg>
       );
 
