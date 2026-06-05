@@ -8,6 +8,7 @@ import { CaptionComponent } from "./caption";
 import { YouTubeComponent } from "./youtube";
 import { ImageGrid } from "./image-grid";
 import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import "katex/dist/katex.min.css";
 
@@ -127,7 +128,7 @@ export function CustomMDX(props) {
         components={{ ...components, ...(props.components || {}) }}
         options={{
           mdxOptions: {
-            remarkPlugins: [remarkMath],
+            remarkPlugins: [remarkGfm, remarkMath],
             rehypePlugins: [rehypeKatex],
           },
         }}
