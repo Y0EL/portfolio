@@ -1,36 +1,41 @@
 import "./global.css";
 import type { Metadata, Viewport } from "next";
-import { Newsreader, Onest, JetBrains_Mono } from "next/font/google";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { Syne, Manrope, Fraunces, DM_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Navbar } from "./components/nav";
 import Footer from "./components/footer";
 import TalkativeYoel from "./components/talkative-yoel";
+import { ScrollJump } from "./components/scrollJump";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData, personJsonLd, websiteJsonLd } from "./config";
 
-const newsreader = Newsreader({
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--fontSyne",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--fontManrope",
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--fontFraunces",
+  display: "swap",
+});
+
+const dmMono = DM_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
-  display: "swap",
-  adjustFontFallback: false,
-});
-
-const onest = Onest({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-onest",
-  display: "swap",
-});
-
-const jbm = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-jbm",
+  variable: "--fontDmMono",
   display: "swap",
 });
 
@@ -38,7 +43,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(metaData.baseUrl),
   title: {
     default: metaData.title,
-    template: `%s | ${metaData.title}`,
+    template: `%s | ${metaData.name}`,
   },
   description: metaData.description,
   openGraph: {
@@ -73,13 +78,12 @@ export const metadata: Metadata = {
   keywords: [
     "Yoel Andreas Manoppo",
     "Yoel Manoppo",
-    "AI Forward Deployed Engineer",
-    "Multi Agent AI Indonesia",
-    "LangGraph Indonesia",
-    "Agentic Architecture",
-    "AI Engineer Jakarta",
-    "Cubicube",
-    "ReUse VeBetterDAO",
+    "Jasa pembuatan website",
+    "Jasa website perusahaan",
+    "Website company profile",
+    "AI Specialist Piranusa",
+    "Founder YOTEXT",
+    "Pembuat website Jakarta",
   ],
   authors: [{ name: "Yoel Andreas Manoppo", url: metaData.baseUrl }],
   creator: "Yoel Andreas Manoppo",
@@ -87,37 +91,25 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0c0c0b",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#e9e8e2" },
+    { media: "(prefers-color-scheme: dark)", color: "#131513" },
+  ],
   width: "device-width",
   initialScale: 1,
-  colorScheme: "dark",
 };
 
-const cx = (...classes: (string | undefined)[]) => classes.filter(Boolean).join(" ");
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="id"
-      className={cx(
-        newsreader.variable,
-        onest.variable,
-        jbm.variable,
-        GeistSans.variable,
-        GeistMono.variable
-      )}
+      className={[syne.variable, manrope.variable, fraunces.variable, dmMono.variable].join(" ")}
       suppressHydrationWarning
     >
       <head>
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed" />
         <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom Feed" />
         <link rel="alternate" type="application/feed+json" href="/feed.json" title="JSON Feed" />
-        <meta name="theme-color" content="#0c0c0b" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -127,18 +119,15 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className="bg-ink text-paper antialiased min-h-screen">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          forcedTheme="dark"
-          disableTransitionOnChange
-        >
-          <div className="grain" aria-hidden="true" />
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <a href="#isi" className="skipLink">
+            Lompat ke isi
+          </a>
           <Navbar />
-          <main className="min-h-[60vh]">{children}</main>
+          <main id="isi">{children}</main>
           <Footer />
+          <ScrollJump />
           <TalkativeYoel />
           <Analytics />
           <SpeedInsights />

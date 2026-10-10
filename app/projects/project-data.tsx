@@ -1,296 +1,215 @@
-export interface Project {
-  no: string;
-  sigil:
-    | "autocrawl"
-    | "atlas"
-    | "geocek"
-    | "sentinel"
-    | "juscat"
-    | "yota"
-    | "alto"
-    | "reuse"
-    | "soapy"
-    | "deskriptor"
-    | "sekriptor"
-    | "scope"
-    | "portfolio";
-  category: "Production · Defense AI" | "AI · Tooling" | "Web3 · Sustainability" | "Apps · Side";
+export interface ShowcaseWork {
+  slug: string;
   title: string;
-  subtitle: string;
-  year: string;
-  role: string;
-  type: string;
-  description: string;
-  highlights?: string[];
-  stack: string[];
-  infra?: string;
+  domain: string;
   url: string;
-  source?: string;
-  featured?: boolean;
+  year: string;
+  kind: string;
+  summary: string;
+  story: string;
+  points: string[];
+  tone: "piranusa" | "yotext" | "polimerindo";
+  shots: {
+    desktop: string;
+    long: string;
+    longHeight: number;
+    mobile: string;
+  };
 }
 
-export const projects: Project[] = [
+export interface ArchiveWork {
+  title: string;
+  year: string;
+  kind: string;
+  summary: string;
+  stack: string[];
+  url?: string;
+  source: string;
+  status: "live" | "code" | "offline";
+}
+
+export const showcase: ShowcaseWork[] = [
   {
-    no: "01",
-    sigil: "autocrawl",
-    category: "Production · Defense AI",
-    title: "Autocrawl",
-    subtitle: "Autonomous intelligence crawler",
-    year: "2025 · 2026",
-    role: "Lead Architect & Builder",
-    type: "Agentic 24hr crawler / Defense & security intelligence",
-    description:
-      "LangGraph state machine fanning out ke 50 parallel workers, ngecrawl security & defense expo vendors lewat open web. Multi-tier search: Wikipedia REST, DuckDuckGo, Google News RSS, plus OpenSERP yang ngejalanin Google, Bing, Yandex, Baidu simultaneously via headless Chromium. PDF brosur discovery + OCR pake Ollama vision (gemma4:e4b). Vendor identity resolution lewat schema.org + anchor link analysis + LLM tiebreak. Chroma vector store buat dedup cosine similarity. NLLB-200 translate semua data ke Bahasa Indonesia secara lokal. Vue 3 tactical dashboard dengan 2.5D world map, fly arcs antar intelligence hubs, live LangGraph canvas. Full observability: Prometheus, Grafana, Langfuse, structlog.",
-    highlights: [
-      "929 vendors indexed in one overnight run",
-      "12x original throughput estimate",
-      "150 vendors per hour at peak",
-      "104 fully enriched / 497 translated to ID",
-    ],
-    stack: [
-      "LangGraph",
-      "LangChain",
-      "Playwright",
-      "Crawl4AI",
-      "Ollama",
-      "IBM Granite",
-      "FastAPI",
-      "PostgreSQL",
-      "Redis",
-      "ChromaDB",
-      "Vue 3",
-      "ECharts",
-      "MapLibre",
-    ],
-    infra: "12 Docker services / GPU overlay optional / Zero cloud default",
-    url: "https://github.com/Y0EL/autocrawl",
-    source: "github.com/Y0EL/autocrawl",
-    featured: true,
-  },
-  {
-    no: "02",
-    sigil: "atlas",
-    category: "Production · Defense AI",
-    title: "Atlas",
-    subtitle: "Local AI voice intelligence",
-    year: "2025 · 2026",
-    role: "Architect & Builder",
-    type: "Full local voice AI pipeline / UIX intelligence system",
-    description:
-      "End-to-end local voice AI. Whisper handle speech-to-text dengan GPU acceleration via CUDA 12.x, support Blackwell RTX 50xx via nightly PyTorch. LLM inference bisa route ke Ollama (local), Groq (cloud speed), atau OpenRouter (fleksibilitas). edge-TTS convert response ke natural speech. WebSocket live mode buat real-time conversation. Persistent memory layer cross-session. Designed jalan dengan zero network dependency.",
-    highlights: [
-      "WebSocket live conversation mode",
-      "GPU-accelerated ASR (CUDA 12.x)",
-      "3 LLM backends · benchmarkable",
-      "Fully offline capable",
-    ],
-    stack: ["Whisper", "Ollama", "Groq", "OpenRouter", "edge-TTS", "FastAPI", "WebSocket", "CUDA"],
-    infra: "Runs entirely on device / GPU resident / Zero cloud required",
-    url: "https://github.com/Y0EL?tab=repositories",
-    source: "github.com/Y0EL",
-    featured: true,
-  },
-  {
-    no: "03",
-    sigil: "geocek",
-    category: "Production · Defense AI",
-    title: "Geocek",
-    subtitle: "OSINT geolocation engine",
-    year: "2025",
-    role: "Builder",
-    type: "Visual signal to coordinate geolocation system",
-    description:
-      "Geolocate gambar cuma dari visual cues. Gak butuh GPS metadata. License plate prefix mapping narrowin search ke regional bounding box. Road classification, lane count, dan median presence filter candidates dari Overpass API. Fuzzy landmark normalization handle misspelled atau partial POI mentions. Constraint intersection logic progressively eliminate candidates yang fail multiple criteria. Weighted confidence scoring estimate paling likely location plus radius of error.",
-    highlights: [
-      "100% free APIs · no paid services",
-      "Signal extraction → area refinement → constraint filter",
-      "Outputs: text report, GeoJSON, interactive Folium map",
-    ],
-    stack: ["Python", "OSM Nominatim", "Overpass", "GPT-4o", "LangChain", "Mapbox"],
-    infra: "100 percent free APIs / No paid services required",
-    url: "https://github.com/Y0EL/geocek",
-    source: "github.com/Y0EL/geocek",
-    featured: true,
-  },
-  {
-    no: "04",
-    sigil: "sentinel",
-    category: "Production · Defense AI",
-    title: "Sentinel",
-    subtitle: "AntiFraud heuristics",
-    year: "2024 · 2025",
-    role: "Builder",
-    type: "Behavioral signal analysis for fraud detection",
-    description:
-      "Detect inauthentic activity lewat behavioral pattern analysis. Scoring system examine transaction patterns dan interaction data buat variance signatures yang bedain organic human behavior dari synthetic atau bot-generated activity. Built dari first principles understanding cara algorithmic platforms detect dan respond ke inauthentic signals.",
-    highlights: ["Heuristic scoring engine", "Pattern variance analysis", "From-scratch first principles"],
-    stack: ["Python", "Heuristic scoring", "Pattern variance"],
-    url: "https://github.com/Y0EL/Sentinel",
-    source: "github.com/Y0EL/Sentinel",
-  },
-  {
-    no: "05",
-    sigil: "juscat",
-    category: "Web3 · Sustainability",
-    title: "Juscat",
-    subtitle: "Blockchain AI validation",
-    year: "2024",
-    role: "Builder",
-    type: "VeChain dApp dengan AI image validation",
-    description:
-      "Reward user dengan token kalau upload foto healthy juice drinks. GPT-4o validate keaslian image sebelum trigger smart contract reward. Solidity contracts di-deploy di VeChain Thor. Full monorepo: React frontend, Express TypeScript backend, Hardhat contract tooling.",
-    highlights: ["AI image authenticity check", "On-chain reward via Solidity", "VeWorld exclusive"],
-    stack: ["React", "VeChain SDK", "Solidity", "Hardhat", "GPT-4o", "Express"],
-    infra: "VeWorld exclusive / Thor blockchain network",
-    url: "https://github.com/Y0EL/Juscat",
-    source: "github.com/Y0EL/Juscat",
-  },
-  {
-    no: "06",
-    sigil: "yota",
-    category: "AI · Tooling",
-    title: "YOTA",
-    subtitle: "AI minutes-of-meeting generator",
-    year: "2025",
-    role: "Builder",
-    type: "Full-stack web app · Multi-agent AI workflow",
-    description:
-      "Asisten Rapat AI Cerdas. Convert meeting recording jadi structured documents: executive summary, discussion points, action items. Whisper handle transcription dengan automatic chunking buat meeting 3+ jam. Speaker diarization otomatis labelin speaker. CrewAI multi-agent system bikin professional document structure. Real-time progress monitoring. Export ke PDF, DOCX, Markdown, plain text. Action items langsung sync ke task database.",
-    highlights: [
-      "Long-form audio (3+ hours) dengan smart chunking",
-      "Multi-agent CrewAI workflow",
-      "PDF / DOCX / Markdown export",
-      "Speaker diarization",
-    ],
-    stack: ["Next.js 15", "React 19", "FastAPI", "Whisper", "GPT-4o", "CrewAI", "SQLite"],
-    url: "https://github.com/Y0EL/MoM",
-    source: "github.com/Y0EL/MoM",
-    featured: true,
-  },
-  {
-    no: "07",
-    sigil: "alto",
-    category: "AI · Tooling",
-    title: "ALTO",
-    subtitle: "Meeting audio transcription platform",
-    year: "2025",
-    role: "Architect & Builder",
-    type: "Full-stack transcription SaaS · Team-gated",
-    description:
-      "Platform transkripsi audio rapat buat tim. Drop recording sampai 9.5 jam, dapet transcript berlabel speaker plus ringkasan otomatis. Smart chunking audio >15 menit jadi ~10 menit chunks buat bypass Gemini token limits. Streaming upload langsung ke Gemini File API — zero disk persistence di server. Speaker diarization cross-chunk dengan label consistency. Support Bahasa Indonesia dan English auto-detect. Export ke TXT atau SRT subtitle. Team auth dengan session management dan admin user control.",
-    highlights: [
-      "9.5-hour single-file transcription",
-      "Streaming upload — zero server disk storage",
-      "Speaker diarization cross-chunk label consistency",
-      "Bilingual: Bahasa Indonesia & English auto-detect",
-    ],
-    stack: ["React", "TypeScript", "Vite", "Hono", "Drizzle ORM", "Neon Postgres", "Upstash Redis", "Gemini 2.5 Flash", "FFmpeg", "Fly.io"],
-    infra: "Fly.io backend · Netlify frontend · Neon + Upstash",
-    url: "https://github.com/Y0EL/ALTO",
-    source: "github.com/Y0EL/ALTO",
-    featured: true,
-  },
-  {
-    no: "08",
-    sigil: "reuse",
-    category: "Web3 · Sustainability",
-    title: "ReUse",
-    subtitle: "Decentralized photo-verified reuse rewards",
-    year: "2023 · Now",
-    role: "Co-Founder & Developer",
-    type: "VeBetterDAO sustainability dApp",
-    description:
-      "dApp yang ngasih reward ke user yang reusing barang dengan verifikasi foto, AI detection, on-chain reward distribution, dan community governance voting. Didanai dan di-endorse VeBetterDAO di bawah sustainability initiative.",
-    highlights: [
-      "VeBetterDAO funded & verified",
-      "AI-detected reuse verification",
-      "Community governance voting",
-    ],
-    stack: ["Next.js", "NestJS", "Supabase", "VeChain", "Solidity"],
-    url: "https://reuse.vet/",
-    source: "reuse.vet",
-  },
-  {
-    no: "09",
-    sigil: "soapy",
-    category: "Web3 · Sustainability",
-    title: "SoapyWorld",
-    subtitle: "Gamified sustainability dApp",
-    year: "2024 · Now",
-    role: "Founder & Developer",
-    type: "VeBetterDAO eco-action dApp",
-    description:
-      "Gamified dApp yang ngajak orang nyuci piring manual sebagai alternatif hemat energi. 800+ confirmed activities, 200+ verified, 100+ minted actions di testnet via EcoEarn.sol. Part of VeBetterDAO ecosystem.",
-    highlights: [
-      "800+ confirmed activities",
-      "200+ verified · 100+ minted on testnet",
-      "EcoEarn.sol smart contract",
-    ],
-    stack: ["Next.js", "NestJS", "Supabase", "VeChain", "EcoEarn.sol"],
-    url: "https://soapy.world/",
-    source: "soapy.world",
-  },
-  {
-    no: "10",
-    sigil: "deskriptor",
-    category: "AI · Tooling",
-    title: "AI Deskriptor",
-    subtitle: "E-commerce content generator",
-    year: "2024",
-    role: "Creator @ ZANDO Agency",
-    type: "AI-powered text generation tool",
-    description:
-      "AI-powered text generation buat product titles & descriptions e-commerce. Optimized buat market trends + trending keyword integration. Otomatisasi content creation buat product listings.",
-    highlights: ["Built during ZANDO Agency tenure", "Market-optimized output"],
-    stack: ["OpenAI", "Prompt Engineering", "Next.js"],
-    url: "https://deskriptor.yoel.online/",
-    source: "deskriptor.yoel.online",
-  },
-  {
-    no: "11",
-    sigil: "sekriptor",
-    category: "AI · Tooling",
-    title: "Sekriptor",
-    subtitle: "AI script generator untuk content creator",
-    year: "2021 · 2024",
-    role: "Creator",
-    type: "Zero-code AI automation",
-    description:
-      "AI-powered script generator buat content creators, adapted dari Gemini. Implemented dengan zero-code AI automation. Running & updated through 2024.",
-    stack: ["Gemini", "Next.js"],
-    url: "https://sekriptor.yoel.online/",
-    source: "sekriptor.yoel.online",
-  },
-  {
-    no: "12",
-    sigil: "scope",
-    category: "Apps · Side",
-    title: "Scope of Work",
-    subtitle: "Documentation platform",
-    year: "2024",
-    role: "Documentation Specialist & IT Dev",
-    type: "Collaborative documentation workflow",
-    description:
-      "Collaborative documentation platform buat PT. HERUN INTERNATIONAL BRAND. UI development plus content management. Modern web stack buat seamless documentation workflow.",
-    stack: ["React", "Tailwind", "Netlify"],
-    url: "https://scoopwork.netlify.app/",
-    source: "scoopwork.netlify.app",
-  },
-  {
-    no: "13",
-    sigil: "portfolio",
-    category: "Apps · Side",
-    title: "Field Dispatch",
-    subtitle: "This portfolio you're reading",
+    slug: "piranusa",
+    title: "Piranusa",
+    domain: "piranusa.com",
+    url: "https://www.piranusa.com/",
     year: "2026",
-    role: "Design & Build",
-    type: "Editorial monochrome portfolio",
-    description:
-      "Modern portfolio dengan Newsreader serif plus Onest sans plus JetBrains Mono. Dark editorial monochrome dengan crimson signal accent. MDX blog, AI persona chat (Talkative Yoel via Groq Llama 3.3 70B), responsive design, deployed on Vercel.",
-    stack: ["Next.js 14", "TypeScript", "Tailwind", "Groq", "MDX"],
-    url: "https://yoel.online/",
-    source: "yoel.online",
+    kind: "Website perusahaan",
+    summary: "Website untuk mitra teknologi CAD, BIM, dan 3D bagi industri di Indonesia.",
+    story:
+      "Piranusa menjual lisensi resmi ZWCAD, ZW3D, Archicad, SketchUp, dan Enscape, lalu mendampingi migrasi sampai training. Pengunjungnya arsitek, kontraktor, dan tim manufaktur yang sedang membandingkan biaya lisensi. Halaman pertama langsung menjawab kekhawatiran mereka sebelum masuk ke daftar produk.",
+    points: [
+      "Bisnis: distributor resmi software desain dan BIM",
+      "Pengunjung: arsitek, kontraktor, dan tim manufaktur",
+      "Yang bisa dilihat: alur dari masalah pengunjung, solusi per industri, sampai katalog produk",
+    ],
+    tone: "piranusa",
+    shots: {
+      desktop: "/work/piranusaDesktop.webp",
+      long: "/work/piranusaLong.webp",
+      longHeight: 2860,
+      mobile: "/work/piranusaMobile.webp",
+    },
+  },
+  {
+    slug: "yotext",
+    title: "YOTEXT",
+    domain: "yotext.app",
+    url: "https://yotext.app/",
+    year: "2026",
+    kind: "Produk AI",
+    summary: "Meeting jadi transkrip, ringkasan, keputusan, dan tugas yang bisa dibuka lagi kapan saja.",
+    story:
+      "YOTEXT merekam Google Meet lewat ekstensi Chrome, lalu menyimpan hasilnya di workspace yang bisa dicari. Websitenya menjelaskan produk baru dalam satu layar: apa yang terjadi saat meeting, sesudah meeting, dan saat konteks itu dibutuhkan lagi.",
+    points: [
+      "Produk: aplikasi catatan meeting berbasis AI",
+      "Pengunjung: profesional dan tim yang sering meeting online",
+      "Yang bisa dilihat: cara produk menjelaskan manfaatnya tanpa istilah teknis",
+    ],
+    tone: "yotext",
+    shots: {
+      desktop: "/work/yotextDesktop.webp",
+      long: "/work/yotextLong.webp",
+      longHeight: 3700,
+      mobile: "/work/yotextMobile.webp",
+    },
+  },
+  {
+    slug: "polimerindo",
+    title: "Dinamika Polimerindo",
+    domain: "polimerindo.com",
+    url: "https://www.polimerindo.com/",
+    year: "2026",
+    kind: "Website manufaktur",
+    summary: "Website perusahaan plastic injection molding, dari pembuatan mold sampai produksi massal.",
+    story:
+      "PT Dinamika Polimerindo melayani industri otomotif sampai FMCG. Calon pelanggannya pembeli industri yang perlu yakin soal kapasitas mesin, sertifikasi, dan konsistensi kualitas sebelum menghubungi tim sales.",
+    points: [
+      "Bisnis: plastic injection molding",
+      "Pengunjung: pembeli dan tim pengadaan industri",
+      "Yang bisa dilihat: penjelasan kapabilitas untuk calon pelanggan industri",
+    ],
+    tone: "polimerindo",
+    shots: {
+      desktop: "/work/polimerindoDesktop.webp",
+      long: "/work/polimerindoLong.webp",
+      longHeight: 4200,
+      mobile: "/work/polimerindoMobile.webp",
+    },
   },
 ];
 
-export const featuredProjects = projects.filter((p) => p.featured);
+export const archive: ArchiveWork[] = [
+  {
+    title: "Autocrawl",
+    year: "2025 · 2026",
+    kind: "Agen AI",
+    summary:
+      "Crawler otonom yang berjalan semalaman dengan 50 worker paralel. Satu kali jalan mengindeks 929 vendor pameran pertahanan.",
+    stack: ["LangGraph", "Playwright", "Ollama", "FastAPI", "Vue 3"],
+    url: "https://github.com/Y0EL/autocrawl",
+    source: "github.com/Y0EL/autocrawl",
+    status: "code",
+  },
+  {
+    title: "ALTO",
+    year: "2025",
+    kind: "Aplikasi transkripsi",
+    summary:
+      "Platform transkripsi rapat untuk tim. Rekaman sampai 9,5 jam menjadi transkrip berlabel pembicara beserta ringkasan.",
+    stack: ["React", "Hono", "Gemini", "Neon Postgres"],
+    url: "https://github.com/Y0EL/ALTO",
+    source: "github.com/Y0EL/ALTO",
+    status: "code",
+  },
+  {
+    title: "YOTA",
+    year: "2025",
+    kind: "Generator notulen",
+    summary: "Rekaman rapat menjadi ringkasan, poin diskusi, dan action item. Cikal bakal cara berpikir di balik YOTEXT.",
+    stack: ["Next.js", "FastAPI", "Whisper", "CrewAI"],
+    url: "https://github.com/Y0EL/MoM",
+    source: "github.com/Y0EL/MoM",
+    status: "code",
+  },
+  {
+    title: "Atlas",
+    year: "2025 · 2026",
+    kind: "Asisten suara lokal",
+    summary: "Asisten suara yang berjalan penuh di perangkat sendiri, dengan memori lintas sesi dan mode percakapan langsung.",
+    stack: ["Whisper", "Ollama", "FastAPI", "CUDA"],
+    url: "https://github.com/Y0EL?tab=repositories",
+    source: "github.com/Y0EL",
+    status: "code",
+  },
+  {
+    title: "Geocek",
+    year: "2025",
+    kind: "Geolokasi OSINT",
+    summary:
+      "Menebak lokasi foto hanya dari petunjuk visual seperti plat nomor, jenis jalan, dan landmark. Seluruhnya memakai API gratis.",
+    stack: ["Python", "Overpass", "GPT 4o"],
+    url: "https://github.com/Y0EL/geocek",
+    source: "github.com/Y0EL/geocek",
+    status: "code",
+  },
+  {
+    title: "Scope of Work",
+    year: "2024",
+    kind: "Platform dokumentasi",
+    summary: "Platform dokumentasi kolaboratif untuk PT Herun International Brand.",
+    stack: ["React", "Tailwind", "Netlify"],
+    url: "https://scoopwork.netlify.app/",
+    source: "scoopwork.netlify.app",
+    status: "live",
+  },
+  {
+    title: "ReUse",
+    year: "2023 · 2026",
+    kind: "dApp keberlanjutan",
+    summary: "Reward untuk orang yang memakai ulang barang, diverifikasi lewat foto dan AI. Didanai VeBetterDAO.",
+    stack: ["Next.js", "NestJS", "VeChain", "Solidity"],
+    source: "reuse.vet",
+    status: "offline",
+  },
+  {
+    title: "SoapyWorld",
+    year: "2024 · 2026",
+    kind: "dApp keberlanjutan",
+    summary:
+      "Mengajak orang mencuci piring manual sebagai aksi hemat energi. Lebih dari 800 aktivitas terkonfirmasi di testnet.",
+    stack: ["Next.js", "Supabase", "VeChain"],
+    source: "soapy.world",
+    status: "offline",
+  },
+  {
+    title: "Juscat",
+    year: "2024",
+    kind: "dApp dengan validasi AI",
+    summary: "Foto jus sehat divalidasi AI sebelum smart contract mengirim reward token.",
+    stack: ["React", "Solidity", "GPT 4o"],
+    url: "https://github.com/Y0EL/Juscat",
+    source: "github.com/Y0EL/Juscat",
+    status: "code",
+  },
+  {
+    title: "Sentinel",
+    year: "2024 · 2025",
+    kind: "Deteksi fraud",
+    summary: "Mesin skor yang membedakan perilaku manusia dari aktivitas bot lewat pola variasi.",
+    stack: ["Python"],
+    url: "https://github.com/Y0EL/Sentinel",
+    source: "github.com/Y0EL/Sentinel",
+    status: "code",
+  },
+  {
+    title: "AI Deskriptor",
+    year: "2024",
+    kind: "Alat konten ecommerce",
+    summary: "Judul dan deskripsi produk marketplace dibuat otomatis mengikuti kata kunci yang sedang ramai.",
+    stack: ["OpenAI", "Next.js"],
+    source: "deskriptor.yoel.online",
+    status: "offline",
+  },
+];

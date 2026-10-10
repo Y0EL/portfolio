@@ -1,393 +1,460 @@
 import { NextRequest, NextResponse } from "next/server";
-import { buildSystemPrompt, shouldRecallMemory } from "data/yoel/persona";
+import { buildSystemPrompt, shouldRecallMemory, TRUSTED_SOURCES } from "data/yoel/persona";
 
 export const runtime = "edge";
 
-type Msg = { role: "user" | "assistant" | "system"; content: string };
+type ToolCall = { id: string; type: "function"; function: { name: string; arguments: string } };
+type Msg =
+  | { role: "system" | "user"; content: string }
+  | { role: "assistant"; content: string; tool_calls?: ToolCall[] }
+  | { role: "tool"; content: string; tool_call_id: string };
 
-const GIBBERISH_HINTS = [
-  /[A-Za-z]{2,}(?:yur|wan|iku|kari|kroniki|tendas)\b/i,
-  /pergram|pwandu|kroniki|tendas|sablekari/i,
+const COMPACT_THRESHOLD = 8;
+const KEEP_RECENT = 4;
+const MAX_TOOL_ROUNDS = 2;
+const DEFAULT_BASE_URL = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1";
+const DEFAULT_MODEL = "qwen3.8-flash";
+const FALLBACK_REPLY =
+  "Maaf, saya lagi susah menjawab sekarang. Coba kirim lagi sebentar, atau langsung hubungi saya lewat email atau WhatsApp.";
+
+const TOOLS = [
+  {
+    type: "function",
+    function: {
+      name: "fetch_page",
+      description:
+        "Membuka satu halaman web publik dan mengembalikan isinya dalam bentuk teks, untuk mengecek fakta. Sumber utama tentang Yoel: " +
+        TRUSTED_SOURCES.join(", "),
+      parameters: {
+        type: "object",
+        properties: {
+          url: { type: "string", description: "URL lengkap yang ingin dibuka, diawali https." },
+        },
+        required: ["url"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "web_search",
+      description:
+        "Mencari informasi di web untuk mengecek fakta atau menjawab pertanyaan yang tidak ada di DATA. Mengembalikan daftar judul, URL, dan cuplikan.",
+      parameters: {
+        type: "object",
+        properties: {
+          query: { type: "string", description: "Kata kunci pencarian yang spesifik." },
+        },
+        required: ["query"],
+      },
+    },
+  },
 ];
 
-function looksGibberish(text: string): boolean {
-  return GIBBERISH_HINTS.some((r) => r.test(text));
+const PRIVATE_HOST = /^(localhost|0\.0\.0\.0|127\.|10\.|192\.168\.|169\.254\.|172\.(1[6-9]|2\d|3[01])\.|\[?::1\]?$|\[?f[cd]|.*\.local$|.*\.internal$)/i;
+
+const encoder = new TextEncoder();
+
+function packet(obj: Record<string, unknown>) {
+  return encoder.encode(JSON.stringify(obj) + "\n");
 }
 
-function looksTooThin(text: string, lastUser: string): boolean {
-  const t = text.trim();
-  if (t.length < 25) return true;
-  const techMentions = (lastUser.match(
-    /\b(autocrawl|atlas|geocek|sentinel|juscat|yota|reuse|soapy|deskriptor|sekriptor|langgraph|vue|next\.?js|fastapi|stack|gaji|salary|project|kerjaan|pengalaman)\b/gi
-  ) || []).map((s) => s.toLowerCase());
-  if (techMentions.length === 0) return false;
-  const hay = t.toLowerCase();
-  const matched = techMentions.filter((kw) => hay.includes(kw)).length;
-  return matched === 0 && t.length < 80;
+const CJK = /[　-〿぀-ヿ㐀-䶿一-鿿豈-﫿＀-￯]+/g;
+
+function tidy(text: string, allowCjk: boolean) {
+  const cleaned = text.replace(/\s*[—–]\s*/g, ", ");
+  return allowCjk ? cleaned : cleaned.replace(CJK, "");
 }
 
-function heuristicCompact(slice: Msg[], existing: string): string {
-  const userQs = slice
-    .filter((m) => m.role === "user")
-    .slice(-3)
-    .map((m) => m.content.slice(0, 120).trim());
-  const yoelAs = slice
-    .filter((m) => m.role === "assistant")
-    .slice(-2)
-    .map((m) => m.content.split(/[.!?]\s/)[0].slice(0, 180).trim());
-  const parts: string[] = [];
-  if (existing) parts.push(existing);
-  if (userQs.length) parts.push(`User udah nanya: ${userQs.join(" / ")}.`);
-  if (yoelAs.length) parts.push(`Yoel udah jelasin: ${yoelAs.join(". ")}.`);
-  return parts.join(" ").slice(0, 1000);
+function nowInJakarta() {
+  const now = new Date();
+  const date = new Intl.DateTimeFormat("id-ID", {
+    timeZone: "Asia/Jakarta",
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(now);
+  const time = new Intl.DateTimeFormat("id-ID", {
+    timeZone: "Asia/Jakarta",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(now);
+  return `${date}, pukul ${time} WIB`;
 }
 
-function cleanReply(raw: string): string {
-  return raw
-    .replace(/^\s*(yoel\s*[:.\-]?\s*)/i, "")
-    .replace(/[`~*_#>]+/g, "")
-    .replace(/—|–/g, "·")
-    .trim();
+function isAllowed(raw: string): URL | null {
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== "https:" && url.protocol !== "http:") return null;
+    if (url.username || url.password) return null;
+    if (PRIVATE_HOST.test(url.hostname)) return null;
+    if (url.port && !["80", "443"].includes(url.port)) return null;
+    return url;
+  } catch {
+    return null;
+  }
 }
 
-function isValidReply(text: string, lastUser: string): boolean {
-  if (!text || text.length < 10) return false;
-  if (looksGibberish(text)) return false;
-  if (looksTooThin(text, lastUser)) return false;
-  return true;
+async function timedFetch(input: string, init: RequestInit = {}, ms = 9000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
-/* Returns a 0-1 score of how much new text overlaps prior assistant text.
- * Uses normalized word-bag jaccard. High overlap (>0.5) means model is
- * just regurgitating earlier answers and should be regenerated. */
-function overlapScore(newText: string, priorTexts: string[]): number {
-  if (!priorTexts.length || newText.length < 30) return 0;
-  const tokens = (s: string): string[] => {
-    const seen: { [k: string]: true } = {};
-    const out: string[] = [];
-    const words = s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/);
-    for (let i = 0; i < words.length; i++) {
-      const w = words[i];
-      if (w.length > 3 && !seen[w]) {
-        seen[w] = true;
-        out.push(w);
+async function webSearch(query: string): Promise<string> {
+  const q = query.trim().slice(0, 200);
+  if (!q) return "GAGAL: kata kunci kosong.";
+  const jinaKey = process.env.JINA_API_KEY;
+  try {
+    if (jinaKey) {
+      const res = await timedFetch(
+        `https://s.jina.ai/?q=${encodeURIComponent(q)}`,
+        {
+          headers: {
+            Authorization: `Bearer ${jinaKey}`,
+            Accept: "application/json",
+            "X-Respond-With": "no-content",
+          },
+        },
+        15000
+      );
+      if (res.ok) {
+        const data = await res.json();
+        const rows = (data?.data || [])
+          .slice(0, 5)
+          .map((r: { title?: string; url?: string; description?: string }, i: number) =>
+            `${i + 1}. ${r.title || ""}\n${r.url || ""}\n${String(r.description || "").slice(0, 400)}`
+          );
+        if (rows.length) return `HASIL PENCARIAN "${q}" (pakai fetch_page untuk membaca detail):\n${rows.join("\n\n")}`;
       }
     }
-    return out;
-  };
-  const a = tokens(newText);
-  if (a.length === 0) return 0;
-  let maxJacc = 0;
-  for (let i = 0; i < priorTexts.length; i++) {
-    const b = tokens(priorTexts[i]);
-    if (b.length === 0) continue;
-    const bSet: { [k: string]: true } = {};
-    for (let j = 0; j < b.length; j++) bSet[b[j]] = true;
-    let inter = 0;
-    for (let j = 0; j < a.length; j++) if (bSet[a[j]]) inter++;
-    const union = a.length + b.length - inter;
-    const jacc = union > 0 ? inter / union : 0;
-    if (jacc > maxJacc) maxJacc = jacc;
+    const rows: string[] = [];
+    for (const lang of ["id", "en"]) {
+      const res = await timedFetch(
+        `https://${lang}.wikipedia.org/w/api.php?action=query&list=search&format=json&srlimit=3&utf8=1&srsearch=${encodeURIComponent(q)}`,
+        { headers: { "User-Agent": "YoelPortfolioAssistant/1.0 (https://yoel.online)" } },
+        7000
+      );
+      if (!res.ok) continue;
+      const data = await res.json();
+      for (const r of data?.query?.search || []) {
+        const snippet = String(r.snippet || "").replace(/<[^>]+>/g, "");
+        rows.push(`${r.title}\nhttps://${lang}.wikipedia.org/wiki/${encodeURIComponent(String(r.title).replace(/ /g, "_"))}\n${snippet}`);
+      }
+      if (rows.length >= 3) break;
+    }
+    if (!rows.length) return `TIDAK ADA HASIL untuk "${q}". Coba buka situs resmi yang relevan dengan fetch_page.`;
+    return `HASIL PENCARIAN WIKIPEDIA "${q}" (pakai fetch_page untuk membaca detail):\n${rows.map((r, i) => `${i + 1}. ${r}`).join("\n\n")}`;
+  } catch {
+    return "GAGAL: pencarian tidak bisa dijalankan sekarang.";
   }
-  return maxJacc;
 }
 
-const COMPACT_THRESHOLD = 6;
-const KEEP_RECENT = 3;
+function htmlToText(html: string) {
+  const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "").trim();
+  const description = (html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1] || "").trim();
+  const body = html
+    .replace(/<(script|style|noscript|svg|iframe)[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/(p|div|li|h[1-6]|section|article|tr)>/gi, "\n")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n\s*\n+/g, "\n")
+    .trim();
+  return { title, description, body };
+}
 
-/* ─── Groq backend ───────────────────────────────────────────── */
-async function callGroq(
+async function fetchPage(raw: string): Promise<string> {
+  const url = isAllowed(raw);
+  if (!url) return `DITOLAK: ${raw} bukan alamat web publik yang valid.`;
+  let direct = "";
+  try {
+    const res = await timedFetch(
+      url.toString(),
+      {
+        headers: { "User-Agent": "YoelPortfolioAssistant/1.0 (+https://yoel.online)", Accept: "text/html,application/json,text/plain" },
+        redirect: "follow",
+      },
+      7000
+    );
+    const type = res.headers.get("content-type") || "";
+    if (res.ok && /text|json|xml/.test(type)) {
+      const text = (await res.text()).slice(0, 600000);
+      if (!/html/.test(type)) {
+        direct = `SUMBER: ${url.toString()}\nISI:\n${text.slice(0, 6000)}`;
+      } else {
+        const { title, description, body } = htmlToText(text);
+        if (body.length > 400) {
+          direct = `SUMBER: ${url.toString()}\nJUDUL: ${title}\nDESKRIPSI: ${description}\nISI:\n${body.slice(0, 6000)}`;
+        }
+      }
+    }
+  } catch {}
+  if (direct) return direct;
+
+  try {
+    const jinaKey = process.env.JINA_API_KEY;
+    const res = await timedFetch(
+      `https://r.jina.ai/${url.toString()}`,
+      {
+        headers: {
+          Accept: "text/plain",
+          "X-Retain-Images": "none",
+          "X-Timeout": "15",
+          ...(jinaKey ? { Authorization: `Bearer ${jinaKey}` } : {}),
+        },
+      },
+      20000
+    );
+    if (!res.ok) return `GAGAL: ${url.hostname} tidak bisa dibaca (status ${res.status}).`;
+    const text = (await res.text()).replace(/\]\([^)]*\)/g, "]").replace(/\n{3,}/g, "\n\n");
+    return `SUMBER: ${url.toString()}\n${text.slice(0, 6000)}`;
+  } catch {
+    return `GAGAL: ${url.hostname} tidak bisa dibuka sekarang.`;
+  }
+}
+
+async function callQwen(
   messages: Msg[],
-  temp: number,
-  maxTokens: number,
-  key: string,
-  model: string
+  opts: {
+    key: string;
+    baseUrl: string;
+    model: string;
+    stream: boolean;
+    temperature: number;
+    maxTokens: number;
+    tools?: "auto" | "none";
+  }
 ) {
-  return fetch("https://api.groq.com/openai/v1/chat/completions", {
+  return fetch(`${opts.baseUrl.replace(/\/$/, "")}/chat/completions`, {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${key}`,
-      "Content-Type": "application/json",
-    },
+    headers: { Authorization: `Bearer ${opts.key}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      model,
+      model: opts.model,
       messages,
-      temperature: temp,
-      max_tokens: maxTokens,
+      stream: opts.stream,
+      temperature: opts.temperature,
       top_p: 0.9,
+      max_tokens: opts.maxTokens,
+      enable_thinking: false,
+      ...(opts.tools ? { tools: TOOLS, tool_choice: opts.tools } : {}),
     }),
   });
 }
 
-async function groqReply(
-  messages: Msg[],
-  temp: number,
-  maxTokens: number,
-  key: string,
-  model: string
-): Promise<string> {
-  const res = await callGroq(messages, temp, maxTokens, key, model);
-  if (!res.ok) return "";
-  const data = await res.json();
-  return cleanReply(data?.choices?.[0]?.message?.content || "");
-}
-
-/* ─── Gemini backend (fallback) ──────────────────────────────── */
-async function callGemini(
-  systemContent: string,
-  messages: Msg[],
-  temp: number,
-  maxTokens: number,
-  key: string,
-  model: string
-) {
-  /* Gemini uses role "model" for assistant, system goes in systemInstruction */
-  const contents = messages
-    .filter((m) => m.role === "user" || m.role === "assistant")
-    .map((m) => ({
-      role: m.role === "assistant" ? "model" : "user",
-      parts: [{ text: m.content }],
-    }));
-
-  return fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-goog-api-key": key,
-      },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: systemContent }] },
-        contents,
-        generationConfig: {
-          temperature: temp,
-          maxOutputTokens: maxTokens,
-          topP: 0.9,
-          /* Disable thinking tokens — they silently consume the maxOutputTokens
-           * budget on gemini-2.5-flash and leave the visible reply truncated. */
-          thinkingConfig: { thinkingBudget: 0 },
-        },
-      }),
+async function* readSse(res: Response) {
+  const reader = res.body!.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    buffer = lines.pop() || "";
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed.startsWith("data:")) continue;
+      const data = trimmed.slice(5).trim();
+      if (data === "[DONE]") return;
+      try {
+        yield JSON.parse(data);
+      } catch {}
     }
-  );
+  }
 }
 
-async function geminiReply(
-  systemContent: string,
-  messages: Msg[],
-  temp: number,
-  maxTokens: number,
-  key: string,
-  model: string
-): Promise<string> {
-  const res = await callGemini(systemContent, messages, temp, maxTokens, key, model);
-  if (!res.ok) return "";
-  const data = await res.json();
-  const text =
-    data?.candidates?.[0]?.content?.parts
-      ?.map((p: { text?: string }) => p?.text || "")
-      .join("") || "";
-  return cleanReply(text);
+async function summarize(older: Msg[], existing: string, opts: { key: string; baseUrl: string; model: string }) {
+  const text = older
+    .filter((m) => m.role === "user" || m.role === "assistant")
+    .map((m) => `${m.role === "user" ? "Pengunjung" : "Yoel"}: ${m.content}`)
+    .join("\n");
+  try {
+    const res = await callQwen(
+      [
+        {
+          role: "system",
+          content: `Rangkum potongan obrolan antara pengunjung dan Yoel dalam Bahasa Indonesia, maksimal 3 kalimat narasi. Catat topik, kebutuhan pengunjung, gaya bahasa pengunjung, dan data yang sudah dia berikan (nama, perusahaan, kebutuhan). Tanpa bullet dan tanpa kalimat pembuka.\n\nRingkasan sebelumnya: ${existing || "belum ada"}\n\nObrolan:\n${text}`,
+        },
+        { role: "user", content: "Tulis ringkasannya." },
+      ],
+      { ...opts, stream: false, temperature: 0.3, maxTokens: 220 }
+    );
+    if (!res.ok) return "";
+    const data = await res.json();
+    const out = String(data?.choices?.[0]?.message?.content || "").trim();
+    return out.length >= 20 && out.length <= 1200 ? out : "";
+  } catch {
+    return "";
+  }
 }
 
 export async function POST(req: NextRequest) {
-  const groqKey = process.env.GROQ_API_KEY;
-  const geminiKey = process.env.GOOGLE_API_KEY;
-
-  if (!groqKey && !geminiKey) {
-    return NextResponse.json(
-      {
-        error:
-          "Belum ada API key. Isi GROQ_API_KEY (primary) atau GOOGLE_API_KEY (fallback) di .env.local.",
-      },
-      { status: 500 }
-    );
+  const key = process.env.QWEN_API_KEY;
+  if (!key) {
+    return NextResponse.json({ error: "Asisten belum dikonfigurasi. Isi QWEN_API_KEY di environment." }, { status: 500 });
   }
+  const opts = {
+    key,
+    baseUrl: process.env.QWEN_BASE_URL || DEFAULT_BASE_URL,
+    model: process.env.QWEN_MODEL || DEFAULT_MODEL,
+  };
 
-  let body: { messages?: Msg[]; essentials?: string } = {};
+  let body: { messages?: { role: string; content: string }[]; essentials?: string } = {};
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json({ error: "Body bukan JSON." }, { status: 400 });
+    return NextResponse.json({ error: "Format permintaan tidak valid." }, { status: 400 });
   }
 
-  const incoming = (body.messages || []).filter(
-    (m) =>
-      m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string"
-  );
+  const incoming: Msg[] = (body.messages || [])
+    .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
+    .map((m) => ({ role: m.role as "user" | "assistant", content: m.content.slice(0, 4000) }));
   if (!incoming.length) {
     return NextResponse.json({ error: "Pesan kosong." }, { status: 400 });
   }
 
-  const existingEssentials = (body.essentials || "").slice(0, 1200);
-  const groqModel = process.env.GROQ_MODEL || "llama-3.1-8b-instant";
-  const geminiModel = process.env.GEMINI_MODEL || "gemini-flash-latest";
+  const stream = new ReadableStream({
+    async start(controller) {
+      const send = (obj: Record<string, unknown>) => controller.enqueue(packet(obj));
+      try {
+        let essentials = (body.essentials || "").slice(0, 1200);
+        let recent = incoming.slice(-6);
 
-  /* ─── Compaction ─────────────────────────────────────────── */
-  let essentials = existingEssentials;
-  let trimTo: number | undefined;
-  let essentialsUpdate: string | undefined;
-
-  if (incoming.length > COMPACT_THRESHOLD) {
-    const olderSlice = incoming.slice(0, incoming.length - KEEP_RECENT);
-    const conversationText = olderSlice
-      .map((m) => `${m.role === "user" ? "User" : "Yoel"}: ${m.content}`)
-      .join("\n");
-
-    const sumSystem = `Lo adalah summarizer. Tugas lo: rangkum potongan obrolan antara visitor dan Yoel (AI persona) dalam Bahasa Indonesia casual, MAX 3 kalimat pendek. Fokus ke:
-1. Topik utama yang udah dibahas
-2. Apa yang user keliatannya cari/peduliin
-3. Info penting yang udah dijelasin Yoel (angka, nama project, keputusan)
-
-JANGAN: pake bullet, heading, atau format laporan. Cuma 1-3 kalimat narasi singkat.
-JANGAN: bilang "berikut rangkuman" atau kata pembuka basa-basi.
-Output langsung ringkasan-nya aja.
-
-RINGKASAN SEBELUMNYA (kalau ada, gabungkan):
-${existingEssentials || "(belum ada)"}
-
-POTONGAN OBROLAN:
-${conversationText}`;
-
-    let llmSummary = "";
-    try {
-      if (groqKey) {
-        llmSummary = await groqReply(
-          [
-            { role: "system", content: sumSystem },
-            { role: "user", content: "Rangkum jadi 1-3 kalimat narasi singkat." },
-          ],
-          0.3,
-          180,
-          groqKey,
-          groqModel
-        );
-      }
-      if (!llmSummary && geminiKey) {
-        llmSummary = await geminiReply(
-          sumSystem,
-          [{ role: "user", content: "Rangkum jadi 1-3 kalimat narasi singkat." }],
-          0.3,
-          180,
-          geminiKey,
-          geminiModel
-        );
-      }
-      if (llmSummary && (llmSummary.length < 20 || llmSummary.length > 1200 || looksGibberish(llmSummary))) {
-        llmSummary = "";
-      }
-    } catch {
-      /* swallow */
-    }
-    const finalSummary = llmSummary || heuristicCompact(olderSlice, existingEssentials);
-    if (finalSummary) {
-      essentials = finalSummary;
-      essentialsUpdate = finalSummary;
-      trimTo = KEEP_RECENT + 1;
-    }
-  }
-
-  /* ─── Main inference with fallback chain ─────────────────── */
-  let systemPrompt = buildSystemPrompt();
-
-  const recent = trimTo ? incoming.slice(-KEEP_RECENT) : incoming.slice(-6);
-  const lastUserMsg =
-    [...recent].reverse().find((m) => m.role === "user")?.content || "";
-
-  /* Only inject essentials into the system prompt when the user message
-   * actually references past conversation (recall triggers). This stops
-   * old topics from bleeding into off-topic answers and keeps responses
-   * grounded in the current question. */
-  if (essentials && shouldRecallMemory(lastUserMsg)) {
-    systemPrompt += `\n\nRINGKASAN OBROLAN SEBELUMNYA (user lagi nanya tentang ini):\n${essentials}\n\nJawab pertanyaan user sekarang dengan referensi ringkasan di atas. JANGAN copy paste jawaban lama.`;
-  }
-
-  /* Anti-repetition: collect last 2 assistant responses for overlap check */
-  const lastAssistant = incoming
-    .filter((m) => m.role === "assistant")
-    .slice(-2)
-    .map((m) => m.content);
-
-  let reply = "";
-  let usedFallback = false;
-  const debug: string[] = [];
-
-  const isBad = (r: string) =>
-    !isValidReply(r, lastUserMsg) || overlapScore(r, lastAssistant) > 0.5;
-
-  try {
-    /* Attempt 1: Groq primary */
-    if (groqKey) {
-      reply = await groqReply(
-        [{ role: "system", content: systemPrompt }, ...recent],
-        0.55,
-        300,
-        groqKey,
-        groqModel
-      );
-      debug.push(
-        `groq#1 len=${reply.length} overlap=${overlapScore(reply, lastAssistant).toFixed(2)}`
-      );
-
-      /* Retry Groq once with different temp if bad or too repetitive */
-      if (isBad(reply)) {
-        const second = await groqReply(
-          [{ role: "system", content: systemPrompt }, ...recent],
-          0.8,
-          350,
-          groqKey,
-          groqModel
-        );
-        debug.push(
-          `groq#2 len=${second.length} overlap=${overlapScore(second, lastAssistant).toFixed(2)}`
-        );
-        if (!isBad(second)) reply = second;
-      }
-    }
-
-    /* Attempt 2: Gemini fallback */
-    if (isBad(reply) && geminiKey) {
-      const gem = await geminiReply(
-        systemPrompt,
-        recent,
-        0.7,
-        400,
-        geminiKey,
-        geminiModel
-      );
-      debug.push(
-        `gemini len=${gem.length} overlap=${overlapScore(gem, lastAssistant).toFixed(2)}`
-      );
-      if (!isBad(gem)) {
-        reply = gem;
-        usedFallback = true;
-      } else if (gem && gem.length > 0 && !looksGibberish(gem)) {
-        /* Last-resort: even if Gemini reply is "thin", use it as long as it's
-         * not gibberish and doesn't dupe earlier answer. */
-        if (overlapScore(gem, lastAssistant) < 0.6) {
-          reply = gem;
-          usedFallback = true;
+        if (incoming.length > COMPACT_THRESHOLD) {
+          const older = incoming.slice(0, incoming.length - KEEP_RECENT);
+          const summary = await summarize(older, essentials, opts);
+          if (summary) {
+            essentials = summary;
+            recent = incoming.slice(-KEEP_RECENT);
+            send({ t: "meta", essentialsUpdate: summary, trimTo: KEEP_RECENT + 1 });
+          }
         }
+
+        const lastUser = [...recent].reverse().find((m) => m.role === "user")?.content || "";
+        const casual = /\b(gue|gua|gw|lo|lu|loe|elo|bro|bray|cuy|wkwk+|anjir|anjay|gan|bang)\b/i.test(lastUser);
+        const english = /^[\x00-\x7F]*$/.test(lastUser) && /\b(the|you|your|what|how|can|is|are|do|i)\b/i.test(lastUser);
+        const register = english
+          ? "Pengunjung menulis dalam bahasa Inggris. Balas dalam bahasa Inggris."
+          : casual
+            ? "MODE SANTAI: pakai gue dan lo untuk seluruh jawaban ini."
+            : "MODE SOPAN: pakai saya dan kamu untuk seluruh jawaban ini, jangan pakai gue, lo, atau bro.";
+        const allowCjk =/[一-鿿]/.test(lastUser);
+        let system = `${buildSystemPrompt()}\n\nWAKTU SEKARANG: ${nowInJakarta()}. Gunakan ini jika pengunjung bertanya jam, hari, atau tanggal, dan untuk menilai seberapa baru sebuah informasi.\n\nGAYA BAHASA UNTUK JAWABAN INI: ${register}`;
+        if (essentials && (shouldRecallMemory(lastUser) || incoming.length > COMPACT_THRESHOLD)) {
+          system += `\n\nRINGKASAN OBROLAN SEBELUMNYA:\n${essentials}`;
+        }
+
+        const messages: Msg[] = [{ role: "system", content: system }, ...recent];
+        const research: string[] = [];
+        let produced = "";
+
+        for (let round = 0; round <= MAX_TOOL_ROUNDS; round++) {
+          const finalRound = round === MAX_TOOL_ROUNDS;
+          const payload: Msg[] = finalRound
+            ? [
+                {
+                  role: "system",
+                  content: `${system}\n\nHASIL RISET YANG SUDAH KAMU LAKUKAN:\n${research.join("\n\n---\n\n").slice(0, 14000)}\n\nSekarang jawab pesan terakhir pengunjung berdasarkan riset di atas. Alat sudah tidak tersedia. Jika riset belum cukup, katakan terus terang apa yang sudah kamu temukan.`,
+                },
+                ...recent,
+              ]
+            : messages;
+          const res = await callQwen(payload, {
+            ...opts,
+            stream: true,
+            temperature: 0.7,
+            maxTokens: 700,
+            tools: finalRound ? undefined : "auto",
+          });
+          if (!res.ok || !res.body) {
+            if (process.env.NODE_ENV !== "production") {
+              console.error("qwen error", res.status, (await res.text().catch(() => "")).slice(0, 500));
+            }
+            break;
+          }
+
+          let content = "";
+          const calls: ToolCall[] = [];
+          for await (const chunk of readSse(res)) {
+            const delta = chunk?.choices?.[0]?.delta;
+            if (!delta) continue;
+            if (typeof delta.content === "string" && delta.content) {
+              const piece = tidy(delta.content, allowCjk);
+              content += piece;
+              produced += piece;
+              send({ t: "delta", v: piece });
+            }
+            for (const tc of delta.tool_calls || []) {
+              const i = typeof tc.index === "number" ? tc.index : 0;
+              calls[i] = calls[i] || { id: "", type: "function", function: { name: "", arguments: "" } };
+              if (tc.id) calls[i].id = tc.id;
+              if (tc.function?.name) calls[i].function.name += tc.function.name;
+              if (tc.function?.arguments) calls[i].function.arguments += tc.function.arguments;
+            }
+          }
+
+          const toolCalls = calls
+            .filter(Boolean)
+            .slice(0, 3)
+            .map((c, i) => ({ ...c, id: c.id || `call_${round}_${i}` }));
+          if (finalRound || !toolCalls.length) break;
+
+          messages.push({ role: "assistant", content, tool_calls: toolCalls });
+          for (const call of toolCalls) {
+            let args: { url?: string; query?: string } = {};
+            try {
+              args = JSON.parse(call.function.arguments || "{}");
+            } catch {}
+            let result = "Alat tidak dikenal.";
+            if (call.function.name === "web_search" && !String(args.query || "").trim()) {
+              result = "GAGAL: kata kunci kosong.";
+            } else if (call.function.name === "fetch_page") {
+              const url = String(args.url || "");
+              let host = url;
+              try {
+                host = new URL(url).hostname.replace(/^www\./, "");
+              } catch {}
+              send({ t: "status", v: `Membuka ${host || "halaman"}` });
+              result = await fetchPage(url);
+            } else if (call.function.name === "web_search") {
+              const query = String(args.query || "");
+              send({ t: "status", v: `Mencari "${query.slice(0, 40)}"` });
+              result = await webSearch(query);
+            }
+            messages.push({ role: "tool", tool_call_id: call.id, content: result });
+            research.push(`${call.function.name}(${call.function.arguments})\n${result}`);
+          }
+          send({ t: "status", v: "" });
+        }
+
+        if (!produced.trim()) send({ t: "delta", v: FALLBACK_REPLY });
+      } catch {
+        send({ t: "delta", v: FALLBACK_REPLY });
+      } finally {
+        send({ t: "done" });
+        controller.close();
       }
-    }
+    },
+  });
 
-    if (!isValidReply(reply, lastUserMsg)) {
-      reply =
-        "Wah, koneksi gue lagi flaky bro. Coba refresh atau tanya lagi 5 detik lagi ya.";
-    }
-
-    return NextResponse.json({
-      reply,
-      ...(essentialsUpdate ? { essentialsUpdate } : {}),
-      ...(trimTo ? { trimTo } : {}),
-      ...(usedFallback ? { backend: "fallback" } : {}),
-      ...(process.env.NODE_ENV !== "production" ? { debug } : {}),
-    });
-  } catch (err: any) {
-    return NextResponse.json(
-      { error: `Network: ${err?.message || "unknown"}`, debug },
-      { status: 502 }
-    );
-  }
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "application/x-ndjson; charset=utf-8",
+      "Cache-Control": "no-cache, no-transform",
+      "X-Accel-Buffering": "no",
+    },
+  });
 }

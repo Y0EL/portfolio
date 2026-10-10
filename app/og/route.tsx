@@ -3,19 +3,19 @@ import { metaData } from "app/config";
 
 export const runtime = "edge";
 
-const INK = "#0c0c0b";
-const PAPER = "#ece6da";
-const BONE = "#b8b3a8";
-const ASH = "#6f6c64";
-const CRIMSON = "#e8512a";
+const INK = "#e9e8e2";
+const PAPER = "#212323";
+const BONE = "#4f5650";
+const ASH = "#646a64";
+const CRIMSON = "#477955";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const title = url.searchParams.get("title") || "Yoel Andreas Manoppo";
-  const kicker = url.searchParams.get("kicker") || "FIELD DISPATCH";
+  const kicker = url.searchParams.get("kicker") || "WEBSITE DAN AI";
   const subtitle =
     url.searchParams.get("subtitle") ||
-    "AI Forward Deployed Engineer · Multi Agent AI · Jakarta";
+    "AI Specialist di Piranusa · Founder YOTEXT · Jakarta";
 
   const photoUrl = new URL("/yoel.jpg", request.url).toString();
 

@@ -6,29 +6,47 @@
   "lokasi": "Jakarta, Indonesia",
   "github": "github.com/Y0EL",
   "website": "https://yoel.online",
-  "judul_profil": "AI Forward Deployed Engineer · Agentic Architecture · UI Specialist",
-  "tagline_pendek": "Building agents for the state.",
-  "ringkasan": "AI Forward Deployed Engineer pada tim inti 4 orang yang membangun multi-agent AI skala nasional untuk operasi intelijen pemerintah Indonesia. Spesialis dalam agentic architecture, LangGraph state machines, multi-tier search pipelines, full observability stacks, dan Vue 3 tactical frontends. Rekam jejak mencakup bidang pertahanan, blockchain, eCommerce, dan digital agency.",
-  "pengalaman_tahun": 3,
-  "pengalaman_label": "3 tahun",
+  "judul_profil": "AI Specialist di Piranusa · Founder YOTEXT · Pembuat website bisnis",
+  "tagline_pendek": "I build websites people get.",
+  "ringkasan": "AI Specialist di Piranusa dan founder YOTEXT. Membantu bisnis membuat website perusahaan dan produk digital yang mudah dipahami pengunjungnya. Karya website yang pernah dikerjakan: Piranusa (software CAD, BIM, dan 3D), YOTEXT (catatan meeting berbasis AI), dan PT Dinamika Polimerindo (plastic injection molding). Sebelumnya membangun sistem multi agent AI untuk pemerintahan, dApp di ekosistem VeChain, dan alat AI di agensi digital.",
+  "pengalaman_tahun": 4,
+  "pengalaman_label": "4 tahun",
   "pengalaman_kerja": [
+    {
+      "id": 7,
+      "posisi": "AI Specialist",
+      "perusahaan": "Piranusa",
+      "periode": "2026 · Sekarang",
+      "lokasi": "Jakarta",
+      "bidang": "Software CAD, BIM, dan 3D · AI · Website perusahaan",
+      "ringkas": "Membawa AI ke pekerjaan sehari hari tim di Piranusa, mitra teknologi CAD, BIM, dan 3D."
+    },
+    {
+      "id": 6,
+      "posisi": "Founder",
+      "perusahaan": "YOTEXT",
+      "periode": "2026 · Sekarang",
+      "lokasi": "Jakarta",
+      "bidang": "Produk AI · Catatan meeting",
+      "ringkas": "Mendirikan YOTEXT, aplikasi yang mengubah meeting jadi transkrip, ringkasan, keputusan, dan tugas."
+    },
     {
       "id": 4,
       "posisi": "AI Forward Deployed Engineer / UI Specialist",
       "perusahaan": "PT. GSP",
-      "periode": "Mei 2025 · Sekarang",
+      "periode": "Mei 2025 · 2026",
       "lokasi": "Jakarta",
       "bidang": "Government AI Infrastructure · Agentic Systems · Frontend Engineering",
-      "ringkas": "Bagian dari 4-orang core team bangun infrastruktur AI level nasional untuk operasi intelijen."
+      "ringkas": "Bagian dari tim inti 4 orang yang membangun infrastruktur AI level nasional untuk operasi intelijen."
     },
     {
       "id": 3,
       "posisi": "Software Engineer",
       "perusahaan": "PT. Decision Tree Indonesia",
-      "periode": "Desember 2025 · Sekarang",
+      "periode": "Desember 2025 · 2026",
       "lokasi": "Remote",
       "bidang": "Healthcare · eCommerce · Sales · Product",
-      "ringkas": "Pekerjaan cross-domain dengan fokus product engineering."
+      "ringkas": "Pekerjaan lintas bidang dengan fokus product engineering."
     },
     {
       "id": 2,
@@ -37,7 +55,7 @@
       "periode": "Januari 2024 · Februari 2026",
       "lokasi": "Remote",
       "bidang": "Blockchain · AI · Environmental · ESG",
-      "ringkas": "Membangun ReUse & SoapyWorld di bawah VeBetterDAO."
+      "ringkas": "Membangun ReUse dan SoapyWorld di ekosistem VeBetterDAO."
     },
     {
       "id": 1,
@@ -46,10 +64,43 @@
       "periode": "Mei 2022 · Desember 2024",
       "lokasi": "Jakarta",
       "bidang": "Digital Marketing · Supply Chain · Social Media",
-      "ringkas": "Bangun internal AI automation tools, ciptain AI Deskriptor."
+      "ringkas": "Membangun alat otomasi AI internal, termasuk AI Deskriptor untuk konten ecommerce."
     }
   ],
   "proyek": [
+    {
+      "id": "piranusa",
+      "no": "W1",
+      "judul": "Piranusa",
+      "subtitle": "Website perusahaan software CAD, BIM, dan 3D",
+      "periode": "2026",
+      "peran": "Pembuat website",
+      "deskripsi": "Website untuk distributor resmi ZWCAD, ZW3D, Archicad, SketchUp, dan Enscape di Indonesia.",
+      "stack": ["Website perusahaan", "Struktur halaman produk", "Dua bahasa"],
+      "url": "https://www.piranusa.com/"
+    },
+    {
+      "id": "yotext",
+      "no": "W2",
+      "judul": "YOTEXT",
+      "subtitle": "Produk AI untuk catatan meeting",
+      "periode": "2026",
+      "peran": "Founder",
+      "deskripsi": "Merekam Google Meet lewat ekstensi Chrome, lalu menyimpan transkrip yang bisa dicari, ringkasan, keputusan, dan tugas di satu workspace.",
+      "stack": ["Produk AI", "Ekstensi Chrome", "Workspace tim"],
+      "url": "https://yotext.app/"
+    },
+    {
+      "id": "polimerindo",
+      "no": "W3",
+      "judul": "PT Dinamika Polimerindo",
+      "subtitle": "Website manufaktur plastic injection molding",
+      "periode": "2026",
+      "peran": "Kontributor",
+      "deskripsi": "Website perusahaan plastic injection molding dengan layanan dari pembuatan mold sampai produksi.",
+      "stack": ["Website manufaktur", "B2B"],
+      "url": "https://www.polimerindo.com/"
+    },
     {
       "id": "autocrawl",
       "no": "01",
@@ -184,17 +235,11 @@
     { "nama": "English", "level": "C2 (EFSET)" },
     { "nama": "Mandarin", "level": "Spoken" }
   ],
-  "musik": {
-    "brand": "Cubicube",
-    "sejak": 2020,
-    "spotify_artist_id": "2ztUmew6tgNQ8JtRRep4Td",
-    "deskripsi": "Music producer & artist sejak 2020. Memadukan kreatifitas manusia dengan inovasi AI."
-  },
   "sosial": {
     "github": "https://github.com/Y0EL",
     "twitter": "https://x.com/vehunt",
     "instagram": "https://www.instagram.com/yoelmanoppo",
-    "linkedin": "https://www.linkedin.com/in/yoelmanoppo",
+    "linkedin": "https://www.linkedin.com/in/y0el",
     "email": "mailto:yoelandreasmanoppo@gmail.com"
   },
   "ekspektasi_gaji": {

@@ -2,93 +2,89 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ThemeSwitch } from "./theme-switch";
+import { socialLinks } from "app/config";
 
 const navItems = [
-  { href: "/", label: "Today" },
-  { href: "/projects", label: "Specimens" },
-  { href: "/blog", label: "Wire" },
-  { href: "/photos", label: "Plates" },
-  { href: "/career-timeline", label: "Ledger" },
+  { href: "/", label: "Beranda" },
+  { href: "/projects", label: "Karya" },
+  { href: "/career-timeline", label: "Perjalanan" },
+  { href: "/blog", label: "Tulisan" },
+  { href: "/photos", label: "Foto" },
 ];
+
+function isActive(pathname: string, href: string) {
+  return href === "/" ? pathname === "/" : pathname.startsWith(href);
+}
 
 export function Navbar() {
   const pathname = usePathname() || "/";
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => setOpen(false), [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-ink/75 border-b border-[color:var(--rule)]">
-      <div className="max-w-[1180px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between gap-6">
-        {/* Brand mark */}
-        <Link href="/" className="group flex items-center gap-3">
-          <span className="signal-dot" aria-hidden="true" />
-          <span className="kicker">
-            <span className="text-paper">Field Dispatch</span>
-            <span className="mx-2 text-ash">/</span>
-            <span className="text-ash">№017</span>
-          </span>
+    <header className="siteNav">
+      <div className="siteNavInner">
+        <Link href="/" className="siteLogo" aria-label="Yoel Andreas Manoppo, ke beranda">
+          Yoel Andreas
+          <br />
+          Manoppo<sup>®</sup>
         </Link>
 
-        {/* Chip-style nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => {
-            const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={[
-                  "kicker px-3 py-1.5 rounded-full transition-all duration-300",
-                  active
-                    ? "bg-paper/95 text-ink"
-                    : "text-ash hover:text-paper hover:bg-white/[0.04]",
-                ].join(" ")}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+        <nav className="siteNavLinks" aria-label="Navigasi utama">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="navLink"
+              aria-current={isActive(pathname, item.href) ? "page" : undefined}
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
-        {/* Right: live timestamp */}
-        <div className="hidden lg:flex items-center gap-3 kicker text-ash">
-          <DateTicker />
+        <div className="navTools">
+          <span className="navMeta">
+            Website dan AI
+            <br />
+            Jakarta, Indonesia
+          </span>
+          <a href={socialLinks.email} className="navCta">
+            Hubungi saya
+          </a>
+          <ThemeSwitch />
+          <button
+            type="button"
+            className="menuToggle"
+            aria-expanded={open}
+            aria-controls="menuPonsel"
+            aria-label={open ? "Tutup menu" : "Buka menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
         </div>
-
-        {/* Mobile menu */}
-        <details className="md:hidden">
-          <summary className="kicker px-3 py-1.5 rounded-full border border-[color:var(--rule)] text-bone cursor-pointer list-none select-none">
-            Menu
-          </summary>
-          <div className="absolute right-6 mt-3 bg-ink-2 border border-[color:var(--rule)] rounded-card p-2 min-w-[180px] shadow-2xl">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block kicker px-3 py-2 rounded-md text-bone hover:text-paper hover:bg-white/[0.04]"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </details>
       </div>
-    </header>
-  );
-}
 
-function DateTicker() {
-  const d = new Date();
-  const formatted = d
-    .toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    })
-    .toUpperCase();
-  return (
-    <>
-      <span className="text-paper">Jakarta</span>
-      <span className="text-ash">·</span>
-      <span>{formatted}</span>
-    </>
+      <nav id="menuPonsel" className="mobileMenu" data-open={open} aria-label="Navigasi ponsel">
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={isActive(pathname, item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </Link>
+        ))}
+        <a href={socialLinks.email}>
+          Hubungi saya
+          <ArrowUpRight aria-hidden="true" />
+        </a>
+      </nav>
+    </header>
   );
 }

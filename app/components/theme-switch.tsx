@@ -1,92 +1,76 @@
 "use client";
-import * as React from "react";
-import { useTheme } from "next-themes";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import type { ThemeProviderProps } from "next-themes/dist/types";
-import { FaCircleHalfStroke } from "react-icons/fa6";
 
-const storageKey = 'theme-preference';
+import * as React from "react";
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
+import type { ThemeProviderProps } from "next-themes/dist/types";
+import { Moon, Sun } from "lucide-react";
+
+type ViewTransitionDocument = Document & {
+  startViewTransition?: (callback: () => void) => { ready: Promise<void> };
+};
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return (
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      {...props}
-    >
-      {children}
-    </NextThemesProvider>
-  );
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
 
-export const ThemeSwitch: React.FC = () => {
-  const { setTheme } = useTheme();
+function applyClass(next: "light" | "dark") {
+  const root = document.documentElement;
+  root.classList.toggle("dark", next === "dark");
+  root.classList.toggle("light", next === "light");
+  root.style.colorScheme = next;
+}
+
+export function ThemeSwitch() {
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
-  const [currentTheme, setCurrentTheme] = React.useState<'light' | 'dark'>('light');
+  const buttonRef = React.useRef<HTMLButtonElement | null>(null);
 
-  const getColorPreference = (): 'light' | 'dark' => {
-    if (typeof window !== 'undefined') {
-      const storedPreference = localStorage.getItem(storageKey);
-      if (storedPreference) {
-        return storedPreference as 'light' | 'dark';
-      }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  React.useEffect(() => setMounted(true), []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
+  function toggle() {
+    const next = isDark ? "light" : "dark";
+    const doc = document as ViewTransitionDocument;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!doc.startViewTransition || reduced) {
+      const root = document.documentElement;
+      if (!reduced) root.classList.add("themeFading");
+      applyClass(next);
+      setTheme(next);
+      window.setTimeout(() => root.classList.remove("themeFading"), 500);
+      return;
     }
-    return 'light'; 
-  };
 
-  const reflectPreference = (theme: 'light' | 'dark') => {
-    document.documentElement.classList.remove('bg-light', 'bg-dark');
-    document.documentElement.classList.add(`bg-${theme}`);
-    setCurrentTheme(theme);
-    setTheme(theme);
-  };
+    const rect = buttonRef.current?.getBoundingClientRect();
+    const x = rect ? rect.left + rect.width / 2 : window.innerWidth;
+    const y = rect ? rect.top + rect.height / 2 : 0;
+    const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
 
-  React.useEffect(() => {
-    setMounted(true);
-    const initTheme = getColorPreference();
-    reflectPreference(initTheme);
+    const transition = doc.startViewTransition(() => {
+      applyClass(next);
+      setTheme(next);
+    });
 
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => {
-      const newTheme = mediaQuery.matches ? 'dark' : 'light';
-      localStorage.setItem(storageKey, newTheme);
-      reflectPreference(newTheme);
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [setTheme]);
-
-  const toggleTheme = () => {
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    localStorage.setItem(storageKey, newTheme);
-    reflectPreference(newTheme);
-  };
-
-  if (!mounted) {
-    return (
-      <FaCircleHalfStroke
-        className="h-[14px] w-[14px] text-[#1c1c1c]"
-        aria-hidden="true"
-      />
-    );
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: 650, easing: "cubic-bezier(0.2, 0.75, 0.2, 1)", pseudoElement: "::view-transition-new(root)" }
+      );
+    });
   }
 
   return (
     <button
-      id="theme-toggle"
-      aria-label={`${currentTheme} mode`}
-      onClick={toggleTheme}
-      className="flex items-center justify-center transition-opacity duration-300 hover:opacity-90"
+      ref={buttonRef}
+      type="button"
+      className="themeButton"
+      onClick={toggle}
+      aria-label={isDark ? "Pakai tampilan terang" : "Pakai tampilan gelap"}
+      title={isDark ? "Tampilan terang" : "Tampilan gelap"}
     >
-      <FaCircleHalfStroke
-        className={`h-[14px] w-[14px] ${
-          currentTheme === "dark" ? "text-[#D4D4D4]" : "text-[#1c1c1c]"
-        }`}
-      />
+      {isDark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
     </button>
   );
-};
+}
