@@ -47,3 +47,6 @@ package-lock.json
 # Site screenshots
 /screenshots/
 /.impeccable/
+
+# Image candidates
+/public/kandidat/

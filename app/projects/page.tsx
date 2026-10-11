@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { showcase, archive } from "./project-data";
 import { CaseList } from "app/components/caseList";
 import { ArchiveRow } from "app/components/archiveRow";
+import { withLiveVisibilityAll } from "app/lib/repoVisibility";
 
 export const metadata: Metadata = {
   title: "Karya",
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
     "Website dan produk digital karya Yoel Andreas Manoppo: Piranusa, YOTEXT, PT Dinamika Polimerindo, dan arsip proyek AI.",
 };
 
-export default function Projects() {
+export default async function Projects() {
+  const liveArchive = await withLiveVisibilityAll(archive);
   return (
     <>
       <header className="pageHead">
@@ -31,7 +33,7 @@ export default function Projects() {
           Proyek AI, blockchain, dan <em>alat kerja.</em>
         </h2>
         <ul className="archiveList">
-          {archive.map((item) => (
+          {liveArchive.map((item) => (
             <li key={item.title}>
               <ArchiveRow item={item} />
             </li>

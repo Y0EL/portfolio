@@ -54,6 +54,17 @@ export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), "content"));
 }
 
+export function getNarration(slug: string) {
+  let file = path.join(process.cwd(), "public", "audio", "blog", `${slug}.json`);
+  if (!fs.existsSync(file)) return null;
+  let { duration } = JSON.parse(fs.readFileSync(file, "utf-8")) as { duration: number };
+  return {
+    audio: `/audio/blog/${slug}.mp3`,
+    words: `/audio/blog/${slug}.json`,
+    duration,
+  };
+}
+
 export function formatDate(date: string | undefined, includeRelative = false) {
   if (!date) {
     return "No date";

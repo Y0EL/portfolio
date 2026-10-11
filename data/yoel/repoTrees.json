@@ -1,0 +1,2106 @@
+{
+ "autocrawl": {
+  "items": [
+   {
+    "path": ".design-spec-output.txt",
+    "dir": false
+   },
+   {
+    "path": ".gitignore",
+    "dir": false
+   },
+   {
+    "path": "0",
+    "dir": false
+   },
+   {
+    "path": "DESIGN.md",
+    "dir": false
+   },
+   {
+    "path": "OVERNIGHT_RUN_REPORT_2026-05-07.md",
+    "dir": false
+   },
+   {
+    "path": "PRODUCT.md",
+    "dir": false
+   },
+   {
+    "path": "README.md",
+    "dir": false
+   },
+   {
+    "path": "REPORT_BOTTLENECK.md",
+    "dir": false
+   },
+   {
+    "path": "TUTORIAL.md",
+    "dir": false
+   },
+   {
+    "path": "agentic_seeds.yaml",
+    "dir": false
+   },
+   {
+    "path": "backend",
+    "dir": true
+   },
+   {
+    "path": "backend/Dockerfile",
+    "dir": false
+   },
+   {
+    "path": "backend/Dockerfile.agentic",
+    "dir": false
+   },
+   {
+    "path": "backend/migrations",
+    "dir": true
+   },
+   {
+    "path": "backend/ops",
+    "dir": true
+   },
+   {
+    "path": "backend/pyproject.toml",
+    "dir": false
+   },
+   {
+    "path": "backend/scripts",
+    "dir": true
+   },
+   {
+    "path": "backend/src",
+    "dir": true
+   },
+   {
+    "path": "backend/tests",
+    "dir": true
+   },
+   {
+    "path": "backend/tools",
+    "dir": true
+   },
+   {
+    "path": "config",
+    "dir": true
+   },
+   {
+    "path": "config/agentic_seeds.yaml",
+    "dir": false
+   },
+   {
+    "path": "config/aggregator_blacklist.yaml",
+    "dir": false
+   },
+   {
+    "path": "config/seed_topics.yaml",
+    "dir": false
+   },
+   {
+    "path": "config/seed_topics_ccipt.yaml",
+    "dir": false
+   },
+   {
+    "path": "docker-compose.gluetun.yml",
+    "dir": false
+   },
+   {
+    "path": "docker-compose.gpu.yml",
+    "dir": false
+   },
+   {
+    "path": "docker-compose.yml",
+    "dir": false
+   },
+   {
+    "path": "docs",
+    "dir": true
+   },
+   {
+    "path": "docs/MIGRATION-WSL.md",
+    "dir": false
+   },
+   {
+    "path": "docs/OLLAMA-HOST-CONFIG.md",
+    "dir": false
+   },
+   {
+    "path": "docs/architecture.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend",
+    "dir": true
+   },
+   {
+    "path": "frontend/.dockerignore",
+    "dir": false
+   },
+   {
+    "path": "frontend/.prettierrc.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/Dockerfile",
+    "dir": false
+   },
+   {
+    "path": "frontend/eslint.config.js",
+    "dir": false
+   },
+   {
+    "path": "frontend/index.html",
+    "dir": false
+   },
+   {
+    "path": "frontend/nginx.conf",
+    "dir": false
+   },
+   {
+    "path": "frontend/package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/package.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/postcss.config.js",
+    "dir": false
+   },
+   {
+    "path": "frontend/public",
+    "dir": true
+   },
+   {
+    "path": "frontend/src",
+    "dir": true
+   },
+   {
+    "path": "frontend/tailwind.config.js",
+    "dir": false
+   },
+   {
+    "path": "frontend/tests",
+    "dir": true
+   },
+   {
+    "path": "frontend/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/vite.config.ts",
+    "dir": false
+   },
+   {
+    "path": "reason",
+    "dir": false
+   },
+   {
+    "path": "report",
+    "dir": true
+   },
+   {
+    "path": "report/11052026.md",
+    "dir": false
+   },
+   {
+    "path": "report/12052026.md",
+    "dir": false
+   },
+   {
+    "path": "report/18052026.md",
+    "dir": false
+   },
+   {
+    "path": "report/180526-OLLAMA.md",
+    "dir": false
+   },
+   {
+    "path": "report/19052026.md",
+    "dir": false
+   },
+   {
+    "path": "report/190526-OCR-BENCH.md",
+    "dir": false
+   },
+   {
+    "path": "report/190526-OLLAMA.md",
+    "dir": false
+   },
+   {
+    "path": "report/20052026.md",
+    "dir": false
+   },
+   {
+    "path": "report/200526-OLLAMA.md",
+    "dir": false
+   },
+   {
+    "path": "report/21052026-MAINT-T1.md",
+    "dir": false
+   },
+   {
+    "path": "report/21052026-MAINT-T2.md",
+    "dir": false
+   },
+   {
+    "path": "report/21052026-MAINT-T3.md",
+    "dir": false
+   },
+   {
+    "path": "report/21052026-MAINT-T4.md",
+    "dir": false
+   },
+   {
+    "path": "report/21052026-MAINT-T5.md",
+    "dir": false
+   },
+   {
+    "path": "report/21052026-MAINT-T6.md",
+    "dir": false
+   },
+   {
+    "path": "report/21052026.md",
+    "dir": false
+   },
+   {
+    "path": "report/210526-OLLAMA.md",
+    "dir": false
+   },
+   {
+    "path": "report/22052026-MAINT-T10.md",
+    "dir": false
+   },
+   {
+    "path": "report/22052026-MAINT-T11.md",
+    "dir": false
+   },
+   {
+    "path": "report/22052026-MAINT-T12.md",
+    "dir": false
+   },
+   {
+    "path": "report/22052026-MAINT-T13.md",
+    "dir": false
+   },
+   {
+    "path": "report/22052026-MAINT-T14.md",
+    "dir": false
+   },
+   {
+    "path": "report/22052026-MAINT-T15.md",
+    "dir": false
+   },
+   {
+    "path": "report/22052026-MAINT-T7.md",
+    "dir": false
+   },
+   {
+    "path": "report/22052026-MAINT-T8.md",
+    "dir": false
+   },
+   {
+    "path": "report/22052026-MAINT-T9.md",
+    "dir": false
+   },
+   {
+    "path": "report/220526-OLLAMA.md",
+    "dir": false
+   },
+   {
+    "path": "report/220526.md",
+    "dir": false
+   },
+   {
+    "path": "report/bench",
+    "dir": true
+   },
+   {
+    "path": "scripts",
+    "dir": true
+   },
+   {
+    "path": "scripts/ollama_watchdog.sh",
+    "dir": false
+   },
+   {
+    "path": "skills-lock.json",
+    "dir": false
+   },
+   {
+    "path": "test_agent",
+    "dir": true
+   },
+   {
+    "path": "test_agent/app.py",
+    "dir": false
+   },
+   {
+    "path": "test_agent/templates",
+    "dir": true
+   },
+   {
+    "path": "tools",
+    "dir": true
+   },
+   {
+    "path": "tools/__init__.py",
+    "dir": false
+   },
+   {
+    "path": "tools/ops",
+    "dir": true
+   },
+   {
+    "path": "tools/skills",
+    "dir": true
+   },
+   {
+    "path": "tools/taxonomies",
+    "dir": true
+   }
+  ],
+  "truncated": false,
+  "fileCount": 814
+ },
+ "ALTO": {
+  "items": [
+   {
+    "path": ".gitignore",
+    "dir": false
+   },
+   {
+    "path": "README.md",
+    "dir": false
+   },
+   {
+    "path": "backend",
+    "dir": true
+   },
+   {
+    "path": "backend/.dockerignore",
+    "dir": false
+   },
+   {
+    "path": "backend/Dockerfile",
+    "dir": false
+   },
+   {
+    "path": "backend/drizzle.config.ts",
+    "dir": false
+   },
+   {
+    "path": "backend/fly.toml",
+    "dir": false
+   },
+   {
+    "path": "backend/package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "backend/package.json",
+    "dir": false
+   },
+   {
+    "path": "backend/src",
+    "dir": true
+   },
+   {
+    "path": "backend/src/db",
+    "dir": true
+   },
+   {
+    "path": "backend/src/index.ts",
+    "dir": false
+   },
+   {
+    "path": "backend/src/lib",
+    "dir": true
+   },
+   {
+    "path": "backend/src/middleware",
+    "dir": true
+   },
+   {
+    "path": "backend/src/routes",
+    "dir": true
+   },
+   {
+    "path": "backend/src/services",
+    "dir": true
+   },
+   {
+    "path": "backend/src/worker.ts",
+    "dir": false
+   },
+   {
+    "path": "backend/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "docs",
+    "dir": true
+   },
+   {
+    "path": "docs/banner.svg",
+    "dir": false
+   },
+   {
+    "path": "docs/logo.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend",
+    "dir": true
+   },
+   {
+    "path": "frontend/index.html",
+    "dir": false
+   },
+   {
+    "path": "frontend/netlify.toml",
+    "dir": false
+   },
+   {
+    "path": "frontend/package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/package.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/postcss.config.js",
+    "dir": false
+   },
+   {
+    "path": "frontend/public",
+    "dir": true
+   },
+   {
+    "path": "frontend/public/favicon.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend/public/icon-192.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend/public/icon-512.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend/public/lottie",
+    "dir": true
+   },
+   {
+    "path": "frontend/src",
+    "dir": true
+   },
+   {
+    "path": "frontend/src/App.tsx",
+    "dir": false
+   },
+   {
+    "path": "frontend/src/components",
+    "dir": true
+   },
+   {
+    "path": "frontend/src/hooks",
+    "dir": true
+   },
+   {
+    "path": "frontend/src/index.css",
+    "dir": false
+   },
+   {
+    "path": "frontend/src/lib",
+    "dir": true
+   },
+   {
+    "path": "frontend/src/main.tsx",
+    "dir": false
+   },
+   {
+    "path": "frontend/src/pages",
+    "dir": true
+   },
+   {
+    "path": "frontend/src/vite-env.d.ts",
+    "dir": false
+   },
+   {
+    "path": "frontend/tailwind.config.ts",
+    "dir": false
+   },
+   {
+    "path": "frontend/tsconfig.app.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/vercel.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/vite.config.ts",
+    "dir": false
+   },
+   {
+    "path": "package.json",
+    "dir": false
+   },
+   {
+    "path": "pnpm-lock.yaml",
+    "dir": false
+   },
+   {
+    "path": "r.txt",
+    "dir": false
+   },
+   {
+    "path": "vercel.json",
+    "dir": false
+   }
+  ],
+  "truncated": false,
+  "fileCount": 89
+ },
+ "MoM": {
+  "items": [
+   {
+    "path": ".gitignore",
+    "dir": false
+   },
+   {
+    "path": "FEATURE_UPDATE_PROMPT.md",
+    "dir": false
+   },
+   {
+    "path": "README.md",
+    "dir": false
+   },
+   {
+    "path": "app",
+    "dir": true
+   },
+   {
+    "path": "app/next-env.d.ts",
+    "dir": false
+   },
+   {
+    "path": "app/package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "app/package.json",
+    "dir": false
+   },
+   {
+    "path": "app/postcss.config.js",
+    "dir": false
+   },
+   {
+    "path": "app/src",
+    "dir": true
+   },
+   {
+    "path": "app/src/app",
+    "dir": true
+   },
+   {
+    "path": "app/src/components",
+    "dir": true
+   },
+   {
+    "path": "app/src/hooks",
+    "dir": true
+   },
+   {
+    "path": "app/src/lib",
+    "dir": true
+   },
+   {
+    "path": "app/src/stores",
+    "dir": true
+   },
+   {
+    "path": "app/tailwind.config.js",
+    "dir": false
+   },
+   {
+    "path": "app/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "app/yarn.lock",
+    "dir": false
+   },
+   {
+    "path": "backend",
+    "dir": true
+   },
+   {
+    "path": "backend/examples",
+    "dir": true
+   },
+   {
+    "path": "backend/examples/AgentTool.tsx",
+    "dir": false
+   },
+   {
+    "path": "backend/examples/Tool.ts",
+    "dir": false
+   },
+   {
+    "path": "backend/examples/autoCompact.ts",
+    "dir": false
+   },
+   {
+    "path": "backend/examples/dangerousPatterns.ts",
+    "dir": false
+   },
+   {
+    "path": "backend/main.py",
+    "dir": false
+   },
+   {
+    "path": "backend/requirements.txt",
+    "dir": false
+   },
+   {
+    "path": "backend/schemas",
+    "dir": true
+   },
+   {
+    "path": "backend/schemas/contextCard.py",
+    "dir": false
+   },
+   {
+    "path": "backend/services",
+    "dir": true
+   },
+   {
+    "path": "backend/services/__init__.py",
+    "dir": false
+   },
+   {
+    "path": "backend/services/ai_service.py",
+    "dir": false
+   },
+   {
+    "path": "backend/services/context_service.py",
+    "dir": false
+   },
+   {
+    "path": "backend/services/database_service.py",
+    "dir": false
+   },
+   {
+    "path": "backend/services/diarization_service.py",
+    "dir": false
+   },
+   {
+    "path": "backend/services/export_service.py",
+    "dir": false
+   },
+   {
+    "path": "backend/services/mom_service.py",
+    "dir": false
+   },
+   {
+    "path": "backend/services/places_service.py",
+    "dir": false
+   },
+   {
+    "path": "backend/test.py",
+    "dir": false
+   },
+   {
+    "path": "backend/test_ai_endpoint.py",
+    "dir": false
+   },
+   {
+    "path": "eslint.config.js",
+    "dir": false
+   },
+   {
+    "path": "package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "package.json",
+    "dir": false
+   },
+   {
+    "path": "tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "yarn.lock",
+    "dir": false
+   }
+  ],
+  "truncated": false,
+  "fileCount": 53
+ },
+ "ATLAS": {
+  "items": [
+   {
+    "path": ".gitignore",
+    "dir": false
+   },
+   {
+    "path": "Dockerfile",
+    "dir": false
+   },
+   {
+    "path": "README.md",
+    "dir": false
+   },
+   {
+    "path": "atlas.md",
+    "dir": false
+   },
+   {
+    "path": "atlas.py",
+    "dir": false
+   },
+   {
+    "path": "atlas_client_v3.js",
+    "dir": false
+   },
+   {
+    "path": "atlas_data.py",
+    "dir": false
+   },
+   {
+    "path": "atlas_live_v3.py",
+    "dir": false
+   },
+   {
+    "path": "atlas_memory.py",
+    "dir": false
+   },
+   {
+    "path": "atlas_patch_gpu.py",
+    "dir": false
+   },
+   {
+    "path": "atlas_text.py",
+    "dir": false
+   },
+   {
+    "path": "atlas_web.py",
+    "dir": false
+   },
+   {
+    "path": "bench_ollama_results.json",
+    "dir": false
+   },
+   {
+    "path": "docker-compose.yml",
+    "dir": false
+   },
+   {
+    "path": "generate_fillers.py",
+    "dir": false
+   },
+   {
+    "path": "globe.json",
+    "dir": false
+   },
+   {
+    "path": "requirements.txt",
+    "dir": false
+   },
+   {
+    "path": "templates",
+    "dir": true
+   },
+   {
+    "path": "templates/benchmark.html",
+    "dir": false
+   },
+   {
+    "path": "templates/index.html",
+    "dir": false
+   },
+   {
+    "path": "test",
+    "dir": true
+   },
+   {
+    "path": "test/bench_ollama.py",
+    "dir": false
+   },
+   {
+    "path": "test/bench_ollama_results.json",
+    "dir": false
+   },
+   {
+    "path": "test/bench_realistic.py",
+    "dir": false
+   },
+   {
+    "path": "test/bench_realistic_results.json",
+    "dir": false
+   },
+   {
+    "path": "test/fix_atlas_data.py",
+    "dir": false
+   },
+   {
+    "path": "test/fix_gpu_whisper.sh",
+    "dir": false
+   },
+   {
+    "path": "test/fix_groq_pcm.py",
+    "dir": false
+   },
+   {
+    "path": "test/fix_groq_whisper.sh",
+    "dir": false
+   },
+   {
+    "path": "test/fix_ui.sh",
+    "dir": false
+   },
+   {
+    "path": "test/fix_whisper_compute.sh",
+    "dir": false
+   },
+   {
+    "path": "test/fix_ws_groq.py",
+    "dir": false
+   },
+   {
+    "path": "test/fix_ws_groq_v2.py",
+    "dir": false
+   },
+   {
+    "path": "test/install_atlas_server.sh",
+    "dir": false
+   },
+   {
+    "path": "test/setup_ollama.sh",
+    "dir": false
+   },
+   {
+    "path": "test/start_atlas.sh",
+    "dir": false
+   },
+   {
+    "path": "test/tunnel_public.sh",
+    "dir": false
+   },
+   {
+    "path": "ui",
+    "dir": true
+   },
+   {
+    "path": "ui/.gitignore",
+    "dir": false
+   },
+   {
+    "path": "ui/README.md",
+    "dir": false
+   },
+   {
+    "path": "ui/continue.md",
+    "dir": false
+   },
+   {
+    "path": "ui/eslint.config.js",
+    "dir": false
+   },
+   {
+    "path": "ui/index.html",
+    "dir": false
+   },
+   {
+    "path": "ui/package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "ui/package.json",
+    "dir": false
+   },
+   {
+    "path": "ui/public",
+    "dir": true
+   },
+   {
+    "path": "ui/public/data",
+    "dir": true
+   },
+   {
+    "path": "ui/public/favicon.svg",
+    "dir": false
+   },
+   {
+    "path": "ui/public/icons.svg",
+    "dir": false
+   },
+   {
+    "path": "ui/public/maps",
+    "dir": true
+   },
+   {
+    "path": "ui/src",
+    "dir": true
+   },
+   {
+    "path": "ui/src/App.css",
+    "dir": false
+   },
+   {
+    "path": "ui/src/App.tsx",
+    "dir": false
+   },
+   {
+    "path": "ui/src/assets",
+    "dir": true
+   },
+   {
+    "path": "ui/src/components",
+    "dir": true
+   },
+   {
+    "path": "ui/src/halaman",
+    "dir": true
+   },
+   {
+    "path": "ui/src/hooks",
+    "dir": true
+   },
+   {
+    "path": "ui/src/index.css",
+    "dir": false
+   },
+   {
+    "path": "ui/src/main.tsx",
+    "dir": false
+   },
+   {
+    "path": "ui/src/styles",
+    "dir": true
+   },
+   {
+    "path": "ui/src/types.ts",
+    "dir": false
+   },
+   {
+    "path": "ui/src/utils.ts",
+    "dir": false
+   },
+   {
+    "path": "ui/tsconfig.app.json",
+    "dir": false
+   },
+   {
+    "path": "ui/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "ui/tsconfig.node.json",
+    "dir": false
+   },
+   {
+    "path": "ui/vite.config.ts",
+    "dir": false
+   }
+  ],
+  "truncated": false,
+  "fileCount": 121
+ },
+ "geocek": {
+  "items": [
+   {
+    "path": ".gitignore",
+    "dir": false
+   },
+   {
+    "path": "404.json",
+    "dir": false
+   },
+   {
+    "path": "README.md",
+    "dir": false
+   },
+   {
+    "path": "app.py",
+    "dir": false
+   },
+   {
+    "path": "config.py",
+    "dir": false
+   },
+   {
+    "path": "core",
+    "dir": true
+   },
+   {
+    "path": "core/__init__.py",
+    "dir": false
+   },
+   {
+    "path": "core/ai_agent.py",
+    "dir": false
+   },
+   {
+    "path": "core/bbox_generator.py",
+    "dir": false
+   },
+   {
+    "path": "core/confidence_scorer.py",
+    "dir": false
+   },
+   {
+    "path": "core/constraint_filter.py",
+    "dir": false
+   },
+   {
+    "path": "core/nominatim_query.py",
+    "dir": false
+   },
+   {
+    "path": "core/osm_query.py",
+    "dir": false
+   },
+   {
+    "path": "core/output_builder.py",
+    "dir": false
+   },
+   {
+    "path": "core/signal_parser.py",
+    "dir": false
+   },
+   {
+    "path": "data",
+    "dir": true
+   },
+   {
+    "path": "data/hospital_aliases.json",
+    "dir": false
+   },
+   {
+    "path": "data/plate_regions.json",
+    "dir": false
+   },
+   {
+    "path": "data/road_profiles.json",
+    "dir": false
+   },
+   {
+    "path": "globe.json",
+    "dir": false
+   },
+   {
+    "path": "layers",
+    "dir": true
+   },
+   {
+    "path": "layers/forensics.py",
+    "dir": false
+   },
+   {
+    "path": "layers/gatekeeper.py",
+    "dir": false
+   },
+   {
+    "path": "layers/ocr.py",
+    "dir": false
+   },
+   {
+    "path": "loading.json",
+    "dir": false
+   },
+   {
+    "path": "main.py",
+    "dir": false
+   },
+   {
+    "path": "multicheck",
+    "dir": true
+   },
+   {
+    "path": "multicheck/package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "multicheck/package.json",
+    "dir": false
+   },
+   {
+    "path": "multicheck/src",
+    "dir": true
+   },
+   {
+    "path": "multicheck/src/checkpoints",
+    "dir": true
+   },
+   {
+    "path": "multicheck/src/config.ts",
+    "dir": false
+   },
+   {
+    "path": "multicheck/src/index.ts",
+    "dir": false
+   },
+   {
+    "path": "multicheck/src/providers",
+    "dir": true
+   },
+   {
+    "path": "multicheck/src/schemas",
+    "dir": true
+   },
+   {
+    "path": "multicheck/src/types",
+    "dir": true
+   },
+   {
+    "path": "multicheck/src/utils",
+    "dir": true
+   },
+   {
+    "path": "multicheck/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "requirements.txt",
+    "dir": false
+   },
+   {
+    "path": "static",
+    "dir": true
+   },
+   {
+    "path": "static/404.json",
+    "dir": false
+   },
+   {
+    "path": "static/globe.json",
+    "dir": false
+   },
+   {
+    "path": "static/loading.json",
+    "dir": false
+   },
+   {
+    "path": "templates",
+    "dir": true
+   },
+   {
+    "path": "templates/index.html",
+    "dir": false
+   },
+   {
+    "path": "templates/not_found.html",
+    "dir": false
+   },
+   {
+    "path": "templates/rejected.html",
+    "dir": false
+   },
+   {
+    "path": "templates/result.html",
+    "dir": false
+   },
+   {
+    "path": "tests",
+    "dir": true
+   },
+   {
+    "path": "tests/sample_input.json",
+    "dir": false
+   },
+   {
+    "path": "tests/test_signal_parser.py",
+    "dir": false
+   }
+  ],
+  "truncated": false,
+  "fileCount": 54
+ },
+ "juscat": {
+  "items": [
+   {
+    "path": ".github",
+    "dir": true
+   },
+   {
+    "path": ".github/CODEOWNERS",
+    "dir": false
+   },
+   {
+    "path": ".github/workflows",
+    "dir": true
+   },
+   {
+    "path": ".github/workflows/build-and-test.yml",
+    "dir": false
+   },
+   {
+    "path": ".gitignore",
+    "dir": false
+   },
+   {
+    "path": ".npmrc",
+    "dir": false
+   },
+   {
+    "path": ".nvmrc",
+    "dir": false
+   },
+   {
+    "path": "QuickStart.md",
+    "dir": false
+   },
+   {
+    "path": "README.md",
+    "dir": false
+   },
+   {
+    "path": "apps",
+    "dir": true
+   },
+   {
+    "path": "apps/backend",
+    "dir": true
+   },
+   {
+    "path": "apps/backend/.eslintignore",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/.eslintrc",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/.gitignore",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/.prettierrc",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/.swcrc",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/Dockerfile.dev",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/Dockerfile.prod",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/Makefile",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/docker-compose.yml",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/ecosystem.config.js",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/jest.config.js",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/nginx.conf",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/nodemon.json",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/package.json",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/src",
+    "dir": true
+   },
+   {
+    "path": "apps/backend/swagger.yaml",
+    "dir": false
+   },
+   {
+    "path": "apps/backend/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts",
+    "dir": true
+   },
+   {
+    "path": "apps/contracts/.eslintrc",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/.gitignore",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/.prettierrc",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/LICENCE",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/Makefile",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/contracts",
+    "dir": true
+   },
+   {
+    "path": "apps/contracts/docker-compose.yaml",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/hardhat.config.ts",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/package.json",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/scripts",
+    "dir": true
+   },
+   {
+    "path": "apps/contracts/sonar-project.properties",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/test",
+    "dir": true
+   },
+   {
+    "path": "apps/contracts/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "apps/contracts/utils",
+    "dir": true
+   },
+   {
+    "path": "apps/contracts/yarn.lock",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend",
+    "dir": true
+   },
+   {
+    "path": "apps/frontend/.eslintrc.cjs",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/.gitignore",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/index.html",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/katypass-glass.jpg",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/katypass-ok.jpg",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/katypass-shock.jpg",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/katypass-slept.jpg",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/katypass-vlog.jpg",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/logo.png",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/package.json",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/public",
+    "dir": true
+   },
+   {
+    "path": "apps/frontend/src",
+    "dir": true
+   },
+   {
+    "path": "apps/frontend/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "apps/frontend/vite.config.ts",
+    "dir": false
+   },
+   {
+    "path": "justscheme.sql",
+    "dir": false
+   },
+   {
+    "path": "package.json",
+    "dir": false
+   },
+   {
+    "path": "packages",
+    "dir": true
+   },
+   {
+    "path": "packages/config-contract",
+    "dir": true
+   },
+   {
+    "path": "packages/config-contract/config.ts",
+    "dir": false
+   },
+   {
+    "path": "packages/config-contract/index.ts",
+    "dir": false
+   },
+   {
+    "path": "packages/config-contract/package.json",
+    "dir": false
+   },
+   {
+    "path": "packages/config-contract/updateConfig.ts",
+    "dir": false
+   },
+   {
+    "path": "packages/config-typescript",
+    "dir": true
+   },
+   {
+    "path": "packages/config-typescript/base.json",
+    "dir": false
+   },
+   {
+    "path": "packages/config-typescript/package.json",
+    "dir": false
+   },
+   {
+    "path": "packages/config-typescript/tsconfig.node.json",
+    "dir": false
+   },
+   {
+    "path": "packages/config-typescript/vite.json",
+    "dir": false
+   },
+   {
+    "path": "packages/utils",
+    "dir": true
+   },
+   {
+    "path": "packages/utils/FormattingUtils",
+    "dir": true
+   },
+   {
+    "path": "packages/utils/PicassoUtils",
+    "dir": true
+   },
+   {
+    "path": "packages/utils/index.ts",
+    "dir": false
+   },
+   {
+    "path": "packages/utils/jest.config.js",
+    "dir": false
+   },
+   {
+    "path": "packages/utils/package.json",
+    "dir": false
+   },
+   {
+    "path": "packages/utils/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "packages/utils/vitest.config.ts",
+    "dir": false
+   },
+   {
+    "path": "turbo.json",
+    "dir": false
+   },
+   {
+    "path": "yarn.lock",
+    "dir": false
+   }
+  ],
+  "truncated": false,
+  "fileCount": 183
+ },
+ "Sentinel": {
+  "items": [
+   {
+    "path": ".gitignore",
+    "dir": false
+   },
+   {
+    "path": "README.md",
+    "dir": false
+   },
+   {
+    "path": "backend",
+    "dir": true
+   },
+   {
+    "path": "backend/Dockerfile",
+    "dir": false
+   },
+   {
+    "path": "backend/__init__.py",
+    "dir": false
+   },
+   {
+    "path": "backend/agents.py",
+    "dir": false
+   },
+   {
+    "path": "backend/apt_dataset.py",
+    "dir": false
+   },
+   {
+    "path": "backend/celery_app.py",
+    "dir": false
+   },
+   {
+    "path": "backend/celery_tasks.py",
+    "dir": false
+   },
+   {
+    "path": "backend/diagnose_sources.py",
+    "dir": false
+   },
+   {
+    "path": "backend/exports",
+    "dir": true
+   },
+   {
+    "path": "backend/exports/consolidated_1daf7482d700536bc5df_e23585aefbb887977440_8_8_8_8_20260315_171644.pdf",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/integrity_1_1_1_1.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/integrity_1daf7482d700536bc5dfe45c763dad99123e41f0be205415d708b70e6dcbfbb2.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/integrity_315e1aa6b6aae26f189bddc5ba32baab8509c9d204d282c3f1b49d284b225aa7-1.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/integrity_8_8_8_8-1.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/integrity_8_8_8_8.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/integrity_consolidated_1daf7482d700536bc5df_e23585aefbb887977440_8_8_8_8_20260315_171644.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/integrity_e23585aefbb887977440af86195fe0ebf7763e10f2255217dbde7c1545de0a27.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/report_1_1_1_1.pdf",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/report_1daf7482d700536bc5dfe45c763dad99123e41f0be205415d708b70e6dcbfbb2.pdf",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/report_315e1aa6b6aae26f189bddc5ba32baab8509c9d204d282c3f1b49d284b225aa7.pdf",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/report_8_8_8_8-1.pdf",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/report_8_8_8_8.pdf",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/report_e23585aefbb887977440af86195fe0ebf7763e10f2255217dbde7c1545de0a27.pdf",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/siem_1_1_1_1.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/siem_1daf7482d700536bc5dfe45c763dad99123e41f0be205415d708b70e6dcbfbb2.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/siem_315e1aa6b6aae26f189bddc5ba32baab8509c9d204d282c3f1b49d284b225aa7.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/siem_8_8_8_8-1.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/siem_8_8_8_8.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/siem_consolidated_1daf7482d700536bc5df_e23585aefbb887977440_8_8_8_8_20260315_171644.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/siem_e23585aefbb887977440af86195fe0ebf7763e10f2255217dbde7c1545de0a27.json",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/soar_1_1_1_1.md",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/soar_1daf7482d700536bc5dfe45c763dad99123e41f0be205415d708b70e6dcbfbb2.md",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/soar_315e1aa6b6aae26f189bddc5ba32baab8509c9d204d282c3f1b49d284b225aa7.md",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/soar_8_8_8_8-1.md",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/soar_8_8_8_8.md",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/soar_consolidated_1daf7482d700536bc5df_e23585aefbb887977440_8_8_8_8_20260315_171644.md",
+    "dir": false
+   },
+   {
+    "path": "backend/exports/soar_e23585aefbb887977440af86195fe0ebf7763e10f2255217dbde7c1545de0a27.md",
+    "dir": false
+   },
+   {
+    "path": "backend/fake_feed.json",
+    "dir": false
+   },
+   {
+    "path": "backend/final_test.py",
+    "dir": false
+   },
+   {
+    "path": "backend/intelligence_collector.py",
+    "dir": false
+   },
+   {
+    "path": "backend/main.py",
+    "dir": false
+   },
+   {
+    "path": "backend/mitre_mapping.py",
+    "dir": false
+   },
+   {
+    "path": "backend/models.py",
+    "dir": false
+   },
+   {
+    "path": "backend/orchestrator.py",
+    "dir": false
+   },
+   {
+    "path": "backend/poll_results.py",
+    "dir": false
+   },
+   {
+    "path": "backend/reporting.py",
+    "dir": false
+   },
+   {
+    "path": "backend/requirements.txt",
+    "dir": false
+   },
+   {
+    "path": "backend/siem_exporter.py",
+    "dir": false
+   },
+   {
+    "path": "backend/simulate_tc1.py",
+    "dir": false
+   },
+   {
+    "path": "backend/simulate_tc2.py",
+    "dir": false
+   },
+   {
+    "path": "backend/simulate_tc3.py",
+    "dir": false
+   },
+   {
+    "path": "backend/tasks.py",
+    "dir": false
+   },
+   {
+    "path": "backend/uploads",
+    "dir": true
+   },
+   {
+    "path": "backend/uploads/5b0cee5b29544bbf8fe02fa45bec62f6.png",
+    "dir": false
+   },
+   {
+    "path": "backend/vision_analyzer.py",
+    "dir": false
+   },
+   {
+    "path": "docker-compose.yml",
+    "dir": false
+   },
+   {
+    "path": "docs",
+    "dir": true
+   },
+   {
+    "path": "docs/writeup.md",
+    "dir": false
+   },
+   {
+    "path": "dump.rdb",
+    "dir": false
+   },
+   {
+    "path": "frontend",
+    "dir": true
+   },
+   {
+    "path": "frontend/.gitignore",
+    "dir": false
+   },
+   {
+    "path": "frontend/README.md",
+    "dir": false
+   },
+   {
+    "path": "frontend/app",
+    "dir": true
+   },
+   {
+    "path": "frontend/app/favicon.ico",
+    "dir": false
+   },
+   {
+    "path": "frontend/app/globals.css",
+    "dir": false
+   },
+   {
+    "path": "frontend/app/layout.tsx",
+    "dir": false
+   },
+   {
+    "path": "frontend/app/page.tsx",
+    "dir": false
+   },
+   {
+    "path": "frontend/eslint.config.mjs",
+    "dir": false
+   },
+   {
+    "path": "frontend/next.config.ts",
+    "dir": false
+   },
+   {
+    "path": "frontend/package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/package.json",
+    "dir": false
+   },
+   {
+    "path": "frontend/postcss.config.mjs",
+    "dir": false
+   },
+   {
+    "path": "frontend/public",
+    "dir": true
+   },
+   {
+    "path": "frontend/public/Screenshot_1.png",
+    "dir": false
+   },
+   {
+    "path": "frontend/public/Screenshot_2.png",
+    "dir": false
+   },
+   {
+    "path": "frontend/public/file.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend/public/globe.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend/public/next.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend/public/vercel.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend/public/window.svg",
+    "dir": false
+   },
+   {
+    "path": "frontend/tsconfig.json",
+    "dir": false
+   },
+   {
+    "path": "package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "package.json",
+    "dir": false
+   },
+   {
+    "path": "tmp",
+    "dir": true
+   },
+   {
+    "path": "tmp/test_api_connection.py",
+    "dir": false
+   }
+  ],
+  "truncated": false,
+  "fileCount": 80
+ },
+ "deskriptor": {
+  "items": [
+   {
+    "path": ".eslintrc.json",
+    "dir": false
+   },
+   {
+    "path": ".gitignore",
+    "dir": false
+   },
+   {
+    "path": "README.md",
+    "dir": false
+   },
+   {
+    "path": "RESEARCH.md",
+    "dir": false
+   },
+   {
+    "path": "app",
+    "dir": true
+   },
+   {
+    "path": "app/api",
+    "dir": true
+   },
+   {
+    "path": "app/api/generate",
+    "dir": true
+   },
+   {
+    "path": "app/favicon.ico",
+    "dir": false
+   },
+   {
+    "path": "app/fonts",
+    "dir": true
+   },
+   {
+    "path": "app/fonts/GeistMonoVF.woff",
+    "dir": false
+   },
+   {
+    "path": "app/fonts/GeistVF.woff",
+    "dir": false
+   },
+   {
+    "path": "app/globals.css",
+    "dir": false
+   },
+   {
+    "path": "app/layout.tsx",
+    "dir": false
+   },
+   {
+    "path": "app/page.tsx",
+    "dir": false
+   },
+   {
+    "path": "app/providers.tsx",
+    "dir": false
+   },
+   {
+    "path": "components.json",
+    "dir": false
+   },
+   {
+    "path": "components",
+    "dir": true
+   },
+   {
+    "path": "components/results-display.tsx",
+    "dir": false
+   },
+   {
+    "path": "components/ui",
+    "dir": true
+   },
+   {
+    "path": "components/ui/button.tsx",
+    "dir": false
+   },
+   {
+    "path": "components/ui/card.tsx",
+    "dir": false
+   },
+   {
+    "path": "components/ui/checkbox.tsx",
+    "dir": false
+   },
+   {
+    "path": "components/ui/dialog.tsx",
+    "dir": false
+   },
+   {
+    "path": "components/ui/input.tsx",
+    "dir": false
+   },
+   {
+    "path": "components/ui/textarea.tsx",
+    "dir": false
+   },
+   {
+    "path": "components/ui/theme-toggle.tsx",
+    "dir": false
+   },
+   {
+    "path": "components/ui/toast.tsx",
+    "dir": false
+   },
+   {
+    "path": "components/ui/toaster.tsx",
+    "dir": false
+   },
+   {
+    "path": "hooks",
+    "dir": true
+   },
+   {
+    "path": "hooks/use-toast.ts",
+    "dir": false
+   },
+   {
+    "path": "lib",
+    "dir": true
+   },
+   {
+    "path": "lib/utils.ts",
+    "dir": false
+   },
+   {
+    "path": "next.config.js",
+    "dir": false
+   },
+   {
+    "path": "next.config.ts",
+    "dir": false
+   },
+   {
+    "path": "package-lock.json",
+    "dir": false
+   },
+   {
+    "path": "package.json",
+    "dir": false
+   },
+   {
+    "path": "postcss.config.mjs",
+    "dir": false
+   },
+   {
+    "path": "public",
+    "dir": true
+   },
+   {
+    "path": "public/file.svg",
+    "dir": false
+   },
+   {
+    "path": "public/globe.svg",
+    "dir": false
+   },
+   {
+    "path": "public/next.svg",
+    "dir": false
+   },
+   {
+    "path": "public/vercel.svg",
+    "dir": false
+   },
+   {
+    "path": "public/window.svg",
+    "dir": false
+   },
+   {
+    "path": "tailwind.config.ts",
+    "dir": false
+   },
+   {
+    "path": "tsconfig.json",
+    "dir": false
+   }
+  ],
+  "truncated": false,
+  "fileCount": 37
+ }
+}

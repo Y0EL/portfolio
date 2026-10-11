@@ -8,6 +8,7 @@ import { BrowserFrame, PhoneFrame, toneClass } from "./components/workFrames";
 import { ArchiveRow } from "./components/archiveRow";
 import { CaseList } from "./components/caseList";
 import { socialLinks } from "./config";
+import { withLiveVisibilityAll } from "./lib/repoVisibility";
 
 export const metadata: Metadata = {
   alternates: {
@@ -45,7 +46,8 @@ const PROCESS = [
   { title: "Rilis dan rawat", body: "Domain, analitik, dan perbaikan setelah website digunakan oleh pengunjung sungguhan." },
 ];
 
-export default function Page() {
+export default async function Page() {
+  const liveArchive = await withLiveVisibilityAll(archive.slice(0, 6));
   const [lead, ...rest] = showcase;
   const pathItems = profile.pengalaman_kerja.slice(0, 5);
 
@@ -240,7 +242,7 @@ export default function Page() {
           </Link>
         </div>
         <ul className="archiveList">
-          {archive.slice(0, 6).map((item) => (
+          {liveArchive.map((item) => (
             <li key={item.title}>
               <ArchiveRow item={item} />
             </li>

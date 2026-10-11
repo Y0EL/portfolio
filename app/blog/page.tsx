@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
-import { formatDate, getBlogPosts } from "app/lib/posts";
+import { Headphones } from "lucide-react";
+import { formatDate, getBlogPosts, getNarration } from "app/lib/posts";
 
 export const metadata = {
   title: "Tulisan",
@@ -26,17 +28,31 @@ export default function BlogPosts() {
         </p>
       </header>
       <ol className="postList">
-        {sorted.map((post) => (
-          <li key={post.slug}>
-            <Link href={`/blog/${post.slug}`} className="postLink">
-              <div>
-                <h2>{post.metadata.title}</h2>
-                {post.metadata.summary && <p>{post.metadata.summary}</p>}
-              </div>
-              <time dateTime={post.metadata.publishedAt}>{formatDate(post.metadata.publishedAt, false)}</time>
-            </Link>
-          </li>
-        ))}
+        {sorted.map((post) => {
+          const narration = getNarration(post.slug);
+          return (
+            <li key={post.slug}>
+              <Link href={`/blog/${post.slug}`} className="postLink">
+                <div className="postThumb">
+                  {post.metadata.image && (
+                    <Image src={post.metadata.image} alt="" width={1664} height={928} sizes="(max-width: 760px) 100vw, 240px" />
+                  )}
+                </div>
+                <div>
+                  <h2>{post.metadata.title}</h2>
+                  {post.metadata.summary && <p>{post.metadata.summary}</p>}
+                  {narration && (
+                    <span className="mono postListen">
+                      <Headphones aria-hidden="true" />
+                      Bisa didengar · {Math.round(narration.duration / 60)} menit
+                    </span>
+                  )}
+                </div>
+                <time dateTime={post.metadata.publishedAt}>{formatDate(post.metadata.publishedAt, false)}</time>
+              </Link>
+            </li>
+          );
+        })}
       </ol>
     </>
   );

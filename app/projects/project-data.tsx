@@ -18,6 +18,7 @@ export interface ShowcaseWork {
 }
 
 export interface ArchiveWork {
+  slug: string;
   title: string;
   year: string;
   kind: string;
@@ -26,6 +27,8 @@ export interface ArchiveWork {
   url?: string;
   source: string;
   status: "live" | "code" | "offline";
+  repo?: string;
+  visibility?: "private" | "public";
 }
 
 export const showcase: ShowcaseWork[] = [
@@ -102,6 +105,7 @@ export const showcase: ShowcaseWork[] = [
 
 export const archive: ArchiveWork[] = [
   {
+    slug: "autocrawl",
     title: "Autocrawl",
     year: "2025 · 2026",
     kind: "Agen AI",
@@ -111,39 +115,48 @@ export const archive: ArchiveWork[] = [
     url: "https://github.com/Y0EL/autocrawl",
     source: "github.com/Y0EL/autocrawl",
     status: "code",
+    repo: "autocrawl",
+    visibility: "public",
   },
   {
+    slug: "alto",
     title: "ALTO",
     year: "2025",
     kind: "Aplikasi transkripsi",
     summary:
       "Platform transkripsi rapat untuk tim. Rekaman sampai 9,5 jam menjadi transkrip berlabel pembicara beserta ringkasan.",
     stack: ["React", "Hono", "Gemini", "Neon Postgres"],
-    url: "https://github.com/Y0EL/ALTO",
-    source: "github.com/Y0EL/ALTO",
+    source: "Repository privat",
     status: "code",
+    repo: "ALTO",
+    visibility: "private",
   },
   {
+    slug: "yota",
     title: "YOTA",
     year: "2025",
     kind: "Generator notulen",
     summary: "Rekaman rapat menjadi ringkasan, poin diskusi, dan action item. Cikal bakal cara berpikir di balik YOTEXT.",
     stack: ["Next.js", "FastAPI", "Whisper", "CrewAI"],
-    url: "https://github.com/Y0EL/MoM",
-    source: "github.com/Y0EL/MoM",
+    source: "Repository privat",
     status: "code",
+    repo: "MoM",
+    visibility: "private",
   },
   {
+    slug: "atlas",
     title: "Atlas",
     year: "2025 · 2026",
     kind: "Asisten suara lokal",
     summary: "Asisten suara yang berjalan penuh di perangkat sendiri, dengan memori lintas sesi dan mode percakapan langsung.",
     stack: ["Whisper", "Ollama", "FastAPI", "CUDA"],
-    url: "https://github.com/Y0EL?tab=repositories",
-    source: "github.com/Y0EL",
+    source: "Repository privat",
     status: "code",
+    repo: "ATLAS",
+    visibility: "private",
   },
   {
+    slug: "geocek",
     title: "Geocek",
     year: "2025",
     kind: "Geolokasi OSINT",
@@ -153,8 +166,11 @@ export const archive: ArchiveWork[] = [
     url: "https://github.com/Y0EL/geocek",
     source: "github.com/Y0EL/geocek",
     status: "code",
+    repo: "geocek",
+    visibility: "public",
   },
   {
+    slug: "scopeOfWork",
     title: "Scope of Work",
     year: "2024",
     kind: "Platform dokumentasi",
@@ -165,6 +181,7 @@ export const archive: ArchiveWork[] = [
     status: "live",
   },
   {
+    slug: "reuse",
     title: "ReUse",
     year: "2023 · 2026",
     kind: "dApp keberlanjutan",
@@ -174,6 +191,7 @@ export const archive: ArchiveWork[] = [
     status: "offline",
   },
   {
+    slug: "soapyWorld",
     title: "SoapyWorld",
     year: "2024 · 2026",
     kind: "dApp keberlanjutan",
@@ -184,16 +202,19 @@ export const archive: ArchiveWork[] = [
     status: "offline",
   },
   {
+    slug: "juscat",
     title: "Juscat",
     year: "2024",
     kind: "dApp dengan validasi AI",
     summary: "Foto jus sehat divalidasi AI sebelum smart contract mengirim reward token.",
     stack: ["React", "Solidity", "GPT 4o"],
-    url: "https://github.com/Y0EL/Juscat",
-    source: "github.com/Y0EL/Juscat",
+    source: "Repository privat",
     status: "code",
+    repo: "juscat",
+    visibility: "private",
   },
   {
+    slug: "sentinel",
     title: "Sentinel",
     year: "2024 · 2025",
     kind: "Deteksi fraud",
@@ -202,14 +223,20 @@ export const archive: ArchiveWork[] = [
     url: "https://github.com/Y0EL/Sentinel",
     source: "github.com/Y0EL/Sentinel",
     status: "code",
+    repo: "Sentinel",
+    visibility: "public",
   },
   {
+    slug: "aiDeskriptor",
     title: "AI Deskriptor",
     year: "2024",
     kind: "Alat konten ecommerce",
     summary: "Judul dan deskripsi produk marketplace dibuat otomatis mengikuti kata kunci yang sedang ramai.",
     stack: ["OpenAI", "Next.js"],
+    url: "https://github.com/Y0EL/deskriptor",
     source: "deskriptor.yoel.online",
     status: "offline",
+    repo: "deskriptor",
+    visibility: "public",
   },
 ];

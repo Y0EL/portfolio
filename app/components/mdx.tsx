@@ -7,6 +7,7 @@ import { TweetComponent } from "./tweet";
 import { CaptionComponent } from "./caption";
 import { YouTubeComponent } from "./youtube";
 import { ImageGrid } from "./image-grid";
+import { Roadmap } from "./roadmap";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -130,6 +131,7 @@ let components = {
   Table,
   del: Strikethrough,
   Callout,
+  Roadmap,
 };
 
 export function CustomMDX(props) {

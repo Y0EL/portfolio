@@ -1,15 +1,16 @@
-import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import type { ArchiveWork } from "app/projects/project-data";
 
-const statusLabel: Record<ArchiveWork["status"], string> = {
-  live: "Situs aktif",
-  code: "Kode di GitHub",
-  offline: "Sudah tidak aktif",
-};
+export function archiveStatus(item: ArchiveWork) {
+  if (item.status === "live") return "Situs aktif";
+  if (item.status === "offline") return "Sudah tidak aktif";
+  return item.visibility === "private" ? "Kode privat" : "Kode terbuka";
+}
 
 export function ArchiveRow({ item }: { item: ArchiveWork }) {
-  const body = (
-    <>
+  return (
+    <Link href={`/projects/${item.slug}`} className="archiveRow">
       <time>{item.year}</time>
       <h3>
         {item.title}
@@ -19,22 +20,12 @@ export function ArchiveRow({ item }: { item: ArchiveWork }) {
         {item.summary}
         <span className="archiveStack">{item.stack.join(" · ")}</span>
       </p>
-      <span className="statusTag" data-status={item.status} title={item.source}>
-        {statusLabel[item.status]}
+      <span className="statusTag" data-status={item.status}>
+        {archiveStatus(item)}
       </span>
       <span className="archiveArrow" aria-hidden="true">
-        {item.url ? <ArrowUpRight /> : null}
+        <ArrowRight />
       </span>
-    </>
-  );
-
-  if (!item.url) {
-    return <div className="archiveRow">{body}</div>;
-  }
-
-  return (
-    <a href={item.url} target="_blank" rel="noopener noreferrer" className="archiveRow">
-      {body}
-    </a>
+    </Link>
   );
 }
