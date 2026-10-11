@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   description: metaData.description,
   openGraph: {
-    images: metaData.ogImage,
+    images: [{ url: metaData.ogImage, width: 1200, height: 630, alt: metaData.ogAlt, type: "image/jpeg" }],
     title: metaData.title,
     description: metaData.description,
     url: metaData.baseUrl,
@@ -69,8 +69,11 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: metaData.name,
+    title: metaData.title,
+    description: metaData.description,
     card: "summary_large_image",
+    creator: "@vehunt",
+    images: [{ url: metaData.ogImage, alt: metaData.ogAlt }],
   },
   icons: {
     icon: "/favicon.ico",

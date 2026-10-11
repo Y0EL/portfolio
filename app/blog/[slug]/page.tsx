@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { existsSync } from "fs";
+import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,6 +11,11 @@ import { ListenEnd } from "app/components/listenEnd";
 import { whatsappHref } from "app/components/footer";
 import { formatDate, getBlogPosts, getNarration } from "app/lib/posts";
 import { metaData } from "app/config";
+
+function postOgImage(slug: string) {
+  let file = `/og/blog/${slug}.jpg`;
+  return existsSync(path.join(process.cwd(), "public", file)) ? file : metaData.ogImage;
+}
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -27,11 +34,9 @@ export async function generateMetadata({
     title,
     publishedAt: publishedTime,
     summary: description,
-    image,
   } = post.metadata;
-  let ogImage = image
-    ? image
-    : `${metaData.baseUrl}/og?title=${encodeURIComponent(title)}`;
+  let ogImage = postOgImage(post.slug);
+  let ogImages = [{ url: ogImage, width: 1200, height: 630, alt: title, type: "image/jpeg" }];
 
   return {
     title,
@@ -45,13 +50,16 @@ export async function generateMetadata({
       type: "article",
       publishedTime,
       url: `${metaData.baseUrl}/blog/${post.slug}`,
-      images: [{ url: ogImage }],
+      authors: [metaData.name],
+      siteName: metaData.name,
+      locale: "id_ID",
+      images: ogImages,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
+      images: ogImages,
     },
   };
 }
@@ -79,9 +87,7 @@ export default function Blog({ params }: { params: { slug: string } }) {
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
             description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${metaData.baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+            image: `${metaData.baseUrl}${postOgImage(post.slug)}`,
             url: `${metaData.baseUrl}/blog/${post.slug}`,
             author: { "@type": "Person", name: metaData.name },
           }),

@@ -1,8 +1,9 @@
 export const metaData = {
-  baseUrl: "https://yoel.online/",
+  baseUrl: "https://yoel.online",
   title: "Yoel Andreas Manoppo · Website dan AI untuk bisnis",
   name: "Yoel Andreas Manoppo",
-  ogImage: "/og",
+  ogImage: "/og/home.jpg",
+  ogAlt: "Yoel Andreas Manoppo. I build websites people get. Jendela browser dari kertas di yoel.online.",
   description:
     "Portfolio Yoel Andreas Manoppo, AI Specialist di Piranusa dan founder YOTEXT. Website perusahaan dan produk digital yang mudah dipahami, seperti Piranusa, YOTEXT, dan PT Dinamika Polimerindo.",
 };

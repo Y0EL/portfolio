@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight, FileText, Folder, Globe, Lock, Unlock } from "
 import { archive, type ArchiveWork } from "app/projects/project-data";
 import { archiveStatus } from "app/components/archiveRow";
 import { withLiveVisibility } from "app/lib/repoVisibility";
+import { metaData } from "app/config";
 import trees from "data/yoel/repoTrees.json";
 
 type TreeItem = { path: string; dir: boolean };
@@ -140,7 +141,20 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata | undefined {
   const item = archive.find((a) => a.slug === params.slug);
   if (!item) return;
-  return { title: item.title, description: item.summary };
+  return {
+    title: item.title,
+    description: item.summary,
+    alternates: { canonical: `${metaData.baseUrl}/projects/${item.slug}` },
+    openGraph: {
+      title: `${item.title} | ${metaData.name}`,
+      description: item.summary,
+      url: `${metaData.baseUrl}/projects/${item.slug}`,
+      siteName: metaData.name,
+      locale: "id_ID",
+      type: "website",
+      images: [{ url: metaData.ogImage, width: 1200, height: 630, alt: metaData.ogAlt, type: "image/jpeg" }],
+    },
+  };
 }
 
 export default async function ArchiveProject({ params }: { params: { slug: string } }) {
