@@ -1,5 +1,5 @@
 export const metaData = {
-  baseUrl: "https://yoel.online",
+  baseUrl: "https://www.yoel.online",
   title: "Yoel Andreas Manoppo · Website dan AI untuk bisnis",
   name: "Yoel Andreas Manoppo",
   ogImage: "/og/home.jpg",
@@ -21,8 +21,8 @@ export const personJsonLd = {
   "@type": "Person",
   name: "Yoel Andreas Manoppo",
   alternateName: ["Yoel Manoppo", "Y0EL"],
-  url: "https://yoel.online",
-  image: "https://yoel.online/yoel.jpg",
+  url: "https://www.yoel.online",
+  image: "https://www.yoel.online/yoel.jpg",
   jobTitle: "AI Specialist",
   description: "AI Specialist di Piranusa dan founder YOTEXT. Membuat website perusahaan dan produk digital di Jakarta.",
   worksFor: [
@@ -62,7 +62,7 @@ export const websiteJsonLd = {
   "@type": "WebSite",
   name: "Yoel Andreas Manoppo",
   alternateName: "yoel.online",
-  url: "https://yoel.online",
+  url: "https://www.yoel.online",
   inLanguage: "id-ID",
   author: { "@type": "Person", name: "Yoel Andreas Manoppo" },
   publisher: { "@type": "Person", name: "Yoel Andreas Manoppo" },

@@ -42,7 +42,7 @@ export async function generateMetadata({
     title,
     description,
     alternates: {
-      canonical: `https://yoel.online/blog/${post.slug}`,
+      canonical: `${metaData.baseUrl}/blog/${post.slug}`,
     },
     openGraph: {
       title,

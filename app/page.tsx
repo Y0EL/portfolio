@@ -12,7 +12,7 @@ import { withLiveVisibilityAll } from "./lib/repoVisibility";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://yoel.online",
+    canonical: "https://www.yoel.online",
   },
 };
 
