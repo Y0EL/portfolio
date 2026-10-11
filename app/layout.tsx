@@ -7,6 +7,7 @@ import { Navbar } from "./components/nav";
 import Footer from "./components/footer";
 import TalkativeYoel from "./components/talkative-yoel";
 import { ScrollJump } from "./components/scrollJump";
+import { ShotShuffle } from "./components/shotShuffle";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData, personJsonLd, websiteJsonLd } from "./config";
 
@@ -128,6 +129,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="isi">{children}</main>
           <Footer />
           <ScrollJump />
+          <ShotShuffle />
           <TalkativeYoel />
           <Analytics />
           <SpeedInsights />
