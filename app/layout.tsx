@@ -8,6 +8,7 @@ import Footer from "./components/footer";
 import TalkativeYoel from "./components/talkative-yoel";
 import { ScrollJump } from "./components/scrollJump";
 import { ShotShuffle } from "./components/shotShuffle";
+import { TextMotion, MOTION_BOOT } from "./components/textMotion";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData, personJsonLd, websiteJsonLd } from "./config";
 
@@ -108,6 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: MOTION_BOOT }} />
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed" />
         <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom Feed" />
         <link rel="alternate" type="application/feed+json" href="/feed.json" title="JSON Feed" />
@@ -130,6 +132,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <ScrollJump />
           <ShotShuffle />
+          <TextMotion />
           <TalkativeYoel />
           <Analytics />
           <SpeedInsights />

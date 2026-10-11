@@ -3887,3 +3887,139 @@ html.dark .articleBody .readWord.isNow::before {
     transform: scaleX(1);
   }
 }
+
+:root {
+  --mHoverBg: var(--ink);
+  --mHoverInk: var(--ground);
+}
+
+.siteFooter,
+.listenEnd {
+  --mHoverBg: var(--nightInk);
+  --mHoverInk: var(--night);
+}
+
+.about {
+  --mHoverBg: var(--accentInk);
+  --mHoverInk: var(--accent);
+}
+
+.roadmapItem[data-turn] > div {
+  --mHoverBg: #fffdf7;
+  --mHoverInk: #2851e0;
+}
+
+html.motionReady:not(.motionLive) :is(main, footer) :is(h1, h2, h3, h4, h5, h6, p, li, blockquote, figcaption, dt, dd, time, strong, .mono, .textCta) {
+  opacity: 0;
+}
+
+.mWord {
+  position: relative;
+  display: inline-block;
+}
+
+.mInner {
+  display: inline-block;
+}
+
+[data-mstyle="rise"] {
+  transition:
+    opacity 0.7s var(--ease) var(--md, 0s),
+    transform 0.85s var(--ease) var(--md, 0s);
+}
+
+[data-mstyle="rise"][data-motion="below"] {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+[data-mstyle="rise"][data-motion="above"] {
+  opacity: 0;
+  transform: translateY(-26px);
+}
+
+[data-mstyle="blur"] {
+  transition:
+    opacity 0.8s var(--ease) var(--md, 0s),
+    filter 0.8s var(--ease) var(--md, 0s);
+}
+
+[data-mstyle="blur"]:not([data-motion="in"]) {
+  opacity: 0;
+  filter: blur(12px);
+}
+
+[data-mstyle="lines"] .mWord {
+  clip-path: inset(-0.12em -0.5em -0.28em -0.5em);
+}
+
+[data-mstyle="lines"] .mInner {
+  transition: transform 0.9s var(--ease) calc(var(--l, 0) * 0.11s + var(--md, 0s));
+}
+
+[data-mstyle="lines"][data-motion="below"] .mInner {
+  transform: translateY(160%);
+}
+
+[data-mstyle="lines"][data-motion="above"] .mInner {
+  transform: translateY(-160%);
+}
+
+[data-mstyle="words"] .mInner {
+  transition:
+    opacity 0.6s var(--ease) calc(min(var(--w, 0), 16) * 0.045s + var(--md, 0s)),
+    transform 0.7s var(--ease) calc(min(var(--w, 0), 16) * 0.045s + var(--md, 0s));
+}
+
+[data-mstyle="words"][data-motion="below"] .mInner {
+  opacity: 0;
+  transform: translateY(0.5em);
+}
+
+[data-mstyle="words"][data-motion="above"] .mInner {
+  opacity: 0;
+  transform: translateY(-0.5em);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-msplit] .mWord {
+    --hd: calc(min(var(--w, 0), 14) * 0.028s);
+    isolation: isolate;
+    transition: color 0.25s ease var(--hd);
+  }
+
+  [data-msplit] .mWord::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0.04em -0.08em -0.02em;
+    background: var(--mHoverBg);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.4s var(--ease) var(--hd);
+  }
+
+  [data-msplit]:hover .mWord {
+    color: var(--mHoverInk);
+  }
+
+  [data-msplit]:hover .mWord::before {
+    transform: scaleX(1);
+  }
+
+  :is(main, footer) :is(p, li, blockquote, dd, figcaption) a:not([class]),
+  .footerLinks a {
+    background: linear-gradient(var(--mHoverBg), var(--mHoverBg)) no-repeat left center / 0% 100%;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition:
+      background-size 0.4s var(--ease),
+      color 0.2s ease;
+  }
+
+  :is(main, footer) :is(p, li, blockquote, dd, figcaption) a:not([class]):hover,
+  .footerLinks a:hover {
+    background-size: 100% 100%;
+    color: var(--mHoverInk);
+  }
+}

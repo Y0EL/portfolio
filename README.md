@@ -1,108 +1,91 @@
-<!-- FIELD DISPATCH · YOEL ANDREAS MANOPPO -->
-
 <p align="center">
-  <img src="./.github/banner.svg" alt="Yoel Andreas Manoppo · Field Dispatch №017 · Building agents for the state." width="100%" />
+  <img src="./.github/banner.webp" alt="Yoel Andreas Manoppo. I build websites people get." width="100%" />
 </p>
 
 <p align="center">
-  <a href="https://yoel.online"><img src="https://img.shields.io/badge/yoel.online-ece6da?style=flat-square&labelColor=0c0c0b&color=e8512a&logoColor=ece6da" alt="yoel.online"/></a>
-  <a href="https://www.linkedin.com/in/yoelmanoppo"><img src="https://img.shields.io/badge/linkedin-ece6da?style=flat-square&labelColor=0c0c0b&color=0c0c0b&logoColor=ece6da" alt="LinkedIn"/></a>
-  <a href="https://x.com/vehunt"><img src="https://img.shields.io/badge/x.com%2Fvehunt-ece6da?style=flat-square&labelColor=0c0c0b&color=0c0c0b&logoColor=ece6da" alt="X"/></a>
-  <a href="https://open.spotify.com/artist/2ztUmew6tgNQ8JtRRep4Td"><img src="https://img.shields.io/badge/cubicube-spotify-e8512a?style=flat-square&labelColor=0c0c0b" alt="Cubicube on Spotify"/></a>
+  <a href="https://yoel.online"><b>yoel.online</b></a>
+  &nbsp;·&nbsp;
+  <a href="https://yoel.online/projects">Karya</a>
+  &nbsp;·&nbsp;
+  <a href="https://yoel.online/blog">Tulisan</a>
+  &nbsp;·&nbsp;
+  <a href="https://wa.me/628992246000">WhatsApp</a>
 </p>
 
 ---
 
-## №01 · The Pursuit
+## Sekarang
 
-*AI Forward Deployed Engineer pada tim inti **4 orang** yang membangun multi-agent AI skala nasional untuk operasi intelijen di Indonesia. Production infrastructure, bukan side project.*
+Saya Yoel, **AI Specialist di [Piranusa](https://piranusa.com)** dan **founder [YOTEXT](https://yotext.app)**.
 
-Spesialisasi gue gak cuma wire-up API: gue bangun sistem yang **reasoning otonom across multi-tier search pipelines**, resolve entity identity lewat **constraint intersection**, jalan 24 jam tanpa supervision, dan scale dari 5 worker ke 50 on-demand.
+Di Piranusa saya memegang sisi komersial, marketing, dan aplikasi internal, termasuk **Sipira**, CRM yang dipakai tim setiap hari, dan **Rekapin**. YOTEXT adalah produk saya sendiri: rapat menjadi transkrip, ringkasan, keputusan, dan tugas yang bisa dibuka lagi kapan saja. YOTEXT adalah kelanjutan dari dua project pribadi saya sebelumnya, ALTO dan YOTA.
 
-**Stack inti hari-hari:**
+Di luar itu, saya membantu bisnis tampil jelas di internet, mulai dari domain sampai halaman yang langsung dipahami calon pelanggan.
+
+---
+
+<p align="center">
+  <img src="./.github/showcase.webp" alt="Tampilan yoel.online: beranda, tulisan dengan pemutar kaset, halaman project, dan versi ponsel." width="100%" />
+</p>
+
+## Karya pilihan
+
+| Situs | Untuk siapa | Tautan |
+|---|---|---|
+| **Piranusa** | Mitra teknologi CAD, BIM, dan 3D untuk industri Indonesia | [piranusa.com](https://piranusa.com) |
+| **YOTEXT** | Produk AI untuk transkrip dan catatan rapat | [yotext.app](https://yotext.app) |
+| **Dinamika Polimerindo** | Manufaktur plastic injection molding | [polimerindo.com](https://polimerindo.com) |
+
+Project lama seperti **Autocrawl, ALTO, YOTA, Atlas, Geocek, Sentinel, Juscat, ReUse, SoapyWorld, Scope of Work,** dan **AI Deskriptor** sekarang punya halaman sendiri di [yoel.online/projects](https://yoel.online/projects). Sebagian repository sudah privat. Halamannya tetap menampilkan cerita project dan susunan file serta foldernya, tanpa membuka kode.
+
+## Yang bisa saya kerjakan
+
+* **Website perusahaan.** Halaman yang menjelaskan apa yang dijual, untuk siapa, dan kenapa layak dipercaya.
+* **Landing page produk.** Satu halaman yang fokus sampai pengunjung tahu langkah berikutnya.
+* **Domain, hosting, dan SEO dasar.** Sitemap, robots, metadata, dan data terstruktur.
+* **AI yang benar benar dipakai.** Asisten tanya jawab, otomasi formulir, atau alat internal, hanya kalau memang membantu.
+
+---
+
+## Tentang situs ini
+
+Situs ini bergaya galeri karya: setiap karya ditampilkan dengan gambar dari situs aslinya, bukan mockup.
+
+* **Tulisan yang bisa didengar.** Setiap artikel punya narasi suara AI saya, diputar lewat pemutar bergaya kaset. Teksnya menyala kata demi kata mengikuti suara dan bergulir otomatis. Klik kata mana pun untuk lompat ke bagian itu. Narasinya dibuat dengan ElevenLabs v3.
+* **Ilustrasi Paper.** Gambar sampul dan ilustrasi tulisan dibuat dengan Qwen Image dalam gaya kertas berlapis: krem, kobalt, dan navy, ditandatangani "Yoel".
+* **Teks yang bergerak.** Teks masuk, keluar, dan berbalik arah mengikuti scroll, dengan gaya yang diacak setiap kunjungan. Judul dan link membalik warna saat di hover. Untuk mesin pencari dan Lighthouse, semua teks tetap tampil apa adanya.
+* **Ngobrol dengan Yoel.** Asisten di pojok kanan bawah menjawab pertanyaan soal pekerjaan dan layanan saya, ditenagai Qwen.
+* **Status repository otomatis.** Halaman project mengecek GitHub. Begitu sebuah repository diprivatkan, situs ikut menampilkannya sebagai privat.
 
 ```text
-AI · ORCHESTRATION    LangGraph · LangChain · Ollama · OpenAI · Groq · Whisper · IBM Granite · NLLB · GPT-4o · Gemini
-BACKEND               Python · FastAPI · PostgreSQL · Redis · Docker · Playwright · Crawl4AI · SQLAlchemy
-FRONTEND              Vue 3 · TypeScript · React · Next.js · TailwindCSS · MapLibre GL · Apache ECharts · Vue Flow
-OBSERVABILITY         Prometheus · Grafana · Langfuse · ChromaDB · FlareSolverr · OpenSERP · Structlog
-BLOCKCHAIN            VeChain · Solidity · Hardhat · Web3
-INFRASTRUCTURE        CUDA 12.x · AWS · Docker · Ubuntu · OSINT · OSM
+FRAMEWORK     Next.js 14 App Router · React 18 · TypeScript
+KONTEN        MDX · next mdx remote · RSS, Atom, dan JSON Feed
+AI            Qwen (obrolan dan gambar) · ElevenLabs v3 (narasi)
+TAMPILAN      CSS buatan sendiri · Syne · Manrope · Fraunces · DM Mono
+ANALITIK      Vercel Analytics · Speed Insights
 ```
 
-Background lintas domain: defense AI, blockchain ([VeBetterDAO ecosystem](https://vebetterdao.org)), eCommerce automation, digital agency. **Selalu**: musisi di samping ([Cubicube](https://open.spotify.com/artist/2ztUmew6tgNQ8JtRRep4Td) on Spotify sejak 2020).
+### Menjalankan secara lokal
+
+```bash
+npm install
+npm run dev
+```
+
+Isi `.env.local` dengan `QWEN_API_KEY` untuk obrolan. `QWEN_BASE_URL`, `QWEN_MODEL`, dan `JINA_API_KEY` bersifat opsional.
 
 ---
 
-<p align="center">
-  <img src="./.github/specimens.svg" alt="Featured specimens · Autocrawl, Atlas, Geocek, YOTA" width="100%" />
-</p>
+## Hubungi saya
 
-### №01 · Autocrawl · Autonomous intelligence crawler
-
-LangGraph state machine fan-out ke **50 parallel workers**, ngecrawl security & defense expo vendors lewat open web. Multi-tier search pipeline: Wikipedia REST direct, DuckDuckGo, Google News RSS, dan OpenSERP yang ngejalanin Google + Bing + Yandex + Baidu simultaneously via headless Chromium. PDF brosur discovery + OCR via Ollama vision (`gemma4:e4b`). Vendor identity resolution lewat `schema.org` + anchor link analysis + LLM tiebreak. Chroma vector store dedup cosine similarity. NLLB-200 translate semua enriched data ke Bahasa Indonesia locally.
-
-Vue 3 tactical dashboard: 2.5D world map dengan cylinder bars per country, fly arcs antar intelligence hubs, interactive drilldown panels, dan live LangGraph canvas yang nampilin state machine real-time. Full observability stack: Prometheus metrics, Grafana dashboards, Langfuse LLM tracing, structlog structured logging, per-domain Redis rate limiting.
-
-> **929 vendors indexed in one overnight run · 12× original throughput estimate · 150 vendors/hour at peak · 104 fully enriched · 497 translated to Bahasa Indonesia**
-
-`LangGraph` `LangChain` `Playwright` `Crawl4AI` `Ollama` `IBM Granite` `FastAPI` `PostgreSQL` `Redis` `ChromaDB` `Vue 3` `MapLibre GL` `Apache ECharts`
-
-### №02 · Atlas · Local AI voice intelligence
-
-End-to-end local voice AI pipeline. Whisper handle speech-to-text dengan GPU acceleration via CUDA 12.x — support Blackwell RTX 50xx lewat nightly PyTorch builds. LLM inference bisa route ke Ollama (local), Groq (cloud speed), atau OpenRouter (model flexibility). edge-TTS convert response ke natural speech. WebSocket live mode buat real-time conversation. Persistent memory layer cross-session. Model benchmark suite bandingin latency dan quality across providers. **Designed jalan tanpa network dependency**.
-
-> **WebSocket live conversation · GPU-accelerated ASR · 3 LLM backends · benchmarkable · fully offline-capable**
-
-`Whisper` `Ollama` `Groq` `OpenRouter` `edge-TTS` `FastAPI` `WebSocket` `CUDA 12.x`
-
-### №03 · Geocek · OSINT geolocation engine
-
-Geolocate gambar cuma dari visual cues. Gak butuh GPS metadata. License plate prefix mapping narrowin search ke regional bounding box. Road classification, lane count, dan median presence filter candidates dari Overpass API. Fuzzy landmark normalization handle misspelled atau partial POI mentions. Constraint intersection logic progressively eliminate candidates yang fail multiple criteria simultaneously. Weighted confidence scoring estimate paling-likely location plus radius of error. Output: text report, GeoJSON, interactive Folium map per analysis.
-
-> **100 % free APIs · signal extraction → area refinement → Overpass query → constraint filtering → confidence scoring**
-
-`Python` `OSM Nominatim` `Overpass` `GPT-4o` `LangChain` `Mapbox`
-
-### №04 · YOTA · AI minutes-of-meeting generator
-
-Asisten Rapat AI Cerdas. Convert meeting recording jadi structured documents: executive summary, discussion points, action items. Whisper handle transcription dengan automatic chunking buat meeting 3+ jam. Speaker diarization otomatis labelin speaker. CrewAI multi-agent system bikin professional document structure. Real-time progress monitoring during processing. Export PDF, DOCX, Markdown, plain text. Action items langsung sync ke task database.
-
-> **Long-form audio (3+ hr) · multi-agent CrewAI workflow · speaker diarization · multi-format export**
-
-`Next.js 15` `React 19` `FastAPI` `Whisper` `GPT-4o` `CrewAI` `SQLite`
-
-### Plus 8 specimen lagi
-
-**Sentinel** (AntiFraud heuristics) · **Juscat** (VeChain dApp + AI image validation) · **ReUse** (photo-verified reuse rewards on VeBetterDAO) · **SoapyWorld** (gamified sustainability dApp · 800+ confirmed activities) · **AI Deskriptor** (e-commerce content generator) · **Sekriptor** (AI script generator) · **Scope of Work** (documentation platform) · **Field Dispatch** (this portfolio).
-
-[**Open full specimens → yoel.online/projects**](https://yoel.online/projects)
-
----
-
-## №03 · The Wire
-
-[**`yoel.online`**](https://yoel.online) punya **Talkative Yoel**, AI persona yang grounded di pengalaman ini. Bukan FAQ, ngomong as me. Pake compacted memory per browser via localStorage, jadi continuity nyambung sampai lo refresh.
-
-Engine: **Groq · Llama 3.3 70B Versatile** lewat edge runtime. Few-shot persona + strict language rules + gibberish detector + retry-up-to-2 supaya gak ngarang. Compaction otomatis pas history > 8 messages.
-
-Tanya soal kerjaan, project, salary, opinion teknis, atau musik. Live channel, fade-in reveal.
-
----
-
-## №04 · Engage
-
-| Direct lines | Off the record |
+| Langsung | Di tempat lain |
 |---|---|
 | [yoelandreasmanoppo@gmail.com](mailto:yoelandreasmanoppo@gmail.com) | [github.com/Y0EL](https://github.com/Y0EL) |
-| [+62 899 224 6000](https://wa.me/628992246000) (WhatsApp) | [@vehunt](https://x.com/vehunt) on X |
-| [linkedin.com/in/yoelmanoppo](https://www.linkedin.com/in/yoelmanoppo) | [@yoelmanoppo](https://www.instagram.com/yoelmanoppo) on Instagram |
+| [+62 899 224 6000](https://wa.me/628992246000) (WhatsApp) | [linkedin.com/in/y0el](https://www.linkedin.com/in/y0el) |
+| [yoel.online](https://yoel.online) | [@yoelmanoppo](https://www.instagram.com/yoelmanoppo) di Instagram · [@vehunt](https://x.com/vehunt) di X |
 
-**Open to**: AI systems consulting · agentic architecture · forward-deployed engineering roles.
-**Region**: Indonesia · Remote Asia-Pacific · International.
-
----
+Dan sejak 2020, saya juga bermusik sebagai [Cubicube](https://open.spotify.com/artist/2ztUmew6tgNQ8JtRRep4Td) di Spotify.
 
 <p align="center">
-  <img src="./.github/colophon.svg" alt="Set in Newsreader, Onest & JetBrains Mono. Built quietly in Jakarta." width="100%" />
+  <img src="./.github/colophon.webp" alt="Disusun dengan Syne, Manrope, Fraunces, dan DM Mono. Dibangun pelan pelan di Jakarta." width="100%" />
 </p>
