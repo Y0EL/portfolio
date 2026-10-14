@@ -30,6 +30,8 @@
   --yotextAccent: #bddfba;
   --polimerindo: #d65a22;
   --polimerindoAccent: #ffd9bd;
+  --scanner: #13283a;
+  --scannerAccent: #2a8cc4;
   --sh-class: #9a3a2a;
   --sh-identifier: #2f5d86;
   --sh-sign: #646a64;
@@ -527,6 +529,23 @@ img {
   z-index: -1;
 }
 
+.toneScanner {
+  background: var(--scanner);
+}
+
+.toneScanner::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -140px;
+  top: -120px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--scannerAccent) 60%, transparent);
+  box-shadow: 0 0 0 36px color-mix(in srgb, var(--scannerAccent) 12%, transparent), 0 0 0 72px color-mix(in srgb, var(--scannerAccent) 6%, transparent);
+  z-index: -1;
+}
+
 .stageWord {
   position: relative;
   z-index: 1;
@@ -770,6 +789,51 @@ img {
 
 .toneYotext .stageAccent {
   color: var(--yotextAccent);
+}
+
+.toneScanner .stageAccent {
+  color: var(--scannerAccent);
+}
+
+.toneOpen {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px dashed var(--line);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.toneOpen .stageLabel {
+  color: var(--inkMute);
+}
+
+.toneOpen .stageAccent {
+  color: var(--accent);
+}
+
+.openFrame {
+  position: absolute;
+  z-index: 2;
+  width: 70%;
+  height: 46%;
+  right: -5%;
+  bottom: -18%;
+  border: 1.5px dashed var(--line);
+  border-radius: 10px;
+  background: var(--groundAlt);
+  transform: rotate(-4deg);
+  transform-origin: bottom right;
+  transition: transform 0.7s var(--ease);
+  --frameInk: var(--inkMute);
+  color: var(--inkMute);
+}
+
+.workTile:hover .toneOpen {
+  border-color: var(--accent);
+  background: var(--accentSoft);
+}
+
+.workTile:hover .openFrame {
+  transform: rotate(-2deg) translateY(-26px);
 }
 
 .tonePolimerindo .stageWord {

@@ -8,7 +8,7 @@ export interface ShowcaseWork {
   summary: string;
   story: string;
   points: string[];
-  tone: "piranusa" | "yotext" | "polimerindo";
+  tone: "piranusa" | "yotext" | "polimerindo" | "scanner";
   shots: {
     desktop: string;
     long: string;
@@ -99,6 +99,29 @@ export const showcase: ShowcaseWork[] = [
       long: "/work/polimerindoLong.webp",
       longHeight: 4200,
       mobile: "/work/polimerindoMobile.webp",
+    },
+  },
+  {
+    slug: "scanner",
+    title: "3D Scanner Indonesia",
+    domain: "3dscanner.id",
+    url: "https://3dscanner.id/",
+    year: "2026",
+    kind: "Website produk",
+    summary: "Website distributor resmi SHINING 3D di Indonesia untuk 3D scanner pengukuran, inspeksi, dan reverse engineering.",
+    story:
+      "3dscanner.id adalah etalase PIRANUSA untuk lini 3D scanner SHINING 3D, dari handheld scanner sampai sistem inspeksi otomatis. Pengunjungnya tim manufaktur dan quality control yang perlu tahu scanner mana yang cocok dengan ukuran benda kerja dan tingkat presisi mereka. Halamannya mengajak pengunjung memilih berdasarkan kebutuhan dulu, baru masuk ke katalog produk.",
+    points: [
+      "Bisnis: distributor resmi 3D scanner SHINING 3D",
+      "Pengunjung: tim manufaktur, quality control, dan engineering",
+      "Yang bisa dilihat: alur memilih scanner dari kebutuhan pekerjaan sampai katalog produk",
+    ],
+    tone: "scanner",
+    shots: {
+      desktop: "/work/scannerDesktop.webp",
+      long: "/work/scannerLong.webp",
+      longHeight: 3990,
+      mobile: "/work/scannerMobile.webp",
     },
   },
 ];

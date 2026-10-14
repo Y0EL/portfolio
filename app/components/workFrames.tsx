@@ -50,4 +50,5 @@ export const toneClass: Record<ShowcaseWork["tone"], string> = {
   piranusa: "tonePiranusa",
   yotext: "toneYotext",
   polimerindo: "tonePolimerindo",
+  scanner: "toneScanner",
 };

@@ -131,6 +131,12 @@ export default async function Page() {
                   <>
                     YOTEXT<span className="stageAccent">.</span>
                   </>
+                ) : work.slug === "scanner" ? (
+                  <>
+                    3D
+                    <br />
+                    SCAN<span className="stageAccent">.</span>
+                  </>
                 ) : (
                   <>
                     PLASTIC
@@ -154,6 +160,41 @@ export default async function Page() {
             </div>
           </a>
         ))}
+        <a href={socialLinks.email} className="workTile">
+          <div className="stage tileStage toneOpen">
+            <span className="stageLabel mono">
+              <span>Slot terbuka</span>
+              <span>domainkamu.com</span>
+            </span>
+            <span className="stageWord">
+              SOON
+              <br />
+              YOU&apos;RE
+              <br />
+              HERE<span className="stageAccent">.</span>
+            </span>
+            <span className="openFrame" aria-hidden="true">
+              <span className="browserBar">
+                <span className="browserDots">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span className="browserUrl">domainkamu.com</span>
+              </span>
+            </span>
+          </div>
+          <div className="tileInfo">
+            <div>
+              <span className="mono headMeta">Berikutnya</span>
+              <h3>Website kamu</h3>
+              <p>Ruang ini sengaja dikosongkan. Ceritakan bisnis kamu, dan karya berikutnya di sini bisa jadi milik kamu.</p>
+            </div>
+            <span className="tileArrow" aria-hidden="true">
+              <ArrowUpRight />
+            </span>
+          </div>
+        </a>
       </section>
 
       <section className="statement">
