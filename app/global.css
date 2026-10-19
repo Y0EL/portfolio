@@ -32,6 +32,8 @@
   --polimerindoAccent: #ffd9bd;
   --scanner: #13283a;
   --scannerAccent: #2a8cc4;
+  --evidnce: #08325f;
+  --evidnceAccent: #4fb2ec;
   --sh-class: #9a3a2a;
   --sh-identifier: #2f5d86;
   --sh-sign: #646a64;
@@ -546,6 +548,26 @@ img {
   z-index: -1;
 }
 
+.toneEvidnce {
+  background: var(--evidnce);
+}
+
+.toneEvidnce::before {
+  content: "";
+  position: absolute;
+  width: 760px;
+  height: 760px;
+  right: -260px;
+  top: -300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--evidnceAccent) 45%, transparent), transparent 64%);
+  z-index: -1;
+}
+
+.toneEvidnce .stageAccent {
+  color: var(--evidnceAccent);
+}
+
 .stageWord {
   position: relative;
   z-index: 1;
@@ -648,6 +670,407 @@ img {
   transform: translateY(0);
   transition: transform 1.6s var(--ease);
   will-change: transform;
+}
+
+.evidnceShot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  font-size: 1.365cqw;
+  line-height: 1.4;
+  color: #1b1d20;
+  background: radial-gradient(70% 72% at 58% 42%, #4fb2ec 0%, #1f78c4 45%, #08325f 100%);
+  overflow: hidden;
+}
+
+.evidnceShot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(38% 22% at 58% 44%, #ffffff7a, transparent 70%),
+    linear-gradient(168deg, transparent 52%, #bfe6ff3d 53%, #bfe6ff3d 61%, transparent 62%),
+    linear-gradient(172deg, transparent 68%, #8fd3ff33 69%, #8fd3ff33 74%, transparent 75%);
+}
+
+.evidnceDesk {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 2.08cqw;
+  padding: 2.08cqw;
+}
+
+.evidnceIcons {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 1.69cqw;
+  width: 8.32cqw;
+}
+
+.evidnceIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.455cqw;
+  text-align: center;
+}
+
+.evidnceIcon svg {
+  width: 4.42cqw;
+  height: 4.42cqw;
+}
+
+.evidnceDeskMark {
+  color: #ffffff;
+}
+
+.evidnceIcon em {
+  font-style: normal;
+  font-size: 1.196cqw;
+  color: #ffffff;
+  text-shadow: 0 0.13cqw 0.26cqw #0000009e;
+}
+
+.evidnceWindow {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 0.117cqw solid #7f9db9;
+  border-radius: 0.78cqw 0.78cqw 0.26cqw 0.26cqw;
+  background: #f4f6f8;
+  box-shadow: 0 1.56cqw 3.64cqw #00203f70;
+  overflow: hidden;
+}
+
+.evidnceTitleBar {
+  display: flex;
+  align-items: center;
+  gap: 0.78cqw;
+  flex: none;
+  height: 3.51cqw;
+  padding: 0 0.78cqw;
+  background: linear-gradient(180deg, #e1eefc 0%, #c4daf3 50%, #b2cded 51%, #cbdff5 100%);
+  border-bottom: 0.104cqw solid #9fb6cc;
+  font-size: 1.3cqw;
+  font-weight: 600;
+}
+
+.evidnceTitleMark {
+  flex: none;
+  width: 1.69cqw;
+  height: 1.69cqw;
+  color: #24527f;
+}
+
+.evidnceControls {
+  margin-left: auto;
+  display: flex;
+  gap: 0.39cqw;
+}
+
+.evidnceControls i {
+  width: 2.73cqw;
+  height: 1.95cqw;
+  border-radius: 0.26cqw;
+  border: 0.091cqw solid #7f9db9;
+  background: linear-gradient(180deg, #fdfeff, #dbe7f3);
+}
+
+.evidnceControls i.isClose {
+  border-color: #a33a2d;
+  background: linear-gradient(180deg, #f6a99c, #d0493a);
+}
+
+.evidnceBody {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.43cqw;
+  padding: 1.3cqw;
+  background: #ffffff;
+}
+
+.evidnceToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.3cqw;
+  padding-bottom: 1.04cqw;
+  border-bottom: 0.104cqw solid #dde1e5;
+}
+
+.evidnceBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.65cqw;
+  font-size: 1.755cqw;
+  font-weight: 700;
+}
+
+.evidnceBrandMark {
+  width: 2.21cqw;
+  height: 2.21cqw;
+  color: #24527f;
+}
+
+.evidnceActions {
+  display: flex;
+  gap: 0.78cqw;
+}
+
+.evidnceActions b {
+  font-weight: 400;
+  font-size: 1.274cqw;
+  padding: 0.585cqw 1.43cqw;
+  border: 0.104cqw solid #adb6bd;
+  border-radius: 0.325cqw;
+  background: linear-gradient(180deg, #fdfdfd, #eaeef3);
+}
+
+.evidnceActions b.isDefault {
+  border-color: #4a90c4;
+  box-shadow: 0 0 0 0.156cqw #2254af2e;
+  background: linear-gradient(180deg, #f3f9ff, #d9e9f8);
+}
+
+.evidnceTabs {
+  display: flex;
+  gap: 0.26cqw;
+  border-bottom: 0.104cqw solid #bfc6ce;
+}
+
+.evidnceTabs span {
+  font-size: 1.235cqw;
+  padding: 0.585cqw 1.56cqw;
+  margin-bottom: -0.104cqw;
+  border: 0.104cqw solid #bfc6ce;
+  border-bottom: 0;
+  border-radius: 0.39cqw 0.39cqw 0 0;
+  background: #e9eef4;
+  color: #5c636a;
+}
+
+.evidnceTabs span.isActive {
+  background: #ffffff;
+  color: #1b1d20;
+  font-weight: 600;
+}
+
+.evidnceHero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.08cqw;
+  align-items: start;
+}
+
+.evidnceHeroCopy strong {
+  display: block;
+  font-size: 3.25cqw;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.evidnceHeroCopy p {
+  margin: 1.17cqw 0 1.56cqw;
+  font-size: 1.365cqw;
+  line-height: 1.5;
+  color: #35393e;
+}
+
+.evidncePane {
+  border: 0.117cqw solid #7f9db9;
+  border-radius: 0.52cqw;
+  background: #f4f6f8;
+  box-shadow: 0 0.91cqw 2.34cqw #00203f3d;
+  overflow: hidden;
+}
+
+.evidncePaneBar {
+  display: flex;
+  align-items: center;
+  gap: 0.78cqw;
+  height: 2.73cqw;
+  padding: 0 0.65cqw;
+  background: linear-gradient(180deg, #e1eefc, #c4daf3 50%, #b2cded 51%, #cbdff5);
+  font-size: 1.196cqw;
+  font-weight: 600;
+}
+
+.evidncePaneBar i {
+  flex: none;
+  margin-left: auto;
+  width: 2.34cqw;
+  height: 1.69cqw;
+  border-radius: 0.26cqw;
+  border: 0.091cqw solid #a33a2d;
+  background: linear-gradient(180deg, #f6a99c, #d0493a);
+}
+
+.evidncePaneBody {
+  padding: 1.17cqw;
+  background: #ffffff;
+}
+
+.evidnceRun {
+  display: block;
+  font-size: 1.196cqw;
+  color: #35393e;
+}
+
+.evidnceMarquee {
+  display: block;
+  margin: 0.715cqw 0 1.17cqw;
+  height: 1.17cqw;
+  border: 0.091cqw solid #a8bfd4;
+  border-radius: 0.195cqw;
+  background: #edf3f9;
+  overflow: hidden;
+}
+
+.evidnceMarquee i {
+  display: block;
+  width: 34%;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, #386c9c 0 0.65cqw, #6a9cc8 0.65cqw 1.3cqw);
+  animation: evidnceMarquee 2.4s linear infinite;
+}
+
+@keyframes evidnceMarquee {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
+.evidnceTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.196cqw;
+}
+
+.evidnceTable th {
+  text-align: left;
+  font-weight: 600;
+  padding: 0.52cqw 0.78cqw;
+  background: #e9eef4;
+  border: 0.091cqw solid #cfd6dd;
+  color: #35393e;
+}
+
+.evidnceTable td {
+  padding: 0.585cqw 0.78cqw;
+  border: 0.091cqw solid #e2e6ea;
+}
+
+.evidnceTable .isConfirmed {
+  color: #226342;
+  font-weight: 600;
+}
+
+.evidnceTable .isClaimed {
+  color: #835400;
+  font-weight: 600;
+}
+
+.evidnceTable .isPossible {
+  color: #56647b;
+  font-weight: 600;
+}
+
+.evidnceCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.3cqw;
+}
+
+.evidnceCard {
+  display: block;
+  padding: 1.17cqw;
+  border: 0.104cqw solid #c8ccd0;
+  border-radius: 0.26cqw;
+  background: #fbfcfd;
+}
+
+.evidnceCard em {
+  font-style: normal;
+  font-size: 1.235cqw;
+  font-weight: 700;
+  color: #24527f;
+}
+
+.evidnceCard p {
+  margin: 0.65cqw 0 0;
+  font-size: 1.144cqw;
+  line-height: 1.45;
+  color: #5c636a;
+}
+
+.evidnceStatusBar {
+  display: flex;
+  flex: none;
+  gap: 0.39cqw;
+  padding: 0.455cqw;
+  background: #f0f2f4;
+  border-top: 0.104cqw solid #cfd6dd;
+  font-size: 1.105cqw;
+  color: #5c636a;
+}
+
+.evidnceStatusBar span {
+  min-width: 9.1cqw;
+  padding: 0.26cqw 0.78cqw;
+  border: 0.091cqw solid #dfe3e7;
+  background: #f7f8fa;
+}
+
+.evidnceTaskbar {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 1.04cqw;
+  height: 4.16cqw;
+  padding: 0 1.04cqw;
+  background: linear-gradient(180deg, #1b4f86e6, #0b2d50f2);
+  border-top: 0.117cqw solid #7fb4e8;
+  color: #eaf3ff;
+  font-size: 1.196cqw;
+}
+
+.evidnceStart {
+  display: grid;
+  place-items: center;
+  width: 3.12cqw;
+  height: 3.12cqw;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #9fd4ff, #2d7cc4 60%, #11406e);
+  color: #ffffff;
+}
+
+.evidnceStartMark {
+  width: 1.69cqw;
+  height: 1.69cqw;
+}
+
+.evidnceTask {
+  padding: 0.455cqw 1.3cqw;
+  border: 0.091cqw solid #ffffff3d;
+  border-radius: 0.26cqw;
+  background: #ffffff1f;
+}
+
+.evidnceClock {
+  margin-left: auto;
 }
 
 .featureFrame {
@@ -2853,6 +3276,11 @@ a.archiveRow:hover .archiveArrow svg {
 
   .caseStage .browserFrame {
     display: none;
+  }
+
+  .caseStage .codedFrame {
+    display: block;
+    margin-top: 26px;
   }
 
   .caseStage .phoneFrame {

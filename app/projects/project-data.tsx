@@ -8,13 +8,14 @@ export interface ShowcaseWork {
   summary: string;
   story: string;
   points: string[];
-  tone: "piranusa" | "yotext" | "polimerindo" | "scanner";
-  shots: {
+  tone: "piranusa" | "yotext" | "polimerindo" | "scanner" | "evidnce";
+  shots?: {
     desktop: string;
     long: string;
     longHeight: number;
     mobile: string;
   };
+  coded?: "evidnce";
 }
 
 export interface ArchiveWork {
@@ -123,6 +124,24 @@ export const showcase: ShowcaseWork[] = [
       longHeight: 3990,
       mobile: "/work/scannerMobile.webp",
     },
+  },
+  {
+    slug: "evidnce",
+    title: "EVIDNCE",
+    domain: "evidnce.tech",
+    url: "https://evidnce.tech/",
+    year: "2026",
+    kind: "Produk riset",
+    summary: "Mesin riset perusahaan yang menyimpan sumber di balik setiap klaim, bukan sekadar daftar nama.",
+    story:
+      "EVIDNCE menjawab pertanyaan tim sales seperti siapa saja distributor CAD di Indonesia, lalu memeriksa sendiri jawabannya ke halaman mitra dan situs perusahaan. Setiap hubungan diberi status Confirmed, Claimed, atau Possible beserta kutipan halaman yang mendukungnya. Tampilannya sengaja berupa satu jendela aplikasi tanpa gulir, karena ini alat kerja yang dipakai sambil mengetik, bukan halaman yang dibaca sambil menggulir.",
+    points: [
+      "Produk: mesin riset perusahaan yang menyimpan buktinya",
+      "Pengunjung: tim sales dan riset pasar",
+      "Yang bisa dilihat: satu layar kerja, setiap klaim membawa sumbernya",
+    ],
+    tone: "evidnce",
+    coded: "evidnce",
   },
 ];
 

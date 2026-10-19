@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
@@ -38,6 +39,33 @@ const SERVICES = [
     example: "Contohnya asisten di pojok kanan bawah halaman ini",
   },
 ];
+
+const TILE_WORDS: Record<string, ReactNode> = {
+  yotext: (
+    <>
+      YOTEXT<span className="stageAccent">.</span>
+    </>
+  ),
+  polimerindo: (
+    <>
+      PLASTIC
+      <br />
+      PARTS.
+    </>
+  ),
+  scanner: (
+    <>
+      3D
+      <br />
+      SCAN<span className="stageAccent">.</span>
+    </>
+  ),
+  evidnce: (
+    <>
+      EVIDNCE<span className="stageAccent">.</span>
+    </>
+  ),
+};
 
 const PROCESS = [
   { title: "Diskusi awal", body: "Siapa pengunjungnya, apa yang mereka cari, dan apa yang perlu terjadi setelah mereka membaca." },
@@ -126,25 +154,7 @@ export default async function Page() {
                 <span>{work.kind}</span>
                 <span>{work.domain}</span>
               </span>
-              <span className="stageWord">
-                {work.slug === "yotext" ? (
-                  <>
-                    YOTEXT<span className="stageAccent">.</span>
-                  </>
-                ) : work.slug === "scanner" ? (
-                  <>
-                    3D
-                    <br />
-                    SCAN<span className="stageAccent">.</span>
-                  </>
-                ) : (
-                  <>
-                    PLASTIC
-                    <br />
-                    PARTS.
-                  </>
-                )}
-              </span>
+              <span className="stageWord">{TILE_WORDS[work.slug]}</span>
               <BrowserFrame work={work} hint={false} />
               <PhoneFrame work={work} />
             </div>
