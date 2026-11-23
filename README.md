@@ -36,7 +36,7 @@ Di luar itu, saya membantu bisnis tampil jelas di internet, mulai dari domain sa
 | **YOTEXT** | Produk AI untuk transkrip dan catatan rapat | [yotext.app](https://yotext.app) |
 | **Dinamika Polimerindo** | Manufaktur plastic injection molding | [polimerindo.com](https://polimerindo.com) |
 
-Project lama seperti **Autocrawl, ALTO, YOTA, Atlas, Geocek, Sentinel, Juscat, ReUse, SoapyWorld, Scope of Work,** dan **AI Deskriptor** sekarang punya halaman sendiri di [yoel.online/projects](https://yoel.online/projects). Sebagian repository sudah privat. Halamannya tetap menampilkan cerita project dan susunan file serta foldernya, tanpa membuka kode.
+Project lama seperti **Autocrawl, ALTO, YOTA, Atlas, Geocek, Sentinel, Scope of Work,** dan **AI Deskriptor** sekarang punya halaman sendiri di [yoel.online/projects](https://yoel.online/projects). Sebagian repository sudah privat. Halamannya tetap menampilkan cerita project dan susunan file serta foldernya, tanpa membuka kode.
 
 ## Yang bisa saya kerjakan
 

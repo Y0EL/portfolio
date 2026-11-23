@@ -344,8 +344,8 @@ export default async function Page() {
           </h2>
           <p>
             Saya AI Product Architect dan founder PT Manoppo Teknologi Indonesia, perusahaan yang mengembangkan Tiba,
-            Nada, Catetin, YOTEXT, dan EVIDNCE. Sebelumnya saya membangun sistem multi agent AI untuk pemerintahan, dApp di ekosistem
-            VeChain, dan alat AI di agensi digital.
+            Nada, Catetin, YOTEXT, dan EVIDNCE. Sebelumnya saya membangun sistem multi agent AI untuk pemerintahan dan alat AI di
+            agensi digital.
           </p>
           <p>
             Di setiap produk, saya memperhatikan bagian yang sering terlewat: apakah orang yang memakainya setiap hari

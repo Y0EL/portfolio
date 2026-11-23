@@ -30,7 +30,7 @@ export default async function Projects() {
       <section className="archive" aria-labelledby="judulArsip">
         <span className="mono headMeta">Arsip</span>
         <h2 className="sectionTitle" id="judulArsip">
-          Proyek AI, blockchain, dan <em>alat kerja.</em>
+          Proyek AI, otomasi, dan <em>alat kerja.</em>
         </h2>
         <ul className="archiveList">
           {liveArchive.map((item) => (

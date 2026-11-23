@@ -5,11 +5,8 @@ type SigilName =
   | "atlas"
   | "geocek"
   | "sentinel"
-  | "juscat"
   | "yota"
   | "alto"
-  | "reuse"
-  | "soapy"
   | "deskriptor"
   | "sekriptor"
   | "scope"
@@ -97,16 +94,6 @@ export function ProjectSigil({
         </svg>
       );
 
-    /* JUSCAT · token with check */
-    case "juscat":
-      return (
-        <svg {...common}>
-          <circle cx="40" cy="40" r="26" />
-          <circle cx="40" cy="40" r="19" opacity="0.45" />
-          <path d="M30 40 L37 47 L52 32" />
-        </svg>
-      );
-
     /* YOTA · document with waveform */
     case "yota":
       return (
@@ -135,30 +122,6 @@ export function ProjectSigil({
           <line x1="47" y1="54" x2="47" y2="32" />
           <line x1="56" y1="54" x2="56" y2="42" />
           <line x1="18" y1="56" x2="62" y2="56" opacity="0.35" strokeWidth={1} />
-        </svg>
-      );
-
-    /* REUSE · circular arrows */
-    case "reuse":
-      return (
-        <svg {...common}>
-          <path d="M22 30 A22 22 0 0 1 56 22" />
-          <path d="M60 22 L56 22 L56 18" />
-          <path d="M58 50 A22 22 0 0 1 24 58" />
-          <path d="M20 58 L24 58 L24 62" />
-          <circle cx="40" cy="40" r="6" />
-        </svg>
-      );
-
-    /* SOAPY · bubble cluster */
-    case "soapy":
-      return (
-        <svg {...common}>
-          <circle cx="32" cy="34" r="16" />
-          <circle cx="52" cy="46" r="11" />
-          <circle cx="44" cy="58" r="6" />
-          <circle cx="26" cy="58" r="4" opacity="0.6" />
-          <circle cx="36" cy="28" r="3" fill="currentColor" opacity="0.5" />
         </svg>
       );
 

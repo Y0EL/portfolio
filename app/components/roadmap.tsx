@@ -8,8 +8,6 @@ const MILESTONES: Milestone[] = [
   { year: "2023", title: "Harvard CS50X · CS50AI", tag: "Sekolah mandiri · CS fundamentals" },
   { year: "2023", title: "EFSET C2", tag: "English proficient level" },
   { year: "2024", title: "AI Deskriptor", tag: "Ecommerce content at scale" },
-  { year: "2024", title: "ReUse · founded", tag: "VeBetterDAO funded · co founder · CTO", turn: "small" },
-  { year: "2024", title: "SoapyWorld", tag: "Gamified sustainability dApp · 800+ actions" },
   { year: "2024", title: "PT. HERUN · Scope of Work", tag: "Documentation platform" },
   { year: "Mei 2025", title: "PT. GSP", tag: "AI forward deployed engineer · 4 orang tim inti · BNPT", turn: "big" },
   { year: "2025", title: "Autocrawl", tag: "929 vendors / 1 night · 12x throughput" },

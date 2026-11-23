@@ -61,8 +61,6 @@ export const personJsonLd = {
     "FastAPI",
     "Vue 3",
     "Whisper",
-    "VeChain",
-    "Solidity",
   ],
   sameAs: [socialLinks.linkedin, socialLinks.github, socialLinks.twitter, socialLinks.instagram],
 };

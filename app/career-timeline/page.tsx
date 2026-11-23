@@ -8,20 +8,6 @@ export const metadata: Metadata = {
   description: "Perjalanan kerja, pendidikan, dan sertifikasi Yoel Andreas Manoppo, dari agensi digital sampai AI Product Architect dan founder PT Manoppo Teknologi Indonesia.",
 };
 
-const ECOSYSTEM = [
-  {
-    period: "2024",
-    title: "Builder yang didanai dan terverifikasi",
-    org: "VeBetterDAO",
-    body: "Membangun sistem reward otomatis untuk aksi ramah lingkungan yang diverifikasi lewat blockchain.",
-  },
-  {
-    period: "2024 · 2026",
-    title: "Partisipan governance",
-    org: "B3TR dan VOT3",
-    body: "Ikut diskusi proposal Dynamic Base Allocation dan pengambilan keputusan komunitas.",
-  },
-];
 
 export default function CareerTimeline() {
   return (
@@ -38,7 +24,7 @@ export default function CareerTimeline() {
           Sampai mana <em>sejauh ini.</em>
         </h1>
         <p className="pageLead">
-          Dari alat AI di agensi digital, dApp di ekosistem VeChain, sistem multi agent untuk pemerintahan, sampai
+          Dari alat AI di agensi digital, sistem multi agent untuk pemerintahan, sampai
           sekarang AI Product Architect dan founder PT Manoppo Teknologi Indonesia.
         </p>
       </header>
@@ -96,24 +82,6 @@ export default function CareerTimeline() {
         </div>
       </section>
 
-      <section className="pageSection">
-        <div className="sectionHeadRow">
-          <span className="sideLabel mono">Ekosistem</span>
-          <h2 className="sectionTitle">Di luar kantor.</h2>
-        </div>
-        <ol className="pathList">
-          {ECOSYSTEM.map((e) => (
-            <li key={e.title} className="pathItem">
-              <time>{e.period}</time>
-              <h3>
-                {e.org}
-                <span>{e.title}</span>
-              </h3>
-              <p>{e.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
 
       <section className="pageSection">
         <div className="sectionHeadRow">
