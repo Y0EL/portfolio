@@ -1,11 +1,11 @@
 export const metaData = {
   baseUrl: "https://www.yoel.online",
-  title: "Yoel Andreas Manoppo · Website dan AI untuk bisnis",
+  title: "Yoel Andreas Manoppo · AI Product Architect",
   name: "Yoel Andreas Manoppo",
   ogImage: "/og/home.jpg",
-  ogAlt: "Yoel Andreas Manoppo. I build websites people get. Jendela browser dari kertas di yoel.online.",
+  ogAlt: "Yoel Andreas Manoppo, AI Product Architect. I build AI products people use. Jendela browser dari kertas di yoel.online.",
   description:
-    "Portfolio Yoel Andreas Manoppo, AI Specialist di Piranusa dan founder YOTEXT. Website perusahaan dan produk digital yang mudah dipahami, seperti Piranusa, YOTEXT, dan PT Dinamika Polimerindo.",
+    "Portfolio Yoel Andreas Manoppo, AI Product Architect dan founder PT Manoppo Teknologi Indonesia. Produk AI yang dipakai setiap hari, seperti Tiba, Nada, Catetin, YOTEXT, dan EVIDNCE.",
 };
 
 export const socialLinks = {
@@ -23,8 +23,8 @@ export const personJsonLd = {
   alternateName: ["Yoel Manoppo", "Y0EL"],
   url: "https://www.yoel.online",
   image: "https://www.yoel.online/yoel.jpg",
-  jobTitle: "AI Specialist",
-  description: "AI Specialist di Piranusa dan founder YOTEXT. Membuat website perusahaan dan produk digital di Jakarta.",
+  jobTitle: "AI Product Architect",
+  description: "AI Product Architect dan founder PT Manoppo Teknologi Indonesia. Merancang dan membangun produk AI seperti Tiba, Nada, Catetin, YOTEXT, dan EVIDNCE di Jakarta.",
   worksFor: [
     {
       "@type": "Organization",
@@ -32,18 +32,28 @@ export const personJsonLd = {
       url: "https://www.piranusa.com/",
     },
   ],
-  founder: {
-    "@type": "Organization",
-    name: "YOTEXT",
-    url: "https://yotext.app/",
-  },
+  founder: [
+    {
+      "@type": "Organization",
+      name: "PT Manoppo Teknologi Indonesia",
+    },
+    {
+      "@type": "Organization",
+      name: "YOTEXT",
+      url: "https://yotext.app/",
+    },
+  ],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Jakarta",
     addressCountry: "ID",
   },
   knowsAbout: [
-    "Pembuatan website perusahaan",
+    "AI product architecture",
+    "Product engineering",
+    "HRIS",
+    "Capacitor",
+    "React",
     "SEO",
     "Multi Agent AI",
     "LangGraph",

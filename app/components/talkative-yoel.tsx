@@ -17,16 +17,16 @@ const OPEN_TAG = "<email_draft>";
 const CLOSE_TAG = "</email_draft>";
 
 const SUGGESTIONS = [
-  "Bisa buatkan website untuk bisnis saya?",
+  "Bisa bantu rancang produk AI untuk bisnis saya?",
   "Bantu saya menulis email ke kamu",
-  "Kerjaan lo di Piranusa ngapain sih?",
+  "Tiba itu apa?",
   "YOTEXT itu apa?",
 ];
 
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "Halo, saya Yoel. Mau diskusi soal website, tanya tentang karya saya, atau perlu bantuan menulis email ke saya? Silakan, ngobrolnya santai saja.",
+    "Halo, saya Yoel. Mau diskusi soal produk AI, tanya tentang karya saya, atau perlu bantuan menulis email ke saya? Silakan, ngobrolnya santai saja.",
 };
 
 function loadStored(): Stored {

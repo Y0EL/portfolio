@@ -68,4 +68,7 @@ export const toneClass: Record<ShowcaseWork["tone"], string> = {
   polimerindo: "tonePolimerindo",
   scanner: "toneScanner",
   evidnce: "toneEvidnce",
+  tiba: "toneTiba",
+  nada: "toneNada",
+  catetin: "toneCatetin",
 };

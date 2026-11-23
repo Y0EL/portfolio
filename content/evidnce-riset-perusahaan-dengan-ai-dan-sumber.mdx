@@ -1,0 +1,90 @@
+---
+title: "AI Boleh Pintar, Tapi Mana Sumbernya? Kenalan Sama EVIDNCE"
+publishedAt: "2026-11-23"
+summary: "EVIDNCE itu alat riset perusahaan dengan AI buatan gue. Cari distributor, pemasok, dan peserta pameran, dan setiap klaimnya punya sumber serta kutipan asli."
+tags: "EVIDNCE, riset perusahaan, riset perusahaan dengan AI, cari distributor, cari pemasok, data peserta pameran, AI dengan sumber, verifikasi data perusahaan, LangGraph, Qwen, Yoel Andreas Manoppo, PT Manoppo Teknologi Indonesia"
+image: "/blog-img/evidnce/cover.webp"
+---
+
+Coba tanya ke chatbot AI mana aja: "siapa aja distributor resmi ZWCAD di Indonesia?"
+
+Jawabannya bakal keluar cepet, rapi, dan meyakinkan. Ada nama PT, ada kotanya, kadang lengkap sama deskripsinya. Masalahnya muncul waktu lo nanya balik: **"sumbernya dari mana?"** Di situ biasanya jawabannya mulai goyang. Ada nama perusahaan yang ketuker, ada hubungan distributor yang ternyata nggak pernah ada, dan nggak ada satu tautan pun yang bisa lo buka buat ngebuktiin.
+
+Buat tim sales dan pengadaan, jawaban kayak gitu bahaya. Lo bisa ngabisin seminggu ngehubungin perusahaan yang ternyata bukan distributor.
+
+Masalah ini yang pengen gue beresin lewat **EVIDNCE**, alat riset perusahaan dengan AI. Lo ketik pertanyaannya, EVIDNCE nyari perusahaan yang relevan, ngecek apakah perusahaan itu beneran distributor, pemasok, atau peserta pameran, terus nyimpen sumber di balik setiap klaim. EVIDNCE dikembangin sama PT Manoppo Teknologi Indonesia, perusahaan yang gue dirikan, dan bisa lo coba di [evidnce.tech](https://evidnce.tech).
+
+## Satu Aturan yang Nggak Bisa Ditawar
+
+<Image src="/blog-img/evidnce/ai-ngarang.webp" alt="Ilustrasi kertas robot yang dengan percaya diri menyerahkan tumpukan kartu kosong kepada seorang perempuan yang memegang kaca pembesar dengan ragu" width={1664} height={928} />
+
+Waktu ngerancang EVIDNCE, gue cuma pegang satu aturan: **setiap hubungan antara perusahaan dan merek wajib punya status, sumber, kutipan, dan waktu pengambilan.** Kalau salah satunya nggak ada, klaim itu nggak boleh tampil sebagai fakta.
+
+Kedengerannya kaku, tapi justru ini yang ngebedain EVIDNCE dari chatbot biasa.
+
+<Image src="/blog-img/evidnce/beranda.webp" alt="Beranda EVIDNCE bergaya desktop Windows 7 dengan jendela riset Distributor ZWCAD di Indonesia dan tabel status Confirmed, Claimed, dan Possible" width={1664} height={1100} />
+
+## Cara EVIDNCE Riset Satu Perusahaan
+
+Ambil contoh pertanyaan "Distributor ZWCAD di Indonesia". Ini yang terjadi di belakang layar:
+
+1. **Pahami dulu permintaannya.** Pertanyaannya dipecah jadi merek, jenis hubungan, dan lokasi. Jadi pertanyaan lain yang mirip bisa pakai pengetahuan yang sama.
+2. **Cek yang udah diketahui.** Jawaban yang masih baru langsung diambil dari basis pengetahuan bersama. Riset baru cuma dijalanin buat bagian yang belum diketahui.
+3. **Temukan dan cocokin perusahaannya.** Hasil pencarian, halaman mitra merek, daftar peserta pameran, dan profil publik jadi kandidat. Kandidatnya dicocokin pakai domain dan nama badan hukum.
+4. **Perkaya dan verifikasi.** Situs tiap perusahaan dibaca buat ngambil profil, riwayat pameran, dan pernyataannya. Terakhir, tiap hubungan dikasih status.
+
+<Image src="/blog-img/evidnce/cara-kerja.webp" alt="Halaman Product EVIDNCE yang menjelaskan empat langkah riset dan tabel arti status hubungan perusahaan" width={1664} height={1100} />
+
+## Lima Status Biar Lo Tahu Mana Fakta, Mana Klaim
+
+Nggak semua informasi punya bobot yang sama. Perusahaan yang ngaku distributor di situsnya sendiri itu beda kelas sama perusahaan yang dicantumin langsung sama pemilik mereknya. Makanya EVIDNCE pakai lima status:
+
+| Status | Artinya |
+| --- | --- |
+| Confirmed | Pemilik merek nyantumin perusahaan itu, atau dua sumber independen bilang hal yang sama. |
+| Claimed | Perusahaannya sendiri yang bilang di situs miliknya. |
+| Possible | Mereknya muncul di dekat nama perusahaan, tapi nggak ada pernyataan hubungan. |
+| Conflicting | Sumber yang ada saling bertentangan. |
+| Unknown | Nggak ada sumber yang bisa dibaca. Status ini nggak pernah dianggap bukti kalau hubungannya nggak ada. |
+
+Yang terakhir itu penting. **"Nggak ketemu" itu beda sama "nggak ada".** Banyak alat riset yang nyampurin dua hal ini.
+
+## Sumber, Kutipan, dan Jam Diambilnya
+
+Setiap temuan di EVIDNCE nyimpen tiga hal: alamat halaman sumber, kutipan persis dari halaman itu, dan kapan halaman itu diambil.
+
+Cuplikan dari hasil mesin pencari juga nggak pernah diterima sebagai fakta. **EVIDNCE harus buka dan baca halamannya dulu.** Dan kalau setelah riset masih ada pertanyaan yang belum kejawab, EVIDNCE ngelaporinnya sebagai celah, bukan nutupin pakai tebakan.
+
+## Yang Udah Dipelajari Nggak Dicari Ulang
+
+Fakta soal perusahaan publik yang ketemu buat satu pengguna disimpan di basis pengetahuan bersama. Jadi pertanyaan berikutnya soal perusahaan yang sama bisa langsung dijawab tanpa pencarian baru.
+
+EVIDNCE juga ngegabungin riwayat pameran dari halaman perusahaan dan dari daftar peserta milik penyelenggara pameran, jadi satu linimasa per perusahaan.
+
+## Keputusan Arsitektur di Balik EVIDNCE
+
+Buat yang penasaran sisi teknisnya:
+
+1. **Satu supervisor, banyak peneliti.** Riset diatur satu agen supervisor yang ngebagi tugas ke beberapa agen peneliti yang kerja barengan. Alurnya dibangun pakai LangGraph, dan status risetnya disimpan di PostgreSQL, jadi riset yang keputus bisa dilanjutin.
+2. **Model Qwen.** Agen pakai model bahasa Qwen buat baca halaman dan nyusun temuan.
+3. **Pencarian dan indeks sendiri.** EVIDNCE pakai mesin pencari SearXNG yang gue jalanin sendiri, plus indeks halaman lokal di PostgreSQL. Jadi risetnya nggak bergantung ke satu penyedia pencarian.
+4. **Batasnya dijaga kode, bukan prompt.** Batas waktu, anggaran riset, jumlah halaman yang dibaca, keamanan alamat URL, dan validasi kutipan ditegakkan di kode. Agen supervisor boleh nentuin isi riset, tapi nggak bisa ngelewatin batas itu.
+5. **Tampilan Windows 7.** Aplikasi webnya dibangun pakai Next.js 16 dengan tampilan desktop Windows 7, lengkap sama jendela, ikon, dan taskbar.
+
+## Yang Sering Ditanya Soal EVIDNCE
+
+### EVIDNCE itu apa?
+
+EVIDNCE adalah alat riset perusahaan dengan AI yang nyari distributor, pemasok, dan peserta pameran, terus nyimpen sumber, kutipan, dan waktu pengambilan buat setiap klaim.
+
+### Bedanya EVIDNCE sama chatbot AI biasa?
+
+Chatbot AI biasa ngasih jawaban tanpa bukti yang bisa dicek. EVIDNCE ngasih status ke setiap hubungan perusahaan dan nyertain halaman sumber plus kutipan persisnya.
+
+### Status Unknown di EVIDNCE artinya apa?
+
+Unknown artinya nggak ada sumber yang bisa dibaca. Unknown bukan berarti hubungannya nggak ada.
+
+### Gimana cara nyoba EVIDNCE?
+
+Buka [evidnce.tech](https://evidnce.tech), terus pilih Start free. Produk lain yang gue bikin, kayak [Tiba](/blog/tiba-aplikasi-hris-absensi-offline) dan [Catetin](/blog/catetin-aplikasi-pencatat-keuangan-pribadi-dengan-ai), bisa lo lihat di halaman [Karya](/projects).

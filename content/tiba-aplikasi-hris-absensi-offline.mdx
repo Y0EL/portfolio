@@ -1,0 +1,126 @@
+---
+title: "Sinyal Boleh Hilang, Absen Jangan: Cerita di Balik Tiba"
+publishedAt: "2026-11-23"
+summary: "Tiba itu aplikasi HRIS buatan gue untuk perusahaan Indonesia. Absen selfie dan GPS tetap tercatat walau sinyal putus, dan HR cukup ngecek absen yang janggal."
+tags: "Tiba, aplikasi HRIS, aplikasi HR Indonesia, aplikasi absensi karyawan, absensi offline, absensi selfie GPS, jadwal shift, aplikasi cuti karyawan, penggajian PPh 21 BPJS, rekrutmen, Yoel Andreas Manoppo, PT Manoppo Teknologi Indonesia"
+image: "/blog-img/tiba/cover.webp"
+---
+
+Bayangin lo kerja di gudang pinggir kota. Jam tujuh pagi lo udah sampai gerbang, buka aplikasi absen, terus muncul tulisan yang paling nyebelin: **"Tidak ada koneksi internet."**
+
+Lo udah dateng tepat waktu, tapi sistemnya bilang lo belum absen. Akhir bulan HR harus ngoreksi data satu per satu, dan lo harus ngejelasin ke atasan kenapa absen lo bolong.
+
+Masalah kayak gini yang pengen gue beresin lewat **Tiba**, aplikasi HRIS buat perusahaan di Indonesia. Tiba ngurus absensi, jadwal shift, cuti, data karyawan, penggajian, rekrutmen, sampai siklus karyawan dalam satu produk. Bisa dipakai di web, Android, Windows, dan Linux. Tiba dikembangin sama PT Manoppo Teknologi Indonesia, perusahaan yang gue dirikan, dan bisa lo cek di [tiba.ai.id](https://tiba.ai.id).
+
+Semua screenshot di tulisan ini gue ambil dari Tiba yang gue jalanin di laptop pakai akun demo. PT Maju Jaya (Demo), nama karyawan, email, dan nomor telepon di gambar semuanya data contoh.
+
+## Dua Masalah Absensi yang Jarang Diomongin
+
+<Image src="/blog-img/tiba/tanpa-sinyal.webp" alt="Ilustrasi kertas pekerja gudang di gerbang pada pagi hari memegang HP, sementara menara sinyal di kejauhan tertutup awan" width={1664} height={928} />
+
+**Masalah pertama: sinyal.** Banyak tempat kerja di Indonesia ada di gudang, pabrik, atau toko yang sinyalnya timbul tenggelam. Aplikasi absensi yang wajib online langsung gagal di tempat kayak gini.
+
+**Masalah kedua: HR kebanjiran data.** Perusahaan dengan ratusan karyawan ngehasilin ratusan baris absen tiap hari. Nggak ada HR yang sanggup ngecek semuanya, padahal yang beneran perlu dicek cuma sebagian kecil.
+
+Dua masalah itu gue jawab pakai dua keputusan: **absen disimpan dulu di HP, dan sistem yang nandain absen yang janggal.**
+
+## Absen Selfie dan GPS yang Tetap Jalan Offline
+
+Karyawan cukup pencet satu tombol di HP. Tiba ngerekam selfie, lokasi lengkap dengan akurasinya, dan jam asli waktu tombol dipencet. Kalau nggak ada sinyal, semuanya disimpan dulu di HP, terus kekirim sendiri begitu sinyal balik.
+
+Yang penting di sini: **jam yang tercatat itu jam waktu tombol dipencet, bukan jam waktu datanya berhasil kekirim.** Jadi karyawan yang dateng jam tujuh tetap tercatat jam tujuh, walaupun datanya baru sampai server jam sembilan.
+
+<Image src="/blog-img/tiba/aplikasi-karyawan.webp" alt="Tiga layar aplikasi Tiba di HP karyawan: tombol absen pulang dengan jam kerja hari ini, daftar pengajuan cuti, dan riwayat absen bulan November" width={1664} height={1100} />
+
+Tiba juga dibikin buat cara kerja orang Indonesia. Ada zona waktu WIB, WITA, dan WIT, shift malam yang lewat tengah malam, plus libur nasional dan cuti bersama yang udah keisi dari awal.
+
+## HR Cukup Ngecek Absen yang Ditandai
+
+Setiap absen di Tiba bawa bukti. Dari bukti itu, Tiba otomatis nandain absen yang perlu dicek, misalnya:
+
+- Lokasinya di luar radius kantor.
+- Absennya dari perangkat yang beda sama perangkat yang terdaftar.
+- Jam di HP nggak cocok sama jam server.
+- Akurasi lokasinya rendah atau lokasinya nggak kebaca.
+- Absen tanpa selfie.
+- Data absennya kekirim terlambat.
+
+<Image src="/blog-img/tiba/dasbor-hr.webp" alt="Dasbor HR aplikasi Tiba: jumlah karyawan yang sudah hadir hari ini, daftar absen yang perlu dicek, dan pengajuan yang menunggu persetujuan" width={1664} height={1100} />
+
+HR tinggal buka halaman Perlu dicek, terus ninjau yang ditandai aja. Sisanya yang wajar nggak perlu dicek satu per satu.
+
+Satu hal yang gue pegang banget di sini: **tanda di Tiba itu sinyal buat dicek manusia, bukan vonis.** Aplikasi di HP juga nggak bisa ngejamin seratus persen bisa nangkep lokasi palsu. Jadi keputusan akhirnya tetap di tangan HR.
+
+<Image src="/blog-img/tiba/absen-perlu-dicek.webp" alt="Halaman Perlu dicek di Tiba: ringkasan jumlah absen per jenis tanda dan daftar karyawan yang sering ditandai dalam 30 hari" width={1664} height={1100} />
+
+## Jadwal Shift, Termasuk Shift Malam
+
+Tiba ngedukung jadwal shift pola mingguan, jadwal per tanggal, shift malam, libur nasional, dan libur per kelompok karyawan. Karyawan bisa ngajuin ganti shift atau tukar shift sama rekannya langsung dari HP.
+
+<Image src="/blog-img/tiba/jadwal-shift.webp" alt="Kalender jadwal shift bulan November di Tiba dengan jam kerja kantor 08.00 sampai 17.00 dan hari libur" width={1664} height={1100} />
+
+## Cuti yang Saldonya Bisa Dijelasin
+
+Pernah nanya ke HR "sisa cuti gue berapa?" terus jawabannya beda sama hitungan lo sendiri? Di Tiba, saldo cuti dihitung dari buku besar. Setiap jatah, pemakaian, dan penyesuaian tercatat, jadi **saldo tiap karyawan selalu bisa dijelasin asal usulnya.**
+
+Tiba juga ngedukung kebijakan cuti per kelompok, akrual, sisa cuti yang dibawa ke tahun depan, tanggal larangan cuti, cuti pengganti, dan persetujuan bertahap dari atasan terus ke HR.
+
+Mau ngajuin cuti juga nggak harus isi formulir panjang. Ada asisten AI di tengah bar bawah aplikasi. Karyawan tinggal ngetik atau ngomong, misalnya "aku mau cuti Senin sampai Rabu", dan asistennya ngisiin formulir cutinya. Asisten ini selalu minta persetujuan dulu sebelum ngirim, dan cuma bisa ngelakuin hal yang diizinin hak akses karyawan itu.
+
+## Penggajian dengan PPh 21 dan BPJS
+
+Modul penggajian Tiba ngitung gaji dari data absensi, cuti, lembur, klaim, dan kasbon. Hitungannya udah termasuk PPh 21, BPJS, THR, dan pesangon. Karyawan nerima slip gaji di HP, dan HR tinggal unduh file transfer bank.
+
+Buat grup usaha, satu akun Tiba bisa ngurus beberapa PT sekaligus. Tiap PT punya NPWP, proses gaji, bukti potong buat Coretax, dan format file bank sendiri.
+
+## Rekrutmen, AI Kasih Saran, HR yang Mutusin
+
+Modul rekrutmen Tiba ngurus rencana tenaga kerja, portal karier yang bisa muncul di Google, papan pelamar per tahap, jadwal wawancara, sampai surat penawaran.
+
+<Image src="/blog-img/tiba/rekrutmen.webp" alt="Papan pelamar di modul rekrutmen Tiba dengan tahap Melamar, Seleksi berkas, Wawancara, Penawaran, dan Diterima" width={1664} height={1100} />
+
+AI di sini ngebandingin CV sama kriteria lowongan yang diatur HR. Setiap penilaiannya nyertain kutipan dari CV sebagai bukti. Sebelum CV dianalisis, nama dan data pribadi pelamar dihapus dulu. **Hasil AI cuma saran, HR yang mutusin dan nyatet alasannya.**
+
+## Data Karyawan Itu Amanah
+
+Data HR itu salah satu data paling sensitif di perusahaan. Jadi ini yang gue terapin di Tiba:
+
+- Data tiap perusahaan dipisah di tingkat database pakai row level security.
+- NIK, NPWP, nomor BPJS, dan nomor rekening disimpan terenkripsi.
+- Hak akses dicek di server buat setiap permintaan.
+- Admin perusahaan bisa matiin fitur AI kapan aja.
+- Nomor telepon, email, dan nomor identitas dibersihin sebelum teks diproses AI. Kolom pribadi kayak alasan cuti, keluhan, dan penilaian orang nggak diproses AI sama sekali.
+- Persetujuan, perubahan data penting, dan unduhan laporan tercatat di log aktivitas.
+
+Praktik keamanan informasinya ngacu ke ISO/IEC 27001:2022, dan tata kelola AI-nya ngacu ke ISO/IEC 42001:2023.
+
+## Keputusan Arsitektur di Balik Tiba
+
+Kalau ditanya keputusan teknis apa yang paling ngebentuk Tiba, jawaban gue empat ini:
+
+1. **Offline duluan.** Absen ditulis ke penyimpanan HP sebelum dikirim ke server. Ini yang bikin absensi tetap jalan di lokasi tanpa sinyal, dan jam aslinya nggak bergantung sama koneksi.
+2. **Sistem nandain, manusia mutusin.** Tanda absen janggal, saran penilaian CV, dan formulir dari asisten AI, semuanya berakhir di keputusan manusia.
+3. **Satu kode buat semua platform.** Web, Android, dan iOS pakai satu kode React lewat Capacitor. Versi komputer buat Windows dan Linux pakai Electron.
+4. **Data dipisah di database.** Backend TypeScript dengan Hono, Drizzle, dan Better Auth jalan di atas PostgreSQL dengan row level security per perusahaan.
+
+## Yang Sering Ditanya Soal Tiba
+
+### Tiba itu aplikasi apa?
+
+Tiba adalah aplikasi HRIS buat perusahaan Indonesia yang ngurus absensi, jadwal shift, cuti, data karyawan, penggajian, rekrutmen, dan siklus karyawan dalam satu produk.
+
+### Absensi Tiba bisa dipakai tanpa internet?
+
+Bisa. Selfie, lokasi, dan jam asli disimpan di HP waktu nggak ada sinyal, terus kekirim sendiri begitu sinyal balik.
+
+### Gimana Tiba tahu absen yang janggal?
+
+Tiba nandain absen di luar radius kantor, dari perangkat berbeda, dengan jam HP yang nggak cocok, lokasi kurang akurat, tanpa selfie, atau yang kekirim terlambat. Tanda itu dicek HR, bukan langsung dianggap pelanggaran.
+
+### Tiba ngitung PPh 21 dan BPJS?
+
+Iya. Modul penggajian Tiba ngitung PPh 21, BPJS, THR, dan pesangon dari data absensi, cuti, lembur, klaim, dan kasbon.
+
+### Gimana cara nyoba Tiba?
+
+Ajuin demo lewat [tiba.ai.id/demo](https://tiba.ai.id/demo/). Tiba ada dalam paket Lite buat absensi dan cuti, Pro buat penggajian dan rekrutmen, dan Enterprise buat semua modul. Produk lain yang gue bikin bisa lo lihat di halaman [Karya](/projects).

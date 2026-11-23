@@ -6,12 +6,21 @@
   "lokasi": "Jakarta, Indonesia",
   "github": "github.com/Y0EL",
   "website": "https://yoel.online",
-  "judul_profil": "AI Specialist di Piranusa · Founder YOTEXT · Pembuat website bisnis",
-  "tagline_pendek": "I build websites people get.",
-  "ringkasan": "AI Specialist di Piranusa dan founder YOTEXT. Membantu bisnis membuat website perusahaan dan produk digital yang mudah dipahami pengunjungnya. Karya website yang pernah dikerjakan: Piranusa (software CAD, BIM, dan 3D), YOTEXT (catatan meeting berbasis AI), dan PT Dinamika Polimerindo (plastic injection molding). Sebelumnya membangun sistem multi agent AI untuk pemerintahan, dApp di ekosistem VeChain, dan alat AI di agensi digital.",
+  "judul_profil": "AI Product Architect · Founder PT Manoppo Teknologi Indonesia",
+  "tagline_pendek": "I build AI products people use.",
+  "ringkasan": "AI Product Architect dan founder PT Manoppo Teknologi Indonesia, perusahaan yang mengembangkan semua produknya: Tiba (HRIS dengan absensi yang tetap jalan saat sinyal putus), Nada (pemutar musik pribadi dengan rekomendasi AI), Catetin (aplikasi pencatat keuangan pribadi dengan AI), YOTEXT (catatan meeting berbasis AI), dan EVIDNCE (mesin riset perusahaan yang menyimpan sumbernya). Merancang produk AI dari masalah sampai rilis: alur, data, batas kerja AI, sampai aplikasi web, Android, dan desktop. Sebelumnya membangun sistem multi agent AI untuk pemerintahan, dApp di ekosistem VeChain, dan alat AI di agensi digital.",
   "pengalaman_tahun": 4,
   "pengalaman_label": "4 tahun",
   "pengalaman_kerja": [
+    {
+      "id": 8,
+      "posisi": "Founder · AI Product Architect",
+      "perusahaan": "PT Manoppo Teknologi Indonesia",
+      "periode": "2026 · Sekarang",
+      "lokasi": "Jakarta",
+      "bidang": "Produk AI · HRIS · Aplikasi web, Android, dan desktop",
+      "ringkas": "Perusahaan yang mengembangkan Tiba, Nada, Catetin, YOTEXT, dan EVIDNCE. Merancang arsitektur produk AI sampai rilis."
+    },
     {
       "id": 7,
       "posisi": "AI Specialist",
@@ -68,6 +77,39 @@
     }
   ],
   "proyek": [
+    {
+      "id": "tiba",
+      "no": "P1",
+      "judul": "Tiba",
+      "subtitle": "HRIS untuk perusahaan Indonesia",
+      "periode": "2026",
+      "peran": "Founder dan AI Product Architect",
+      "deskripsi": "Aplikasi HR untuk web, Android, dan desktop: absensi selfie dan lokasi yang tetap tersimpan saat sinyal putus, penanda otomatis untuk absen janggal yang diperiksa HR, jadwal shift termasuk shift malam, cuti, data karyawan, rekrutmen, serta onboarding dan offboarding. Data setiap perusahaan dipisah di tingkat database.",
+      "stack": ["React", "Capacitor", "Hono", "PostgreSQL", "Electron"],
+      "url": "https://tiba.ai.id/"
+    },
+    {
+      "id": "nada",
+      "no": "P2",
+      "judul": "Nada",
+      "subtitle": "Pemutar musik pribadi dengan rekomendasi AI",
+      "periode": "2026",
+      "peran": "Founder dan AI Product Architect",
+      "deskripsi": "Pemutar musik pribadi untuk Android dan web, tidak dijual. Belajar dari lagu yang diputar dan dilewati, lalu model AI menyusun beranda yang setiap rekomendasinya dicek ke katalog asli. Ada lirik tersinkron, unduhan offline, pengenal lagu, widget, dan Android Auto. Versi Android berjalan tanpa server.",
+      "stack": ["React 19", "Capacitor 8", "TypeScript", "Qwen"],
+      "url": "https://www.yoel.online/blog/nada-pemutar-musik-pribadi-dengan-rekomendasi-ai"
+    },
+    {
+      "id": "catetin",
+      "no": "P3",
+      "judul": "Catetin",
+      "subtitle": "Aplikasi pencatat keuangan pribadi dengan AI",
+      "periode": "2026",
+      "peran": "Founder dan AI Product Architect",
+      "deskripsi": "Aplikasi Android dan iOS untuk mencatat pemasukan dan pengeluaran. Pengguna bisa mengetik transaksi seperti chat, misalnya makan 35rb, lewat aplikasi atau bot Telegram. Struk belanja difoto lalu dipecah per item oleh Gemini. Ada budget bulanan atau mingguan dengan peringatan, split tagihan bersama teman, laporan PDF dan CSV, serta Kat, asisten suara yang menjawab pertanyaan keuangan berdasarkan transaksi pengguna. Integrasi WhatsApp sedang dikembangkan.",
+      "stack": ["Expo", "React Native", "Hono", "PostgreSQL", "Gemini", "Telegram Bot"],
+      "url": "https://www.yoel.online/blog/catetin-aplikasi-pencatat-keuangan-pribadi-dengan-ai"
+    },
     {
       "id": "piranusa",
       "no": "W1",

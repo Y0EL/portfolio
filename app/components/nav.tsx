@@ -49,7 +49,7 @@ export function Navbar() {
 
         <div className="navTools">
           <span className="navMeta">
-            Website dan AI
+            AI Product Architect
             <br />
             Jakarta, Indonesia
           </span>

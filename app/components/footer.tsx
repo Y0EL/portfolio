@@ -14,7 +14,7 @@ const links = [
 ];
 
 export const whatsappHref = `https://wa.me/${profile.telepon.replace(/\D/g, "")}?text=${encodeURIComponent(
-  "Halo Yoel, saya ingin berdiskusi tentang proyek website."
+  "Halo Yoel, saya ingin berdiskusi tentang produk AI."
 )}`;
 
 export default function Footer() {
@@ -22,11 +22,11 @@ export default function Footer() {
     <footer className="siteFooter" id="kontak">
       <div className="footerCta">
         <div>
-          <span className="mono">Terbuka untuk proyek website</span>
+          <span className="mono">Terbuka untuk produk AI baru</span>
           <h2>
-            Punya rencana
+            Punya ide
             <br />
-            <em>website?</em>
+            <em>produk AI?</em>
           </h2>
         </div>
         <div className="footerActions">

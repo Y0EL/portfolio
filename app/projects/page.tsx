@@ -7,7 +7,7 @@ import { withLiveVisibilityAll } from "app/lib/repoVisibility";
 export const metadata: Metadata = {
   title: "Karya",
   description:
-    "Website dan produk digital karya Yoel Andreas Manoppo: Piranusa, YOTEXT, PT Dinamika Polimerindo, dan arsip proyek AI.",
+    "Produk AI karya Yoel Andreas Manoppo bersama PT Manoppo Teknologi Indonesia: Tiba (HRIS), Nada (pemutar musik), Catetin (pencatat keuangan), YOTEXT, EVIDNCE, dan arsip proyek AI.",
 };
 
 export default async function Projects() {
@@ -20,12 +20,12 @@ export default async function Projects() {
           Yang sudah <em>jadi.</em>
         </h1>
         <p className="pageLead">
-          Website dan produk digital yang pernah saya kerjakan. Semua tampilan diambil langsung dari situs aslinya, dan
-          setiap karya bisa kamu buka sendiri.
+          Produk AI dan karya yang dikembangkan oleh PT Manoppo Teknologi Indonesia. Setiap tampilan adalah screenshot
+          dari situs dan aplikasi yang sedang berjalan. Sebagian besar bisa kamu buka langsung.
         </p>
       </header>
 
-      <CaseList works={showcase} label="Website pilihan" />
+      <CaseList works={showcase} label="Produk dan karya pilihan" />
 
       <section className="archive" aria-labelledby="judulArsip">
         <span className="mono headMeta">Arsip</span>

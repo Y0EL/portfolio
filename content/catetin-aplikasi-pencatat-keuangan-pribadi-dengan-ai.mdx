@@ -1,0 +1,116 @@
+---
+title: "Nyatet Duit Semudah Ngechat: Cerita di Balik Catetin"
+publishedAt: "2026-11-23"
+summary: "Catetin itu aplikasi pencatat keuangan pribadi buatan gue untuk Android dan iOS. Catat pengeluaran lewat chat Telegram, scan struk pakai AI, dan atur budget."
+tags: "Catetin, aplikasi pencatat keuangan, aplikasi catat pengeluaran, aplikasi keuangan pribadi, scan struk AI, catat keuangan lewat Telegram, budget bulanan, split bill, Gemini, Expo React Native, Yoel Andreas Manoppo, PT Manoppo Teknologi Indonesia"
+image: "/blog-img/catetin/cover.webp"
+---
+
+Hampir semua orang pernah semangat nyatet pengeluaran. Download aplikasinya, bikin kategori, nyatet kopi pagi, nyatet ongkos ojek. Seminggu jalan. Dua minggu mulai bolong. Minggu ketiga aplikasinya udah nggak pernah dibuka lagi.
+
+Masalahnya jarang di niat. **Masalahnya di jumlah langkah.** Buka aplikasi, pilih kategori, ketik jumlah, pilih dompet, simpan. Buat transaksi Rp28.000, itu kebanyakan.
+
+Itu yang pengen gue pangkas lewat **Catetin**, aplikasi pencatat keuangan pribadi buat Android dan iOS. Di Catetin, nyatet duit bisa lewat tiga cara: ngetik kayak lagi ngechat, motret struk belanja, atau ngobrol sama asisten suara bernama Kat. Catetin dikembangin sama PT Manoppo Teknologi Indonesia, perusahaan yang gue dirikan.
+
+Semua screenshot di tulisan ini gue ambil dari Catetin yang gue jalanin di laptop pakai data contoh. Andi Pratama, saldo, dan semua transaksinya fiktif, bukan data pengguna beneran.
+
+<Image src="/blog-img/catetin/struk-numpuk.webp" alt="Ilustrasi kertas dompet kulit penuh struk belanja yang berserakan di meja, di samping HP, es kopi, dan helm motor" width={1664} height={928} />
+
+## Nyatet Pengeluaran Cukup Satu Kalimat
+
+Di form Catat cepat, lo tinggal ngetik kayak lagi ngechat temen, misalnya `makan 35rb`. Catetin baca angka sama satuannya, terus ngisi jumlah Rp35.000 dan kategori makanan sendiri. Lo tinggal pencet Catat sekarang.
+
+Satuan yang dikenalin Catetin itu `rb`, `ribu`, dan `k` buat ribuan, plus `jt` dan `juta` buat jutaan. Angka desimal juga bisa, jadi `makan 12,5rb` kecatat Rp12.500. Kategorinya ditentuin dari kata kunci. Kata `gojek`, `grab`, atau `parkir` masuk transportasi, sedangkan `listrik`, `pulsa`, atau `indihome` masuk tagihan.
+
+<Image src="/blog-img/catetin/catat-transaksi.webp" alt="Tiga layar aplikasi Catetin: form Catat cepat dengan tombol scan struk, beranda dengan total pengeluaran bulan ini, dan riwayat transaksi" width={1664} height={1100} />
+
+Lo juga bisa nyatet lewat bot Telegram yang nyambung ke akun Catetin. Di Telegram, pesan lo dibaca agen AI berbasis Gemini, jadi kalimat yang lebih bebas kayak "tadi makan siang sama tim habis 86 ribu" tetap bisa kecatat. Kalau layanan AI-nya lagi nggak bisa dihubungin, bot balik pakai pembaca format `makan 35rb`, jadi transaksinya tetap kesimpen. Integrasi WhatsApp masih dikembangin dan belum bisa dipakai.
+
+Kategori bawaan buat pengeluaran ada sembilan: makanan, minuman, transportasi, belanja, tagihan, hiburan, kesehatan, pendidikan, dan lainnya. Buat pemasukan ada dua: gaji dan pemasukan lain.
+
+## Struk Belanja Tinggal Difoto
+
+Di layar Catat cepat, lo bisa motret struk pakai kamera atau milih foto dari galeri. Catetin ngirim fotonya ke model Gemini 2.5 Flash, terus dapet balik nama toko, tanggal, daftar item, harga tiap item, kategori tiap item, dan total belanja.
+
+Setiap hasil scan bawa tingkat keyakinan: tinggi, sedang, atau rendah. Lo tetap ngecek hasilnya sebelum nyimpen, karena struk yang buram atau kelipet bisa ngasih angka yang salah. Ini keputusan yang sengaja gue ambil: **AI yang ngisi formulir, lo yang mutusin nyimpen.**
+
+## Kat, Temen Curhat Soal Duit
+
+Kat itu asisten di tab Curhat. Lo bisa ngomong langsung atau ngetik pertanyaan kayak "bulan ini aku boros di mana?". Kat jawab berdasarkan transaksi lo sendiri, bukan jawaban umum dari internet. Kat juga bisa nyatet transaksi dari obrolan, misalnya "catat kopi tadi pagi 28 ribu pakai GoPay".
+
+<Image src="/blog-img/catetin/kat-asisten-suara.webp" alt="Layar Curhat di Catetin: mode suara dengan tombol Tap buat mulai dan mode chat berisi percakapan dengan asisten Kat" width={1664} height={1100} />
+
+Kat pakai Gemini 2.5 Flash buat ngerti pertanyaan lo dan model text to speech dari Gemini buat ngebacain jawabannya. Pengguna gratis dapet kuota ngobrol suara 10 menit per hari. Pengguna Catetin Pro nggak dibatasin kuota harian.
+
+## Budget yang Ngingetin Sebelum Kebablasan
+
+Lo bisa pasang budget per kategori, bulanan atau mingguan. Tiap budget nunjukin berapa yang udah kepakai, sisanya, dan persentasenya. Batas peringatan bawaannya 80 persen. Begitu pengeluaran di satu kategori lewat batas itu, Catetin ngirim notifikasi ke HP lo.
+
+<Image src="/blog-img/catetin/budget-analitik.webp" alt="Layar Budget per kategori dan layar Analitik Catetin dengan grafik tren pemasukan dan pengeluaran serta diagram pengeluaran per kategori" width={1664} height={1100} />
+
+Layar Analitik nunjukin selisih pemasukan sama pengeluaran, grafik tren, dan diagram pengeluaran per kategori. Grafik trennya bisa dilihat per hari, minggu, bulan, atau tahun.
+
+Selain notifikasi budget, Catetin ngirim dua pengingat terjadwal: pengingat nyatet tiap hari jam 20.00 WIB, dan rekap mingguan tiap Senin jam 08.00 WIB.
+
+## Patungan Tanpa Itung Itungan di Grup
+
+Fitur Split Tagihan bantu bagi tagihan makan bareng atau patungan. Lo tinggal nulis situasinya pakai kalimat biasa, misalnya "kita bertiga habis 300rb, gimana baginya?", terus AI ngitung bagian tiap orang. Bagian lo bisa langsung dicatat sebagai pengeluaran di kategori lainnya, dan kategorinya bisa diganti dari layar Riwayat.
+
+<Image src="/blog-img/catetin/split-wallet-pengaturan.webp" alt="Layar Split Tagihan, daftar wallet Cash, BCA, dan GoPay, serta layar Pengaturan Catetin" width={1664} height={1100} />
+
+## Wallet, Laporan PDF, dan Ekspor CSV
+
+Catetin misahin saldo per wallet, misalnya uang tunai, rekening bank, dan e-wallet. Setiap transaksi kecatat di wallet tertentu, jadi lo tahu duitnya keluar dari mana.
+
+Di Pengaturan, lo bisa unduh laporan PDF bulanan yang formatnya mirip mutasi rekening, atau ekspor semua transaksi bulan ini ke file CSV buat dibuka di spreadsheet. Tampilan aplikasinya ada dalam tiga bahasa: Indonesia, Inggris, dan Mandarin.
+
+## Kapan Pakai AI, Kapan Nggak
+
+Keputusan paling penting di Catetin justru bukan soal pakai AI di mana, tapi **soal di mana AI nggak perlu dipakai.**
+
+1. **Form Catat cepat di aplikasi nggak pakai AI.** Format kayak `makan 35rb` dibaca parser berbasis aturan yang hasilnya pasti dan punya unit test. Lebih cepet, nggak makan biaya API, dan nggak bakal salah nebak angka.
+2. **AI dipakai buat input yang nggak terstruktur.** Foto struk, pertanyaan bebas ke Kat, pesan bebas di Telegram, dan cerita patungan di Split Tagihan dikerjain Gemini, karena input kayak gini susah dibaca pakai aturan tetap.
+3. **Setiap fitur AI punya cadangan atau pengecekan manusia.** Bot Telegram balik ke parser kalau AI gagal. Hasil scan struk ngisi formulir, tapi lo yang pencet simpan.
+4. **Satu backend buat semua saluran.** Aplikasi dan bot Telegram pakai layanan transaksi yang sama di API, jadi kategori, wallet, dan budget selalu sinkron.
+
+Teknologi yang dipakai:
+
+| Bagian | Teknologi |
+| --- | --- |
+| Aplikasi mobile | Expo dan React Native buat Android dan iOS |
+| API | Hono di Node.js |
+| Database | PostgreSQL di Neon dengan Drizzle ORM |
+| Login | Firebase Authentication dengan akun Google |
+| AI | Gemini 2.5 Flash buat scan struk dan Kat, Gemini text to speech buat suara Kat |
+| Bot chat | Bot Telegram dengan grammY |
+| Langganan | RevenueCat buat Catetin Pro |
+
+## Yang Belum Bisa
+
+Biar jujur, ini batasan Catetin sekarang:
+
+- Integrasi WhatsApp masih dikembangin dan belum bisa dipakai.
+- Hasil scan struk bergantung sama kualitas foto. Struk buram, kelipet, atau tulisan tangan bisa ngasih angka yang perlu dikoreksi.
+- Di form Catat cepat, kategori ditentuin dari kata kunci. Kalimat tanpa kata kunci yang dikenal masuk ke kategori lainnya, dan bisa diganti manual sebelum disimpan.
+
+## Yang Sering Ditanya Soal Catetin
+
+### Catetin itu aplikasi apa?
+
+Catetin adalah aplikasi pencatat keuangan pribadi buat Android dan iOS. Catetin nyatet pemasukan dan pengeluaran lewat chat, scan struk, dan asisten suara Kat.
+
+### Gimana cara nyatet pengeluaran lewat Telegram?
+
+Sambungin akun Catetin ke bot Telegram dari menu Pengaturan, terus kirim pesan kayak `makan 35rb` atau kalimat biasa yang nyebut jumlah uangnya. Bot bales dengan rincian transaksi yang kesimpen di akun Catetin lo.
+
+### Catetin bisa baca struk belanja?
+
+Bisa. Foto struknya pakai kamera atau pilih dari galeri. Catetin baca nama toko, tanggal, item, harga, kategori, dan total belanja pakai Gemini 2.5 Flash. Cek dulu hasilnya sebelum disimpan.
+
+### Catetin gratis?
+
+Catetin punya versi gratis dan versi langganan bernama Catetin Pro. Di versi pengembangan November 2026, batas yang berlaku buat pengguna gratis itu ngobrol suara sama Kat 10 menit per hari. Catetin Pro ngehapus batas itu.
+
+### Siapa yang bikin Catetin?
+
+Catetin dikembangin Yoel Andreas Manoppo lewat PT Manoppo Teknologi Indonesia, perusahaan yang juga ngembangin [Tiba](/blog/tiba-aplikasi-hris-absensi-offline), [Nada](/blog/nada-pemutar-musik-pribadi-dengan-rekomendasi-ai), YOTEXT, dan [EVIDNCE](/blog/evidnce-riset-perusahaan-dengan-ai-dan-sumber). Semuanya bisa lo lihat di halaman [Karya](/projects).

@@ -5,7 +5,7 @@ import profile from "data/yoel/profile.json";
 
 export const metadata: Metadata = {
   title: "Perjalanan",
-  description: "Perjalanan kerja, pendidikan, dan sertifikasi Yoel Andreas Manoppo, dari agensi digital sampai AI Specialist di Piranusa.",
+  description: "Perjalanan kerja, pendidikan, dan sertifikasi Yoel Andreas Manoppo, dari agensi digital sampai AI Product Architect dan founder PT Manoppo Teknologi Indonesia.",
 };
 
 const ECOSYSTEM = [
@@ -39,7 +39,7 @@ export default function CareerTimeline() {
         </h1>
         <p className="pageLead">
           Dari alat AI di agensi digital, dApp di ekosistem VeChain, sistem multi agent untuk pemerintahan, sampai
-          sekarang AI Specialist di Piranusa dan founder YOTEXT.
+          sekarang AI Product Architect dan founder PT Manoppo Teknologi Indonesia.
         </p>
       </header>
 

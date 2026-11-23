@@ -32,8 +32,8 @@ export function ListenEnd({ picks, whatsapp }: { picks: Pick[]; whatsapp: string
       </h2>
       <p>
         Kalau lo enjoy sama cara gue cerita, masih ada beberapa tulisan lain yang worth it buat dibaca atau
-        didengerin. Dan kalau bisnis lo lagi butuh website atau domain yang proper, let&apos;s talk. Gue bantu dari
-        ngobrolin ide sampai website lo live.
+        didengerin. Dan kalau lo lagi punya ide produk AI, let&apos;s talk. Gue bantu dari ngobrolin masalahnya,
+        ngerancang arsitekturnya, sampai produknya dipakai orang.
       </p>
       <div className="listenEndActions">
         <Link href="/blog" className="pillButton pillPrimary">
@@ -41,7 +41,7 @@ export function ListenEnd({ picks, whatsapp }: { picks: Pick[]; whatsapp: string
           <ArrowRight aria-hidden="true" />
         </Link>
         <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="pillButton pillGhost">
-          Let&apos;s build your website
+          Let&apos;s build your product
           <ArrowUpRight aria-hidden="true" />
         </a>
       </div>

@@ -34,6 +34,13 @@
   --scannerAccent: #2a8cc4;
   --evidnce: #08325f;
   --evidnceAccent: #4fb2ec;
+  --tiba: #0b3d30;
+  --tibaAccent: #6fe0b4;
+  --nada: #16151a;
+  --nadaAccent: #ffb23e;
+  --catetin: #efeee9;
+  --catetinInk: #09090b;
+  --catetinAccent: #f97316;
   --sh-class: #9a3a2a;
   --sh-identifier: #2f5d86;
   --sh-sign: #646a64;
@@ -441,6 +448,12 @@ img {
   padding-bottom: 8px;
 }
 
+.caseCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+}
+
 .textCta svg {
   width: 15px;
   height: 15px;
@@ -566,6 +579,75 @@ img {
 
 .toneEvidnce .stageAccent {
   color: var(--evidnceAccent);
+}
+
+.toneTiba {
+  background: var(--tiba);
+}
+
+.toneTiba::before {
+  content: "";
+  position: absolute;
+  width: 560px;
+  height: 280px;
+  right: -120px;
+  top: 64px;
+  border-radius: 280px 280px 0 0;
+  border: 1px solid color-mix(in srgb, var(--tibaAccent) 55%, transparent);
+  border-bottom: 0;
+  box-shadow: inset 0 40px 0 -38px color-mix(in srgb, var(--tibaAccent) 30%, transparent);
+  z-index: -1;
+}
+
+.toneTiba .stageAccent {
+  color: var(--tibaAccent);
+}
+
+.toneNada {
+  background: var(--nada);
+}
+
+.toneNada::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  right: -180px;
+  top: -200px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 14px, color-mix(in srgb, var(--nadaAccent) 14%, transparent) 14px 15px);
+  z-index: -1;
+}
+
+.toneNada .stageAccent {
+  color: var(--nadaAccent);
+}
+
+.toneCatetin {
+  background: var(--catetin);
+}
+
+.toneCatetin::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -150px;
+  top: -140px;
+  border-radius: 50%;
+  border: 64px solid color-mix(in srgb, var(--catetinInk) 9%, transparent);
+  border-right-color: transparent;
+  transform: rotate(-20deg);
+  z-index: -1;
+}
+
+.toneCatetin .stageWord,
+.toneCatetin .stageLabel {
+  color: var(--catetinInk);
+}
+
+.toneCatetin .stageAccent {
+  color: var(--catetinAccent);
 }
 
 .stageWord {

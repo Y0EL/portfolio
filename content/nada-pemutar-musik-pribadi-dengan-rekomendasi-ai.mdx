@@ -1,0 +1,108 @@
+---
+title: "Gara Gara Iklan Spotify, Gue Bikin Pemutar Musik Sendiri"
+publishedAt: "2026-11-23"
+summary: "Berawal dari kesel sama iklan Spotify, gue bikin Nada: pemutar musik pribadi buat Android dan web dengan rekomendasi AI, lirik sinkron, dan mode offline."
+tags: "Nada, pemutar musik pribadi, aplikasi musik Android, rekomendasi musik AI, Smart Shuffle, lirik sinkron, musik offline, Nada Wrapped, Nada Tape, Android Auto, Qwen, Yoel Andreas Manoppo, PT Manoppo Teknologi Indonesia"
+image: "/blog-img/nada/cover.webp"
+---
+
+Lagi enak enaknya dengerin lagu, tiba tiba dipotong iklan.
+
+Sekali dua kali masih bisa gue terima. Tapi kalau tiap beberapa lagu lo harus dengerin orang jualan, lama lama kesel juga. Dan buat orang yang tiap hari nulis kode, rasa kesel kayak gitu biasanya cuma punya satu ujung: **"kayaknya gue bisa bikin sendiri deh."**
+
+Jadi gue bikin. Namanya **Nada**, pemutar musik pribadi buat Android dan web. Isinya rekomendasi musik dari AI, lirik yang jalan ngikutin lagu, download buat diputar tanpa internet, widget, Android Auto, sampai rekap dengar bulanan yang gue kasih nama Nada Tape.
+
+Biar jelas dari awal: Nada bukan startup, nggak dijual, dan nggak dibuka buat publik. Nada itu proyek pribadi gue di bawah PT Manoppo Teknologi Indonesia. Penggunanya cuma satu orang, yaitu gue sendiri.
+
+## Awalnya Cuma Kesel Sama Iklan
+
+<Image src="/blog-img/nada/iklan.webp" alt="Ilustrasi kertas pemuda berheadphone yang kesal di kamarnya, dengan pengeras suara yang memotong pita not musik" width={1664} height={928} />
+
+Gue nggak pernah punya rencana bikin aplikasi musik. Yang gue mau sederhana banget: **Spotify versi gue sendiri.** Musik yang gue suka, tanpa ada yang motong, tampilannya sesuai selera gue.
+
+Nggak ada target pengguna. Nggak ada target pendapatan. Nggak ada investor yang nanya kapan balik modal. Dan justru karena itu, Nada jadi salah satu proyek paling jujur yang pernah gue bikin. Setiap fitur di dalamnya ada karena gue sendiri butuh, bukan karena ada di daftar fitur kompetitor.
+
+## Fondasinya Jadi dalam Satu Malam
+
+<Image src="/blog-img/nada/satu-malam.webp" alt="Ilustrasi kertas meja kerja di kamar pada malam hari dengan laptop menyala, headphone, dan sketsa aplikasi musik" width={1664} height={928} />
+
+Sebagian besar fondasi Nada gue kerjain dalam satu malam. Cari lagu, putar lagu, halaman artis dan album, terus playlist. Malam itu juga Nada udah bisa dipakai buat muter lagu.
+
+Habis itu polanya selalu sama. Gue pakai, ketemu yang kurang, gue tambahin. Kalau gue urutin, Nada tumbuh kira kira kayak gini:
+
+1. **Dasar pemutar musik.** Pencarian, pemutaran, halaman artis dan album, playlist.
+2. **Rekomendasi AI.** Rekomendasi dari riwayat dengar, Smart Shuffle, dan AI Radio yang terus muterin lagu serupa setelah lagu yang gue pilih.
+3. **Offline.** Download lagu, pustaka offline, dan cache pintar.
+4. **Rasa aplikasi Android beneran.** Kontrol di notifikasi dan layar kunci, putar di latar belakang, widget, dan Android Auto.
+5. **Listening Intelligence.** Statistik dengar dan Nada Tape.
+
+<Image src="/blog-img/nada/beranda-web.webp" alt="Beranda Nada versi web dengan sapaan pagi, bagian lagu pilihan AI bernama Pagi Ceria, tombol AI Radio, dan saran kata kunci pencarian" width={1664} height={1100} />
+
+## AI yang Milihin Lagu, Tapi Nggak Boleh Ngarang
+
+Nada nyatet lagu yang gue dengerin sampai habis, lagu yang gue skip, artis favorit, dan apa aja yang gue cari. Dari situ, model AI Qwen nyusun tiga bagian beranda yang personal, saran kata kunci pencarian, sama sapaan di atas. Jadi tiap buka Nada, berandanya beda tergantung kebiasaan dengar gue minggu itu.
+
+Masalahnya, **model AI itu bisa dengan pedenya nyebut lagu yang nggak pernah ada.** Judulnya kedengeran meyakinkan, artisnya beneran ada, tapi lagunya nggak ada. Makanya setiap lagu yang disaranin AI dicocokin dulu ke katalog sebelum tampil. Kalau nggak ketemu, nggak ditampilin. Simpel, tapi ini yang bikin rekomendasinya bisa dipercaya.
+
+Smart Shuffle pakai cara yang sama. Lagu pilihan AI dicampur ke antrean yang lagi jalan, jadi shuffle nggak cuma ngacak playlist yang itu itu aja.
+
+<Image src="/blog-img/nada/android.webp" alt="Tiga layar Nada di Android: beranda dengan lagu pilihan AI dan tombol AI Radio, pemutar lagu dengan sampul album, dan profil dengan statistik dengar" width={1664} height={1100} />
+
+## Lirik yang Ikut Jalan dan Telinga yang Bisa Nebak Lagu
+
+Lirik di Nada jalan ngikutin lagu. Baris yang lagi dinyanyiin ditandain, dan gue bisa ketuk satu baris buat langsung lompat ke bagian itu. Fitur kecil, tapi bikin dengerin lagu kerasa jauh lebih hidup.
+
+Terus ada ikon telinga di kolom pencarian. Kalau ada lagu yang lagi diputer di kafe dan gue penasaran judulnya, tinggal ketuk. Nada nebak lagunya lewat sidik jari audio, transkripsi lirik pakai Qwen ASR, dan pencarian lagu sebagai cadangan.
+
+## Musik Tetap Jalan Walau Sinyal Hilang
+
+Gue bisa download lagu sekalian liriknya, terus muter tanpa internet. Yang paling gue suka itu **cache pintarnya**. Nada nyiapin lagu yang lagi diputer dan lagu berikutnya, terus pindah ke salinan itu waktu sinyal mulai lemah atau hilang. Jadi waktu masuk lift atau lewat jalan yang sinyalnya jelek, musiknya nggak putus.
+
+Versi Android Nada juga nggak butuh server sama sekali. Pencarian, lirik, dan panggilan AI semuanya jalan langsung di HP. Nggak ada akun, dan riwayat dengar gue cuma tersimpan di perangkat gue sendiri.
+
+## Nada Tape, Rekap Dengar Versi Gue
+
+Terus ada Nada Wrapped. Nada Wrapped ngerangkum kebiasaan dengar gue per minggu, per bulan, dan per tahun. Rekapnya diputer kayak cerita layar penuh yang gue kasih nama **Nada Tape**. Isinya total menit dengar, artis dan lagu teratas, artis baru yang gue temuin, jam favorit, dan persona dengar.
+
+Contohnya persona **Pemburu Senja** di gambar bawah, buat orang yang paling sering dengerin musik antara jam 16.00 sampai 21.00. Kalimat dari Nada buat persona ini: "Jam pulang adalah jam konser pribadi lo."
+
+<Image src="/blog-img/nada/nada-tape.webp" alt="Empat layar Nada Tape di Android: halaman Nada Wrapped bulanan, sampul Nada Tape, persona Pemburu Senja, dan kartu ringkasan artis serta lagu teratas" width={1664} height={1100} />
+
+Tiap Nada Tape punya musik latar sendiri yang dipilih sesuai persona, jadi rekap tiap periode kedengeran beda. Di akhir ceritanya ada kartu ringkasan yang bisa dibagiin.
+
+## Di Balik Layar Nada
+
+Buat yang penasaran sama sisi teknisnya, ini empat keputusan yang paling ngebentuk Nada:
+
+1. **Satu kode buat web dan Android.** Nada ditulis pakai React 19 terus dibungkus jadi aplikasi Android pakai Capacitor 8.
+2. **Semua mesinnya jalan di HP.** Versi Android ngejalanin pencarian, pemutaran, lirik, dan panggilan AI tanpa server perantara.
+3. **Data tetap di perangkat.** Nggak ada akun. Profil, riwayat dengar, dan statistik disimpan lokal.
+4. **AI nggak dipercaya mentah mentah.** Setiap saran lagu dari AI dicek dulu ke katalog sebelum ditampilin.
+
+## Nada Bukan Spotify Kedua
+
+Gue nggak lagi nyoba ngalahin siapa siapa. Nada itu bukti kecil buat gue sendiri kalau **teknologi harusnya ngikutin cara orang hidup, bukan orang yang dipaksa ngikutin teknologinya.**
+
+> "It started because I hated Spotify ads. It evolved because I realized I could build the music experience I actually wanted."
+
+Awalnya cuma kesel sama iklan. Sekarang Nada jadi pemutar musik yang gue pakai tiap hari.
+
+## Yang Sering Ditanya Soal Nada
+
+### Nada itu aplikasi apa?
+
+Nada adalah pemutar musik pribadi buat Android dan web dengan rekomendasi AI, lirik sinkron, download offline, dan rekap dengar Nada Tape.
+
+### Nada bisa didownload?
+
+Nggak. Nada itu aplikasi pribadi, nggak dijual, dan nggak dibuka buat publik.
+
+### AI apa yang dipakai Nada?
+
+Nada pakai model Qwen buat nyusun rekomendasi di beranda, dan Qwen ASR buat transkripsi lirik di fitur tebak lagu.
+
+### Nada bisa dipakai tanpa internet?
+
+Bisa, buat lagu yang udah didownload. Lagunya tersimpan bareng liriknya dan bisa diputer tanpa koneksi.
+
+Kalau penasaran sama produk lain yang gue bikin, ada [Tiba](/blog/tiba-aplikasi-hris-absensi-offline) buat absensi karyawan dan [Catetin](/blog/catetin-aplikasi-pencatat-keuangan-pribadi-dengan-ai) buat nyatet duit. Semuanya bisa lo lihat di halaman [Karya](/projects).

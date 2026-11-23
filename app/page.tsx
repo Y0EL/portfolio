@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import profile from "data/yoel/profile.json";
-import { showcase, archive } from "./projects/project-data";
+import { showcase, archive, workHref, type ShowcaseWork } from "./projects/project-data";
 import { BrowserFrame, PhoneFrame, toneClass } from "./components/workFrames";
 import { ArchiveRow } from "./components/archiveRow";
 import { CaseList } from "./components/caseList";
@@ -19,38 +19,58 @@ export const metadata: Metadata = {
 
 const SERVICES = [
   {
-    title: "Website perusahaan",
-    body: "Halaman yang menjelaskan bisnis kamu kepada calon pelanggan: apa yang dijual, untuk siapa, mengapa layak dipercaya, dan bagaimana menghubungi.",
-    example: "Seperti Piranusa dan Polimerindo",
+    title: "Arsitektur produk AI",
+    body: "Memetakan masalah menjadi alur, data, peran AI, dan batasnya. Termasuk kapan AI boleh bertindak sendiri dan kapan harus menunggu persetujuan manusia.",
+    example: "Seperti penanda absen janggal di Tiba",
   },
   {
-    title: "Landing page produk",
-    body: "Satu halaman yang fokus menjelaskan satu produk sampai pengunjung tahu langkah berikutnya.",
-    example: "Seperti YOTEXT",
+    title: "Produk dari nol sampai rilis",
+    body: "Web, Android, dan desktop dari satu kode, lengkap dengan login, peran pengguna, notifikasi, dan proses rilis yang berjalan otomatis.",
+    example: "Seperti Tiba, Nada, dan Catetin",
   },
   {
-    title: "Domain, hosting, dan SEO dasar",
-    body: "Saya bantu mengurus domain, hosting, struktur halaman, dan metadata agar website rapi di mata mesin pencari. SEO saya perlakukan sebagai cara kerja, bukan janji peringkat.",
-    example: "Termasuk sitemap, robots, dan data terstruktur",
+    title: "AI yang bisa diperiksa",
+    body: "Jawaban AI disertai sumber dan riwayat yang bisa ditelusuri, supaya tim berani memakainya untuk keputusan sungguhan.",
+    example: "Seperti EVIDNCE dan YOTEXT",
   },
   {
-    title: "AI yang benar benar dipakai",
-    body: "Asisten tanya jawab, otomasi formulir, atau alat internal berbasis AI, hanya jika memang membantu pengunjung atau tim kamu.",
-    example: "Contohnya asisten di pojok kanan bawah halaman ini",
+    title: "Peluncuran dan website produk",
+    body: "Landing page, domain, SEO dasar, dan cerita produk yang membuat calon pengguna paham dalam satu layar.",
+    example: "Seperti tiba.ai.id, yotext.app, dan Piranusa",
   },
 ];
 
 const TILE_WORDS: Record<string, ReactNode> = {
+  tiba: (
+    <>
+      TIBA<span className="stageAccent">.</span>
+    </>
+  ),
+  nada: (
+    <>
+      NADA<span className="stageAccent">.</span>
+    </>
+  ),
+  catetin: (
+    <>
+      CATETIN<span className="stageAccent">.</span>
+    </>
+  ),
   yotext: (
     <>
       YOTEXT<span className="stageAccent">.</span>
     </>
   ),
-  polimerindo: (
+  evidnce: (
     <>
-      PLASTIC
+      EVIDNCE<span className="stageAccent">.</span>
+    </>
+  ),
+  piranusa: (
+    <>
+      CAD
       <br />
-      PARTS.
+      BIM 3D.
     </>
   ),
   scanner: (
@@ -60,18 +80,34 @@ const TILE_WORDS: Record<string, ReactNode> = {
       SCAN<span className="stageAccent">.</span>
     </>
   ),
-  evidnce: (
+  polimerindo: (
     <>
-      EVIDNCE<span className="stageAccent">.</span>
+      PLASTIC
+      <br />
+      PARTS.
     </>
   ),
 };
 
+const FEATURE_ASIDE: Record<string, ReactNode> = {
+  tiba: (
+    <>
+      HRIS yang tetap mencatat
+      <br />
+      saat sinyal putus.
+    </>
+  ),
+};
+
+function linkProps(work: ShowcaseWork) {
+  return work.url ? { href: work.url, target: "_blank", rel: "noopener noreferrer" } : { href: workHref(work) };
+}
+
 const PROCESS = [
-  { title: "Diskusi awal", body: "Siapa pengunjungnya, apa yang mereka cari, dan apa yang perlu terjadi setelah mereka membaca." },
-  { title: "Susun isi", body: "Struktur halaman dan tulisan disusun lebih dulu sebelum tampilan dibuat." },
-  { title: "Desain dan bangun", body: "Tampilan dibuat untuk desktop dan ponsel sekaligus, lalu dibangun dengan kode yang cepat." },
-  { title: "Rilis dan rawat", body: "Domain, analitik, dan perbaikan setelah website digunakan oleh pengunjung sungguhan." },
+  { title: "Petakan masalah", body: "Siapa penggunanya, keputusan apa yang mereka ambil, dan di bagian mana AI benar benar membantu." },
+  { title: "Rancang arsitektur", body: "Alur, data, model, dan batas AI disusun lebih dulu sebelum kode ditulis." },
+  { title: "Bangun dan uji", body: "Prototipe dipakai orang sungguhan sejak awal, lalu diperbaiki dari cara mereka memakainya." },
+  { title: "Rilis dan rawat", body: "Rilis bertahap, pantau pemakaian, dan rawat produk setelah dipakai setiap hari." },
 ];
 
 export default async function Page() {
@@ -84,48 +120,46 @@ export default async function Page() {
       <section className="intro" aria-labelledby="judulUtama">
         <div>
           <p className="introIndex mono">
-            <b>Menerima proyek website</b>
+            <b>AI Product Architect</b>
             <span>Jakarta, Indonesia</span>
           </p>
           <h1 className="introTitle" id="judulUtama">
-            <span className="titleLine">I build websites</span>
+            <span className="titleLine">I build</span>
+            <span className="titleLine">AI products</span>
             <span className="titleLine">
-              people <em>get.</em>
+              people <em>use.</em>
             </span>
           </h1>
         </div>
         <div className="introAside">
           <p className="introLead">
-            Saya Yoel, AI Specialist di Piranusa dan founder YOTEXT. Saya membantu bisnis tampil jelas di internet,
-            mulai dari domain sampai halaman yang langsung dipahami calon pelanggan.
+            Saya Yoel, AI Product Architect dan founder PT Manoppo Teknologi Indonesia. Saya merancang produk AI dari
+            masalah sampai rilis: alurnya, datanya, batas kerja AI, sampai aplikasi yang dipakai orang setiap hari.
           </p>
-          <p className="introLead">Semua karya di bawah bisa kamu buka langsung. Gambarnya diambil dari situs aslinya.</p>
+          <p className="introLead">
+            Tiba, Nada, Catetin, YOTEXT, dan EVIDNCE dikembangkan oleh PT Manoppo Teknologi Indonesia. Setiap
+            tampilan di bawah adalah screenshot dari aplikasi yang sedang berjalan.
+          </p>
           <a className="textCta isDown" href="#karya">
-            Lihat karya pilihan
+            Lihat produknya
             <ArrowDown aria-hidden="true" />
           </a>
         </div>
       </section>
 
-      <section className="feature" id="karya" aria-label="Karya utama">
+      <section className="feature" id="karya" aria-label="Produk utama">
         <a
-          href={lead.url}
-          target="_blank"
-          rel="noopener noreferrer"
+          {...linkProps(lead)}
           className={`stage featureStage ${toneClass[lead.tone]}`}
-          aria-label={`Buka ${lead.domain} di tab baru`}
+          aria-label={lead.url ? `Buka ${lead.domain} di tab baru` : `Rincian ${lead.title}`}
         >
           <span className="stageLabel mono">
-            <span>Karya utama</span>
+            <span>Produk utama</span>
             <span>{lead.domain}</span>
           </span>
           <span className="stageWord">
-            PIRANUSA
-            <span className="stageAside">
-              Mitra teknologi
-              <br />
-              CAD, BIM, dan 3D.
-            </span>
+            {TILE_WORDS[lead.slug]}
+            {FEATURE_ASIDE[lead.slug] && <span className="stageAside">{FEATURE_ASIDE[lead.slug]}</span>}
           </span>
           <BrowserFrame work={lead} className="featureFrame" priority />
           <PhoneFrame work={lead} />
@@ -139,16 +173,16 @@ export default async function Page() {
             <h2>{lead.title}</h2>
             <p>{lead.summary}</p>
           </div>
-          <a href={lead.url} target="_blank" rel="noopener noreferrer" className="infoLink">
-            Lihat situs
+          <a {...linkProps(lead)} className="infoLink">
+            {lead.url ? "Lihat situs" : "Lihat rincian"}
             <ArrowUpRight aria-hidden="true" />
           </a>
         </div>
       </section>
 
-      <section className="workGrid" aria-label="Karya lain">
+      <section className="workGrid" aria-label="Produk dan karya lain">
         {rest.map((work) => (
-          <a key={work.slug} href={work.url} target="_blank" rel="noopener noreferrer" className="workTile">
+          <a key={work.slug} {...linkProps(work)} className="workTile">
             <div className={`stage tileStage ${toneClass[work.tone]}`}>
               <span className="stageLabel mono">
                 <span>{work.kind}</span>
@@ -174,14 +208,14 @@ export default async function Page() {
           <div className="stage tileStage toneOpen">
             <span className="stageLabel mono">
               <span>Slot terbuka</span>
-              <span>domainkamu.com</span>
+              <span>produk berikutnya</span>
             </span>
             <span className="stageWord">
-              SOON
+              YOUR
               <br />
-              YOU&apos;RE
+              PRODUCT
               <br />
-              HERE<span className="stageAccent">.</span>
+              NEXT<span className="stageAccent">.</span>
             </span>
             <span className="openFrame" aria-hidden="true">
               <span className="browserBar">
@@ -190,15 +224,15 @@ export default async function Page() {
                   <i />
                   <i />
                 </span>
-                <span className="browserUrl">domainkamu.com</span>
+                <span className="browserUrl">produkkamu.id</span>
               </span>
             </span>
           </div>
           <div className="tileInfo">
             <div>
               <span className="mono headMeta">Berikutnya</span>
-              <h3>Website kamu</h3>
-              <p>Ruang ini sengaja dikosongkan. Ceritakan bisnis kamu, dan karya berikutnya di sini bisa jadi milik kamu.</p>
+              <h3>Produk kamu</h3>
+              <p>Ruang ini sengaja dikosongkan. Ceritakan masalah yang ingin kamu selesaikan, kita rancang produknya bersama.</p>
             </div>
             <span className="tileArrow" aria-hidden="true">
               <ArrowUpRight />
@@ -208,29 +242,30 @@ export default async function Page() {
       </section>
 
       <section className="statement">
-        <span className="mono">Lebih dari halaman cantik</span>
+        <span className="mono">Lebih dari demo AI</span>
         <h2 className="sectionTitle">
-          Setiap bisnis perlu cara bercerita yang <em>berbeda.</em>
+          AI baru berguna kalau masuk ke cara kerja <em>sehari hari.</em>
         </h2>
         <p>
-          Perusahaan software, produk AI, dan pabrik manufaktur memiliki pengunjung dan pertanyaan yang berbeda. Ada yang
-          membandingkan lisensi, ada yang ingin tahu apa yang terjadi setelah meeting, ada pula yang memeriksa kapasitas
-          mesin. Website yang baik menjawab pertanyaan itu lebih dulu.
+          Demo AI mudah dibuat. Yang sulit adalah membuatnya tetap jalan saat sinyal putus, tetap jujur saat datanya
+          kurang, dan tetap bisa diperiksa manusia sebelum dipakai mengambil keputusan. Di Tiba, sistem menandai absen
+          yang janggal tapi HR yang memutuskan. Di Nada, setiap rekomendasi AI dicek ke katalog asli. Di EVIDNCE, setiap
+          klaim membawa sumbernya.
         </p>
       </section>
 
-      <CaseList works={showcase} label="Rincian karya" />
+      <CaseList works={showcase} label="Rincian produk dan karya" />
 
       <section className="services" id="layanan" aria-labelledby="judulLayanan">
         <span className="sideLabel mono">Yang bisa saya kerjakan</span>
         <div>
           <div className="servicesHead">
             <h2 className="sectionTitle" id="judulLayanan">
-              Dari domain sampai halaman yang <em>dipahami.</em>
+              Dari masalah sampai produk yang <em>dipakai.</em>
             </h2>
             <p>
-              Kamu tidak perlu memahami istilah teknis. Ceritakan bisnis kamu, saya yang menerjemahkannya menjadi
-              website yang jelas, cepat, dan mudah dikelola.
+              Saya bekerja di antara bisnis, desain, dan teknik. Ceritakan masalahnya, saya bantu menerjemahkannya
+              menjadi produk AI yang jelas batasnya, bisa diuji, dan siap dirilis.
             </p>
           </div>
           <ul className="serviceList">
@@ -284,7 +319,7 @@ export default async function Page() {
           <div>
             <span className="mono headMeta">Jam terbang</span>
             <h2 className="sectionTitle" id="judulArsip">
-              Sebelum website, ada <em>ini.</em>
+              Sebelum produk ini, ada <em>ini.</em>
             </h2>
           </div>
           <Link href="/projects" className="textCta">
@@ -308,16 +343,17 @@ export default async function Page() {
             Yoel Andreas Manoppo.
           </h2>
           <p>
-            Saya bekerja sebagai AI Specialist di Piranusa dan mendirikan YOTEXT. Sebelumnya saya membangun sistem multi
-            agent AI untuk pemerintahan, dApp di ekosistem VeChain, dan alat AI di agensi digital.
+            Saya AI Product Architect dan founder PT Manoppo Teknologi Indonesia, perusahaan yang mengembangkan Tiba,
+            Nada, Catetin, YOTEXT, dan EVIDNCE. Sebelumnya saya membangun sistem multi agent AI untuk pemerintahan, dApp di ekosistem
+            VeChain, dan alat AI di agensi digital.
           </p>
           <p>
-            Dalam setiap proyek website, saya memperhatikan bagian yang sering terlewat: apakah pengunjung langsung
-            memahami bisnis kamu setelah melihat halaman pertama?
+            Di setiap produk, saya memperhatikan bagian yang sering terlewat: apakah orang yang memakainya setiap hari
+            benar benar terbantu, bukan hanya terkesan saat demo?
           </p>
           <div className="aboutLinks">
             <a href={socialLinks.email} className="textCta">
-              Ceritakan proyek kamu
+              Ceritakan produk kamu
               <ArrowUpRight aria-hidden="true" />
             </a>
             <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="textCta">
